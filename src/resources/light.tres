@@ -1,0 +1,33 @@
+[gd_resource type="ShaderMaterial" load_steps=4 format=2]
+
+[sub_resource type="Shader" id=2]
+code = "shader_type canvas_item;
+
+uniform float intensity = 1.0;
+uniform float noise_intensity = 20.0;
+
+uniform sampler2D NOISE_PATTERN;
+
+uniform vec4 light_colour: hint_color = vec4(1.0);
+
+void fragment() {
+	vec4 col = texture(TEXTURE, UV);
+	float noise = texture(NOISE_PATTERN, UV).x / noise_intensity;
+	
+	COLOR = vec4(light_colour.rgb, col.r * intensity + noise * col.r * intensity);
+}"
+
+[sub_resource type="OpenSimplexNoise" id=5]
+octaves = 2
+period = 8.0
+lacunarity = 1.29
+
+[sub_resource type="NoiseTexture" id=4]
+noise = SubResource( 5 )
+
+[resource]
+shader = SubResource( 2 )
+shader_param/intensity = 0.5
+shader_param/noise_intensity = 20.0
+shader_param/light_colour = Color( 1, 1, 1, 1 )
+shader_param/NOISE_PATTERN = SubResource( 4 )
