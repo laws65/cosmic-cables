@@ -45,6 +45,6 @@ func add_acceleration(input_direction: float) -> void:
 		player.acceleration -= player.transform.x * deceleration_speed
 
 
-func apply_friction(input_direction: int) -> void:
+func apply_friction(input_direction: float) -> void:
 	if input_direction == 0:
 		player.acceleration -= lerp(player.velocity, Vector2.ZERO, friction)
