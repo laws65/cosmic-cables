@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://addons/rmsmartshape/materials/shape_material.gd" type="Script" id=1]
 [ext_resource path="res://addons/rmsmartshape/shapes/point_array.gd" type="Script" id=2]
@@ -8,58 +8,6 @@
 [ext_resource path="res://addons/rmsmartshape/vertex_properties.gd" type="Script" id=6]
 [ext_resource path="res://src/asteroid/asteroid.gd" type="Script" id=7]
 
-[sub_resource type="Resource" id=3]
-script = ExtResource( 6 )
-texture_idx = 0
-flip = false
-width = 1.0
-
-[sub_resource type="Resource" id=4]
-script = ExtResource( 5 )
-position = Vector2( -3.58199, -19.0454 )
-point_in = Vector2( 0, 0 )
-point_out = Vector2( 0, 0 )
-properties = SubResource( 3 )
-
-[sub_resource type="Resource" id=5]
-script = ExtResource( 6 )
-texture_idx = 4
-flip = false
-width = 1.0
-
-[sub_resource type="Resource" id=6]
-script = ExtResource( 5 )
-position = Vector2( 11.7108, -11.9508 )
-point_in = Vector2( 0, 0 )
-point_out = Vector2( 0, 0 )
-properties = SubResource( 5 )
-
-[sub_resource type="Resource" id=7]
-script = ExtResource( 6 )
-texture_idx = 0
-flip = false
-width = 1.0
-
-[sub_resource type="Resource" id=8]
-script = ExtResource( 5 )
-position = Vector2( 17.3339, 7.12568 )
-point_in = Vector2( 0, 0 )
-point_out = Vector2( 0, 0 )
-properties = SubResource( 7 )
-
-[sub_resource type="Resource" id=9]
-script = ExtResource( 6 )
-texture_idx = 0
-flip = false
-width = 1.0
-
-[sub_resource type="Resource" id=10]
-script = ExtResource( 5 )
-position = Vector2( -3.58199, -19.0454 )
-point_in = Vector2( 0, 0 )
-point_out = Vector2( 0, 0 )
-properties = SubResource( 9 )
-
 [sub_resource type="Resource" id=11]
 script = ExtResource( 6 )
 texture_idx = 0
@@ -68,20 +16,20 @@ width = 1.0
 
 [sub_resource type="Resource" id=12]
 script = ExtResource( 5 )
-position = Vector2( 0.35944, 11.1722 )
+position = Vector2( -8.01763, 6.10273 )
 point_in = Vector2( 0, 0 )
 point_out = Vector2( 0, 0 )
 properties = SubResource( 11 )
 
 [sub_resource type="Resource" id=13]
 script = ExtResource( 6 )
-texture_idx = 2
+texture_idx = 0
 flip = false
 width = 1.0
 
 [sub_resource type="Resource" id=14]
 script = ExtResource( 5 )
-position = Vector2( -15.3012, 10.4365 )
+position = Vector2( 22.9904, 3.2647 )
 point_in = Vector2( 0, 0 )
 point_out = Vector2( 0, 0 )
 properties = SubResource( 13 )
@@ -94,7 +42,7 @@ width = 1.0
 
 [sub_resource type="Resource" id=16]
 script = ExtResource( 5 )
-position = Vector2( -15.9318, -3.70011 )
+position = Vector2( -8.01763, 6.10273 )
 point_in = Vector2( 0, 0 )
 point_out = Vector2( 0, 0 )
 properties = SubResource( 15 )
@@ -107,30 +55,40 @@ width = 1.0
 
 [sub_resource type="Resource" id=18]
 script = ExtResource( 5 )
-position = Vector2( -13.3042, -14.5259 )
+position = Vector2( -17.7931, -9.19107 )
 point_in = Vector2( 0, 0 )
 point_out = Vector2( 0, 0 )
 properties = SubResource( 17 )
 
 [sub_resource type="Resource" id=19]
+script = ExtResource( 6 )
+texture_idx = 0
+flip = false
+width = 1.0
+
+[sub_resource type="Resource" id=20]
+script = ExtResource( 5 )
+position = Vector2( -0.134224, -15.4978 )
+point_in = Vector2( 0, 0 )
+point_out = Vector2( 0, 0 )
+properties = SubResource( 19 )
+
+[sub_resource type="Resource" id=21]
 script = ExtResource( 2 )
 _points = {
-4: SubResource( 4 ),
-5: SubResource( 6 ),
-6: SubResource( 8 ),
-7: SubResource( 10 ),
-8: SubResource( 12 ),
-9: SubResource( 14 ),
-10: SubResource( 16 ),
-11: SubResource( 18 )
+0: SubResource( 12 ),
+1: SubResource( 14 ),
+3: SubResource( 16 ),
+4: SubResource( 18 ),
+5: SubResource( 20 )
 }
-_point_order = [ 4, 5, 6, 8, 9, 10, 11, 7 ]
+_point_order = [ 3, 4, 5, 1, 0 ]
 _constraints = {
-[ 4, 7 ]: 15
+[ 0, 3 ]: 15
 }
-_next_key = 8
+_next_key = 6
 
-[sub_resource type="Resource" id=2]
+[sub_resource type="Resource" id=10]
 script = ExtResource( 1 )
 _edge_meta_materials = [  ]
 fill_textures = [ ExtResource( 4 ) ]
@@ -142,21 +100,20 @@ render_offset = 0.0
 [node name="Asteroid" type="StaticBody2D"]
 script = ExtResource( 7 )
 
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2( -16, 0 )
+polygon = PoolVector2Array( 7.76246, 6.55177, -2.2662, -9.35287, 15.95, -15.9907, 39.4688, 3.41016 )
+
 [node name="SS2D_Shape_Closed" type="Node2D" parent="."]
 script = ExtResource( 3 )
-editor_debug = false
-curve_bake_interval = 20.0
-_points = SubResource( 19 )
+_points = SubResource( 21 )
 material_overrides = {
 }
-shape_material = SubResource( 2 )
+shape_material = SubResource( 10 )
 tessellation_stages = 5
 tessellation_tolerence = 4.0
 flip_edges = false
 render_edges = true
-collision_size = 8.0
-collision_offset = 0.0
+collision_size = 1.0
+collision_offset = 1.0
 collision_polygon_node_path = NodePath("../CollisionPolygon2D")
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-polygon = PoolVector2Array( -3.58213, -19.4175, 11.9802, -12.183, 18.4129, 7.75075, 0.363121, 11.2114, -16.0411, 11.1747, -15.9715, -3.70396, -13.6105, -14.7771 )
