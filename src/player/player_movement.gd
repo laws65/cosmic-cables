@@ -15,7 +15,7 @@ func set_player(new_player: Player) -> void:
 
 
 func _physics_process(delta: float) -> void:
-	if not player:
+	if not is_instance_valid(player):
 		return
 
 	var input_direction := Input.get_axis("decelerate", "accelerate")

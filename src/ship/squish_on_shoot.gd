@@ -17,7 +17,7 @@ func set_target(new_target: Node2D) -> void:
 
 
 func _physics_process(_delta: float) -> void:
-	if not target:
+	if not is_instance_valid(target):
 		return
 
 	target.scale.x = 1 + (squish * squish_max.x)
@@ -35,3 +35,11 @@ func _on_Gun_shot() -> void:
 	for _i in squish_delay_frames:
 		yield(get_tree(), "idle_frame")
 	reached_squish_max = false
+
+
+func _on_Player_gun_changed(old_gun: Gun, new_gun: Gun) -> void:
+	if is_instance_valid(old_gun):
+		old_gun.disconnect("shot", self, "_on_Gun_shot")
+
+	if is_instance_valid(new_gun):
+		new_gun.connect("shot", self, "_on_Gun_shot")
