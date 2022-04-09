@@ -4,19 +4,20 @@ class_name Gun
 
 signal shot()
 
+export var item_resource: Resource
 export var bullet_scene: PackedScene
 export var automatic: bool
 export(float, 0.01, 1.0) var firerate = 0.1
 export(float, -60.0, 60.0) var inaccuracy = 0.0
 export(float, 0.0, 180.0) var max_rotation = 0.0
 
-var ship: Ship
+var ship
 
 onready var shoot_point := get_node("ShootPoint") as Position2D
 onready var fire_timer := get_node("FireTimer") as Timer
 
 
-func set_ship(new_ship: Ship) -> void:
+func set_ship(new_ship) -> void:
 	ship = new_ship
 
 
@@ -35,7 +36,7 @@ func shoot() -> Node2D:
 
 	fire_timer.start(firerate)
 
-	if ship:
+	if is_instance_valid(ship):
 		bullet_instance.speed += ship.velocity.length()
 		var delta := get_physics_process_delta_time()
 		bullet_instance.position += bullet_instance.transform.x * delta
@@ -56,3 +57,7 @@ func get_shoot_angle() -> float:
 
 func can_shoot() -> bool:
 	return fire_timer.is_stopped()
+
+
+func get_item() -> Item:
+	return item_resource as Item

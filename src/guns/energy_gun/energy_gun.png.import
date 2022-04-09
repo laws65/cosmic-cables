@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/energy_ball_shooter.png-a58861ff4d77ed698cf77ba294f259b9.stex"
+path="res://.import/energy_gun.png-524bd74f897fb64c6747860e49026a3b.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://src/player/energy_ball_shooter.png"
-dest_files=[ "res://.import/energy_ball_shooter.png-a58861ff4d77ed698cf77ba294f259b9.stex" ]
+source_file="res://src/guns/energy_gun/energy_gun.png"
+dest_files=[ "res://.import/energy_gun.png-524bd74f897fb64c6747860e49026a3b.stex" ]
 
 [params]
 

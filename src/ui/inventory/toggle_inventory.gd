@@ -10,10 +10,10 @@ onready var animation_player := get_node("AnimationPlayer") as AnimationPlayer
 func _unhandled_input(event: InputEvent) -> void:
 	if (event.is_action_pressed("open_inventory")
 	and not inventory.visible):
-		animation_player.play("fade")
+		animation_player.play("fade_in")
 	elif (event.is_action_pressed("ui_cancel")
 	and inventory.visible):
-		animation_player.play_backwards("fade")
+		animation_player.play("fade_out")
 
 
 func _on_UI_gui_input(event: InputEvent) -> void:
@@ -21,4 +21,9 @@ func _on_UI_gui_input(event: InputEvent) -> void:
 	and event.is_pressed()
 	and event.get_button_index() == BUTTON_LEFT
 	and inventory.visible):
-		animation_player.play_backwards("fade")
+		var held_item = inventory.held_item_display.get_item()
+		if not is_instance_valid(held_item):
+			animation_player.play("fade_out")
+		else:
+			# create item scene, set resource, throw it into game world
+			pass

@@ -1,12 +1,10 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://src/player/player.gd" type="Script" id=1]
 [ext_resource path="res://src/player/player.png" type="Texture" id=2]
 [ext_resource path="res://src/player/trail.gd" type="Script" id=3]
 [ext_resource path="res://src/player/player_movement.gd" type="Script" id=4]
 [ext_resource path="res://src/ship/squish_on_shoot.gd" type="Script" id=5]
-[ext_resource path="res://src/guns/gun.tscn" type="PackedScene" id=6]
-[ext_resource path="res://src/energy_ball/energy_ball.tscn" type="PackedScene" id=7]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 15.0
@@ -52,14 +50,6 @@ texture = ExtResource( 2 )
 hframes = 2
 vframes = 2
 
-[node name="Gun" parent="." instance=ExtResource( 6 )]
-position = Vector2( 9, 0 )
-bullet_scene = ExtResource( 7 )
-automatic = true
-firerate = 0.2
-inaccuracy = 5.0
-max_rotation = 60.0
-
 [node name="PlayerMovement" type="Node" parent="."]
 script = ExtResource( 4 )
 
@@ -67,4 +57,4 @@ script = ExtResource( 4 )
 script = ExtResource( 5 )
 squish_up_speed = 0.5
 
-[connection signal="shot" from="Gun" to="SquishOnShoot" method="_on_Gun_shot"]
+[connection signal="gun_changed" from="." to="SquishOnShoot" method="_on_Player_gun_changed"]

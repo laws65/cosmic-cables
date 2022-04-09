@@ -14,6 +14,16 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/guns/gun.gd"
 }, {
+"base": "TextureRect",
+"class": "InventorySlot",
+"language": "GDScript",
+"path": "res://src/ui/inventory/inventory_slot.gd"
+}, {
+"base": "Resource",
+"class": "Item",
+"language": "GDScript",
+"path": "res://src/item/item.gd"
+}, {
 "base": "Ship",
 "class": "Player",
 "language": "GDScript",
@@ -161,6 +171,8 @@ _global_script_classes=[ {
 } ]
 _global_script_class_icons={
 "Gun": "",
+"InventorySlot": "",
+"Item": "",
 "Player": "",
 "RMS2D_Material": "",
 "RMS2D_VertexProperties": "",
@@ -198,11 +210,15 @@ config/name="space game"
 run/main_scene="res://src/world/world.tscn"
 config/icon="res://icon.png"
 
+[debug]
+
+gdscript/warnings/return_value_discarded=false
+
 [display]
 
 window/size/width=1280
 window/size/height=720
-window/stretch/mode="viewport"
+window/stretch/mode="2d"
 window/stretch/aspect="expand"
 
 [editor_plugins]

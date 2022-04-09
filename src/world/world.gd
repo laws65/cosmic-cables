@@ -4,7 +4,7 @@ var asteroid = load("res://src/asteroid/asteroid.tscn")
 
 func _ready() -> void:
 	$Camera2D.target = $Player
-	
+
 	for i in range (1, 20):
 		var asteroid_instance = asteroid.instance()
 		randomize()
@@ -13,3 +13,5 @@ func _ready() -> void:
 			rand_range(100, 620)
 		)
 		add_child(asteroid_instance)
+
+	$CanvasLayer/UI/Inventory.set_ship($Player)

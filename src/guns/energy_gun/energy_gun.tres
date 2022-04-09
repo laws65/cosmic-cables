@@ -1,0 +1,14 @@
+[gd_resource type="Resource" load_steps=3 format=2]
+
+[ext_resource path="res://src/item/item.gd" type="Script" id=1]
+[ext_resource path="res://src/guns/energy_gun/energy_gun.png" type="Texture" id=2]
+
+[resource]
+resource_local_to_scene = true
+script = ExtResource( 1 )
+type = 2
+name = "Energy Gun"
+description = "Pure energy condensed into a bullet"
+level = 0
+icon = ExtResource( 2 )
+scene_path = "res://src/guns/energy_gun/energy_gun.tscn"
