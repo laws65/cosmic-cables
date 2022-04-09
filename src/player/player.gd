@@ -10,8 +10,7 @@ func _ready() -> void:
 
 
 func _physics_process(_delta: float) -> void:
-	if (is_instance_valid(gun)
-	and Input.is_action_pressed("fire")):
+	if has_gun() and Input.is_action_pressed("fire"):
 		gun.shoot()
 
 	$Particles2D.set_active(velocity)

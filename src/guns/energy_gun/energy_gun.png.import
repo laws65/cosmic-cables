@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/slot.png-8afc523f1edf7c3b7f1a92c9d4b36db0.stex"
+path="res://.import/energy_gun.png-524bd74f897fb64c6747860e49026a3b.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://src/ui/inventory/slot.png"
-dest_files=[ "res://.import/slot.png-8afc523f1edf7c3b7f1a92c9d4b36db0.stex" ]
+source_file="res://src/guns/energy_gun/energy_gun.png"
+dest_files=[ "res://.import/energy_gun.png-524bd74f897fb64c6747860e49026a3b.stex" ]
 
 [params]
 

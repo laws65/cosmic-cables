@@ -4,6 +4,7 @@ class_name Gun
 
 signal shot()
 
+export var item_resource: Resource
 export var bullet_scene: PackedScene
 export var automatic: bool
 export(float, 0.01, 1.0) var firerate = 0.1
@@ -56,3 +57,7 @@ func get_shoot_angle() -> float:
 
 func can_shoot() -> bool:
 	return fire_timer.is_stopped()
+
+
+func get_item() -> Item:
+	return item_resource as Item

@@ -38,7 +38,8 @@ func _on_Gun_shot() -> void:
 
 
 func _on_Player_gun_changed(old_gun: Gun, new_gun: Gun) -> void:
-	if is_instance_valid(old_gun):
+	if (is_instance_valid(old_gun)
+	and old_gun.is_connected("shot", self, "_on_Gun_shot")):
 		old_gun.disconnect("shot", self, "_on_Gun_shot")
 
 	if is_instance_valid(new_gun):
