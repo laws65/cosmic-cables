@@ -11,10 +11,7 @@ var scene: Node
 
 
 func get_scene() -> Node:
-	print(scene)
 	if not is_instance_valid(scene):
-		print("node isn't valid, loading")
 		scene = load(scene_path).instance()
-		print(scene)
 
 	return scene
