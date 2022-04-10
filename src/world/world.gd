@@ -3,15 +3,16 @@ extends Node2D
 var asteroid = load("res://src/asteroid/asteroid.tscn")
 
 func _ready() -> void:
+	randomize()
+
 	$Camera2D.target = $Player
 
-	for i in range (1, 20):
+	$CanvasLayer/UI/Inventory.set_ship($Player)
+
+	for _i in 20:
 		var asteroid_instance = asteroid.instance()
-		randomize()
 		asteroid_instance.position = Vector2(
-			rand_range(100, 1180),
-			rand_range(100, 620)
+			rand_range(100, 3000),
+			rand_range(100, 2000)
 		)
 		add_child(asteroid_instance)
-
-	$CanvasLayer/UI/Inventory.set_ship($Player)

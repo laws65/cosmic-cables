@@ -1,50 +1,48 @@
+tool
 extends StaticBody2D
 
 
-# Declare member variables here. Examples:
-# var a: int = 2
-# var b: String = "text"
+export var should_gen: bool
+
+export(float, 20, 200) var size = 20
+export(float, 0.0, 0.1) var size_rand_percent = 0.0
+export(float, 0.05, 0.15) var points_rand_percent = 0.1
+export(float, 0, 10) var angle_rand = 0.0
+export(float, 0, 50) var wave_magnitude = 1.0
 
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	var collision_poly = self.get_node("CollisionPolygon2D")
-	var shape_poly = self.get_node("SS2D_Shape_Closed")
-	var poly_points: PoolVector2Array = PoolVector2Array([
-		Vector2(0, 0),
-		Vector2(10, 0),
-		Vector2(0, 10),
-		Vector2(10, 10),
-	])
-	collision_poly.set_polygon(poly_points)
-	var point_template = shape_poly._points._points[1]
-	shape_poly._points._points = {1: point_template}
-	shape_poly._points._point_order = [
-		1,
-		2,
-		3,
-		4,
-		5,
-	]
-	var point_positions = [
-		Vector2(0, 20),
-		Vector2(30, 0),
-		Vector2(80, 30),
-		Vector2(100, 70),
-		Vector2(40, 80),
-		Vector2(20, 40)
-	]
-	randomize()
-	for i in range (1, 6):
-		point_template.position = Vector2(
-			point_positions[i].x + rand_range(1, 50),
-			point_positions[i].y + rand_range(1, 50)
-		)
-		#print(point_template.position)
-		shape_poly._points._points[i] = point_template
-	#print("done")
+	size = rand_range(20, 200)
+	size_rand_percent = rand_range(0.0, 0.1)
+	angle_rand = rand_range(0, 10)
+	wave_magnitude = rand_range(0, 50)
+	_generate_shape(randi())
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta: float) -> void:
-#	pass
+func _generate_shape(asteroid_seed: int):
+	var rand := RandomNumberGenerator.new()
+	rand.set_seed(asteroid_seed)
+	var shape := get_node("SS2D_Shape_Closed") as SS2D_Shape_Closed
+	shape.clear_points()
+
+	var size_rand = size_rand_percent * size
+	var points = points_rand_percent * size
+
+	for point in points:
+		var angle: float = TAU/float(points)*point
+		var size_variation = (sin(angle) * wave_magnitude +
+			rand.randf_range(-size_rand/2.0, size_rand/2.0))
+		var angle_variation = deg2rad(
+			rand.randf_range(-angle_rand/2.0, angle_rand/2.0))
+
+		var point_size = size + size_variation
+		var point_angle = angle + angle_variation
+
+		shape.add_point(
+			Vector2(point_size, 0).rotated(point_angle))
+
+
+func _physics_process(_delta: float) -> void:
+	if Engine.editor_hint and should_gen:
+		_generate_shape(randi())
+		should_gen = false
