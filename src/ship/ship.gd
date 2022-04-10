@@ -11,8 +11,8 @@ var gun: Gun setget set_gun, get_gun
 var modules: Array
 var storage: Array
 
-var modules_amount: int
-var storage_size: int
+var modules_amount: int = 6
+var storage_size: int = 16
 
 
 func _ready() -> void:
@@ -23,7 +23,6 @@ func _ready() -> void:
 func set_gun(new_gun: Gun) -> void:
 	if is_instance_valid(gun):
 		remove_child(gun)
-		gun.queue_free()
 
 	if is_instance_valid(new_gun):
 		new_gun.set_ship(self)

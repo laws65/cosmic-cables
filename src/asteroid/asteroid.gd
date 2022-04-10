@@ -40,9 +40,9 @@ func _ready() -> void:
 			point_positions[i].x + rand_range(1, 50),
 			point_positions[i].y + rand_range(1, 50)
 		)
-		print(point_template.position)
+		#print(point_template.position)
 		shape_poly._points._points[i] = point_template
-	print("done")
+	#print("done")
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
