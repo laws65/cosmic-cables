@@ -32,7 +32,7 @@ func shoot() -> Node2D:
 	bullet_instance.global_position = shoot_point.global_position
 	bullet_instance.global_rotation = get_shoot_angle()
 
-	add_child(bullet_instance)
+	get_parent().get_parent().add_child(bullet_instance)
 
 	fire_timer.start(firerate)
 

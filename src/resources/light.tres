@@ -23,6 +23,7 @@ period = 8.0
 lacunarity = 1.29
 
 [sub_resource type="NoiseTexture" id=4]
+resource_local_to_scene = true
 noise = SubResource( 5 )
 
 [resource]

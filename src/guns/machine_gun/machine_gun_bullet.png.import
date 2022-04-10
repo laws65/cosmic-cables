@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/energy_ball.png-1f64e2302d77f6043ff57faf739d8fe5.stex"
+path="res://.import/machine_gun_bullet.png-aa80a51a5d11f1eb37ce79f4497091e7.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://src/energy_ball/energy_ball.png"
-dest_files=[ "res://.import/energy_ball.png-1f64e2302d77f6043ff57faf739d8fe5.stex" ]
+source_file="res://src/guns/machine_gun/machine_gun_bullet.png"
+dest_files=[ "res://.import/machine_gun_bullet.png-aa80a51a5d11f1eb37ce79f4497091e7.stex" ]
 
 [params]
 

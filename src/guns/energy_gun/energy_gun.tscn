@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://src/guns/gun.tscn" type="PackedScene" id=1]
-[ext_resource path="res://src/energy_ball/energy_ball.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/guns/energy_gun/energy_ball.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/guns/energy_gun/energy_gun.tres" type="Resource" id=3]
 
 [node name="EnergyGun" instance=ExtResource( 1 )]
