@@ -13,7 +13,7 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	var collision := move_and_collide(transform.x * speed * delta)
-	if collision != null:
+	if collision:
 		$Impact.global_rotation_degrees = rotation_degrees - 180
 		$Impact.global_position = collision.position
 		$AnimationPlayer.play("impact")
