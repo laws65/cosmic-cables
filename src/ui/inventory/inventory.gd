@@ -107,12 +107,11 @@ func _update_inventory_display() -> void:
 
 
 func _on_Slot_hovered(slot: TextureRect) -> void:
-	print(slot.rect_position)
 	var slot_item := slot.get_item() as Item
+
 	if (is_instance_valid(slot_item)
 	and not is_instance_valid(held_item_display.get_item())):
 		_show_item_info(slot, slot_item)
-
 
 
 func _on_Slot_unhovered(_slot: TextureRect) -> void:
