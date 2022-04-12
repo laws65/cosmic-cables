@@ -13,7 +13,7 @@ export(float, 0, 50) var wave_magnitude = 1.0
 
 func _ready() -> void:
 	size = rand_range(20, 200)
-	size_rand_percent = rand_range(0.0, 0.1)
+	size_rand_percent = rand_range(0.05, 0.1)
 	angle_rand = rand_range(0, 10)
 	wave_magnitude = rand_range(0, 50)
 	_generate_shape(randi())
@@ -38,8 +38,12 @@ func _generate_shape(asteroid_seed: int):
 		var point_size = size + size_variation
 		var point_angle = angle + angle_variation
 
+		var squash := Vector2(
+			rand.randf_range(0.9, 1.1),
+			rand.randf_range(0.9, 1.1))
+
 		shape.add_point(
-			Vector2(point_size, 0).rotated(point_angle))
+			(Vector2(point_size, 0) * squash).rotated(point_angle))
 
 
 func _physics_process(_delta: float) -> void:

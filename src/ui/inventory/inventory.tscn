@@ -187,11 +187,10 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="T" type="TextureRect" parent="TitleAndContentSplitter/StorageAndShipSplitter/Ship/ShipDisplayAndModulesSplitter/ShipDisplay"]
-margin_left = 160.0
+margin_left = -1.0
 margin_top = -17.0
-margin_right = 192.0
+margin_right = 31.0
 margin_bottom = 15.0
-rect_rotation = 90.0
 rect_scale = Vector2( 5, 5 )
 texture = SubResource( 1 )
 

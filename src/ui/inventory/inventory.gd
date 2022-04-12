@@ -21,6 +21,9 @@ func _ready() -> void:
 	get_tree().call_group(
 		"inventory_slot", "connect",
 		"clicked", self, "_on_Slot_clicked")
+	get_tree().call_group(
+		"inventory_slot", "connect",
+		"hovered", self, "_on_Slot_hovered")
 
 
 func _process(_delta: float) -> void:
@@ -55,6 +58,8 @@ func _on_Slot_clicked(slot: InventorySlot) -> void:
 
 
 func _put_item_in_slot(slot: TextureRect, item: Item) -> void:
+	slot.item_info.hide()
+
 	if slot == gun_slot:
 		var gun: Gun
 		if is_instance_valid(item):
@@ -89,3 +94,8 @@ func _update_inventory_display() -> void:
 		var storage_slot: TextureRect = storage_slots[j]
 		if storage_item != storage_slot.get_item():
 			storage_slot.set_item(storage_item)
+
+
+func _on_Slot_hovered(slot: TextureRect) -> void:
+	if not is_instance_valid(held_item_display.get_item()):
+		slot.item_info.show()

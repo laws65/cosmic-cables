@@ -20,8 +20,12 @@ func _physics_process(_delta: float) -> void:
 	if not is_instance_valid(target):
 		return
 
-	target.scale.x = 1 + (squish * squish_max.x)
-	target.scale.y = 1 + (squish * squish_max.y)
+	for child in target.get_children():
+		if child is Node2D and not child is CollisionShape2D:
+			var new_scale := Vector2.ONE + (squish * squish_max)
+			new_scale = new_scale.rotated(child.rotation)
+
+			child.scale = new_scale
 
 	if reached_squish_max:
 		squish = lerp(squish, 0, squish_reset_speed)
