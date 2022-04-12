@@ -15,6 +15,6 @@ func _ready() -> void:
 	timer.start(cull_time)
 
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if timer.is_stopped() and not visible.is_on_screen():
 		owner.queue_free()
