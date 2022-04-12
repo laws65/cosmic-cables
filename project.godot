@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Node",
+"class": "CullBulletAfterTime",
+"language": "GDScript",
+"path": "res://src/guns/cull_bullet.gd"
+}, {
 "base": "Node2D",
 "class": "Gun",
 "language": "GDScript",
@@ -170,6 +175,7 @@ _global_script_classes=[ {
 "path": "res://src/ship/squish_on_shoot.gd"
 } ]
 _global_script_class_icons={
+"CullBulletAfterTime": "",
 "Gun": "",
 "InventorySlot": "",
 "Item": "",

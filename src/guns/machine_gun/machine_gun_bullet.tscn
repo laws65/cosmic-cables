@@ -1,8 +1,9 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://src/guns/machine_gun/machine_gun_bullet.png" type="Texture" id=1]
 [ext_resource path="res://src/guns/machine_gun/machine_gun_bullet.gd" type="Script" id=2]
 [ext_resource path="res://light.png" type="Texture" id=3]
+[ext_resource path="res://src/guns/cull_bullet.gd" type="Script" id=4]
 
 [sub_resource type="Shader" id=2]
 code = "shader_type canvas_item;
@@ -219,3 +220,6 @@ color_ramp = SubResource( 10 )
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/RESET = SubResource( 12 )
 anims/impact = SubResource( 11 )
+
+[node name="CullBulletAfterTime" type="Node" parent="."]
+script = ExtResource( 4 )
