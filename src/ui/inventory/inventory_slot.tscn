@@ -25,28 +25,6 @@ size_flags_vertical = 3
 expand = true
 stretch_mode = 6
 
-[node name="ItemInfo" type="Panel" parent="."]
-visible = false
-self_modulate = Color( 1, 1, 1, 0.219608 )
-margin_left = 24.0
-margin_top = 22.0
-margin_right = 167.0
-margin_bottom = 141.0
-mouse_filter = 2
-
-[node name="V" type="VBoxContainer" parent="ItemInfo"]
-margin_right = 86.0
-margin_bottom = 72.0
-
-[node name="Name" type="Label" parent="ItemInfo/V"]
-margin_right = 86.0
-margin_bottom = 14.0
-
-[node name="Description" type="Label" parent="ItemInfo/V"]
-margin_top = 18.0
-margin_right = 86.0
-margin_bottom = 32.0
-
 [connection signal="gui_input" from="." to="." method="_on_Slot_gui_input"]
 [connection signal="mouse_entered" from="." to="." method="_on_Slot_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_Slot_mouse_exited"]

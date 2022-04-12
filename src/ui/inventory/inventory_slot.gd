@@ -4,11 +4,11 @@ class_name InventorySlot
 
 signal clicked(slot)
 signal hovered(slot)
+signal unhovered(slot)
 
 export(int, FLAGS, "module", "gun") var type
 
 onready var item_display := get_node("Item") as TextureRect
-onready var item_info := get_node("ItemInfo")
 
 var item: Item setget set_item, get_item
 
@@ -16,8 +16,6 @@ var item: Item setget set_item, get_item
 func set_item(new_item: Item) -> void:
 	if is_instance_valid(new_item):
 		item_display.set_texture(new_item.icon)
-		item_info.get_node("V/Name").text = new_item.name
-		item_info.get_node("V/Description").text = new_item.description
 	else:
 		item_display.set_texture(null)
 
@@ -41,4 +39,4 @@ func _on_Slot_mouse_entered() -> void:
 
 
 func _on_Slot_mouse_exited() -> void:
-	item_info.hide()
+	emit_signal("unhovered", self)
