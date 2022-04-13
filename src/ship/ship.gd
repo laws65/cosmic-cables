@@ -2,8 +2,6 @@ extends KinematicBody2D
 class_name Ship
 
 
-signal gun_changed(old_gun, new_gun)
-
 var velocity: Vector2
 var acceleration: Vector2
 
@@ -28,7 +26,6 @@ func set_gun(new_gun: Gun) -> void:
 		new_gun.set_ship(self)
 		add_child(new_gun)
 
-	emit_signal("gun_changed", gun, new_gun)
 	gun = new_gun
 
 

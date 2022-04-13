@@ -7,12 +7,10 @@ func _ready() -> void:
 	storage[0] = load("res://src/guns/energy_gun/energy_gun.tres")
 	set_gun(gun_instance)
 	$PlayerMovement.set_player(self)
-	$SquishOnShoot.set_target(self)
+	$FireTrail.set_ship(self)
 
 
 func _physics_process(_delta: float) -> void:
 	if has_gun() and Input.is_action_pressed("fire"):
 		if gun.automatic or Input.is_action_just_pressed("fire"):
 			gun.shoot()
-
-	$Particles2D.set_active(velocity)

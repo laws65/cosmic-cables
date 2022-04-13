@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://src/guns/gun.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/guns/energy_gun/energy_ball.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/guns/energy_gun/energy_gun.tres" type="Resource" id=3]
+[ext_resource path="res://src/ship/squish_on_shoot.gd" type="Script" id=4]
 
 [node name="EnergyGun" instance=ExtResource( 1 )]
 item_resource = ExtResource( 3 )
@@ -17,3 +18,11 @@ position = Vector2( 17, 0 )
 
 [node name="Sprite" parent="." index="2"]
 position = Vector2( 13, 0 )
+
+[node name="SquishOnShoot" type="Node" parent="." index="3"]
+script = ExtResource( 4 )
+squish_up_speed = 0.6
+squish_reset_speed = 0.15
+squish_max = Vector2( -0.6, 0.6 )
+
+[connection signal="shot" from="." to="SquishOnShoot" method="_on_Gun_shot"]

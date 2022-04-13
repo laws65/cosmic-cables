@@ -21,6 +21,10 @@ func set_ship(new_ship) -> void:
 	ship = new_ship
 
 
+func get_ship():
+	return ship
+
+
 func shoot() -> Node2D:
 	if not can_shoot():
 		return null
