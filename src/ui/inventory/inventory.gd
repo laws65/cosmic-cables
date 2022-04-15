@@ -21,20 +21,7 @@ var ship: Ship setget set_ship
 
 
 func _ready() -> void:
-	get_tree().call_group(
-		"inventory_slot", "connect",
-		"clicked", self, "_on_Slot_clicked")
-	get_tree().call_group(
-		"inventory_slot", "connect",
-		"hovered", self, "_on_Slot_hovered")
-	get_tree().call_group(
-		"inventory_slot", "connect",
-		"unhovered", self, "_on_Slot_unhovered")
-
-
-func _process(_delta: float) -> void:
-	held_item_display.rect_global_position = (
-		get_global_mouse_position() + held_item_display.display_offset)
+	get_tree().call_group("inventory_slot", "setup_inventory_signals", self)
 
 
 func set_ship(new_ship: Ship) -> void:

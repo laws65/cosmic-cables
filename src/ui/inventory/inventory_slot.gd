@@ -40,3 +40,9 @@ func _on_Slot_mouse_entered() -> void:
 
 func _on_Slot_mouse_exited() -> void:
 	emit_signal("unhovered", self)
+
+
+func setup_inventory_signals(inventory: Panel) -> void:
+	connect("clicked", inventory, "_on_Slot_clicked")
+	connect("hovered", inventory, "_on_Slot_hovered")
+	connect("unhovered", inventory, "_on_Slot_unhovered")
