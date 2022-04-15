@@ -26,5 +26,5 @@ func _on_UI_gui_input(event: InputEvent) -> void:
 		if not is_instance_valid(held_item):
 			animation_player.play("fade_out")
 		else:
-			# create item scene, set resource, throw it into game world
-			pass
+			get_node("../../../").create_ground_item(held_item)
+			inventory.held_item_display.set_item(null)
