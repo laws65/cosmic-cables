@@ -13,7 +13,8 @@ func _unhandled_input(event: InputEvent) -> void:
 		animation_player.play("fade_in")
 	elif (event.is_action_pressed("ui_cancel")
 	and inventory.visible):
-		animation_player.play("fade_out")
+		if not is_instance_valid(inventory.held_item_display.get_item()):
+			animation_player.play("fade_out")
 
 
 func _on_UI_gui_input(event: InputEvent) -> void:
