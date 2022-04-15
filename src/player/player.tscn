@@ -1,11 +1,10 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://src/player/player.gd" type="Script" id=1]
 [ext_resource path="res://src/player/player.png" type="Texture" id=2]
 [ext_resource path="res://src/player/trail.gd" type="Script" id=3]
 [ext_resource path="res://src/player/player_movement.gd" type="Script" id=4]
-[ext_resource path="res://src/ship/fire_trail.gd" type="Script" id=5]
-[ext_resource path="res://src/ship/fire_trail.png" type="Texture" id=7]
+[ext_resource path="res://src/ship/fire_trail/fire_trail.tscn" type="PackedScene" id=5]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 15.0
@@ -17,9 +16,6 @@ region = Rect2( 0, 0, 32, 32 )
 
 [sub_resource type="Gradient" id=3]
 colors = PoolColorArray( 1, 1, 1, 0.705882, 1, 1, 1, 0.096 )
-
-[sub_resource type="Gradient" id=5]
-colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 0 )
 
 [node name="Player" type="KinematicBody2D"]
 collision_mask = 4
@@ -56,138 +52,4 @@ texture = ExtResource( 2 )
 [node name="PlayerMovement" type="Node" parent="."]
 script = ExtResource( 4 )
 
-[node name="FireTrail" type="Node2D" parent="."]
-script = ExtResource( 5 )
-
-[node name="CPUParticles2D" type="CPUParticles2D" parent="FireTrail"]
-position = Vector2( -7, 4.09276e-07 )
-rotation = 1.5708
-emitting = false
-amount = 4
-lifetime = 0.3
-randomness = 1.0
-lifetime_randomness = 0.2
-local_coords = false
-texture = ExtResource( 7 )
-direction = Vector2( 0, 1 )
-spread = 85.5
-gravity = Vector2( 0, 0 )
-initial_velocity = 70.0
-angular_velocity = 50.0
-angular_velocity_random = 0.44
-angle_random = 1.0
-color_ramp = SubResource( 5 )
-
-[node name="CPUParticles2D2" type="CPUParticles2D" parent="FireTrail"]
-position = Vector2( -7, 4.09276e-07 )
-rotation = 1.5708
-emitting = false
-amount = 4
-lifetime = 0.3
-randomness = 1.0
-lifetime_randomness = 0.2
-local_coords = false
-texture = ExtResource( 7 )
-direction = Vector2( 0, 1 )
-spread = 85.5
-gravity = Vector2( 0, 0 )
-initial_velocity = 70.0
-angular_velocity = 50.0
-angular_velocity_random = 0.44
-angle_random = 1.0
-color_ramp = SubResource( 5 )
-
-[node name="CPUParticles2D3" type="CPUParticles2D" parent="FireTrail"]
-position = Vector2( -7, 4.09276e-07 )
-rotation = 1.5708
-emitting = false
-amount = 4
-lifetime = 0.3
-randomness = 1.0
-lifetime_randomness = 0.2
-local_coords = false
-texture = ExtResource( 7 )
-direction = Vector2( 0, 1 )
-spread = 85.5
-gravity = Vector2( 0, 0 )
-initial_velocity = 70.0
-angular_velocity = 50.0
-angular_velocity_random = 0.44
-angle_random = 1.0
-color_ramp = SubResource( 5 )
-
-[node name="CPUParticles2D4" type="CPUParticles2D" parent="FireTrail"]
-position = Vector2( -7, 4.09276e-07 )
-rotation = 1.5708
-emitting = false
-amount = 4
-lifetime = 0.3
-randomness = 1.0
-lifetime_randomness = 0.2
-local_coords = false
-texture = ExtResource( 7 )
-direction = Vector2( 0, 1 )
-spread = 85.5
-gravity = Vector2( 0, 0 )
-initial_velocity = 70.0
-angular_velocity = 50.0
-angular_velocity_random = 0.44
-angle_random = 1.0
-color_ramp = SubResource( 5 )
-
-[node name="CPUParticles2D5" type="CPUParticles2D" parent="FireTrail"]
-position = Vector2( -7, 4.09276e-07 )
-rotation = 1.5708
-emitting = false
-amount = 4
-lifetime = 0.3
-randomness = 1.0
-lifetime_randomness = 0.2
-local_coords = false
-texture = ExtResource( 7 )
-direction = Vector2( 0, 1 )
-spread = 85.5
-gravity = Vector2( 0, 0 )
-initial_velocity = 70.0
-angular_velocity = 50.0
-angular_velocity_random = 0.44
-angle_random = 1.0
-color_ramp = SubResource( 5 )
-
-[node name="CPUParticles2D6" type="CPUParticles2D" parent="FireTrail"]
-position = Vector2( -7, 4.09276e-07 )
-rotation = 1.5708
-emitting = false
-amount = 4
-lifetime = 0.3
-randomness = 1.0
-lifetime_randomness = 0.2
-local_coords = false
-texture = ExtResource( 7 )
-direction = Vector2( 0, 1 )
-spread = 85.5
-gravity = Vector2( 0, 0 )
-initial_velocity = 70.0
-angular_velocity = 50.0
-angular_velocity_random = 0.44
-angle_random = 1.0
-color_ramp = SubResource( 5 )
-
-[node name="CPUParticles2D7" type="CPUParticles2D" parent="FireTrail"]
-position = Vector2( -7, 4.09276e-07 )
-rotation = 1.5708
-emitting = false
-amount = 4
-lifetime = 0.3
-randomness = 1.0
-lifetime_randomness = 0.2
-local_coords = false
-texture = ExtResource( 7 )
-direction = Vector2( 0, 1 )
-spread = 85.5
-gravity = Vector2( 0, 0 )
-initial_velocity = 70.0
-angular_velocity = 50.0
-angular_velocity_random = 0.44
-angle_random = 1.0
-color_ramp = SubResource( 5 )
+[node name="FireTrail" parent="." instance=ExtResource( 5 )]

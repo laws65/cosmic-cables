@@ -3,9 +3,9 @@ extends Node2D
 
 var ship: Ship setget set_ship
 
-const trail_cutoff = 100
-const trail_step = 100
-const dot_product_bias = 0.1
+export var trail_cutoff = 100
+export var trail_step = 100
+export var dot_product_bias = 0.05
 
 
 func set_ship(new_ship: Ship) -> void:
