@@ -10,6 +10,7 @@ func _ready() -> void:
 	$PlayerMovement.set_player(self)
 	$FireTrail.set_ship(self)
 	$PickerUpper.set_ship(self)
+	$AsteroidPusher.set_ship(self)
 
 
 func _physics_process(_delta: float) -> void:

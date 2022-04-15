@@ -10,6 +10,11 @@ config_version=4
 
 _global_script_classes=[ {
 "base": "Node",
+"class": "AsteroidPusher",
+"language": "GDScript",
+"path": "res://src/player/asteroid_pusher.gd"
+}, {
+"base": "Node",
 "class": "CullBulletAfterTime",
 "language": "GDScript",
 "path": "res://src/guns/cull_bullet.gd"
@@ -185,6 +190,7 @@ _global_script_classes=[ {
 "path": "res://src/ship/squish_on_shoot.gd"
 } ]
 _global_script_class_icons={
+"AsteroidPusher": "",
 "CullBulletAfterTime": "",
 "Gun": "",
 "InventorySlot": "",
@@ -236,6 +242,7 @@ gdscript/warnings/return_value_discarded=false
 
 window/size/width=1280
 window/size/height=720
+window/vsync/use_vsync=false
 window/stretch/mode="2d"
 window/stretch/aspect="expand"
 

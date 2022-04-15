@@ -8,9 +8,9 @@
 [ext_resource path="res://addons/rmsmartshape/vertex_properties.gd" type="Script" id=6]
 [ext_resource path="res://src/asteroid/asteroid.gd" type="Script" id=7]
 
-[sub_resource type="Resource" id=42]
+[sub_resource type="Resource" id=11]
 script = ExtResource( 6 )
-texture_idx = 1
+texture_idx = 0
 flip = false
 width = 1.0
 
@@ -19,7 +19,7 @@ script = ExtResource( 5 )
 position = Vector2( 115.151, 3.01788 )
 point_in = Vector2( 0, 0 )
 point_out = Vector2( 0, 0 )
-properties = SubResource( 42 )
+properties = SubResource( 11 )
 
 [sub_resource type="Resource" id=13]
 script = ExtResource( 6 )
@@ -47,9 +47,9 @@ point_in = Vector2( 0, 0 )
 point_out = Vector2( 0, 0 )
 properties = SubResource( 15 )
 
-[sub_resource type="Resource" id=43]
+[sub_resource type="Resource" id=17]
 script = ExtResource( 6 )
-texture_idx = 1
+texture_idx = 0
 flip = false
 width = 1.0
 
@@ -58,7 +58,7 @@ script = ExtResource( 5 )
 position = Vector2( 115.151, 3.01788 )
 point_in = Vector2( 0, 0 )
 point_out = Vector2( 0, 0 )
-properties = SubResource( 43 )
+properties = SubResource( 17 )
 
 [sub_resource type="Resource" id=19]
 script = ExtResource( 6 )
@@ -237,14 +237,10 @@ fill_texture_z_index = -10
 fill_mesh_offset = 0.0
 render_offset = 0.0
 
-[node name="Asteroid" type="StaticBody2D"]
+[node name="Asteroid" type="KinematicBody2D" groups=["asteroid"]]
 collision_layer = 4
-collision_mask = 4
+collision_mask = 0
 script = ExtResource( 7 )
-size = 131.82
-size_rand_percent = 0.0878005
-angle_rand = 4.07612
-wave_magnitude = 15.6789
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 visible = false

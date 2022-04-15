@@ -1,5 +1,5 @@
 tool
-extends StaticBody2D
+extends KinematicBody2D
 
 
 export var should_gen: bool
@@ -10,6 +10,11 @@ export(float, 0.05, 0.15) var points_rand_percent = 0.1
 export(float, 0, 10) var angle_rand = 0.0
 export(float, 0, 50) var wave_magnitude = 1.0
 
+var density = 0.03
+
+onready var angular_velocity: float = rand_range(-0.2, 0.2)
+var velocity: Vector2
+
 
 func _ready() -> void:
 	size = rand_range(20, 200)
@@ -17,6 +22,8 @@ func _ready() -> void:
 	angle_rand = rand_range(0, 10)
 	wave_magnitude = rand_range(0, 50)
 	_generate_shape(randi())
+	velocity.x = rand_range(-5, 5)
+	velocity.y = rand_range(-5, 5)
 
 
 func _generate_shape(asteroid_seed: int):
@@ -46,7 +53,21 @@ func _generate_shape(asteroid_seed: int):
 			(Vector2(point_size, 0) * squash).rotated(point_angle))
 
 
-func _physics_process(_delta: float) -> void:
-	if Engine.editor_hint and should_gen:
-		_generate_shape(randi())
-		should_gen = false
+func _physics_process(delta: float) -> void:
+	if Engine.editor_hint:
+		if should_gen:
+			_generate_shape(randi())
+			should_gen = false
+		return
+
+	rotation += angular_velocity * delta
+	velocity = move_and_slide(velocity)
+
+
+func get_mass() -> float:
+	# approximate as circle
+	return 2*PI*size * density
+
+
+func get_rotation_damp() -> float:
+	return size / 3.0
