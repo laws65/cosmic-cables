@@ -4,6 +4,8 @@ extends Area2D
 export var item_representing: Resource setget ,get_item_representing
 
 var display_size := Vector2(16, 16)
+
+var allow_pickup: bool
 var picked_up: bool
 
 
@@ -22,3 +24,7 @@ func get_item_representing() -> Item:
 func pickup() -> void:
 	picked_up = true
 	$AnimationPlayer.play("pickup")
+
+
+func _on_AllowPickupDelay_timeout() -> void:
+	allow_pickup = true
