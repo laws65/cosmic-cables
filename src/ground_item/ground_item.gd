@@ -20,8 +20,5 @@ func get_item_representing() -> Item:
 
 
 func pickup() -> void:
-	if picked_up:
-		return
-
 	picked_up = true
 	$AnimationPlayer.play("pickup")
