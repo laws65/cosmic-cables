@@ -15,8 +15,6 @@ var storage: Array
 var modules_amount: int = 6
 var storage_size: int = 16
 
-var modifiers: Dictionary
-
 
 func _ready() -> void:
 	modules.resize(modules_amount)
