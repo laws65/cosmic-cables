@@ -9,7 +9,7 @@ func set_ship(new_ship: Ship) -> void:
 	ship = new_ship
 
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	var col := ship.get_last_slide_collision()
 	if col == null:
 		return
