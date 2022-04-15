@@ -15,3 +15,15 @@ func get_scene() -> Node:
 		scene = load(scene_path).instance()
 
 	return scene
+
+
+func get_type_string() -> String:
+	var ret := ""
+
+	# You FAILEDPASSED the exam
+	if type & 1 > 0:
+		ret += "Module"
+	if type & 2 > 0:
+		ret += "Gun"
+
+	return ret

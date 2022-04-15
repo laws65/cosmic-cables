@@ -5,11 +5,11 @@ class_name Module
 export var item_resource: Resource setget ,get_item
 
 
-func apply(_ship) -> void:
+func apply(_what) -> void:
 	push_error("Must override this function")
 
 
-func remove(_ship) -> void:
+func remove(_what) -> void:
 	push_error("Must override this function")
 
 

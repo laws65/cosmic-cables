@@ -2,6 +2,9 @@ extends KinematicBody2D
 class_name Ship
 
 
+signal module_added(module)
+signal module_removed(module)
+
 var velocity: Vector2
 var acceleration: Vector2
 
@@ -11,6 +14,8 @@ var storage: Array
 
 var modules_amount: int = 6
 var storage_size: int = 16
+
+var modifiers: Dictionary
 
 
 func _ready() -> void:
@@ -47,7 +52,6 @@ func add_module(module_item: Item, index: int = -1) -> void:
 			# can't fit new module into modules
 			if i + 1 == modules_amount:
 				return
-
 	modules[index] = module_item
 
 	if not is_instance_valid(module_item):
@@ -55,15 +59,17 @@ func add_module(module_item: Item, index: int = -1) -> void:
 
 	var module: Module = module_item.get_scene()
 	if is_instance_valid(module):
-		module.apply(self)
+		emit_signal("module_added", module)
 
 
 func remove_module(module_item: Item) -> void:
 	if not is_instance_valid(module_item):
 		return
 
-	modules.erase(module_item)
+	if module_item in modules:
+		var index := modules.find(module_item)
+		modules[index] = null
 
 	var module: Module = module_item.get_scene()
 	if is_instance_valid(module):
-		module.remove(self)
+		emit_signal("module_removed", module)

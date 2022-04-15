@@ -86,7 +86,6 @@ func _update_inventory_display() -> void:
 		var modules_item: Item = ship.modules[i]
 		var modules_slot: TextureRect = modules_slots[i]
 		if modules_item != modules_slot.get_item():
-			print("setting module")
 			modules_slot.set_item(modules_item)
 
 	for j in ship.storage.size():
