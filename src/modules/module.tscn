@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://src/modules/module.gd" type="Script" id=1]
+[ext_resource path="res://src/item/item.gd" type="Script" id=2]
+
+[sub_resource type="Resource" id=1]
+script = ExtResource( 2 )
+type = 1
+name = "DefaultModuleName"
+description = "Default Module Description"
+level = 0
+scene_path = ""
+
+[node name="Module" type="Node"]
+script = ExtResource( 1 )
+item_resource = SubResource( 1 )

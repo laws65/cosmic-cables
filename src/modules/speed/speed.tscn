@@ -1,0 +1,9 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://src/modules/module.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/modules/speed/speed.gd" type="Script" id=2]
+[ext_resource path="res://src/modules/speed/speed.tres" type="Resource" id=3]
+
+[node name="Speed" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+item_resource = ExtResource( 3 )

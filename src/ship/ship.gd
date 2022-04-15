@@ -35,3 +35,35 @@ func has_gun() -> bool:
 
 func get_gun() -> Gun:
 	return gun
+
+
+func add_module(module_item: Item, index: int = -1) -> void:
+	if index == -1:
+		for i in modules_amount:
+			var m: Item = modules[i]
+			if not is_instance_valid(m):
+				index = i
+				break
+			# can't fit new module into modules
+			if i + 1 == modules_amount:
+				return
+
+	modules[index] = module_item
+
+	if not is_instance_valid(module_item):
+		return
+
+	var module: Module = module_item.get_scene()
+	if is_instance_valid(module):
+		module.apply(self)
+
+
+func remove_module(module_item: Item) -> void:
+	if not is_instance_valid(module_item):
+		return
+
+	modules.erase(module_item)
+
+	var module: Module = module_item.get_scene()
+	if is_instance_valid(module):
+		module.remove(self)

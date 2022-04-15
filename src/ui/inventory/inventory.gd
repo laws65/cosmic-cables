@@ -61,7 +61,9 @@ func _put_item_in_slot(slot: TextureRect, item: Item) -> void:
 	else:
 		var modules_idx = modules_slots.find(slot)
 		if modules_idx >= 0:
-			ship.modules[modules_idx] = item
+			var old_module: Item = ship.modules[modules_idx]
+			ship.remove_module(old_module)
+			ship.add_module(item, modules_idx)
 		else:
 			var storage_idx = storage_slots.find(slot)
 			if storage_idx >= 0:
@@ -84,6 +86,7 @@ func _update_inventory_display() -> void:
 		var modules_item: Item = ship.modules[i]
 		var modules_slot: TextureRect = modules_slots[i]
 		if modules_item != modules_slot.get_item():
+			print("setting module")
 			modules_slot.set_item(modules_item)
 
 	for j in ship.storage.size():
