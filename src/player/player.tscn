@@ -1,9 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://src/player/player.gd" type="Script" id=1]
 [ext_resource path="res://src/player/player.png" type="Texture" id=2]
+[ext_resource path="res://src/item_attractor/item_attractor.tscn" type="PackedScene" id=3]
 [ext_resource path="res://src/player/player_movement.gd" type="Script" id=4]
 [ext_resource path="res://src/ship/fire_trail/fire_trail.tscn" type="PackedScene" id=5]
+[ext_resource path="res://src/picker_upper/picker_upper.tscn" type="PackedScene" id=6]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 15.0
@@ -27,6 +29,10 @@ texture = ExtResource( 2 )
 script = ExtResource( 4 )
 
 [node name="FireTrail" parent="." instance=ExtResource( 5 )]
+
+[node name="ItemAttractor" parent="." instance=ExtResource( 3 )]
+
+[node name="PickerUpper" parent="." instance=ExtResource( 6 )]
 
 [connection signal="module_added" from="." to="PlayerMovement" method="_on_Player_module_added"]
 [connection signal="module_removed" from="." to="PlayerMovement" method="_on_Player_module_removed"]
