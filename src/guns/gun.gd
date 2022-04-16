@@ -41,9 +41,10 @@ func shoot() -> Node2D:
 	fire_timer.start(firerate)
 
 	if is_instance_valid(ship):
-		bullet_instance.speed += ship.velocity.length()
+		var ship_speed = ship.velocity.length()
+		bullet_instance.speed += ship_speed
 		var delta := get_physics_process_delta_time()
-		bullet_instance.position += bullet_instance.transform.x * delta
+		bullet_instance.position += ship.transform.x * ship_speed * delta
 
 	emit_signal("shot")
 
