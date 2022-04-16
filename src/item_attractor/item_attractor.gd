@@ -10,7 +10,7 @@ onready var collision_shape := get_node("CollisionShape2D") as CollisionShape2D
 func _physics_process(delta: float) -> void:
 	var shape_radius: float = collision_shape.shape.radius
 
-	for ground_item in get_overlapping_areas():
+	for ground_item in get_overlapping_bodies():
 		if not ground_item.allow_pickup:
 			continue
 
@@ -26,4 +26,4 @@ func _physics_process(delta: float) -> void:
 			speed = distance / delta
 
 		var direction = ground_item.global_position.direction_to(global_position)
-		ground_item.position += direction * speed * delta
+		ground_item.velocity = direction * speed

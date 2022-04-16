@@ -1,14 +1,16 @@
-extends Area2D
+extends KinematicBody2D
 
 
 export var item_representing: Resource setget ,get_item_representing
 
-var display_size := Vector2(16, 16)
+const display_size := Vector2(16, 16)
+const friction = 0.1
+const collision_damp = 0.8
 
 var allow_pickup: bool
 var picked_up: bool
 var velocity: Vector2
-var friction = 0.1
+
 
 func _ready() -> void:
 	var item_texture = item_representing.icon
@@ -19,8 +21,13 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
-	position += velocity * delta
+	var col = move_and_collide(velocity * delta)
+	if col:
+		velocity = velocity.bounce(col.normal) * collision_damp
+
 	velocity = lerp(velocity, Vector2.ZERO, friction)
+
+
 func get_item_representing() -> Item:
 	return item_representing as Item
 
