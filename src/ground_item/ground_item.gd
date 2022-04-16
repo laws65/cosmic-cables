@@ -3,7 +3,7 @@ extends KinematicBody2D
 
 export var item_representing: Resource setget ,get_item_representing
 
-const display_size := Vector2(16, 16)
+const display_size := Vector2(12, 12)
 const friction = 0.1
 const collision_damp = 0.8
 
