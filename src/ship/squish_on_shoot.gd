@@ -8,12 +8,11 @@ export(float, 0.0, 1.0) var squish_reset_speed = 0.2
 export var squish_max: Vector2 = Vector2(-0.5, 0.5)
 
 var squish := 0.0
-var reached_squish_max := false
+var reached_squish_max := true
 
 
 func _physics_process(_delta: float) -> void:
 	var target: Ship
-
 	target = owner.get_ship()
 
 	if not is_instance_valid(target):
