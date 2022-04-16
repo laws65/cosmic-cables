@@ -1,4 +1,6 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://src/guns/cull_bullet.gd" type="Script" id=1]
 
 [sub_resource type="Curve" id=33]
 _data = [ Vector2( 0.085, 0.984663 ), 0.0, 0.0, 0, 0, Vector2( 0.991667, 0.769939 ), 0.0, 0.0, 0, 0 ]
@@ -19,3 +21,6 @@ scale_amount = 6.0
 scale_amount_random = 0.5
 scale_amount_curve = SubResource( 33 )
 color_ramp = SubResource( 32 )
+
+[node name="CullBulletAfterTime" type="Node" parent="."]
+script = ExtResource( 1 )
