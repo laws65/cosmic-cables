@@ -28,15 +28,19 @@ texture = ExtResource( 2 )
 
 [node name="PlayerMovement" type="Node" parent="."]
 script = ExtResource( 4 )
+player_path = NodePath("..")
 
 [node name="FireTrail" parent="." instance=ExtResource( 5 )]
+ship_path = NodePath("..")
 
 [node name="ItemAttractor" parent="." instance=ExtResource( 3 )]
 
 [node name="PickerUpper" parent="." instance=ExtResource( 6 )]
+ship_path = NodePath("..")
 
 [node name="AsteroidPusher" type="Node" parent="."]
 script = ExtResource( 7 )
+ship_path = NodePath("..")
 
 [connection signal="module_added" from="." to="PlayerMovement" method="_on_Player_module_added"]
 [connection signal="module_removed" from="." to="PlayerMovement" method="_on_Player_module_removed"]

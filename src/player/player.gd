@@ -7,11 +7,6 @@ func _ready() -> void:
 	set_gun(gun_instance)
 	storage[0] = load("res://src/guns/energy_gun/energy_gun.tres")
 
-	$PlayerMovement.set_player(self)
-	$FireTrail.set_ship(self)
-	$PickerUpper.set_ship(self)
-	$AsteroidPusher.set_ship(self)
-
 
 func _physics_process(_delta: float) -> void:
 	if has_gun():

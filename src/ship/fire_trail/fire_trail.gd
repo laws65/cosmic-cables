@@ -1,15 +1,12 @@
 extends Node2D
 
 
-var ship: Ship setget set_ship
-
 export var trail_cutoff = 100
 export var trail_step = 100
 export var dot_product_bias = 0.05
 
-
-func set_ship(new_ship: Ship) -> void:
-	ship = new_ship
+export var ship_path: NodePath
+onready var ship := get_node(ship_path) as Ship
 
 
 func _physics_process(_delta: float) -> void:

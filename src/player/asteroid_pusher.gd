@@ -2,11 +2,8 @@ extends Node
 class_name AsteroidPusher
 
 
-var ship: Ship setget set_ship
-
-
-func set_ship(new_ship: Ship) -> void:
-	ship = new_ship
+export var ship_path: NodePath
+onready var ship := get_node(ship_path) as Ship
 
 
 func _physics_process(_delta: float) -> void:

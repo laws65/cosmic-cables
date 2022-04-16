@@ -1,8 +1,6 @@
 extends Node
 
 
-var player: Player
-
 var acceleration_speed := 300
 var deceleration_speed := 180
 var friction := 0.01
@@ -10,9 +8,8 @@ var steer_strength := 2.5
 var velocity_cutoff := 5
 var velocity_rotate_weight := 0.01
 
-
-func set_player(new_player: Player) -> void:
-	player = new_player
+export var player_path: NodePath
+onready var player := get_node(player_path) as Player
 
 
 func _physics_process(delta: float) -> void:
