@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=2]
+
+[sub_resource type="Curve" id=33]
+_data = [ Vector2( 0.085, 0.984663 ), 0.0, 0.0, 0, 0, Vector2( 0.991667, 0.769939 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="Gradient" id=32]
+colors = PoolColorArray( 0.396078, 0.34902, 0.313726, 1, 0.721569, 0.666667, 0.627451, 0 )
+
+[node name="AsteroidImpact" type="CPUParticles2D"]
+position = Vector2( -120, 12 )
+emitting = false
+amount = 30
+one_shot = true
+explosiveness = 0.8
+spread = 70.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 30.0
+scale_amount = 6.0
+scale_amount_random = 0.5
+scale_amount_curve = SubResource( 33 )
+color_ramp = SubResource( 32 )

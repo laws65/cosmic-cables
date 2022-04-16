@@ -25,3 +25,14 @@ func _physics_process(_delta: float) -> void:
 	var angular_acceleration = rotate_amount / asteroid.get_rotation_damp()
 	asteroid.velocity += linear_angular_percentage * acceleration
 	asteroid.angular_velocity += angular_acceleration
+
+	var particles_amount = ship.velocity.length() / 25
+	if particles_amount < 1:
+		return
+	var asteroid_impact := load("res://src/effects/asteroid_impact/asteroid_impact.tscn").instance() as CPUParticles2D
+	asteroid_impact.global_position = col.position
+	asteroid_impact.direction = -ship.transform.x
+	asteroid_impact.set_as_toplevel(true)
+	asteroid_impact.emitting = true
+	asteroid_impact.amount = particles_amount
+	ship.add_child(asteroid_impact)
