@@ -17,6 +17,9 @@ var velocity: Vector2
 
 
 func _ready() -> void:
+	if Engine.is_editor_hint():
+		return
+
 	size = rand_range(20, 200)
 	size_rand_percent = rand_range(0.05, 0.1)
 	angle_rand = rand_range(0, 10)
