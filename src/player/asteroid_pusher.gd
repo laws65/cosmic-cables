@@ -35,4 +35,4 @@ func _physics_process(_delta: float) -> void:
 	asteroid_impact.set_as_toplevel(true)
 	asteroid_impact.emitting = true
 	asteroid_impact.amount = particles_amount
-	ship.add_child(asteroid_impact)
+	ship.get_parent().add_child(asteroid_impact)
