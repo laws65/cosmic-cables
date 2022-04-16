@@ -14,6 +14,7 @@ func _ready() -> void:
 
 
 func _physics_process(_delta: float) -> void:
-	if has_gun() and Input.is_action_pressed("fire"):
-		if gun.automatic or Input.is_action_just_pressed("fire"):
-			gun.shoot()
+	if has_gun():
+		if not Game.menus_visible() and Input.is_action_pressed("fire"):
+			if gun.automatic or Input.is_action_just_pressed("fire"):
+				gun.shoot()

@@ -234,6 +234,10 @@ config/name="space game"
 run/main_scene="res://src/world/world.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+Game="*res://src/singletons/game.gd"
+
 [debug]
 
 gdscript/warnings/return_value_discarded=false
