@@ -1,6 +1,9 @@
 tool
 extends KinematicBody2D
+class_name Asteroid
 
+
+onready var shape := get_node("Shape") as SS2D_Shape_Closed
 
 export var should_gen: bool
 
@@ -32,7 +35,6 @@ func _ready() -> void:
 func _generate_shape(asteroid_seed: int):
 	var rand := RandomNumberGenerator.new()
 	rand.set_seed(asteroid_seed)
-	var shape := get_node("SS2D_Shape_Closed") as SS2D_Shape_Closed
 	shape.clear_points()
 
 	var size_rand = size_rand_percent * size
