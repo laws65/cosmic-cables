@@ -7,11 +7,13 @@ var lerp_speed := 30.0
 var safe_spot = 0.2
 var offset_lerp_speed := 15.0
 
-
-func _process(delta: float) -> void:
+# ideally, should be in process
+# but causes massive jittering
+# so idk what's going on
+func _physics_process(delta: float) -> void:
 	if is_instance_valid(target):
 		position = lerp(position, target.position, lerp_speed * delta)
-	
+
 	var screen_size := get_viewport_rect().size
 	var mouse_screen_pos := get_viewport().get_mouse_position()
 	var new_offset := (mouse_screen_pos / screen_size) - Vector2(0.5, 0.5)
