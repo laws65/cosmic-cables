@@ -4,14 +4,13 @@ extends Camera2D
 var target: Node2D
 var lerp_speed := 30.0
 
-var safe_spot = 0.3
+var safe_spot = 0.2
 var offset_lerp_speed := 15.0
 
 
 func _process(delta: float) -> void:
 	if is_instance_valid(target):
 		position = lerp(position, target.position, lerp_speed * delta)
-	
 	
 	var screen_size := get_viewport_rect().size
 	var mouse_screen_pos := get_viewport().get_mouse_position()
@@ -27,7 +26,7 @@ func _process(delta: float) -> void:
 	else:
 		new_offset.y -= sign(new_offset.y) * safe_spot
 
-	#offset = lerp(offset, new_offset, offset_lerp_speed * delta)
-	#offset = new_offset
-	
-	
+	offset = lerp(offset, new_offset, offset_lerp_speed * delta)
+	# engine bug :)
+	offset_h = offset.x
+	offset_v = offset.y
