@@ -1,11 +1,10 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://src/guns/energy_gun/energy_ball.gd" type="Script" id=1]
 [ext_resource path="res://src/resources/light.tres" type="Material" id=2]
 [ext_resource path="res://src/guns/energy_gun/energy_ball.png" type="Texture" id=3]
 [ext_resource path="res://light.png" type="Texture" id=4]
 [ext_resource path="res://src/guns/cull_bullet.gd" type="Script" id=5]
-[ext_resource path="res://src/guns/asteroid_miner.gd" type="Script" id=6]
 
 [sub_resource type="CircleShape2D" id=1]
 
@@ -241,11 +240,6 @@ anims/impact = SubResource( 10 )
 
 [node name="CullBulletAfterTime" type="Node" parent="."]
 script = ExtResource( 5 )
-
-[node name="AsteroidMiner" type="Node" parent="."]
-script = ExtResource( 6 )
-clip_polygon_path = NodePath("../AsteroidClipArea")
-miner_path = NodePath("..")
 
 [node name="AsteroidClipArea" type="Polygon2D" parent="."]
 visible = false

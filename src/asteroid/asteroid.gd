@@ -35,7 +35,8 @@ func _ready() -> void:
 func _generate_shape(asteroid_seed: int):
 	var rand := RandomNumberGenerator.new()
 	rand.set_seed(asteroid_seed)
-	shape.clear_points()
+	
+	var new_points := PoolVector2Array()
 
 	var size_rand = size_rand_percent * size
 	var points = points_rand_percent * size
@@ -54,8 +55,10 @@ func _generate_shape(asteroid_seed: int):
 			rand.randf_range(0.9, 1.1),
 			rand.randf_range(0.9, 1.1))
 
-		shape.add_point(
+		new_points.push_back(
 			(Vector2(point_size, 0) * squash).rotated(point_angle))
+
+	set_points(new_points)
 
 
 func _physics_process(delta: float) -> void:
@@ -76,3 +79,18 @@ func get_mass() -> float:
 
 func get_rotation_damp() -> float:
 	return size / 3.0
+
+
+func set_points(points: PoolVector2Array) -> void:
+	shape.clear_points()
+	shape.add_points(points)
+
+
+func get_points() -> PoolVector2Array:
+	var points := PoolVector2Array()
+	for key in shape.get_all_point_keys():
+		points.push_back(shape.get_point_position(key))
+	var points_array = Array(points)
+	# epic off by one error
+	points_array.pop_back()
+	return PoolVector2Array(points_array)
