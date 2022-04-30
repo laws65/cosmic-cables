@@ -37,5 +37,5 @@ func _get_particles_amount(velocity_length: float) -> int:
 	var trail_factor = velocity_length * (
 		1 - (dot_product) * (dot_product_bias)
 	)
-	var amount: int = ceil(trail_factor / trail_step)
+	var amount := int(ceil(trail_factor / trail_step))
 	return amount
