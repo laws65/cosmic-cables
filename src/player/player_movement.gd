@@ -25,7 +25,6 @@ func _physics_process(delta: float) -> void:
 
 	player.velocity += player.acceleration * delta
 	player.velocity = player.move_and_slide(player.velocity)
-
 	player.acceleration = Vector2.ZERO
 
 

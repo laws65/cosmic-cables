@@ -292,5 +292,3 @@ render_edges = true
 collision_size = 1.0
 collision_offset = 1.0
 collision_polygon_node_path = NodePath("../CollisionPolygon2D")
-
-[node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="."]
