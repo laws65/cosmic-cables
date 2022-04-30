@@ -95,14 +95,14 @@ func _recalculate_mass() -> void:
 
 func _get_bounding_box() -> Rect2:
 	var rect := Rect2()
-	
+
 	var points = get_points()
 	if points.size() == 0:
 		return rect
 
 	var _min: Vector2
 	var _max: Vector2
-	
+
 	for i in get_points():
 		if i.x > _max.x:
 			_max.x = i.x
@@ -112,10 +112,10 @@ func _get_bounding_box() -> Rect2:
 			_max.y = i.y
 		if i.y < _min.y:
 			_min.y = i.y
-	
+
 	rect.position = _min
 	rect.end = _max
-	
+
 	return rect
 
 

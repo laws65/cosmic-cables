@@ -11,7 +11,7 @@ onready var ship := get_node(ship_path) as Ship
 
 func _physics_process(_delta: float) -> void:
 	var velocity_length := ship.velocity.length()
-	
+
 	if _should_show_fire_trail():
 		var particles_amount = _get_particles_amount(velocity_length)
 		for i in particles_amount:

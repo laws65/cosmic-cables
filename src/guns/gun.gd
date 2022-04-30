@@ -25,7 +25,7 @@ func get_ship():
 	return ship
 
 
-func shoot() -> Node2D:
+func shoot(target_position: Vector2) -> Node2D:
 	if not can_shoot():
 		return null
 
@@ -34,7 +34,7 @@ func shoot() -> Node2D:
 	bullet_instance.set_as_toplevel(true)
 
 	bullet_instance.global_position = shoot_point.global_position
-	bullet_instance.global_rotation = get_shoot_angle()
+	bullet_instance.global_rotation = get_shoot_angle(target_position)
 
 	get_parent().get_parent().add_child(bullet_instance)
 
@@ -51,8 +51,8 @@ func shoot() -> Node2D:
 	return bullet_instance
 
 
-func get_shoot_angle() -> float:
-	shoot_point.look_at(get_global_mouse_position())
+func get_shoot_angle(target_position: Vector2) -> float:
+	shoot_point.look_at(target_position)
 	shoot_point.rotation_degrees = clamp(
 		shoot_point.rotation_degrees, -max_rotation, max_rotation)
 	shoot_point.rotation_degrees += rand_range(-inaccuracy, inaccuracy)
