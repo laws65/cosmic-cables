@@ -23,4 +23,4 @@ script = ExtResource( 4 )
 [node name="UI" parent="CanvasLayer" instance=ExtResource( 10 )]
 
 [node name="GroundItem" parent="." instance=ExtResource( 3 )]
-position = Vector2( 283, 321 )
+position = Vector2( 351, 318 )
