@@ -40,7 +40,7 @@ func _on_Slot_clicked(slot: InventorySlot) -> void:
 	var item := slot.get_item()
 	var held_item = held_item_display.get_item()
 	# if not holding anything currently
-	if (not is_instance_valid(held_item)
+	if (not held_item_display.has_item()
 	# or if slot type matches item we're trying to put into slot
 	or slot.type & held_item.type > 0):
 		# swap held item and slot item
@@ -70,7 +70,7 @@ func _put_item_in_slot(slot: TextureRect, item: Item) -> void:
 				ship.storage[storage_idx] = item
 
 	if (is_instance_valid(item)
-	and not is_instance_valid(held_item_display.get_item())):
+	and not held_item_display.has_item()):
 		_show_item_info(slot, item)
 
 
@@ -99,7 +99,7 @@ func _on_Slot_hovered(slot: TextureRect) -> void:
 	var slot_item := slot.get_item() as Item
 
 	if (is_instance_valid(slot_item)
-	and not is_instance_valid(held_item_display.get_item())):
+	and not held_item_display.has_item()):
 		_show_item_info(slot, slot_item)
 
 
