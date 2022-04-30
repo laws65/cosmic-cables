@@ -23,6 +23,7 @@ margin_bottom = -10.0
 [node name="ToggleInventory" type="Node" parent="."]
 script = ExtResource( 3 )
 inventory_path = NodePath("../Inventory")
+held_item_display_path = NodePath("../HeldItem")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="ToggleInventory"]
 anims/RESET = ExtResource( 6 )

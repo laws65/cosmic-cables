@@ -23,3 +23,7 @@ func set_item(new_item: Item) -> void:
 
 func get_item() -> Item:
 	return item
+
+
+func has_item() -> bool:
+	return is_instance_valid(item)
