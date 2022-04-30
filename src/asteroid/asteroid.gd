@@ -18,6 +18,8 @@ var density = 0.03
 onready var angular_velocity: float = rand_range(-0.2, 0.2)
 var velocity: Vector2
 
+var _mass: float
+
 
 func _ready() -> void:
 	if Engine.is_editor_hint():
@@ -30,6 +32,73 @@ func _ready() -> void:
 	_generate_shape(randi())
 	velocity.x = rand_range(-5, 5)
 	velocity.y = rand_range(-5, 5)
+
+
+func _physics_process(delta: float) -> void:
+	if Engine.editor_hint:
+		if should_gen:
+			_generate_shape(randi())
+			should_gen = false
+		return
+
+	rotation += angular_velocity * delta
+	velocity = move_and_slide(velocity)
+
+
+func get_mass() -> float:
+	return _mass
+
+
+func get_rotation_damp() -> float:
+	return size / 3.0
+
+
+func set_points(points: PoolVector2Array) -> void:
+	shape.clear_points()
+	shape.add_points(points)
+	_recalculate_mass()
+
+
+func get_points() -> PoolVector2Array:
+	var points := PoolVector2Array()
+	for key in shape.get_all_point_keys():
+		points.push_back(shape.get_point_position(key))
+	var points_array = Array(points)
+	# epic off by one error
+	points_array.pop_back()
+	return PoolVector2Array(points_array)
+
+
+func _recalculate_mass() -> void:
+	var bb := _get_bounding_box()
+	var area = PI * (bb.size.x * bb.size.y) * 0.5
+	_mass = area * density
+
+
+func _get_bounding_box() -> Rect2:
+	var rect := Rect2()
+	
+	var points = get_points()
+	if points.size() == 0:
+		return rect
+
+	var _min: Vector2
+	var _max: Vector2
+	
+	for i in get_points():
+		if i.x > _max.x:
+			_max.x = i.x
+		if i.x < _min.x:
+			_min.x = i.x
+		if i.y > _max.y:
+			_max.y = i.y
+		if i.y < _min.y:
+			_min.y = i.y
+	
+	rect.position = _min
+	rect.end = _max
+	
+	return rect
 
 
 func _generate_shape(asteroid_seed: int):
@@ -59,38 +128,3 @@ func _generate_shape(asteroid_seed: int):
 			(Vector2(point_size, 0) * squash).rotated(point_angle))
 
 	set_points(new_points)
-
-
-func _physics_process(delta: float) -> void:
-	if Engine.editor_hint:
-		if should_gen:
-			_generate_shape(randi())
-			should_gen = false
-		return
-
-	rotation += angular_velocity * delta
-	velocity = move_and_slide(velocity)
-
-
-func get_mass() -> float:
-	# approximate as circle
-	return 2*PI*size * density
-
-
-func get_rotation_damp() -> float:
-	return size / 3.0
-
-
-func set_points(points: PoolVector2Array) -> void:
-	shape.clear_points()
-	shape.add_points(points)
-
-
-func get_points() -> PoolVector2Array:
-	var points := PoolVector2Array()
-	for key in shape.get_all_point_keys():
-		points.push_back(shape.get_point_position(key))
-	var points_array = Array(points)
-	# epic off by one error
-	points_array.pop_back()
-	return PoolVector2Array(points_array)

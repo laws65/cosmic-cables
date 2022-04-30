@@ -9,7 +9,6 @@ static func mine(miner: Node2D, asteroid: Asteroid, clip_poly: Polygon2D) -> voi
 
 	if result.size() == 0:
 		asteroid.queue_free()
-
 	else:
 		var new_asteroid_points = result.pop_front()
 		asteroid.set_points(new_asteroid_points)
