@@ -10,12 +10,9 @@ onready var storage_slots := get_node(storage_path).get_children()
 export var modules_path: NodePath
 onready var modules_slots := get_node(modules_path).get_children()
 
-const item_info_offset := Vector2(20, 20)
-
 # injected by ui scene
 var held_item_display: Control
-
-onready var item_info := get_node("ItemInfo") as Panel
+var tooltip: Control
 
 var ship: Ship setget set_ship
 
@@ -51,7 +48,7 @@ func _on_Slot_clicked(slot: InventorySlot) -> void:
 
 
 func _put_item_in_slot(slot: TextureRect, item: Item) -> void:
-	item_info.hide()
+	tooltip.hide()
 
 	if slot == gun_slot:
 		var gun: Gun
@@ -71,7 +68,7 @@ func _put_item_in_slot(slot: TextureRect, item: Item) -> void:
 
 	if (is_instance_valid(item)
 	and not held_item_display.has_item()):
-		_show_item_info(slot, item)
+		_show_tooltip(item)
 
 
 func _update_inventory_display() -> void:
@@ -100,14 +97,13 @@ func _on_Slot_hovered(slot: TextureRect) -> void:
 
 	if (is_instance_valid(slot_item)
 	and not held_item_display.has_item()):
-		_show_item_info(slot, slot_item)
+		_show_tooltip(slot_item)
 
 
 func _on_Slot_unhovered(_slot: TextureRect) -> void:
-	item_info.hide()
+	tooltip.hide()
 
 
-func _show_item_info(slot: TextureRect, item: Item) -> void:
-	item_info.build_display(item)
-	item_info.rect_global_position = slot.rect_global_position + item_info_offset
-	item_info.show()
+func _show_tooltip(item: Item) -> void:
+	tooltip.build_display(item)
+	tooltip.show()

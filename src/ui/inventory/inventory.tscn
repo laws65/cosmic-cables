@@ -1,8 +1,7 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://src/ui/inventory/inventory_slot.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/player/player.png" type="Texture" id=2]
-[ext_resource path="res://src/ui/inventory/item_info.tscn" type="PackedScene" id=3]
 [ext_resource path="res://src/ui/inventory/inventory.gd" type="Script" id=4]
 
 [sub_resource type="AtlasTexture" id=1]
@@ -267,6 +266,3 @@ margin_top = 80.0
 margin_right = 220.0
 margin_bottom = 140.0
 type = 1
-
-[node name="ItemInfo" parent="." instance=ExtResource( 3 )]
-visible = false
