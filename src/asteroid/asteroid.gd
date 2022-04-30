@@ -42,7 +42,25 @@ func _physics_process(delta: float) -> void:
 		return
 
 	rotation += angular_velocity * delta
-	velocity = move_and_slide(velocity)
+	var collision := move_and_collide(velocity * delta)
+	if collision:
+		var u1 := velocity
+		var u2 := collision.get_collider_velocity()
+		var m1 := get_mass()
+		var m2 := 5.0
+		var collider := collision.get_collider()
+		if _quacks_like_a_duck(collider):
+			m2 = collider.get_mass()
+		# https://www.omnicalculator.com/physics/conservation-of-momentum
+		velocity = u1 * ((m1-m2)/(m1+m2)) + u2 * ((2.0*m2)/(m1+m2)) * get_elasticity()
+
+
+func _quacks_like_a_duck(node) -> bool:
+	return node.has_method("get_mass") and node.has_method("get_elasticity")
+
+
+func get_elasticity() -> float:
+	return 0.8
 
 
 func get_mass() -> float:
