@@ -21,7 +21,7 @@ func _ready() -> void:
 func create_ground_item(item: Item) -> void:
 	var mouse_pos := get_viewport().get_mouse_position()
 	var screen_centre := get_viewport_rect().size/2
-	var throw_velocity := (mouse_pos - screen_centre) * 2.0
+	var throw_velocity := (mouse_pos - screen_centre) * 2.41
 
 	var ground_item_instance = load("res://src/ground_item/ground_item.tscn").instance()
 	ground_item_instance.item_representing = item
