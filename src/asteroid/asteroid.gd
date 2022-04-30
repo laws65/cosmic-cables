@@ -7,7 +7,7 @@ onready var shape := get_node("Shape") as SS2D_Shape_Closed
 
 export var should_gen: bool
 
-export(float, 40, 200) var size = 40
+export(float, 40, 200) var size = 40.0
 export(float, 0.0, 0.1) var size_rand_percent = 0.0
 export(float, 0.05, 0.15) var points_rand_percent = 0.1
 export(float, 0, 10) var angle_rand = 0.0
