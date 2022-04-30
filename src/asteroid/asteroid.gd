@@ -35,7 +35,7 @@ func _ready() -> void:
 func _generate_shape(asteroid_seed: int):
 	var rand := RandomNumberGenerator.new()
 	rand.set_seed(asteroid_seed)
-	
+
 	var new_points := PoolVector2Array()
 
 	var size_rand = size_rand_percent * size
