@@ -18,27 +18,33 @@ const rotation_cutoff := 0.1
 
 
 func _ready() -> void:
-	add_to_inventory(load("res://src/guns/energy_gun/energy_gun.tres"))
+	add_to_inventory(load("res://src/guns/energy_gun/energy_gun.tres").duplicate())
 
 
 func _physics_process(delta: float) -> void:
 	if not is_instance_valid(target):
 		return
 
+	#rotation += 100 * delta
 	#var input_direction := 0
 
 	#add_acceleration(input_direction)
 	#apply_friction(input_direction)
 	var target_position = target.global_position - target.velocity * delta * 3
-	steer_towards(target_position)
+
 	var direction_to_player = global_position.direction_to(target_position)
+	direction_to_player = 	to_global($ShipNavigation.recalculate(target_position))
 
-	if abs(transform.x.dot(direction_to_player)) > 0.99:
-		gun.shoot(target_position)
+	steer_towards(direction_to_player)
+	if transform.x.dot(direction_to_player) > 0.99:
+		pass
+		#gun.shoot(target_position)
 
-	velocity += acceleration * delta
+	#velocity += acceleration * delta
+	#velocity = move_and_slide(velocity)
+	velocity = transform.x * 200
 	velocity = move_and_slide(velocity)
-	acceleration = Vector2.ZERO
+	#acceleration = Vector2.ZERO
 
 
 func steer_towards(target_position) -> void:

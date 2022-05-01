@@ -18,6 +18,11 @@ func _ready() -> void:
 		add_child(asteroid_instance)
 
 
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("test_reload"):
+		get_tree().reload_current_scene()
+
+
 func create_ground_item(item: Item) -> void:
 	var mouse_pos := get_viewport().get_mouse_position()
 	var screen_centre := get_viewport_rect().size/2

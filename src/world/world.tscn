@@ -10,12 +10,6 @@
 [node name="World" type="Node2D"]
 script = ExtResource( 5 )
 
-[node name="EnemyShip" parent="." instance=ExtResource( 2 )]
-position = Vector2( 477, 322 )
-collision_layer = 1
-collision_mask = 1
-target_path = NodePath("../Player")
-
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 538, 318 )
 
@@ -31,3 +25,11 @@ script = ExtResource( 4 )
 
 [node name="GroundItem" parent="." instance=ExtResource( 3 )]
 position = Vector2( 351, 318 )
+
+[node name="EnemyShip" parent="." instance=ExtResource( 2 )]
+position = Vector2( 433, 314 )
+target_path = NodePath("../Player")
+
+[node name="EnemyShip2" parent="." instance=ExtResource( 2 )]
+position = Vector2( 197, 202 )
+target_path = NodePath("../Player")

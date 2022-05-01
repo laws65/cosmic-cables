@@ -189,7 +189,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/ship/ship.gd"
 }, {
-"base": "Node",
+"base": "Node2D",
 "class": "ShipNavigation",
 "language": "GDScript",
 "path": "res://src/ship/ship_navigation.gd"
@@ -326,6 +326,11 @@ fire={
 open_inventory={
 "deadzone": 0.5,
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":69,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
+test_reload={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":82,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
  ]
 }
 
