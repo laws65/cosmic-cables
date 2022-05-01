@@ -31,4 +31,5 @@ debug = false
 look_ahead = 200
 
 [node name="VisibilityEnabler2D" type="VisibilityEnabler2D" parent="." index="7"]
+visible = false
 rect = Rect2( -15, -15, 30, 30 )
