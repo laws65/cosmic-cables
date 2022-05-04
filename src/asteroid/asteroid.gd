@@ -59,6 +59,36 @@ func _quacks_like_a_duck(node) -> bool:
 	return node.has_method("get_mass") and node.has_method("get_elasticity")
 
 
+func hit(hitter: Node2D) -> void:
+	if is_instance_valid(hitter) and hitter.has_method("get_clip_poly"):
+		mine(hitter, hitter.get_clip_poly())
+
+func mine(miner: Node2D, clip_poly: Polygon2D) -> void:
+	var asteroid_points = get_points()
+	var clip_points = _get_relative_clip_points(miner, clip_poly)
+	var result = Geometry.clip_polygons_2d(asteroid_points, clip_points)
+
+	if result.size() == 0:
+		queue_free()
+	else:
+		var new_points = result.pop_front()
+		set_points(new_points)
+
+		for new_asteroid_points in result:
+			var new_asteroid := duplicate() as Asteroid
+			get_parent().add_child(new_asteroid)
+			new_asteroid.set_points(new_asteroid_points)
+
+
+func _get_relative_clip_points(miner: Node2D, clip_poly: Polygon2D) -> PoolVector2Array:
+	var clip_points := PoolVector2Array()
+	for point in clip_poly.polygon:
+		var global_point := miner.to_global(point * clip_poly.scale)
+		var asteroid_local_point := to_local(global_point)
+		clip_points.push_back(asteroid_local_point)
+	return clip_points
+
+
 func get_elasticity() -> float:
 	return 0.8
 

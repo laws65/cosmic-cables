@@ -102,3 +102,7 @@ func add_to_inventory(item: Item) -> bool:
 			return true
 
 	return false
+
+
+func hit(_hitter: Node2D = null) -> void:
+	pass

@@ -15,6 +15,9 @@ func _physics_process(delta: float) -> void:
 	position += transform.x * speed * delta
 
 	for body in get_overlapping_bodies():
-		if body is Asteroid:
-			AsteroidMiner.mine(self, body, $AsteroidClipArea)
+		body.hit(self)
 		$AnimationPlayer.play("impact")
+
+
+func get_clip_poly() -> Polygon2D:
+	return $AsteroidClipArea as Polygon2D

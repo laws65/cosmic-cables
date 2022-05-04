@@ -15,11 +15,6 @@ _global_script_classes=[ {
 "path": "res://src/asteroid/asteroid.gd"
 }, {
 "base": "Node",
-"class": "AsteroidMiner",
-"language": "GDScript",
-"path": "res://src/guns/asteroid_miner.gd"
-}, {
-"base": "Node",
 "class": "AsteroidPusher",
 "language": "GDScript",
 "path": "res://src/player/asteroid_pusher.gd"
@@ -206,7 +201,6 @@ _global_script_classes=[ {
 } ]
 _global_script_class_icons={
 "Asteroid": "",
-"AsteroidMiner": "",
 "AsteroidPusher": "",
 "CullBulletAfterTime": "",
 "Gun": "",
