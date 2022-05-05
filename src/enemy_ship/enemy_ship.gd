@@ -1,9 +1,6 @@
 extends Ship
 
 
-export var target_path: NodePath
-onready var target = get_node(target_path)
-
 var min_distance = 100
 
 
@@ -16,35 +13,59 @@ var velocity_rotate_weight := 0.01
 
 const rotation_cutoff := 0.1
 
+enum {
+	ATTACK,
+	IDLE,
+	INVESTIGATE,
+}
 
-func _ready() -> void:
-	add_to_inventory(load("res://src/guns/energy_gun/energy_gun.tres").duplicate())
+var mode = IDLE
 
+var target: Node2D
+
+var investigate_position: Vector2
+var max_distance_from_target := 200
+var min_investiage_distance := 20
 
 func _physics_process(delta: float) -> void:
-	if not is_instance_valid(target):
-		return
-
 	#rotation += 100 * delta
 	#var input_direction := 0
 
 	#add_acceleration(input_direction)
 	#apply_friction(input_direction)
-	var target_position = target.global_position - target.velocity * delta * 3
 
-	var direction_to_player = global_position.direction_to(target_position)
-	direction_to_player = 	to_global($ShipNavigation.recalculate(target_position))
+	if mode == ATTACK:
+		if not is_instance_valid(target):
+			var new_target = find_new_target()
+			if not new_target:
+				mode = IDLE
+				return
 
-	steer_towards(direction_to_player)
-	if transform.x.dot(direction_to_player) > 0.99:
-		pass
-		#gun.shoot(target_position)
+		var target_position = target.global_position - target.velocity * delta * 3
 
-	#velocity += acceleration * delta
-	#velocity = move_and_slide(velocity)
-	velocity = transform.x * 200
+		var direction_to_target = to_global($ShipNavigation.recalculate(target_position))
+
+		steer_towards(direction_to_target)
+		if transform.x.dot(direction_to_target) > 0.99:
+			pass
+			#gun.shoot(target_position)
+
+		velocity = transform.x * 200
+
+		if target_position.distance_squared_to(global_position) > pow(max_distance_from_target, 2):
+			mode = INVESTIGATE
+			investigate_position = target_position
+	elif mode == IDLE:
+		velocity = Vector2.ZERO
+	elif mode == INVESTIGATE:
+		var direction_to_target = to_global($ShipNavigation.recalculate(investigate_position))
+		steer_towards(direction_to_target)
+		velocity = transform.x * 200
+
+		if investigate_position.distance_squared_to(global_position) < pow(min_investiage_distance, 2):
+			mode = IDLE
+
 	velocity = move_and_slide(velocity)
-	#acceleration = Vector2.ZERO
 
 
 func steer_towards(target_position) -> void:
@@ -69,3 +90,31 @@ func add_acceleration(input_direction: float) -> void:
 func apply_friction(input_direction: float) -> void:
 	if input_direction == 0:
 		acceleration -= lerp(velocity, Vector2.ZERO, friction)
+
+
+func _on_EnemyDetector_body_entered(body: PhysicsBody2D) -> void:
+	if (not is_instance_valid(target)
+	or body.global_position.distance_squared_to(global_position)
+	< target.global_position.distance_squared_to(global_position)):
+		target = body
+		mode = ATTACK
+
+
+func find_new_target() -> Node2D:
+	var new_target: Node2D
+	var overlapping_bodies = $EnemyDetector.get_overlapping_bodies()
+	if overlapping_bodies:
+		new_target = overlapping_bodies.pop_front()
+		for i in overlapping_bodies:
+			if (i.global_position.distance_squared_to(global_position)
+				< new_target.global_position.distance_squared_to(global_position)):
+				new_target = i
+	return new_target
+
+
+func _on_EnemyDetector_body_exited(body: Node) -> void:
+	if body == target:
+		target = find_new_target()
+		if not target:
+			mode = INVESTIGATE
+			investigate_position = body.global_position
