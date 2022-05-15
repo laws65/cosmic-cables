@@ -2,6 +2,8 @@ extends KinematicBody2D
 class_name Ship
 
 
+export var team: int = 0
+
 signal module_added(module)
 signal module_removed(module)
 

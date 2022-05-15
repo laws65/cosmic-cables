@@ -45,6 +45,7 @@ func shoot(target_position: Vector2) -> Node2D:
 		bullet_instance.speed += ship_speed
 		var delta := get_physics_process_delta_time()
 		bullet_instance.position += ship.transform.x * ship_speed * delta
+		bullet_instance.team = ship.team
 
 	emit_signal("shot")
 

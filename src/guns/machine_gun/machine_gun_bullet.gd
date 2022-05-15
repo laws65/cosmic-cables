@@ -1,6 +1,8 @@
 extends Area2D
 
 
+var team: int
+
 var speed = 300
 
 
@@ -12,8 +14,10 @@ func _physics_process(delta: float) -> void:
 	position += transform.x * speed * delta
 
 	for body in get_overlapping_bodies():
-		body.hit(self)
-		$AnimationPlayer.play("impact")
+		if (body is Asteroid
+		or  body is Gun and team != body.team):
+			body.hit(self)
+			$AnimationPlayer.play("impact")
 
 
 func get_clip_poly() -> Polygon2D:

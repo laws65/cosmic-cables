@@ -1,6 +1,9 @@
 extends Panel
 
 
+signal tooltip_display_item(item)
+signal set_held_item(item)
+
 export var gun_slot_path: NodePath
 onready var gun_slot := get_node(gun_slot_path) as TextureRect
 
@@ -10,9 +13,7 @@ onready var storage_slots := get_node(storage_path).get_children()
 export var modules_path: NodePath
 onready var modules_slots := get_node(modules_path).get_children()
 
-# injected by ui scene
-var held_item_display: Control
-var tooltip: Control
+var held_item: Item
 
 var ship: Ship setget set_ship
 
@@ -30,25 +31,26 @@ func _on_show() -> void:
 
 
 func _on_hide() -> void:
-	pass
+	emit_signal("tooltip_display_item", null)
 
 
 func _on_Slot_clicked(slot: InventorySlot) -> void:
 	var item := slot.get_item()
-	var held_item = held_item_display.get_item()
 	# if not holding anything currently
-	if (not held_item_display.has_item()
+	if (not has_held_item()
 	# or if slot type matches item we're trying to put into slot
 	or slot.type & held_item.type > 0):
 		# swap held item and slot item
 		slot.set_item(held_item)
-		held_item_display.set_item(item)
-
+		emit_signal("set_held_item", item)
 		_put_item_in_slot(slot, held_item)
+
+		if not has_held_item():
+			emit_signal("tooltip_display_item", slot.get_item())
 
 
 func _put_item_in_slot(slot: TextureRect, item: Item) -> void:
-	tooltip.hide()
+	emit_signal("tooltip_display_item", null)
 
 	if slot == gun_slot:
 		var gun: Gun
@@ -67,8 +69,12 @@ func _put_item_in_slot(slot: TextureRect, item: Item) -> void:
 				ship.storage[storage_idx] = item
 
 	if (is_instance_valid(item)
-	and not held_item_display.has_item()):
-		_show_tooltip(item)
+	and not has_held_item()):
+		emit_signal("tooltip_display_item", item)
+
+
+func has_held_item() -> bool:
+	return is_instance_valid(held_item)
 
 
 func _update_inventory_display() -> void:
@@ -96,14 +102,13 @@ func _on_Slot_hovered(slot: TextureRect) -> void:
 	var slot_item := slot.get_item() as Item
 
 	if (is_instance_valid(slot_item)
-	and not held_item_display.has_item()):
-		_show_tooltip(slot_item)
+	and not has_held_item()):
+		emit_signal("tooltip_display_item", slot_item)
 
 
 func _on_Slot_unhovered(_slot: TextureRect) -> void:
-	tooltip.hide()
+	emit_signal("tooltip_display_item", null)
 
 
-func _show_tooltip(item: Item) -> void:
-	tooltip.build_display(item)
-	tooltip.show()
+func _on_HeldItem_item_updated(new_held_item: Item) -> void:
+	held_item = new_held_item

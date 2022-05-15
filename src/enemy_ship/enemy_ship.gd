@@ -24,10 +24,14 @@ var mode = IDLE
 var target: Node2D
 
 var investigate_position: Vector2
-var max_distance_from_target := 200
+var max_distance_from_target := 20000
 var min_investiage_distance := 20
 
+
+func _ready() -> void:
+	set_gun(load("res://src/guns/machine_gun/machine_gun.tres").get_scene())
 func _physics_process(delta: float) -> void:
+	print(mode)
 	#rotation += 100 * delta
 	#var input_direction := 0
 
@@ -47,8 +51,7 @@ func _physics_process(delta: float) -> void:
 
 		steer_towards(direction_to_target)
 		if transform.x.dot(direction_to_target) > 0.99:
-			pass
-			#gun.shoot(target_position)
+			gun.shoot(target_position)
 
 		velocity = transform.x * 200
 
@@ -56,13 +59,14 @@ func _physics_process(delta: float) -> void:
 			mode = INVESTIGATE
 			investigate_position = target_position
 	elif mode == IDLE:
+
 		velocity = Vector2.ZERO
 	elif mode == INVESTIGATE:
 		var direction_to_target = to_global($ShipNavigation.recalculate(investigate_position))
 		steer_towards(direction_to_target)
 		velocity = transform.x * 200
 
-		if investigate_position.distance_squared_to(global_position) < pow(min_investiage_distance, 2):
+		if global_position.distance_squared_to(investigate_position) < pow(min_investiage_distance, 2):
 			mode = IDLE
 
 	velocity = move_and_slide(velocity)
