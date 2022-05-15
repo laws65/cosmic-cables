@@ -1,7 +1,9 @@
 extends Node
 
 
-var inventory_path = "../World/CanvasLayer/UI/Inventory"
+var unobtainium_amount := 0
+
+var inventory_path := NodePath("../World/CanvasLayer/UI/Inventory")
 
 
 func menus_visible() -> bool:
@@ -9,3 +11,7 @@ func menus_visible() -> bool:
 	if is_instance_valid(inventory) and inventory.visible:
 		return true
 	return false
+
+
+func add_unobtainium(amount: int) -> void:
+	unobtainium_amount += amount

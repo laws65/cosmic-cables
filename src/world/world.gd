@@ -23,7 +23,7 @@ func _input(event: InputEvent) -> void:
 		get_tree().reload_current_scene()
 
 
-func create_ground_item(item: Item) -> void:
+func create_ground_item(item: Item) -> KinematicBody2D:
 	var mouse_pos := get_viewport().get_mouse_position()
 	var screen_centre := get_viewport_rect().size/2
 	var throw_velocity := (mouse_pos - screen_centre) * 2.41
@@ -33,3 +33,4 @@ func create_ground_item(item: Item) -> void:
 	ground_item_instance.global_position = $Camera2D.global_position
 	ground_item_instance.velocity = throw_velocity
 	add_child(ground_item_instance)
+	return ground_item_instance

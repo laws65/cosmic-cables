@@ -1,7 +1,7 @@
 extends Resource
 class_name Item
 
-export(int, FLAGS, "module", "gun") var type
+export(int, FLAGS, "module", "gun", "resource") var type
 export var name: String = "DefaultModuleName"
 export var description: String = "Default Module Description"
 export var level: int = 0
@@ -11,7 +11,8 @@ var scene: Node
 
 
 func get_scene() -> Node:
-	if not is_instance_valid(scene):
+	if (not is_instance_valid(scene)
+	and type & 4 == 0):
 		scene = load(scene_path).instance()
 
 	return scene

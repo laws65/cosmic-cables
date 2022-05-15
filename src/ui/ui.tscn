@@ -35,6 +35,10 @@ anims/RESET = ExtResource( 6 )
 anims/fade_in = ExtResource( 5 )
 anims/fade_out = ExtResource( 4 )
 
+[node name="Label" type="Label" parent="."]
+margin_right = 40.0
+margin_bottom = 14.0
+
 [connection signal="gui_input" from="." to="ToggleInventory" method="_on_UI_gui_input"]
 [connection signal="set_held_item" from="Inventory" to="HeldItem" method="_on_set_item"]
 [connection signal="tooltip_display_item" from="Inventory" to="Tooltip" method="_display_item"]

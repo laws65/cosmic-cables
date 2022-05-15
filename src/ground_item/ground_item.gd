@@ -1,5 +1,5 @@
 extends KinematicBody2D
-
+class_name GroundItem
 
 export var item_representing: Resource setget ,get_item_representing
 
@@ -21,6 +21,7 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
+	print($AnimationPlayer.current_animation)
 	var col = move_and_collide(velocity * delta)
 	if col:
 		velocity = velocity.bounce(col.normal) * collision_damp

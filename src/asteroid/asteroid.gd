@@ -44,6 +44,8 @@ func _physics_process(delta: float) -> void:
 	rotation += angular_velocity * delta
 	var collision := move_and_collide(velocity * delta)
 	if collision:
+		if collision.collider is GroundItem:
+			return
 		var u1 := velocity
 		var u2 := collision.get_collider_velocity()
 		var m1 := get_mass()
@@ -82,7 +84,12 @@ func mine(miner: Node2D, clip_poly: Polygon2D) -> void:
 
 	var negative_polys = Geometry.intersect_polygons_2d(asteroid_points, clip_points)
 	for poly in negative_polys:
-		var area = _get_bounding_box_area(_get_bounding_box(poly))
+		var area := _get_bounding_box_area(_get_bounding_box(poly))
+		var rs = get_parent().create_ground_item(load("res://src/item/unobtainium.tres").duplicate())
+		rs.velocity = Vector2.ZERO
+		rs.global_position = to_global(poly[0])
+		rs.allow_pickup = true
+		rs.item_representing.level = area
 		# TODO create asteroid chunks on ground to pick up
 
 

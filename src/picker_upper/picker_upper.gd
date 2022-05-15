@@ -7,6 +7,7 @@ onready var ship := get_node(ship_path) as Ship
 
 func _physics_process(_delta: float) -> void:
 	for ground_item in get_overlapping_bodies():
+		ground_item = ground_item as GroundItem
 		if ground_item.picked_up or not ground_item.allow_pickup:
 			continue
 

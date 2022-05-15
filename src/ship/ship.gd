@@ -83,6 +83,10 @@ func add_to_inventory(item: Item) -> bool:
 	if not is_instance_valid(item):
 		return false
 
+	# if resource
+	if item.type & 4 > 0:
+		Game.add_unobtainium(item.level)
+
 	# if doesn't have gun and is gun equip it
 	if item.type & 2 > 0 and not has_gun():
 		var new_gun := item.get_scene() as Gun
