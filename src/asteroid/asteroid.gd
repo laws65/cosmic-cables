@@ -80,6 +80,12 @@ func mine(miner: Node2D, clip_poly: Polygon2D) -> void:
 			new_asteroid.set_points(new_asteroid_points)
 
 
+	var negative_polys = Geometry.intersect_polygons_2d(asteroid_points, clip_points)
+	for poly in negative_polys:
+		var area = _get_bounding_box_area(_get_bounding_box(poly))
+		# TODO create asteroid chunks on ground to pick up
+
+
 func _get_relative_clip_points(miner: Node2D, clip_poly: Polygon2D) -> PoolVector2Array:
 	var clip_points := PoolVector2Array()
 	for point in clip_poly.polygon:
@@ -118,22 +124,23 @@ func get_points() -> PoolVector2Array:
 
 
 func _recalculate_mass() -> void:
-	var bb := _get_bounding_box()
-	var area = PI * (bb.size.x * bb.size.y) * 0.5
+	var points := get_points()
+	var bb := _get_bounding_box(points)
+	var area := _get_bounding_box_area(bb)
 	_mass = area * density
 
 
-func _get_bounding_box() -> Rect2:
-	var rect := Rect2()
+func _get_bounding_box_area(bb: Rect2) -> float:
+	return PI * bb.size.x  * bb.size.y * 0.25
 
-	var points = get_points()
-	if points.size() == 0:
-		return rect
+
+func _get_bounding_box(points: Array) -> Rect2:
+	var rect := Rect2()
 
 	var _min: Vector2
 	var _max: Vector2
 
-	for i in get_points():
+	for i in points:
 		if i.x > _max.x:
 			_max.x = i.x
 		if i.x < _min.x:
