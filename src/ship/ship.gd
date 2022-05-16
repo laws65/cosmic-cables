@@ -86,6 +86,7 @@ func add_to_inventory(item: Item) -> bool:
 	# if resource
 	if item.type & 4 > 0:
 		Game.add_unobtainium(item.level)
+		return true
 
 	# if doesn't have gun and is gun equip it
 	if item.type & 2 > 0 and not has_gun():
