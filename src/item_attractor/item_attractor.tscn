@@ -3,7 +3,7 @@
 [ext_resource path="res://src/item_attractor/item_attractor.gd" type="Script" id=1]
 
 [sub_resource type="CircleShape2D" id=1]
-radius = 150.0
+radius = 50.0
 
 [node name="ItemAttractor" type="Area2D"]
 collision_layer = 0

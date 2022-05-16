@@ -30,7 +30,6 @@ position = Vector2( -7, 0 )
 ship_path = NodePath("..")
 
 [node name="ItemAttractor" parent="." instance=ExtResource( 3 )]
-visible = false
 
 [node name="PickerUpper" parent="." instance=ExtResource( 6 )]
 visible = false

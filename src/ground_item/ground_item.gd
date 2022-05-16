@@ -14,14 +14,16 @@ var velocity: Vector2
 
 func _ready() -> void:
 	var item_texture = item_representing.icon
-
 	var display := get_node("Display") as Sprite
 	display.texture = item_texture
 	display.scale = display_size / item_texture.get_size()
 
+	# is resource
+	if item_representing.type & 4 > 0:
+		$Background.hide()
+
 
 func _physics_process(delta: float) -> void:
-	print($AnimationPlayer.current_animation)
 	var col = move_and_collide(velocity * delta)
 	if col:
 		velocity = velocity.bounce(col.normal) * collision_damp

@@ -78,13 +78,12 @@ tracks/2/keys = {
 
 [node name="GroundItem" type="KinematicBody2D"]
 collision_layer = 8
-collision_mask = 0
+collision_mask = 4
 script = ExtResource( 2 )
 item_representing = ExtResource( 3 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
-one_way_collision = true
 
 [node name="Background" type="Sprite" parent="."]
 texture = ExtResource( 1 )

@@ -31,7 +31,8 @@ func _on_UI_gui_input(event: InputEvent) -> void:
 		var held_item = held_item_display.get_item()
 		if is_instance_valid(held_item):
 			# TODO don't go up tree
-			get_node("../../../").create_ground_item(held_item)
+			var gi = get_node("../../../").create_ground_item(held_item)
+			get_node("../../../").throw_ground_item(gi)
 			held_item_display.set_item(null)
 		else:
 			animation_player.play("fade_out")

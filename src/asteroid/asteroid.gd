@@ -65,6 +65,7 @@ func hit(hitter: Node2D) -> void:
 	if is_instance_valid(hitter) and hitter.has_method("get_clip_poly"):
 		mine(hitter, hitter.get_clip_poly())
 
+
 func mine(miner: Node2D, clip_poly: Polygon2D) -> void:
 	var asteroid_points = get_points()
 	var clip_points = _get_relative_clip_points(miner, clip_poly)
@@ -85,12 +86,25 @@ func mine(miner: Node2D, clip_poly: Polygon2D) -> void:
 	var negative_polys = Geometry.intersect_polygons_2d(asteroid_points, clip_points)
 	for poly in negative_polys:
 		var area := _get_bounding_box_area(_get_bounding_box(poly))
-		var rs = get_parent().create_ground_item(load("res://src/item/unobtainium.tres").duplicate())
-		rs.velocity = Vector2.ZERO
-		rs.global_position = to_global(poly[0])
-		rs.allow_pickup = true
-		rs.item_representing.level = area
-		# TODO create asteroid chunks on ground to pick up
+
+		var clip_centre := Vector2.ZERO
+		for point in clip_points:
+			clip_centre += point
+		clip_centre /= clip_points.size()
+
+		var possible_points := poly as Array
+		var points_amount := possible_points.size()
+		possible_points.shuffle()
+
+		var number_of_asteroid_chunks = area / 1000
+		for _i in number_of_asteroid_chunks:
+			var rs = get_parent().create_ground_item(load("res://src/item/asteroid_chunk.tres").duplicate())
+			var offset: Vector2 = possible_points[randi() % points_amount]
+			offset = offset.linear_interpolate(clip_centre, rand_range(0.3, 1.0))
+			rs.global_position = to_global(offset)
+			rs.allow_pickup = true
+			rs.rotation = randi()
+			rs.item_representing.level = area
 
 
 func _get_relative_clip_points(miner: Node2D, clip_poly: Polygon2D) -> PoolVector2Array:
@@ -118,6 +132,7 @@ func set_points(points: PoolVector2Array) -> void:
 	shape.clear_points()
 	shape.add_points(points)
 	_recalculate_mass()
+	update()
 
 
 func get_points() -> PoolVector2Array:
