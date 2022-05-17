@@ -10,7 +10,7 @@ export(int, FLAGS, "module", "gun") var type
 
 onready var item_display := get_node("Item") as TextureRect
 
-var item: Item setget set_item, get_item
+var item: Item setget set_item
 
 
 func set_item(new_item: Item) -> void:
@@ -20,10 +20,6 @@ func set_item(new_item: Item) -> void:
 		item_display.set_texture(null)
 
 	item = new_item
-
-
-func get_item() -> Item:
-	return item
 
 
 func _on_Slot_gui_input(event: InputEvent) -> void:
