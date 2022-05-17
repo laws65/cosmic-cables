@@ -29,7 +29,7 @@ var min_investiage_distance := 20
 
 
 func _ready() -> void:
-	set_gun(load("res://src/guns/machine_gun/machine_gun.tres").get_scene())
+	set_gun(load("res://src/guns/machine_gun/machine_gun.tres").duplicate().get_scene())
 func _physics_process(delta: float) -> void:
 	print(mode)
 	#rotation += 100 * delta

@@ -9,7 +9,7 @@ func _process(_delta: float) -> void:
 		get_global_mouse_position() + display_offset)
 
 
-func _display_item(item) -> void:
+func _display_item(item: Item) -> void:
 	if not is_instance_valid(item):
 		hide()
 		return

@@ -35,18 +35,19 @@ func _on_hide() -> void:
 
 
 func _on_Slot_clicked(slot: InventorySlot) -> void:
-	var item := slot.get_item()
+	var item := get_slot_item(slot)
 	# if not holding anything currently
 	if (not has_held_item()
 	# or if slot type matches item we're trying to put into slot
 	or slot.type & held_item.type > 0):
 		# swap held item and slot item
-		slot.set_item(held_item)
+		var item_to_be_put_in := held_item
+		slot.set_item(item_to_be_put_in)
 		emit_signal("set_held_item", item)
-		_put_item_in_slot(slot, held_item)
+		_put_item_in_slot(slot, item_to_be_put_in)
 
 		if not has_held_item():
-			emit_signal("tooltip_display_item", slot.get_item())
+			emit_signal("tooltip_display_item", held_item)
 
 
 func _put_item_in_slot(slot: TextureRect, item: Item) -> void:
@@ -88,18 +89,16 @@ func _update_inventory_display() -> void:
 	for i in ship.modules.size():
 		var modules_item: Item = ship.modules[i]
 		var modules_slot: TextureRect = modules_slots[i]
-		if modules_item != modules_slot.get_item():
-			modules_slot.set_item(modules_item)
+		modules_slot.set_item(modules_item)
 
 	for j in ship.storage.size():
 		var storage_item: Item = ship.storage[j]
 		var storage_slot: TextureRect = storage_slots[j]
-		if storage_item != storage_slot.get_item():
-			storage_slot.set_item(storage_item)
+		storage_slot.set_item(storage_item)
 
 
 func _on_Slot_hovered(slot: TextureRect) -> void:
-	var slot_item := slot.get_item() as Item
+	var slot_item := get_slot_item(slot)
 
 	if (is_instance_valid(slot_item)
 	and not has_held_item()):
@@ -112,3 +111,20 @@ func _on_Slot_unhovered(_slot: TextureRect) -> void:
 
 func _on_HeldItem_item_updated(new_held_item: Item) -> void:
 	held_item = new_held_item
+
+
+func get_slot_item(slot: TextureRect) -> Item:
+	if slot == gun_slot:
+		var gun = ship.get_gun()
+		if is_instance_valid(gun):
+			return gun.get_item()
+	elif slot in modules_slots:
+		var idx = modules_slots.find(slot)
+		if 0 <= idx and idx < modules_slots.size():
+			return ship.modules[idx]
+	elif slot in storage_slots:
+		var idx = storage_slots.find(slot)
+		if 0 <= idx and idx < storage_slots.size():
+			return ship.storage[idx]
+
+	return null

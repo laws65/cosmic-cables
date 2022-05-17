@@ -3,9 +3,8 @@ class_name Player
 
 
 func _ready() -> void:
-	var gun_instance = load("res://src/guns/machine_gun/machine_gun.tscn").instance()
-	set_gun(gun_instance)
-	storage[0] = load("res://src/guns/energy_gun/energy_gun.tres")
+	add_to_inventory(load("res://src/guns/machine_gun/machine_gun.tres").duplicate())
+	add_to_inventory(load("res://src/guns/energy_gun/energy_gun.tres").duplicate())
 
 
 func _physics_process(_delta: float) -> void:
