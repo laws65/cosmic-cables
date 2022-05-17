@@ -52,7 +52,7 @@ func _on_Slot_clicked(slot: InventorySlot) -> void:
 
 func _put_item_in_slot(slot: TextureRect, item: Item) -> void:
 	emit_signal("tooltip_display_item", null)
-
+	print("putting item in slot")
 	if slot == gun_slot:
 		var gun: Gun
 		if is_instance_valid(item):

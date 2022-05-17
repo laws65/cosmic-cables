@@ -25,6 +25,7 @@ func _ready() -> void:
 
 func set_gun(new_gun: Gun) -> void:
 	if is_instance_valid(gun):
+		print("deleting old gun")
 		remove_child(gun)
 
 	if is_instance_valid(new_gun):
