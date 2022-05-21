@@ -62,7 +62,7 @@ func _quacks_like_a_duck(node) -> bool:
 	return node.has_method("get_mass") and node.has_method("get_elasticity")
 
 
-func hit(hitter: Node2D) -> void:
+func hit(hitter: Node2D, _damage:=0.0) -> void:
 	if is_instance_valid(hitter) and hitter.has_method("get_clip_poly"):
 		mine(hitter, hitter.get_clip_poly())
 

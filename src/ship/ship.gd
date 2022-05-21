@@ -6,6 +6,8 @@ export var team: int = 0
 
 signal module_added(module)
 signal module_removed(module)
+signal health_changed(new_health, old_health)
+
 
 var velocity: Vector2
 var acceleration: Vector2
@@ -16,6 +18,8 @@ var storage: Array
 
 var modules_amount: int = 6
 var storage_size: int = 16
+
+var health := 3.0
 
 
 func _ready() -> void:
@@ -111,5 +115,11 @@ func add_to_inventory(item: Item) -> bool:
 	return false
 
 
-func hit(_hitter: Node2D = null) -> void:
-	pass
+func hit(_hitter: Node2D, damage: float) -> void:
+	take_damage(damage)
+
+
+func take_damage(damage: float) -> void:
+	var old_health := health
+	health -= damage
+	emit_signal("health_changed", health, old_health)

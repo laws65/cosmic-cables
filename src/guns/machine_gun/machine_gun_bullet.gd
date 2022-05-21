@@ -4,7 +4,7 @@ extends Area2D
 var team: int
 
 var speed = 300
-
+var damage = 0.1
 
 func _ready() -> void:
 	$Fired.emitting = true
@@ -16,7 +16,7 @@ func _physics_process(delta: float) -> void:
 	for body in get_overlapping_bodies():
 		if (body is Asteroid
 		or  body is Gun and team != body.team):
-			body.hit(self)
+			body.hit(self, damage)
 			$AnimationPlayer.play("impact")
 
 

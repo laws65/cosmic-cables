@@ -4,7 +4,7 @@ var team: int
 
 
 var speed = 150
-
+var damage = 0.1
 
 func _ready() -> void:
 	$Tween.interpolate_property(self, "speed", speed, speed*10, 1.0, Tween.TRANS_EXPO, Tween.EASE_IN)
@@ -19,7 +19,7 @@ func _physics_process(delta: float) -> void:
 	for body in get_overlapping_bodies():
 		if (body is Asteroid
 		or  body is Gun and team != body.team):
-			body.hit(self)
+			body.hit(self, damage)
 			$AnimationPlayer.play("impact")
 
 

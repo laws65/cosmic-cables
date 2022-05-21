@@ -5,20 +5,16 @@ var display_health := 3.0
 var target_health := 3.0
 var health := 3.0
 
-func _input(_event: InputEvent) -> void:
-	if Input.is_action_just_pressed("damage_self"):
-		take_damage(0.5)
+
+func _ready() -> void:
+	SignalBus.connect("player_health_changed", self, "_on_Player_health_changed")
 
 
-func _process(delta: float) -> void:
-	#var difference = target_health - display_health
-	#var direction = sign(difference)
-	#display_health += min(direction * difference, delta * direction)
-	update_health_display(display_health, target_health)
-	#print(display_health)
+func _process(_delta: float) -> void:
+	update_health_display()
 
 
-func update_health_display(display_health: float, target_health: float) -> void:
+func update_health_display() -> void:
 	var health_bars_amount := get_child_count()
 	
 	for i in health_bars_amount:
@@ -34,3 +30,10 @@ func take_damage(amount: float) -> void:
 	get_tree().create_tween().tween_property(self, "target_health", health, 0.05)
 	yield(get_tree().create_timer(0.4), "timeout")
 	get_tree().create_tween().tween_property(self, "display_health", target_health, 0.4)
+
+
+func _on_Player_health_changed(new_health: float, old_health: float) -> void:
+	var difference = new_health - old_health
+	# health goes down
+	if difference < 0:
+		take_damage(-difference)
