@@ -1,0 +1,29 @@
+[gd_resource type="ShaderMaterial" load_steps=4 format=2]
+
+[ext_resource path="res://src/ui/health/health_transition.png" type="Texture" id=1]
+[ext_resource path="res://src/ui/health/health_empty.png" type="Texture" id=2]
+
+[sub_resource type="Shader" id=5]
+code = "shader_type canvas_item;
+
+uniform float health_fill;
+uniform float health_damage;
+uniform sampler2D empty_tex;
+uniform sampler2D transition_tex;
+
+void fragment() {
+	if (1.0 - UV.y > health_fill) {
+		COLOR = texture(empty_tex, UV);
+	} else if (UV.y > health_damage) {
+		COLOR = texture(TEXTURE, UV);
+	} else {
+		COLOR = texture(transition_tex, UV);
+	}
+}"
+
+[resource]
+shader = SubResource( 5 )
+shader_param/health_fill = 1.0
+shader_param/health_damage = 0.0
+shader_param/empty_tex = ExtResource( 2 )
+shader_param/transition_tex = ExtResource( 1 )
