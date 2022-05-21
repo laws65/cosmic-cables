@@ -54,7 +54,8 @@ func _physics_process(delta: float) -> void:
 		if _quacks_like_a_duck(collider):
 			m2 = collider.get_mass()
 		# https://www.omnicalculator.com/physics/conservation-of-momentum
-		velocity = u1 * ((m1-m2)/(m1+m2)) + u2 * ((2.0*m2)/(m1+m2)) * get_elasticity()
+		velocity = (u1 * ((m1-m2)/(m1+m2)) + u2 * ((2.0*m2)/(m1+m2))) * get_elasticity()
+		collider.velocity = (u1 * ((2*m1)/(m1+m2)) + u2 * ((m2-m1)/(m1+m2))) * get_elasticity()
 
 
 func _quacks_like_a_duck(node) -> bool:
