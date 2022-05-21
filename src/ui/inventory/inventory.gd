@@ -4,14 +4,9 @@ extends Panel
 signal tooltip_display_item(item)
 signal set_held_item(item)
 
-export var gun_slot_path: NodePath
-onready var gun_slot := get_node(gun_slot_path) as TextureRect
-
-export var storage_path: NodePath
-onready var storage_slots := get_node(storage_path).get_children()
-
-export var modules_path: NodePath
-onready var modules_slots := get_node(modules_path).get_children()
+onready var gun_slot := get_node("%GunSlot") as TextureRect
+onready var storage_slots := get_node("%Storage").get_children()
+onready var modules_slots := get_node("%Modules").get_children()
 
 var held_item: Item
 
