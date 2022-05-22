@@ -69,18 +69,6 @@ func set_module(module_item: Item, index: int) -> void:
 
 	var old_module_item := modules[index] as Item
 
-	"""
-		if not is_instance_valid(module_item):
-		return
-
-	if module_item in modules:
-		var index := modules.find(module_item)
-		modules[index] = null
-
-	var module: Module = module_item.get_scene()
-	if is_instance_valid(module):
-		emit_signal("module_removed", module)
-	"""
 	if is_instance_valid(old_module_item):
 		var old_module := old_module_item.get_scene() as Module
 		if is_instance_valid(old_module):
