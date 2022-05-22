@@ -55,28 +55,29 @@ func get_gun() -> Gun:
 	return gun_slot[0]
 
 
-func add_module(module_item: Item, index: int = -1) -> bool:
+func find_empty_slot_in_array(array: Array) -> int:
+	for i in array.size():
+		var item := array[i] as Item
+		if not is_instance_valid(item):
+			return i
+	return -1
+
+
+func set_module(module_item: Item, index: int) -> void:
 	if index >= modules_amount:
-		return false
+		return
 
-	if index == -1:
-		for i in modules_amount:
-			var m: Item = modules[i]
-			if not is_instance_valid(m):
-				index = i
-				break
-			# can't fit new module into modules
-			if i + 1 == modules_amount:
-				return false
+	var old_module_item := modules[index] as Item
+	if is_instance_valid(old_module_item):
+		var old_module := old_module_item.get_scene() as Module
+		if is_instance_valid(old_module):
+			emit_signal("module_removed", old_module)
+
 	modules[index] = module_item
-
-	if not is_instance_valid(module_item):
-		return false
 
 	var module: Module = module_item.get_scene()
 	if is_instance_valid(module):
 		emit_signal("module_added", module)
-	return true
 
 
 func remove_module(module_item: Item) -> void:
@@ -93,16 +94,15 @@ func remove_module(module_item: Item) -> void:
 
 
 func add_to_inventory(array: Array, slot: int, item: Item) -> void:
-	if array != modules:
-		assert(slot >= 0, "Invalid index for item")
+	assert(slot >= 0, "Invalid index for item")
 	assert(slot < array.size(), "Invalid index for item")
 
 	if array == modules:
-		var old_module := modules[slot] as Item
-		if is_instance_valid(old_module):
-			remove_module(old_module)
+		#var old_module := modules[slot] as Item
+		#if is_instance_valid(old_module):
+			#remove_module(old_module)
 		if is_instance_valid(item):
-			add_module(item, slot)
+			set_module(item, slot)
 	elif array == storage:
 		storage[slot] = item
 	elif array == gun_slot:
@@ -130,17 +130,17 @@ func quick_add_to_inventory(item: Item) -> bool:
 
 	# if is module attempt to add it
 	elif item.type & 1 > 0:
-		target_array = modules
-		target_index = -1
+		var modules_index := find_empty_slot_in_array(modules)
+		if modules_index >= 0:
+			target_array = modules
+			target_index = modules_index
 
 	# if has room in storage add it
 	else:
-		for storage_index in storage_size:
-			var storage_item: Item = storage[storage_index]
-			if not is_instance_valid(storage_item):
-				target_array = storage
-				target_index = storage_index
-				break
+		var storage_index := find_empty_slot_in_array(storage)
+		if storage_index >= 0:
+			target_array = storage
+			target_index = storage_index
 
 	if target_array:
 		add_to_inventory(target_array, target_index, item)

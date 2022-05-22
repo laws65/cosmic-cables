@@ -28,21 +28,16 @@ func set_ship(new_ship: Ship) -> void:
 
 
 func _on_Ship_inventory_updated(array: Array, index: int, item: Item) -> void:
-	_update_inventory_display()
-
 	var slot: InventorySlot
 	if array == ship.storage:
-		print("array is storage")
 		slot = storage_slots[index]
 	elif array == ship.modules:
-		print("array is modules")
 		slot = modules_slots[index]
 	else:
 		slot = gun_slot
 
-	if slot.mouse_in:
-		print("mouse in")
-		print(item)
+	slot.set_item(item)
+	if slot.mouse_in and not has_held_item():
 		emit_signal("tooltip_display_item", item)
 
 
