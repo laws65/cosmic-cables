@@ -273,7 +273,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 180.0
 margin_top = 730.0
-margin_right = 1100.0
+margin_right = 2380.0
 margin_bottom = 820.0
 theme = SubResource( 10 )
 script = ExtResource( 20 )
@@ -286,7 +286,7 @@ margin_bottom = -10.0
 alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="BuildToolbar/HBoxContainer"]
-margin_right = 128.0
+margin_right = 310.0
 margin_bottom = 70.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -295,8 +295,8 @@ expand = true
 stretch_mode = 6
 
 [node name="TextureRect2" type="TextureRect" parent="BuildToolbar/HBoxContainer"]
-margin_left = 132.0
-margin_right = 260.0
+margin_left = 314.0
+margin_right = 625.0
 margin_bottom = 70.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -305,8 +305,8 @@ expand = true
 stretch_mode = 6
 
 [node name="TextureRect3" type="TextureRect" parent="BuildToolbar/HBoxContainer"]
-margin_left = 264.0
-margin_right = 392.0
+margin_left = 629.0
+margin_right = 940.0
 margin_bottom = 70.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -315,8 +315,8 @@ expand = true
 stretch_mode = 6
 
 [node name="TextureRect4" type="TextureRect" parent="BuildToolbar/HBoxContainer"]
-margin_left = 396.0
-margin_right = 524.0
+margin_left = 944.0
+margin_right = 1255.0
 margin_bottom = 70.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -325,8 +325,8 @@ expand = true
 stretch_mode = 6
 
 [node name="TextureRect5" type="TextureRect" parent="BuildToolbar/HBoxContainer"]
-margin_left = 528.0
-margin_right = 656.0
+margin_left = 1259.0
+margin_right = 1570.0
 margin_bottom = 70.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -335,8 +335,8 @@ expand = true
 stretch_mode = 6
 
 [node name="TextureRect6" type="TextureRect" parent="BuildToolbar/HBoxContainer"]
-margin_left = 660.0
-margin_right = 788.0
+margin_left = 1574.0
+margin_right = 1885.0
 margin_bottom = 70.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -345,8 +345,8 @@ expand = true
 stretch_mode = 6
 
 [node name="TextureRect7" type="TextureRect" parent="BuildToolbar/HBoxContainer"]
-margin_left = 792.0
-margin_right = 920.0
+margin_left = 1889.0
+margin_right = 2200.0
 margin_bottom = 70.0
 size_flags_horizontal = 3
 size_flags_vertical = 3

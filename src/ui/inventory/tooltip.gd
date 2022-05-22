@@ -10,6 +10,7 @@ func _process(_delta: float) -> void:
 
 
 func _display_item(item: Item) -> void:
+	print("signal received by tooltip")
 	if not is_instance_valid(item):
 		hide()
 		return

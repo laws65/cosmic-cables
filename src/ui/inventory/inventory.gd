@@ -27,8 +27,24 @@ func set_ship(new_ship: Ship) -> void:
 	ship = new_ship
 
 
-func _on_Ship_inventory_updated(_array: Array, _index: int, _item: Item) -> void:
+func _on_Ship_inventory_updated(array: Array, index: int, item: Item) -> void:
 	_update_inventory_display()
+
+	var slot: InventorySlot
+	if array == ship.storage:
+		print("array is storage")
+		slot = storage_slots[index]
+	elif array == ship.modules:
+		print("array is modules")
+		slot = modules_slots[index]
+	else:
+		slot = gun_slot
+
+	if slot.mouse_in:
+		print("mouse in")
+		print(item)
+		emit_signal("tooltip_display_item", item)
+
 
 
 func _on_show() -> void:
@@ -50,11 +66,8 @@ func _on_Slot_clicked(slot: InventorySlot) -> void:
 		emit_signal("set_held_item", item)
 		_put_item_in_slot(slot, item_to_be_put_in)
 
-		if not has_held_item():
-			emit_signal("tooltip_display_item", held_item)
 
-
-func _put_item_in_slot(slot: TextureRect, item: Item) -> void:
+func _put_item_in_slot(slot: InventorySlot, item: Item) -> void:
 	emit_signal("tooltip_display_item", null)
 	if slot == gun_slot:
 		ship.add_to_inventory(ship.gun_slot, 0, item)
@@ -86,16 +99,16 @@ func _update_inventory_display() -> void:
 
 	for i in ship.modules.size():
 		var modules_item: Item = ship.modules[i]
-		var modules_slot: TextureRect = modules_slots[i]
+		var modules_slot: InventorySlot = modules_slots[i]
 		modules_slot.set_item(modules_item)
 
 	for j in ship.storage.size():
 		var storage_item: Item = ship.storage[j]
-		var storage_slot: TextureRect = storage_slots[j]
+		var storage_slot: InventorySlot = storage_slots[j]
 		storage_slot.set_item(storage_item)
 
 
-func _on_Slot_hovered(slot: TextureRect) -> void:
+func _on_Slot_hovered(slot: InventorySlot) -> void:
 	var slot_item := get_slot_item(slot)
 
 	if (is_instance_valid(slot_item)
@@ -103,7 +116,7 @@ func _on_Slot_hovered(slot: TextureRect) -> void:
 		emit_signal("tooltip_display_item", slot_item)
 
 
-func _on_Slot_unhovered(_slot: TextureRect) -> void:
+func _on_Slot_unhovered(_slot: InventorySlot) -> void:
 	emit_signal("tooltip_display_item", null)
 
 
@@ -111,7 +124,7 @@ func _on_HeldItem_item_updated(new_held_item: Item) -> void:
 	held_item = new_held_item
 
 
-func get_slot_item(slot: TextureRect) -> Item:
+func get_slot_item(slot: InventorySlot) -> Item:
 	if slot == gun_slot:
 		var gun = ship.get_gun()
 		if is_instance_valid(gun):

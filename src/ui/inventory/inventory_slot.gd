@@ -11,6 +11,7 @@ export(int, FLAGS, "module", "gun") var type
 onready var item_display := get_node("Item") as TextureRect
 
 var item: Item setget set_item
+var mouse_in: bool
 
 
 func set_item(new_item: Item) -> void:
@@ -30,11 +31,13 @@ func _on_Slot_gui_input(event: InputEvent) -> void:
 
 
 func _on_Slot_mouse_entered() -> void:
+	mouse_in = true
 	if is_instance_valid(item):
 		emit_signal("hovered", self)
 
 
 func _on_Slot_mouse_exited() -> void:
+	mouse_in = false
 	emit_signal("unhovered", self)
 
 
