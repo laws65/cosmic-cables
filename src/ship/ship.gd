@@ -68,20 +68,9 @@ func set_module(module_item: Item, index: int) -> void:
 		return
 
 	var old_module_item := modules[index] as Item
-	if is_instance_valid(old_module_item):
-		var old_module := old_module_item.get_scene() as Module
-		if is_instance_valid(old_module):
-			emit_signal("module_removed", old_module)
 
-	modules[index] = module_item
-
-	var module: Module = module_item.get_scene()
-	if is_instance_valid(module):
-		emit_signal("module_added", module)
-
-
-func remove_module(module_item: Item) -> void:
-	if not is_instance_valid(module_item):
+	"""
+		if not is_instance_valid(module_item):
 		return
 
 	if module_item in modules:
@@ -91,6 +80,18 @@ func remove_module(module_item: Item) -> void:
 	var module: Module = module_item.get_scene()
 	if is_instance_valid(module):
 		emit_signal("module_removed", module)
+	"""
+	if is_instance_valid(old_module_item):
+		var old_module := old_module_item.get_scene() as Module
+		if is_instance_valid(old_module):
+			emit_signal("module_removed", old_module)
+
+	modules[index] = module_item
+
+	if is_instance_valid(module_item):
+		var module: Module = module_item.get_scene()
+		if is_instance_valid(module):
+			emit_signal("module_added", module)
 
 
 func add_to_inventory(array: Array, slot: int, item: Item) -> void:
@@ -98,11 +99,7 @@ func add_to_inventory(array: Array, slot: int, item: Item) -> void:
 	assert(slot < array.size(), "Invalid index for item")
 
 	if array == modules:
-		#var old_module := modules[slot] as Item
-		#if is_instance_valid(old_module):
-			#remove_module(old_module)
-		if is_instance_valid(item):
-			set_module(item, slot)
+		set_module(item, slot)
 	elif array == storage:
 		storage[slot] = item
 	elif array == gun_slot:
