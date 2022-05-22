@@ -1,14 +1,17 @@
 extends Module
 class_name SpeedModule
 
+var acceleration_speed_increase := 100.0
+var steer_strength_increase := 0.8
+var velocity_rotate_weight_increase := 0.01
 
 func apply(movement) -> void:
-	movement.acceleration_speed += 100
-	movement.steer_strength += 0.8
-	movement.velocity_rotate_weight += 0.01
+	movement.acceleration_speed += acceleration_speed_increase
+	movement.steer_strength += steer_strength_increase
+	movement.velocity_rotate_weight += velocity_rotate_weight_increase
 
 
 func remove(movement) -> void:
-	movement.acceleration_speed -= 100
-	movement.steer_strength -= 0.8
-	movement.velocity_rotate_weight -= 0.01
+	movement.acceleration_speed -= acceleration_speed_increase
+	movement.steer_strength -= steer_strength_increase
+	movement.velocity_rotate_weight -= velocity_rotate_weight_increase
