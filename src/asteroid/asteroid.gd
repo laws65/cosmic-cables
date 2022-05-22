@@ -44,8 +44,6 @@ func _physics_process(delta: float) -> void:
 	rotation += angular_velocity * delta
 	var collision := move_and_collide(velocity * delta)
 	if collision:
-		if collision.collider is GroundItem:
-			return
 		var u1 := velocity
 		var u2 := collision.get_collider_velocity()
 		var m1 := get_mass()

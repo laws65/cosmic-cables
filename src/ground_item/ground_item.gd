@@ -43,3 +43,13 @@ func pickup() -> void:
 
 func _on_AllowPickupDelay_timeout() -> void:
 	allow_pickup = true
+
+
+# For collision with asteroid
+func get_mass() -> float:
+	return 0.0
+
+
+# For collision with asteroid
+func get_elasticity() -> float:
+	return 1.0
