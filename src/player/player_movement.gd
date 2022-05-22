@@ -7,6 +7,7 @@ var friction := 0.01
 var steer_strength := 2.5
 var velocity_cutoff := 5
 var velocity_rotate_weight := 0.05
+var max_speed := 800.0
 
 export var player_path: NodePath
 onready var player := get_node(player_path) as Player
@@ -26,6 +27,13 @@ func _physics_process(delta: float) -> void:
 	player.velocity += player.acceleration * delta
 	player.velocity = player.move_and_slide(player.velocity)
 	player.acceleration = Vector2.ZERO
+
+	cap_speed()
+
+
+func cap_speed() -> void:
+	if player.velocity.length_squared() > pow(max_speed, 2):
+		player.velocity = player.velocity.normalized() * max_speed
 
 
 func steer() -> void:
