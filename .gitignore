@@ -1,4 +1,5 @@
 build/
+*.ase
 
 # Godot-specific ignores
 .import/
