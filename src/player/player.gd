@@ -17,8 +17,3 @@ func _physics_process(_delta: float) -> void:
 	
 	if Input.is_action_just_pressed("damage_self"):
 		take_damage(0.5)
-
-
-func take_damage(damage: float) -> void:
-	.take_damage(damage)
-	get_node("../Camera2D").add_trauma(damage)

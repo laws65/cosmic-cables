@@ -15,6 +15,11 @@ var safe_spot = 0.2
 var offset_lerp_speed := 15.0
 var shake_offset := Vector2.ZERO
 
+
+func _ready() -> void:
+	SignalBus.connect("player_health_changed", self, "_on_Player_health_changed")
+
+
 # ideally, should be in process
 # but causes massive jittering
 # so idk what's going on
@@ -63,3 +68,8 @@ func shake():
 	var amount = pow(trauma, trauma_power)
 	shake_offset.x = max_offset.x * amount * rand_range(-0.5, 0.5)
 	shake_offset.y = max_offset.y * amount * rand_range(-0.5, 0.5)
+
+
+func _on_Player_health_changed(new_health: float, old_health: float) -> void:
+	if new_health < old_health:
+		add_trauma(old_health - new_health)
