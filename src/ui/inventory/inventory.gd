@@ -18,7 +18,17 @@ func _ready() -> void:
 
 
 func set_ship(new_ship: Ship) -> void:
+	assert(is_instance_valid(new_ship))
+
+	if is_instance_valid(ship):
+		ship.disconnect("inventory_updated", self, "_on_Ship_inventory_updated")
+
+	new_ship.connect("inventory_updated", self, "_on_Ship_inventory_updated")
 	ship = new_ship
+
+
+func _on_Ship_inventory_updated(_array: Array, _index: int, _item: Item) -> void:
+	_update_inventory_display()
 
 
 func _on_show() -> void:
@@ -37,7 +47,6 @@ func _on_Slot_clicked(slot: InventorySlot) -> void:
 	or slot.type & held_item.type > 0):
 		# swap held item and slot item
 		var item_to_be_put_in := held_item
-		slot.set_item(item_to_be_put_in)
 		emit_signal("set_held_item", item)
 		_put_item_in_slot(slot, item_to_be_put_in)
 
@@ -48,20 +57,15 @@ func _on_Slot_clicked(slot: InventorySlot) -> void:
 func _put_item_in_slot(slot: TextureRect, item: Item) -> void:
 	emit_signal("tooltip_display_item", null)
 	if slot == gun_slot:
-		var gun: Gun
-		if is_instance_valid(item):
-			gun = item.get_scene() as Gun
-		ship.set_gun(gun)
+		ship.add_to_inventory(ship.gun_slot, 0, item)
 	else:
 		var modules_idx = modules_slots.find(slot)
 		if modules_idx >= 0:
-			var old_module: Item = ship.modules[modules_idx]
-			ship.remove_module(old_module)
-			ship.add_module(item, modules_idx)
+			ship.add_to_inventory(ship.modules, modules_idx, item)
 		else:
 			var storage_idx = storage_slots.find(slot)
 			if storage_idx >= 0:
-				ship.storage[storage_idx] = item
+				ship.add_to_inventory(ship.storage, storage_idx, item)
 
 	if (is_instance_valid(item)
 	and not has_held_item()):

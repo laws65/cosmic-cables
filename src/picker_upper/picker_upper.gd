@@ -12,5 +12,5 @@ func _physics_process(_delta: float) -> void:
 			continue
 
 		var item := ground_item.get_item_representing() as Item
-		ship.add_to_inventory(item)
+		ship.quick_add_to_inventory(item)
 		ground_item.pickup()
