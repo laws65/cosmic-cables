@@ -35,5 +35,5 @@ func throw_ground_item(ground_item: GroundItem) -> void:
 	var screen_centre := get_viewport_rect().size/2
 	var throw_velocity := (mouse_pos - screen_centre) * 2.41
 
-	ground_item.global_position = $Camera2D.global_position
+	ground_item.gobal_position = $Camera2D.global_position
 	ground_item.velocity = throw_velocity

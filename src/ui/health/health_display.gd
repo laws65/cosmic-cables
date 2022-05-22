@@ -16,7 +16,7 @@ func _process(_delta: float) -> void:
 
 func update_health_display() -> void:
 	var health_bars_amount := get_child_count()
-	
+
 	for i in health_bars_amount:
 		var health_bar := get_child(i)
 		var health_damage := 1.0 - clamp(target_health - i, 0, 1)
