@@ -22,15 +22,22 @@
 [ext_resource path="res://src/ui/build/build_toolbar.gd" type="Script" id=20]
 [ext_resource path="res://src/buildings/core/core.png" type="Texture" id=21]
 
+[sub_resource type="StyleBoxFlat" id=14]
+content_margin_left = 12.0
+content_margin_right = 10.0
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+anti_aliasing = false
+
 [sub_resource type="DynamicFont" id=2]
 size = 48
 font_data = ExtResource( 9 )
-
-[sub_resource type="StyleBoxFlat" id=1]
-expand_margin_left = 4.0
-expand_margin_right = 4.0
-expand_margin_top = 4.0
-expand_margin_bottom = 4.0
 
 [sub_resource type="Shader" id=5]
 code = "shader_type canvas_item;
@@ -90,24 +97,12 @@ Panel/styles/panel = SubResource( 11 )
 [sub_resource type="Animation" id=13]
 length = 0.001
 tracks/0/type = "value"
-tracks/0/path = NodePath(".:rect_position")
+tracks/0/path = NodePath(".:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 180, 730 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath(".:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
@@ -118,24 +113,12 @@ tracks/1/keys = {
 resource_name = "slide"
 length = 0.3
 tracks/0/type = "value"
-tracks/0/path = NodePath(".:rect_position")
+tracks/0/path = NodePath(".:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.2 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Vector2( 180, 730 ), Vector2( 180, 610 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath(".:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
 "times": PoolRealArray( 0, 0.2 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
@@ -172,31 +155,44 @@ anims/RESET = ExtResource( 6 )
 anims/fade_in = ExtResource( 5 )
 anims/fade_out = ExtResource( 4 )
 
-[node name="ResourceCounter" type="HBoxContainer" parent="."]
-margin_left = 12.5
-margin_top = 12.5
-margin_right = 769.5
-margin_bottom = 85.0
-custom_constants/separation = 16
+[node name="ResourceCounter" type="PanelContainer" parent="."]
+margin_left = 12.0
+margin_top = 12.0
+margin_right = 115.0
+margin_bottom = 71.0
+custom_styles/panel = SubResource( 14 )
 script = ExtResource( 10 )
 
-[node name="Label" type="Label" parent="ResourceCounter"]
-margin_top = 15.0
-margin_right = 360.0
-margin_bottom = 57.0
-custom_fonts/font = SubResource( 2 )
-custom_styles/normal = SubResource( 1 )
-text = "123412341234"
-valign = 1
-
-[node name="TextureRect" type="TextureRect" parent="ResourceCounter"]
-margin_left = 376.0
-margin_right = 757.0
-margin_bottom = 72.0
+[node name="H" type="HBoxContainer" parent="ResourceCounter"]
+margin_left = 12.0
+margin_top = 4.0
+margin_right = 93.0
+margin_bottom = 55.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
+custom_constants/separation = 8
+
+[node name="MarginContainer" type="MarginContainer" parent="ResourceCounter/H"]
+margin_right = 42.0
+margin_bottom = 51.0
+
+[node name="TextureRect" type="TextureRect" parent="ResourceCounter/H/MarginContainer"]
+margin_right = 42.0
+margin_bottom = 51.0
+rect_min_size = Vector2( 42, 50 )
+size_flags_stretch_ratio = 3.76
 texture = ExtResource( 11 )
-stretch_mode = 5
+expand = true
+stretch_mode = 6
+
+[node name="Label" type="Label" parent="ResourceCounter/H"]
+margin_left = 50.0
+margin_top = 4.0
+margin_right = 80.0
+margin_bottom = 46.0
+custom_fonts/font = SubResource( 2 )
+text = "0"
+valign = 1
 
 [node name="HealthDisplay" type="HBoxContainer" parent="."]
 anchor_top = 1.0
@@ -272,9 +268,9 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 180.0
-margin_top = 730.0
-margin_right = 2380.0
-margin_bottom = 820.0
+margin_top = -110.0
+margin_right = -180.0
+margin_bottom = -20.0
 theme = SubResource( 10 )
 script = ExtResource( 20 )
 
@@ -286,7 +282,7 @@ margin_bottom = -10.0
 alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="BuildToolbar/HBoxContainer"]
-margin_right = 310.0
+margin_right = 128.0
 margin_bottom = 70.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -295,8 +291,8 @@ expand = true
 stretch_mode = 6
 
 [node name="TextureRect2" type="TextureRect" parent="BuildToolbar/HBoxContainer"]
-margin_left = 314.0
-margin_right = 625.0
+margin_left = 132.0
+margin_right = 260.0
 margin_bottom = 70.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -305,8 +301,8 @@ expand = true
 stretch_mode = 6
 
 [node name="TextureRect3" type="TextureRect" parent="BuildToolbar/HBoxContainer"]
-margin_left = 629.0
-margin_right = 940.0
+margin_left = 264.0
+margin_right = 392.0
 margin_bottom = 70.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -315,8 +311,8 @@ expand = true
 stretch_mode = 6
 
 [node name="TextureRect4" type="TextureRect" parent="BuildToolbar/HBoxContainer"]
-margin_left = 944.0
-margin_right = 1255.0
+margin_left = 396.0
+margin_right = 524.0
 margin_bottom = 70.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -325,8 +321,8 @@ expand = true
 stretch_mode = 6
 
 [node name="TextureRect5" type="TextureRect" parent="BuildToolbar/HBoxContainer"]
-margin_left = 1259.0
-margin_right = 1570.0
+margin_left = 528.0
+margin_right = 656.0
 margin_bottom = 70.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -335,8 +331,8 @@ expand = true
 stretch_mode = 6
 
 [node name="TextureRect6" type="TextureRect" parent="BuildToolbar/HBoxContainer"]
-margin_left = 1574.0
-margin_right = 1885.0
+margin_left = 660.0
+margin_right = 788.0
 margin_bottom = 70.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -345,8 +341,8 @@ expand = true
 stretch_mode = 6
 
 [node name="TextureRect7" type="TextureRect" parent="BuildToolbar/HBoxContainer"]
-margin_left = 1889.0
-margin_right = 2200.0
+margin_left = 792.0
+margin_right = 920.0
 margin_bottom = 70.0
 size_flags_horizontal = 3
 size_flags_vertical = 3

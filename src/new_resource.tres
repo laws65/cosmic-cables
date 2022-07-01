@@ -1,0 +1,11 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://src/item/item.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+type = 0
+name = "DefaultModuleName"
+description = "Default Module Description"
+level = 0
+scene_path = ""
