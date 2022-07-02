@@ -26,6 +26,7 @@ ship_path = NodePath("..")
 
 [node name="ItemAttractor" parent="." instance=ExtResource( 5 )]
 visible = false
+ship_path = NodePath("..")
 
 [node name="PickerUpper" parent="." instance=ExtResource( 4 )]
 visible = false

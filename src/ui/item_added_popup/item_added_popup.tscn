@@ -1,0 +1,132 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://assets/hf-free-complete/futile-pro-v1/FutilePro.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://src/ui/item_added_popup/item_added_popup.gd" type="Script" id=2]
+[ext_resource path="res://src/asteroid/asteroid_chunk.png" type="Texture" id=3]
+[ext_resource path="res://assets/hf-free-complete/matchup-pro-v1.1/MatchupPro.ttf" type="DynamicFontData" id=4]
+
+[sub_resource type="StyleBoxFlat" id=1]
+content_margin_left = 12.0
+content_margin_right = 10.0
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+anti_aliasing = false
+
+[sub_resource type="DynamicFont" id=3]
+size = 32
+outline_size = 1
+outline_color = Color( 0.392157, 0.392157, 0.392157, 1 )
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 48
+font_data = ExtResource( 1 )
+
+[sub_resource type="Animation" id=5]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "fade"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2, 2.7 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 3 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "queue_free"
+} ]
+}
+
+[node name="ItemAddedPopup" type="PanelContainer"]
+margin_left = 12.0
+margin_top = 12.0
+margin_right = 115.0
+margin_bottom = 71.0
+custom_styles/panel = SubResource( 1 )
+script = ExtResource( 2 )
+
+[node name="H" type="HBoxContainer" parent="."]
+margin_left = 12.0
+margin_top = 4.0
+margin_right = 179.0
+margin_bottom = 55.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 8
+
+[node name="MarginContainer" type="MarginContainer" parent="H"]
+margin_right = 42.0
+margin_bottom = 51.0
+
+[node name="TextureRect" type="TextureRect" parent="H/MarginContainer"]
+margin_right = 42.0
+margin_bottom = 51.0
+rect_min_size = Vector2( 42, 50 )
+size_flags_stretch_ratio = 3.76
+texture = ExtResource( 3 )
+expand = true
+stretch_mode = 6
+
+[node name="Label" type="Label" parent="H/MarginContainer/TextureRect"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -40.0
+margin_top = -43.0
+margin_right = 1.0
+custom_fonts/font = SubResource( 3 )
+text = "0"
+align = 2
+valign = 2
+autowrap = true
+clip_text = true
+
+[node name="Label" type="Label" parent="H"]
+margin_left = 50.0
+margin_top = 4.0
+margin_right = 167.0
+margin_bottom = 46.0
+custom_fonts/font = SubResource( 2 )
+text = "Name"
+valign = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 5 )
+anims/fade = SubResource( 4 )

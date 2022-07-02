@@ -27,12 +27,13 @@ func _on_Unobtainium_changed(new_amount: int) -> void:
 
 func format_number(number: int) -> String:
 	var num_digits := str(number).length()
+	# warning-ignore:integer_division
 	var magnitude = (num_digits - 1) / 3
-	
+
 	# less than 1000
 	if magnitude < 1:
 		return str(number)
-	
+
 	var number_names := [
 		"",
 		"Thousand",

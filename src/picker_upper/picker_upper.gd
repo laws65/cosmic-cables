@@ -12,5 +12,8 @@ func _physics_process(_delta: float) -> void:
 			continue
 
 		var item := ground_item.get_item_representing() as Item
-		ship.quick_add_to_inventory(item)
-		ground_item.pickup()
+		var successfully_added := ship.quick_add_to_inventory(item)
+		if successfully_added:
+			ground_item.pickup()
+			if ship is Player:
+				SignalBus.emit_signal("player_item_pickup", ground_item.get_item_representing())

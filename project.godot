@@ -270,7 +270,7 @@ window/stretch/aspect="expand"
 
 [editor_plugins]
 
-enabled=PoolStringArray(  )
+enabled=PoolStringArray( "res://addons/imrp/plugin.cfg" )
 
 [importer_defaults]
 

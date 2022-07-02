@@ -22,6 +22,11 @@ var storage_size: int = 16
 
 var health := 3.0
 
+enum {
+	MODULE = 1,
+	GUN = 2,
+	RESOURCE = 4,
+}
 
 func _ready() -> void:
 	modules.resize(modules_amount)
@@ -101,7 +106,7 @@ func quick_add_to_inventory(item: Item) -> bool:
 		return false
 
 	# if resource
-	if item.type & 4 > 0:
+	if item.type & RESOURCE > 0:
 		Game.add_unobtainium(item.level)
 		return true
 
@@ -109,19 +114,19 @@ func quick_add_to_inventory(item: Item) -> bool:
 	var target_index: int
 
 	# if doesn't have gun and is gun equip it
-	if item.type & 2 > 0 and not has_gun():
+	if item.type & GUN > 0 and not has_gun():
 		target_array = gun_slot
 		target_index = 0
 
 	# if is module attempt to add it
-	elif item.type & 1 > 0:
+	elif item.type & MODULE > 0:
 		var modules_index := find_empty_slot_in_array(modules)
 		if modules_index >= 0:
 			target_array = modules
 			target_index = modules_index
 
-	# if has room in storage add it
-	else:
+	if not target_array:
+		# if has room in storage add it
 		var storage_index := find_empty_slot_in_array(storage)
 		if storage_index >= 0:
 			target_array = storage
@@ -130,6 +135,7 @@ func quick_add_to_inventory(item: Item) -> bool:
 	if target_array:
 		add_to_inventory(target_array, target_index, item)
 		return true
+
 	return false
 
 
@@ -141,3 +147,24 @@ func take_damage(damage: float) -> void:
 	var old_health := health
 	health -= damage
 	emit_signal("health_changed", health, old_health)
+
+
+func can_fit_item(item: Item) -> bool:
+	if not is_instance_valid(item):
+		return false
+
+	if item.type & RESOURCE > 0:
+		return true
+
+	if find_empty_slot_in_array(storage) >= 0:
+		return true
+
+	if (item.type & GUN > 0
+	and find_empty_slot_in_array(gun_slot) >= 0):
+		return true
+
+	if (item.type & MODULE > 0
+	and find_empty_slot_in_array(modules) >= 0):
+		return true
+
+	return false
