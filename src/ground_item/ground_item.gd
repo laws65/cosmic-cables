@@ -53,3 +53,9 @@ func get_mass() -> float:
 # For collision with asteroid
 func get_elasticity() -> float:
 	return 1.0
+
+
+func set_pickup_delay(delay: float) -> void:
+	allow_pickup = false
+	$AllowPickupDelay.stop()
+	$AllowPickupDelay.start(delay)

@@ -95,7 +95,7 @@ func mine(miner: Node2D, clip_poly: Polygon2D) -> void:
 		var points_amount := possible_points.size()
 		possible_points.shuffle()
 
-		var number_of_asteroid_chunks = area / 1000
+		var number_of_asteroid_chunks = area * 0.0005
 		for _i in number_of_asteroid_chunks:
 			if not is_queued_for_deletion():
 				yield(get_tree(), "idle_frame")
@@ -103,8 +103,9 @@ func mine(miner: Node2D, clip_poly: Polygon2D) -> void:
 			var offset: Vector2 = possible_points[randi() % points_amount]
 			offset = offset.linear_interpolate(clip_centre, rand_range(0.3, 1.0))
 			rs.global_position = to_global(offset)
-			rs.allow_pickup = true
+			rs.set_pickup_delay(0.5)
 			rs.rotation = randi()
+			rs.velocity = rs.transform.x * rand_range(1, 50)
 			rs.item_representing.level = area
 
 

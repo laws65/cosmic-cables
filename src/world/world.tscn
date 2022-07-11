@@ -26,19 +26,6 @@ build_zoom = Vector2( 0.6, 0.6 )
 
 [node name="UI" parent="CanvasLayer" instance=ExtResource( 10 )]
 
-[node name="GroundItem" parent="." instance=ExtResource( 3 )]
-position = Vector2( 351, 318 )
-
-[node name="GroundItem2" parent="." instance=ExtResource( 3 )]
-position = Vector2( 351, 318 )
-
-[node name="GroundItem3" parent="." instance=ExtResource( 3 )]
-position = Vector2( 351, 318 )
-
-[node name="GroundItem4" parent="." instance=ExtResource( 3 )]
-position = Vector2( 266, 330 )
-item_representing = ExtResource( 7 )
-
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 visible = false
 
@@ -55,3 +42,18 @@ motion_scale = Vector2( 0.1, 0.1 )
 [node name="MiddleBackground" type="Sprite" parent="ParallaxBackground/ParallaxLayer2"]
 position = Vector2( 252, 388 )
 texture = ExtResource( 6 )
+
+[node name="GroundItems" type="Node2D" parent="."]
+
+[node name="GroundItem" parent="GroundItems" instance=ExtResource( 3 )]
+position = Vector2( 351, 318 )
+
+[node name="GroundItem2" parent="GroundItems" instance=ExtResource( 3 )]
+position = Vector2( 351, 318 )
+
+[node name="GroundItem3" parent="GroundItems" instance=ExtResource( 3 )]
+position = Vector2( 351, 318 )
+
+[node name="GroundItem4" parent="GroundItems" instance=ExtResource( 3 )]
+position = Vector2( 266, 330 )
+item_representing = ExtResource( 7 )

@@ -9,6 +9,10 @@ func _ready() -> void:
 
 
 func _on_Player_pickup_item(new_item: Item) -> void:
+	# no popup for resources
+	if new_item.type & 4 > 0:
+		return
+
 	for popup in get_children():
 		if popup.items.front().name == new_item.name:
 			popup.set_items(popup.items + [new_item])

@@ -20,9 +20,9 @@
 [ext_resource path="res://src/ui/build/combat_mode_icon.png" type="Texture" id=18]
 [ext_resource path="res://assets/hf-free-complete/matchup-pro-v1.1/MatchupPro.ttf" type="DynamicFontData" id=19]
 [ext_resource path="res://src/ui/build/build_toolbar.gd" type="Script" id=20]
-[ext_resource path="res://src/buildings/core/core.png" type="Texture" id=21]
 [ext_resource path="res://src/ui/item_added_popup/item_popup_container.gd" type="Script" id=22]
 [ext_resource path="res://src/ui/item_added_popup/item_added_popup.tscn" type="PackedScene" id=23]
+[ext_resource path="res://src/ui/build/toolbar_item.tscn" type="PackedScene" id=24]
 
 [sub_resource type="StyleBoxFlat" id=14]
 content_margin_left = 12.0
@@ -285,74 +285,36 @@ margin_top = 10.0
 margin_bottom = -10.0
 alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="BuildToolbar/HBoxContainer"]
-margin_right = 128.0
-margin_bottom = 70.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-texture = ExtResource( 21 )
-expand = true
-stretch_mode = 6
+[node name="Slot1" parent="BuildToolbar/HBoxContainer" instance=ExtResource( 24 )]
+margin_right = 111.0
 
-[node name="TextureRect2" type="TextureRect" parent="BuildToolbar/HBoxContainer"]
-margin_left = 132.0
-margin_right = 260.0
-margin_bottom = 70.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-texture = ExtResource( 21 )
-expand = true
-stretch_mode = 6
+[node name="Slot2" parent="BuildToolbar/HBoxContainer" instance=ExtResource( 24 )]
+margin_left = 115.0
+margin_right = 227.0
 
-[node name="TextureRect3" type="TextureRect" parent="BuildToolbar/HBoxContainer"]
-margin_left = 264.0
-margin_right = 392.0
-margin_bottom = 70.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-texture = ExtResource( 21 )
-expand = true
-stretch_mode = 6
+[node name="Slot3" parent="BuildToolbar/HBoxContainer" instance=ExtResource( 24 )]
+margin_left = 231.0
+margin_right = 342.0
 
-[node name="TextureRect4" type="TextureRect" parent="BuildToolbar/HBoxContainer"]
-margin_left = 396.0
-margin_right = 524.0
-margin_bottom = 70.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-texture = ExtResource( 21 )
-expand = true
-stretch_mode = 6
+[node name="Slot4" parent="BuildToolbar/HBoxContainer" instance=ExtResource( 24 )]
+margin_left = 346.0
+margin_right = 458.0
 
-[node name="TextureRect5" type="TextureRect" parent="BuildToolbar/HBoxContainer"]
-margin_left = 528.0
-margin_right = 656.0
-margin_bottom = 70.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-texture = ExtResource( 21 )
-expand = true
-stretch_mode = 6
+[node name="Slot5" parent="BuildToolbar/HBoxContainer" instance=ExtResource( 24 )]
+margin_left = 462.0
+margin_right = 573.0
 
-[node name="TextureRect6" type="TextureRect" parent="BuildToolbar/HBoxContainer"]
-margin_left = 660.0
-margin_right = 788.0
-margin_bottom = 70.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-texture = ExtResource( 21 )
-expand = true
-stretch_mode = 6
+[node name="Slot6" parent="BuildToolbar/HBoxContainer" instance=ExtResource( 24 )]
+margin_left = 577.0
+margin_right = 689.0
 
-[node name="TextureRect7" type="TextureRect" parent="BuildToolbar/HBoxContainer"]
-margin_left = 792.0
+[node name="Slot7" parent="BuildToolbar/HBoxContainer" instance=ExtResource( 24 )]
+margin_left = 693.0
+margin_right = 804.0
+
+[node name="Slot8" parent="BuildToolbar/HBoxContainer" instance=ExtResource( 24 )]
+margin_left = 808.0
 margin_right = 920.0
-margin_bottom = 70.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-texture = ExtResource( 21 )
-expand = true
-stretch_mode = 6
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="BuildToolbar"]
 anims/RESET = SubResource( 13 )
