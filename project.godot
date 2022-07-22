@@ -19,6 +19,16 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/player/asteroid_pusher.gd"
 }, {
+"base": "Area2D",
+"class": "Building",
+"language": "GDScript",
+"path": "res://src/buildings/building.gd"
+}, {
+"base": "Resource",
+"class": "BuildingInfo",
+"language": "GDScript",
+"path": "res://src/buildings/building_info.gd"
+}, {
 "base": "Node",
 "class": "CullBulletAfterTime",
 "language": "GDScript",
@@ -203,10 +213,17 @@ _global_script_classes=[ {
 "class": "SquishOnShoot",
 "language": "GDScript",
 "path": "res://src/ship/squish_on_shoot.gd"
+}, {
+"base": "TextureRect",
+"class": "ToolbarItem",
+"language": "GDScript",
+"path": "res://src/ui/build/toolbar_item.gd"
 } ]
 _global_script_class_icons={
 "Asteroid": "",
 "AsteroidPusher": "",
+"Building": "",
+"BuildingInfo": "",
 "CullBulletAfterTime": "",
 "GroundItem": "",
 "Gun": "",
@@ -243,7 +260,8 @@ _global_script_class_icons={
 "Ship": "",
 "ShipNavigation": "",
 "SpeedModule": "",
-"SquishOnShoot": ""
+"SquishOnShoot": "",
+"ToolbarItem": ""
 }
 
 [application]
@@ -256,6 +274,7 @@ config/icon="res://icon.png"
 
 Game="*res://src/singletons/game.gd"
 SignalBus="*res://src/singletons/signalbus.gd"
+Helpers="*res://src/helpers.gd"
 
 [debug]
 
@@ -348,6 +367,11 @@ toggle_build_mode={
 "deadzone": 0.5,
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":66,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
 , Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":1,"pressure":0.0,"pressed":false,"script":null)
+ ]
+}
+place={
+"deadzone": 0.5,
+"events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":1,"pressed":false,"doubleclick":false,"script":null)
  ]
 }
 

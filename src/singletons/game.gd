@@ -18,3 +18,9 @@ func menus_visible() -> bool:
 func add_unobtainium(amount: int) -> void:
 	unobtainium_amount += amount
 	emit_signal("unobtainium_changed", unobtainium_amount)
+
+
+func add_message_popup(message: String) -> void:
+	var message_popup_instance = load("res://src/ui/message_popup/message_popup.tscn").instance()
+	message_popup_instance.text = message
+	get_node("/root/World/CanvasLayer/UI/MessagePopupContainer").add_child(message_popup_instance)

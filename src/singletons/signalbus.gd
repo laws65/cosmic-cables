@@ -12,3 +12,6 @@ func _on_Player_mode_changed(new_mode: int) -> void:
 
 # warning-ignore:unused_signal
 signal player_item_pickup(item)
+
+# warning-ignore:unused_signal
+signal toolbar_item_building_setup(toolbar_item)

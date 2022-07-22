@@ -1,6 +1,9 @@
 extends Node2D
 
+
+export var build_effect: PackedScene
 var asteroid = load("res://src/asteroid/asteroid.tscn")
+
 
 func _ready() -> void:
 	randomize()
@@ -20,6 +23,7 @@ func _ready() -> void:
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("test_reload"):
+		Game.unobtainium_amount = 0
 		get_tree().reload_current_scene()
 
 
@@ -37,3 +41,17 @@ func throw_ground_item(ground_item: GroundItem) -> void:
 
 	ground_item.global_position = $Camera2D.global_position
 	ground_item.velocity = throw_velocity
+
+
+func build_building(building_info: BuildingInfo, pos: Vector2) -> void:
+	Game.add_unobtainium(-building_info.price)
+	var scene_path := "res://src/buildings/{name}/{name}.tscn".format({"name": building_info.building_name.replace(" ", "_").to_lower()})
+	var building_instance = load(scene_path).instance() as Building
+	building_instance.global_position = pos
+	add_child(building_instance)
+
+	var cha_ching = load("res://src/ui/build/cha_ching.tscn").instance()
+	cha_ching.set_value(-building_info.price)
+	cha_ching.rect_position.y -= 1000
+	cha_ching.rect_position = pos - Vector2(0, 50)
+	add_child(cha_ching)

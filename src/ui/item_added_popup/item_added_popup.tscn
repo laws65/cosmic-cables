@@ -1,9 +1,9 @@
 [gd_scene load_steps=10 format=2]
 
-[ext_resource path="res://assets/hf-free-complete/futile-pro-v1/FutilePro.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://assets/fonts/FutilePro.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://src/ui/item_added_popup/item_added_popup.gd" type="Script" id=2]
 [ext_resource path="res://src/asteroid/asteroid_chunk.png" type="Texture" id=3]
-[ext_resource path="res://assets/hf-free-complete/matchup-pro-v1.1/MatchupPro.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://assets/fonts/MatchupPro.ttf" type="DynamicFontData" id=4]
 
 [sub_resource type="StyleBoxFlat" id=1]
 content_margin_left = 12.0

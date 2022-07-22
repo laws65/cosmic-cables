@@ -14,7 +14,7 @@ var lerp_speed := 30.0
 var safe_spot = 0.2
 var offset_lerp_speed := 15.0
 var shake_offset := Vector2.ZERO
-var zoom_lerp_speed := 10.0
+var zoom_lerp_speed := 4.0
 export var build_zoom: Vector2
 onready var default_zoom := zoom
 
