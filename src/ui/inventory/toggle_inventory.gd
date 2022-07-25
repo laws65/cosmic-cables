@@ -9,6 +9,17 @@ onready var held_item_display := get_node(held_item_display_path) as Control
 
 onready var animation_player := get_node("AnimationPlayer") as AnimationPlayer
 
+enum Mode {
+		NORMAL,
+		BUILD,
+	}
+
+var player_mode = Mode.NORMAL
+
+
+func _ready() -> void:
+	SignalBus.connect("player_mode_changed", self, "_on_Player_mode_changed")
+
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("open_inventory"):
@@ -36,3 +47,7 @@ func _on_UI_gui_input(event: InputEvent) -> void:
 			held_item_display.set_item(null)
 		else:
 			animation_player.play("fade_out")
+
+
+func _on_Player_mode_changed(new_mode: int) -> void:
+	player_mode = new_mode

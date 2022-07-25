@@ -34,7 +34,6 @@ func _on_Toolbar_item_unhovered(_toolbar_item: ToolbarItem) -> void:
 func _on_Toolbar_item_clicked(toolbar_item: ToolbarItem) -> void:
 	if toolbar_item.unlocked:
 		$Tooltip.hide()
-		$BuildGrid.show()
 		SignalBus.emit_signal("toolbar_item_building_setup", toolbar_item.building_info)
 
 
@@ -43,5 +42,6 @@ func _on_Player_mode_changed(new_mode: int) -> void:
 		animation_player.play("slide")
 	elif new_mode == Mode.NORMAL:
 		animation_player.play_backwards("slide")
-		$BuildGrid.hide()
+		SignalBus.emit_signal("toolbar_item_building_setup", null)
+
 	mode = new_mode

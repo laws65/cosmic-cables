@@ -8,9 +8,9 @@ var asteroid = load("res://src/asteroid/asteroid.tscn")
 func _ready() -> void:
 	randomize()
 
-	$Camera2D.target = $Player
+	$Camera2D.target = $YSort/Player
 
-	$CanvasLayer/UI/Inventory.set_ship($Player)
+	$CanvasLayer/UI/Inventory.set_ship($YSort/Player)
 
 	for _i in 20:
 		var asteroid_instance = asteroid.instance()

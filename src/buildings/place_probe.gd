@@ -36,8 +36,10 @@ func build_display_for(building: BuildingInfo) -> void:
 		set_process_input(true)
 	else:
 		hide()
+		set_physics_process(false)
+		set_process_input(false)
 		return
-	$Sprite.texture = building.icon
+	$Sprite.texture = building.display
 	var texture_size := Vector2(building.icon.get_width(), building.icon.get_height())
 	$CollisionShape2D.shape.extents = texture_size / 2
 

@@ -3,7 +3,7 @@
 [ext_resource path="res://src/ui/build/toolbar_item_background.png" type="Texture" id=1]
 [ext_resource path="res://src/ui/build/toolbar_item.gd" type="Script" id=2]
 [ext_resource path="res://src/buildings/core/core.tres" type="Resource" id=3]
-[ext_resource path="res://src/buildings/core/core.png" type="Texture" id=4]
+[ext_resource path="res://src/buildings/core/core_icon.png" type="Texture" id=4]
 [ext_resource path="res://src/ui/build/hide_locked_buildings.gdshader" type="Shader" id=5]
 
 [sub_resource type="ShaderMaterial" id=2]
@@ -35,7 +35,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 texture = ExtResource( 4 )
 expand = true
-stretch_mode = 4
+stretch_mode = 6
 
 [connection signal="gui_input" from="BuildingIcon" to="." method="_on_BuildingIcon_gui_input"]
 [connection signal="mouse_entered" from="BuildingIcon" to="." method="_on_BuildingIcon_mouse_entered"]

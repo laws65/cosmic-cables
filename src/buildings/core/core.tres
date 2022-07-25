@@ -1,6 +1,7 @@
-[gd_resource type="Resource" load_steps=3 format=2]
+[gd_resource type="Resource" load_steps=4 format=2]
 
 [ext_resource path="res://src/buildings/building_info.gd" type="Script" id=1]
+[ext_resource path="res://src/buildings/core/core_icon.png" type="Texture" id=2]
 [ext_resource path="res://src/buildings/core/core.png" type="Texture" id=3]
 
 [resource]
@@ -8,4 +9,5 @@ script = ExtResource( 1 )
 building_name = "Core"
 description = "The foundation of your base"
 price = 10000
-icon = ExtResource( 3 )
+icon = ExtResource( 2 )
+display = ExtResource( 3 )
