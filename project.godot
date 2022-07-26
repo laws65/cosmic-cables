@@ -34,6 +34,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/guns/cull_bullet.gd"
 }, {
+"base": "Module",
+"class": "FortuneModule",
+"language": "GDScript",
+"path": "res://src/modules/fortune/fortune_module.gd"
+}, {
 "base": "KinematicBody2D",
 "class": "GroundItem",
 "language": "GDScript",
@@ -225,6 +230,7 @@ _global_script_class_icons={
 "Building": "",
 "BuildingInfo": "",
 "CullBulletAfterTime": "",
+"FortuneModule": "",
 "GroundItem": "",
 "Gun": "",
 "InventorySlot": "",

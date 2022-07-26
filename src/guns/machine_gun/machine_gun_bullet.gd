@@ -6,6 +6,9 @@ var team: int
 var speed = 300
 var damage = 0.1
 
+var shooter: Ship
+
+
 func _ready() -> void:
 	$Fired.emitting = true
 

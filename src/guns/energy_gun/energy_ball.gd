@@ -6,6 +6,8 @@ var team: int
 var speed = 150
 var damage = 0.1
 
+var shooter: Ship
+
 func _ready() -> void:
 	$Tween.interpolate_property(self, "speed", speed, speed*10, 1.0, Tween.TRANS_EXPO, Tween.EASE_IN)
 	$Tween.interpolate_property(self, "scale", Vector2(0.8, 0.8), Vector2.ONE, 0.5, Tween.TRANS_BOUNCE, Tween.EASE_IN_OUT)

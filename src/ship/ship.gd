@@ -28,7 +28,12 @@ enum {
 	RESOURCE = 4,
 }
 
+var fortune_multiplier := 1.0
+
+
 func _ready() -> void:
+	connect("module_added", self, "_on_module_added")
+	connect("module_removed", self, "_on_module_removed")
 	modules.resize(modules_amount)
 	storage.resize(storage_size)
 
@@ -168,3 +173,19 @@ func can_fit_item(item: Item) -> bool:
 		return true
 
 	return false
+
+
+func _on_module_added(module: Module) -> void:
+	if not is_instance_valid(module):
+		return
+
+	if module is FortuneModule:
+		fortune_multiplier += 0.5
+
+
+func _on_module_removed(module: Module) -> void:
+	if not is_instance_valid(module):
+		return
+
+	if module is FortuneModule:
+		fortune_multiplier -= 0.5

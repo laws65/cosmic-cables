@@ -1,0 +1,13 @@
+[gd_resource type="Resource" load_steps=3 format=2]
+
+[ext_resource path="res://src/item/item.gd" type="Script" id=1]
+[ext_resource path="res://src/modules/fortune/fortune_module.png" type="Texture" id=2]
+
+[resource]
+script = ExtResource( 1 )
+type = 1
+name = "Fortune"
+description = "Increases mining yields by 50%"
+level = 3
+icon = ExtResource( 2 )
+scene_path = "res://src/modules/fortune/fortune_module.tscn"
