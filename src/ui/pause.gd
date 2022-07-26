@@ -3,6 +3,7 @@ extends ColorRect
 
 func _ready() -> void:
 	unpause()
+	close_settings()
 
 
 func pause() -> void:
@@ -34,8 +35,10 @@ func close_settings() -> void:
 	$Settings.hide()
 
 
-func _input(event: InputEvent) -> void:
+func _unhandled_key_input(event: InputEventKey) -> void:
 	if event.is_action_pressed("pause"):
+		if get_node("/root/World/CanvasLayer/UI/Inventory").visible:
+			return
 		if is_paused():
 			if settings_open():
 				close_settings()
