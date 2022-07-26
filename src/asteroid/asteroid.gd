@@ -22,6 +22,8 @@ var _mass: float
 
 
 func _ready() -> void:
+	move_and_slide(Vector2.ZERO)
+
 	if Engine.is_editor_hint():
 		return
 
@@ -106,7 +108,7 @@ func mine(miner: Node2D, clip_poly: Polygon2D) -> void:
 			rs.set_pickup_delay(0.5)
 			rs.rotation = randi()
 			rs.velocity = rs.transform.x * rand_range(1, 50)
-			rs.item_representing.level = area
+			rs.item_representing.level = area / number_of_asteroid_chunks
 
 
 func _get_relative_clip_points(miner: Node2D, clip_poly: Polygon2D) -> PoolVector2Array:
