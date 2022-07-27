@@ -12,7 +12,6 @@ func pause() -> void:
 
 
 func unpause(dont_hide = false) -> void:
-
 	get_tree().paused = false
 
 	if not dont_hide:

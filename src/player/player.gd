@@ -21,7 +21,8 @@ func _ready() -> void:
 
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("toggle_build_mode"):
+	if (event.is_action_pressed("toggle_build_mode")
+	and not get_node("/root/World/CanvasLayer/UI/Inventory").visible):
 		if mode == Mode.NORMAL:
 			set_mode(Mode.BUILD)
 		else:

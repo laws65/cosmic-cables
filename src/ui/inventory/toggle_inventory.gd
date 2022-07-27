@@ -23,6 +23,8 @@ func _ready() -> void:
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("open_inventory"):
+		if player_mode != Mode.NORMAL:
+			return
 		if inventory.visible:
 			if not held_item_display.has_item():
 				animation_player.play("fade_out")
