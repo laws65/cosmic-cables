@@ -1,0 +1,13 @@
+[gd_resource type="Resource" load_steps=3 format=2]
+
+[ext_resource path="res://src/item/item.gd" type="Script" id=1]
+[ext_resource path="res://src/modules/power/power_module.png" type="Texture" id=2]
+
+[resource]
+script = ExtResource( 1 )
+type = 1
+name = "Power"
+description = "Increases damage of your weapons"
+level = 2
+icon = ExtResource( 2 )
+scene_path = "res://src/modules/power/power_module.tscn"
