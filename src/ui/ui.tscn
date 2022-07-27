@@ -109,6 +109,7 @@ font_data = ExtResource( 24 )
 [node name="UI" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+mouse_filter = 1
 script = ExtResource( 2 )
 
 [node name="Inventory" parent="." instance=ExtResource( 1 )]
@@ -117,8 +118,11 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_top = -550.0
-margin_bottom = -10.0
+margin_left = -350.0
+margin_top = -910.0
+margin_right = 350.0
+margin_bottom = -370.0
+mouse_filter = 1
 
 [node name="HeldItem" parent="." instance=ExtResource( 7 )]
 
@@ -212,6 +216,7 @@ margin_left = -126.0
 margin_top = -128.0
 margin_right = -18.0
 margin_bottom = -20.0
+mouse_filter = 0
 script = ExtResource( 17 )
 build_icon = ExtResource( 16 )
 combat_icon = ExtResource( 18 )
@@ -234,6 +239,7 @@ expand = true
 stretch_mode = 6
 
 [node name="BuildToolbar" parent="." instance=ExtResource( 20 )]
+mouse_filter = 1
 
 [node name="ItemPopupContainer" type="VBoxContainer" parent="."]
 anchor_bottom = 1.0
@@ -259,6 +265,7 @@ pause_mode = 2
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
+mouse_filter = 1
 color = Color( 0, 0, 0, 0.196078 )
 script = ExtResource( 21 )
 

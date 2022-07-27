@@ -406,6 +406,7 @@ pause={
 2d_physics/layer_4="item"
 2d_physics/layer_5="ship"
 2d_physics/layer_6="building"
+2d_physics/layer_7="block_building_placement"
 
 [physics]
 

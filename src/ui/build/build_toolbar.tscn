@@ -1,7 +1,8 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://assets/fonts/small_pixel.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://src/ui/build/tooltip.gd" type="Script" id=2]
+[ext_resource path="res://src/buildings/cabling/cabling.tres" type="Resource" id=3]
 [ext_resource path="res://src/ui/build/toolbar_item.tscn" type="PackedScene" id=5]
 [ext_resource path="res://src/ui/build/build_toolbar.gd" type="Script" id=7]
 
@@ -82,10 +83,12 @@ alignment = 1
 
 [node name="Slot1" parent="H" instance=ExtResource( 5 )]
 margin_right = 111.0
+mouse_filter = 0
 
 [node name="Slot2" parent="H" instance=ExtResource( 5 )]
 margin_left = 115.0
 margin_right = 227.0
+building_info = ExtResource( 3 )
 
 [node name="Slot3" parent="H" instance=ExtResource( 5 )]
 margin_left = 231.0

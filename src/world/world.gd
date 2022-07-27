@@ -45,10 +45,16 @@ func throw_ground_item(ground_item: GroundItem) -> void:
 
 func build_building(building_info: BuildingInfo, pos: Vector2) -> void:
 	Game.add_unobtainium(-building_info.price)
-	var scene_path := "res://src/buildings/{name}/{name}.tscn".format({"name": building_info.building_name.replace(" ", "_").to_lower()})
-	var building_instance = load(scene_path).instance() as Building
-	building_instance.global_position = pos
-	add_child(building_instance)
+
+	if building_info.building_name != "Cabling":
+		var scene_path := "res://src/buildings/{name}/{name}.tscn".format({"name": building_info.building_name.replace(" ", "_").to_lower()})
+		var building_instance = load(scene_path).instance() as Building
+		building_instance.global_position = pos
+		add_child(building_instance)
+	else:
+		var tile_pos := $TileMap.world_to_map(pos) as Vector2
+		$TileMap.set_cellv(tile_pos, 0)
+		$TileMap.update_bitmask_area(tile_pos)
 
 	var cha_ching = load("res://src/ui/build/cha_ching.tscn").instance()
 	cha_ching.set_value(-building_info.price)

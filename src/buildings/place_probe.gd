@@ -12,7 +12,7 @@ func _ready() -> void:
 	SignalBus.connect("toolbar_item_building_setup", self, "build_display_for")
 
 
-func _input(event: InputEvent) -> void:
+func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("place"):
 		if can_build():
 			owner.build_building(building_info, global_position)
@@ -59,6 +59,8 @@ func overlapping() -> bool:
 	$Line2D.hide()
 	var overlapping := get_overlapping_areas() + get_overlapping_bodies() as Array
 	for i in overlapping:
+		if i is TileMap:
+			continue
 		$Line2D.points[1] = $Line2D.to_local(i.global_position)
 		$Line2D.show()
 		break
