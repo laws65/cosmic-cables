@@ -4,9 +4,10 @@ extends HBoxContainer
 var display_health := 3.0
 var target_health := 3.0
 var health := 3.0
-
+var max_health := 3.0
 
 func _ready() -> void:
+	set_max_health(max_health)
 	SignalBus.connect("player_health_changed", self, "_on_Player_health_changed")
 
 
@@ -37,3 +38,19 @@ func _on_Player_health_changed(new_health: float, old_health: float) -> void:
 	# health goes down
 	if difference < 0:
 		take_damage(-difference)
+
+
+func set_max_health(num: int) -> void:
+	if get_child_count() == num:
+		return
+
+	while get_child_count() > num:
+		var c := get_child(0)
+		c.queue_free()
+		remove_child(c)
+
+	while get_child_count() < num:
+		var instance = load("res://src/ui/health/health_cell.tscn").instance()
+		add_child(instance)
+
+	update_health_display()
