@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://src/player/player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/buildings/place_probe.tscn" type="PackedScene" id=2]
@@ -6,11 +6,10 @@
 [ext_resource path="res://src/world/camera.gd" type="Script" id=4]
 [ext_resource path="res://src/world/world.gd" type="Script" id=5]
 [ext_resource path="res://src/ui/build/cha_ching.tscn" type="PackedScene" id=6]
-[ext_resource path="res://src/guns/energy_gun/energy_gun.tres" type="Resource" id=7]
+[ext_resource path="res://src/modules/energy/energy_module.tres" type="Resource" id=7]
 [ext_resource path="res://src/effects/background.tscn" type="PackedScene" id=8]
 [ext_resource path="res://src/ui/build/build_grid.tscn" type="PackedScene" id=9]
 [ext_resource path="res://src/ui/ui.tscn" type="PackedScene" id=10]
-[ext_resource path="res://src/modules/fortune/fortune_module.tres" type="Resource" id=11]
 
 [node name="World" type="Node2D"]
 script = ExtResource( 5 )
@@ -36,23 +35,7 @@ build_zoom = Vector2( 0.4, 0.4 )
 [node name="GroundItems" type="Node2D" parent="."]
 
 [node name="GroundItem" parent="GroundItems" instance=ExtResource( 3 )]
-position = Vector2( 351, 318 )
-item_representing = ExtResource( 11 )
-
-[node name="GroundItem5" parent="GroundItems" instance=ExtResource( 3 )]
-position = Vector2( 351, 318 )
-item_representing = ExtResource( 11 )
-
-[node name="GroundItem6" parent="GroundItems" instance=ExtResource( 3 )]
-position = Vector2( 351, 318 )
-item_representing = ExtResource( 11 )
-
-[node name="GroundItem7" parent="GroundItems" instance=ExtResource( 3 )]
-position = Vector2( 351, 318 )
-item_representing = ExtResource( 11 )
-
-[node name="GroundItem8" parent="GroundItems" instance=ExtResource( 3 )]
-position = Vector2( 351, 318 )
+position = Vector2( -140, -128 )
 item_representing = ExtResource( 7 )
 
 [node name="ParallaxBackground" parent="." instance=ExtResource( 8 )]

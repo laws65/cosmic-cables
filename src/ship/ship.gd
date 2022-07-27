@@ -2,6 +2,7 @@ extends KinematicBody2D
 class_name Ship
 
 
+export var is_player := false
 export var team: int = 0
 
 signal inventory_updated(array, slot, item)
@@ -29,6 +30,7 @@ enum {
 }
 
 var fortune_multiplier := 1.0
+var maximum_health := 3.0
 
 
 func _ready() -> void:
@@ -182,6 +184,9 @@ func _on_module_added(module: Module) -> void:
 	if module is FortuneModule:
 		fortune_multiplier += 0.5
 
+	elif module is EnergyModule:
+		module.apply(self)
+
 
 func _on_module_removed(module: Module) -> void:
 	if not is_instance_valid(module):
@@ -189,3 +194,6 @@ func _on_module_removed(module: Module) -> void:
 
 	if module is FortuneModule:
 		fortune_multiplier -= 0.5
+
+	elif module is EnergyModule:
+		module.remove(self)

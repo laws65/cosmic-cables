@@ -23,6 +23,7 @@ void fragment() {
 }"
 
 [sub_resource type="ShaderMaterial" id=6]
+resource_local_to_scene = true
 shader = SubResource( 5 )
 shader_param/health_fill = 1.0
 shader_param/health_damage = 0.0

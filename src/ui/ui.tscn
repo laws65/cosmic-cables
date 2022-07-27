@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=2]
+[gd_scene load_steps=39 format=2]
 
 [ext_resource path="res://src/ui/inventory/inventory.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/ui/ui.gd" type="Script" id=2]
@@ -11,7 +11,9 @@
 [ext_resource path="res://assets/fonts/FutilePro.ttf" type="DynamicFontData" id=9]
 [ext_resource path="res://src/ui/resource_counter.gd" type="Script" id=10]
 [ext_resource path="res://src/asteroid/asteroid_chunk.png" type="Texture" id=11]
+[ext_resource path="res://src/ui/health/health_empty.png" type="Texture" id=12]
 [ext_resource path="res://src/ui/health/health_display.gd" type="Script" id=13]
+[ext_resource path="res://src/ui/health/health_transition.png" type="Texture" id=14]
 [ext_resource path="res://src/ui/build/build_mode_icon.png" type="Texture" id=16]
 [ext_resource path="res://src/ui/mode_indicator.gd" type="Script" id=17]
 [ext_resource path="res://src/ui/build/combat_mode_icon.png" type="Texture" id=18]
@@ -39,6 +41,48 @@ anti_aliasing = false
 [sub_resource type="DynamicFont" id=2]
 size = 48
 font_data = ExtResource( 9 )
+
+[sub_resource type="Shader" id=5]
+code = "shader_type canvas_item;
+
+uniform float health_fill;
+uniform float health_damage;
+uniform sampler2D empty_tex;
+uniform sampler2D transition_tex;
+
+void fragment() {
+	if (1.0 - UV.y > health_fill) {
+		COLOR = texture(empty_tex, UV);
+	} else if (UV.y > health_damage) {
+		COLOR = texture(TEXTURE, UV);
+	} else {
+		COLOR = texture(transition_tex, UV);
+	}
+}"
+
+[sub_resource type="ShaderMaterial" id=23]
+resource_local_to_scene = true
+shader = SubResource( 5 )
+shader_param/health_fill = 1.0
+shader_param/health_damage = 0.0
+shader_param/empty_tex = ExtResource( 12 )
+shader_param/transition_tex = ExtResource( 14 )
+
+[sub_resource type="ShaderMaterial" id=24]
+resource_local_to_scene = true
+shader = SubResource( 5 )
+shader_param/health_fill = 1.0
+shader_param/health_damage = 0.0
+shader_param/empty_tex = ExtResource( 12 )
+shader_param/transition_tex = ExtResource( 14 )
+
+[sub_resource type="ShaderMaterial" id=25]
+resource_local_to_scene = true
+shader = SubResource( 5 )
+shader_param/health_fill = 1.0
+shader_param/health_damage = 0.0
+shader_param/empty_tex = ExtResource( 12 )
+shader_param/transition_tex = ExtResource( 14 )
 
 [sub_resource type="DynamicFont" id=9]
 size = 32
@@ -145,15 +189,18 @@ grow_vertical = 0
 script = ExtResource( 13 )
 
 [node name="TextureRect" parent="HealthDisplay" instance=ExtResource( 25 )]
+material = SubResource( 23 )
 margin_right = 32.0
 margin_bottom = 64.0
 
 [node name="TextureRect2" parent="HealthDisplay" instance=ExtResource( 25 )]
+material = SubResource( 24 )
 margin_left = 36.0
 margin_right = 68.0
 margin_bottom = 64.0
 
 [node name="TextureRect3" parent="HealthDisplay" instance=ExtResource( 25 )]
+material = SubResource( 25 )
 margin_left = 72.0
 margin_right = 104.0
 margin_bottom = 64.0
@@ -211,6 +258,7 @@ alignment = 2
 
 [node name="PauseScreen" type="ColorRect" parent="."]
 pause_mode = 2
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 0, 0, 0, 0.196078 )
@@ -279,6 +327,7 @@ custom_styles/normal = SubResource( 22 )
 text = "Save and Quit"
 
 [node name="Settings" type="Control" parent="PauseScreen"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 
