@@ -293,6 +293,7 @@ config/icon="res://icon.png"
 Game="*res://src/singletons/game.gd"
 SignalBus="*res://src/singletons/signalbus.gd"
 Helpers="*res://src/helpers.gd"
+Settings="*res://src/singletons/settings.gd"
 
 [debug]
 

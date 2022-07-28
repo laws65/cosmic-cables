@@ -52,7 +52,6 @@ func _handle_camera_shake(delta: float) -> void:
 		_shake()
 
 
-
 func _get_desired_position() -> Vector2:
 	if is_instance_valid(target):
 		return target.position
