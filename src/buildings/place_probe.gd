@@ -12,7 +12,7 @@ func _ready() -> void:
 	SignalBus.connect("toolbar_item_building_setup", self, "build_display_for")
 
 
-func _unhandled_input(event: InputEvent) -> void:
+func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("place"):
 		if can_build():
 			owner.build_building(building_info, global_position)
