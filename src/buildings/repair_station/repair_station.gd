@@ -11,5 +11,6 @@ func _on_Area2D_body_exited(body: Node) -> void:
 
 
 func _on_Button_button_up() -> void:
+	print("pressed")
 	var player := get_tree().get_nodes_in_group("player").front() as Player
 	player.full_heal()

@@ -61,3 +61,11 @@ func build_building(building_info: BuildingInfo, pos: Vector2) -> void:
 	cha_ching.rect_position.y -= 1000
 	cha_ching.rect_position = pos - Vector2(0, 50)
 	add_child(cha_ching)
+
+
+func Test() -> void:
+	print("yeaaa")
+
+
+func _on_Button_pressed() -> void:
+	Test()
