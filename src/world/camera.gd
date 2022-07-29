@@ -96,7 +96,8 @@ func _soldat_style_camera_offsetting(delta: float) -> void:
 	offset_v = offset.y
 
 	# apply shake offset
-	offset += shake_offset
+	if not Settings.get_setting("disable_screen_shake"):
+		offset += shake_offset
 
 
 func add_trauma(amount):
