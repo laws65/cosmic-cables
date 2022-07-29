@@ -120,9 +120,3 @@ color = Color( 0, 0, 0, 1 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/TopBorder/StaticBody2D"]
 position = Vector2( 28976, 5000 )
 shape = SubResource( 4 )
-
-[node name="Button" type="Button" parent="."]
-margin_right = 3344.0
-margin_bottom = 2925.0
-
-[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]

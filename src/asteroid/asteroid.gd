@@ -81,7 +81,6 @@ func mine(miner: Node2D, clip_poly: Polygon2D) -> void:
 			get_parent().add_child(new_asteroid)
 			new_asteroid.set_points(new_asteroid_points)
 
-
 	var negative_polys = Geometry.intersect_polygons_2d(asteroid_points, clip_points)
 	for poly in negative_polys:
 		var area := _get_bounding_box_area(_get_bounding_box(poly))

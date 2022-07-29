@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=2]
+[gd_scene load_steps=46 format=2]
 
 [ext_resource path="res://addons/rmsmartshape/materials/shape_material.gd" type="Script" id=1]
 [ext_resource path="res://addons/rmsmartshape/shapes/point_array.gd" type="Script" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://addons/rmsmartshape/shapes/point.gd" type="Script" id=5]
 [ext_resource path="res://addons/rmsmartshape/vertex_properties.gd" type="Script" id=6]
 [ext_resource path="res://src/asteroid/asteroid.gd" type="Script" id=7]
+[ext_resource path="res://src/asteroid/despawner.gd" type="Script" id=8]
 
 [sub_resource type="Resource" id=11]
 script = ExtResource( 6 )
@@ -265,6 +266,9 @@ fill_texture_z_index = -10
 fill_mesh_offset = 0.0
 render_offset = 0.0
 
+[sub_resource type="CircleShape2D" id=46]
+radius = 373.012
+
 [node name="Asteroid" type="KinematicBody2D" groups=["asteroid"]]
 collision_layer = 4
 collision_mask = 6
@@ -291,3 +295,21 @@ render_edges = true
 collision_size = 1.0
 collision_offset = 1.0
 collision_polygon_node_path = NodePath("../CollisionPolygon2D")
+
+[node name="Despawner" type="Node2D" parent="."]
+script = ExtResource( 8 )
+
+[node name="Timer" type="Timer" parent="Despawner"]
+one_shot = true
+
+[node name="ShipDetector" type="Area2D" parent="Despawner"]
+visible = false
+collision_layer = 0
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Despawner/ShipDetector"]
+shape = SubResource( 46 )
+
+[connection signal="timeout" from="Despawner/Timer" to="Despawner" method="_on_Timer_timeout"]
+[connection signal="body_entered" from="Despawner/ShipDetector" to="Despawner" method="_on_ShipDetector_body_entered"]
+[connection signal="body_exited" from="Despawner/ShipDetector" to="Despawner" method="_on_ShipDetector_body_exited"]
