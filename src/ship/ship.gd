@@ -200,3 +200,8 @@ func _on_module_removed(module: Module) -> void:
 	elif (module is EnergyModule
 	or module is PowerModule):
 		module.remove(self)
+
+
+func full_heal() -> void:
+	var health_needed = maximum_health - health
+	take_damage(-health_needed)

@@ -1,0 +1,253 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://src/ui/settings/check_box.png" type="Texture" id=1]
+[ext_resource path="res://assets/fonts/EquipmentPro.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://src/ui/settings/settings.gd" type="Script" id=3]
+[ext_resource path="res://src/ui/settings/grabber.png" type="Texture" id=5]
+
+[sub_resource type="DynamicFont" id=26]
+size = 48
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=29]
+size = 32
+font_data = ExtResource( 2 )
+
+[sub_resource type="AtlasTexture" id=27]
+atlas = ExtResource( 1 )
+region = Rect2( 0, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=28]
+atlas = ExtResource( 1 )
+region = Rect2( 16, 0, 16, 16 )
+
+[sub_resource type="DynamicFont" id=31]
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=30]
+size = 32
+font_data = ExtResource( 2 )
+
+[sub_resource type="StyleBoxFlat" id=22]
+
+[node name="Settings" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 1
+script = ExtResource( 3 )
+
+[node name="Panel" type="Panel" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -230.0
+margin_top = -278.0
+margin_right = 230.0
+margin_bottom = 278.0
+
+[node name="V" type="VBoxContainer" parent="Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 32.0
+margin_top = 32.0
+margin_right = -32.0
+margin_bottom = -64.0
+custom_constants/separation = 32
+
+[node name="Title" type="Label" parent="Panel/V"]
+margin_right = 396.0
+margin_bottom = 48.0
+custom_fonts/font = SubResource( 26 )
+text = "Settings"
+align = 1
+
+[node name="SettingsList" type="VBoxContainer" parent="Panel/V"]
+margin_top = 80.0
+margin_right = 396.0
+margin_bottom = 232.0
+custom_constants/separation = 8
+
+[node name="VSync" type="HBoxContainer" parent="Panel/V/SettingsList"]
+margin_right = 396.0
+margin_bottom = 32.0
+
+[node name="Label" type="Label" parent="Panel/V/SettingsList/VSync"]
+margin_right = 84.0
+margin_bottom = 32.0
+custom_fonts/font = SubResource( 29 )
+text = "V-Sync"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/V/SettingsList/VSync"]
+margin_left = 88.0
+margin_right = 396.0
+margin_bottom = 32.0
+size_flags_horizontal = 3
+alignment = 2
+
+[node name="VSyncButton" type="TextureButton" parent="Panel/V/SettingsList/VSync/HBoxContainer"]
+unique_name_in_owner = true
+margin_left = 276.0
+margin_right = 308.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 32, 32 )
+toggle_mode = true
+texture_normal = SubResource( 27 )
+texture_pressed = SubResource( 28 )
+expand = true
+stretch_mode = 4
+
+[node name="DisableScreenShake" type="HBoxContainer" parent="Panel/V/SettingsList"]
+margin_top = 40.0
+margin_right = 396.0
+margin_bottom = 72.0
+
+[node name="Label" type="Label" parent="Panel/V/SettingsList/DisableScreenShake"]
+margin_right = 256.0
+margin_bottom = 32.0
+custom_fonts/font = SubResource( 29 )
+text = "Disable Screen Shake"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/V/SettingsList/DisableScreenShake"]
+margin_left = 260.0
+margin_right = 396.0
+margin_bottom = 32.0
+size_flags_horizontal = 3
+alignment = 2
+
+[node name="DisableScreenShakeButton" type="TextureButton" parent="Panel/V/SettingsList/DisableScreenShake/HBoxContainer"]
+unique_name_in_owner = true
+margin_left = 104.0
+margin_right = 136.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 32, 32 )
+toggle_mode = true
+texture_normal = SubResource( 27 )
+texture_pressed = SubResource( 28 )
+expand = true
+stretch_mode = 4
+
+[node name="GameVolume" type="HBoxContainer" parent="Panel/V/SettingsList"]
+margin_top = 80.0
+margin_right = 396.0
+margin_bottom = 112.0
+
+[node name="Label" type="Label" parent="Panel/V/SettingsList/GameVolume"]
+margin_right = 150.0
+margin_bottom = 32.0
+custom_fonts/font = SubResource( 29 )
+text = "Game Volume"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/V/SettingsList/GameVolume"]
+margin_left = 154.0
+margin_right = 396.0
+margin_bottom = 32.0
+size_flags_horizontal = 3
+custom_constants/separation = 8
+alignment = 2
+
+[node name="GameVolumeLabel" type="Label" parent="Panel/V/SettingsList/GameVolume/HBoxContainer"]
+unique_name_in_owner = true
+margin_left = 85.0
+margin_top = 8.0
+margin_right = 106.0
+margin_bottom = 24.0
+custom_fonts/font = SubResource( 31 )
+text = "100"
+
+[node name="GameVolumeSlider" type="HSlider" parent="Panel/V/SettingsList/GameVolume/HBoxContainer"]
+unique_name_in_owner = true
+margin_left = 114.0
+margin_right = 242.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 128, 32 )
+custom_icons/grabber_highlight = ExtResource( 5 )
+custom_icons/grabber = ExtResource( 5 )
+step = 5.0
+value = 80.0
+
+[node name="MusicVolume" type="HBoxContainer" parent="Panel/V/SettingsList"]
+margin_top = 120.0
+margin_right = 396.0
+margin_bottom = 152.0
+
+[node name="Label" type="Label" parent="Panel/V/SettingsList/MusicVolume"]
+margin_right = 156.0
+margin_bottom = 32.0
+custom_fonts/font = SubResource( 29 )
+text = "Music Volume"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/V/SettingsList/MusicVolume"]
+margin_left = 160.0
+margin_right = 396.0
+margin_bottom = 32.0
+size_flags_horizontal = 3
+custom_constants/separation = 8
+alignment = 2
+
+[node name="MusicVolumeLabel" type="Label" parent="Panel/V/SettingsList/MusicVolume/HBoxContainer"]
+unique_name_in_owner = true
+margin_left = 79.0
+margin_top = 8.0
+margin_right = 100.0
+margin_bottom = 24.0
+custom_fonts/font = SubResource( 31 )
+text = "100"
+
+[node name="MusicVolumeSlider" type="HSlider" parent="Panel/V/SettingsList/MusicVolume/HBoxContainer"]
+unique_name_in_owner = true
+margin_left = 108.0
+margin_right = 236.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 128, 32 )
+custom_icons/grabber_highlight = ExtResource( 5 )
+custom_icons/grabber = ExtResource( 5 )
+step = 5.0
+
+[node name="Buttons" type="VBoxContainer" parent="Panel/V"]
+margin_top = 264.0
+margin_right = 396.0
+margin_bottom = 460.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/V/Buttons"]
+margin_top = 148.0
+margin_right = 396.0
+margin_bottom = 196.0
+custom_constants/separation = 32
+alignment = 1
+
+[node name="Apply" type="Button" parent="Panel/V/Buttons/HBoxContainer"]
+margin_left = 54.0
+margin_right = 182.0
+margin_bottom = 48.0
+rect_min_size = Vector2( 128, 48 )
+custom_fonts/font = SubResource( 30 )
+custom_styles/hover = SubResource( 22 )
+custom_styles/pressed = SubResource( 22 )
+custom_styles/focus = SubResource( 22 )
+custom_styles/disabled = SubResource( 22 )
+custom_styles/normal = SubResource( 22 )
+text = "Apply"
+
+[node name="Back" type="Button" parent="Panel/V/Buttons/HBoxContainer"]
+margin_left = 214.0
+margin_right = 342.0
+margin_bottom = 48.0
+rect_min_size = Vector2( 128, 48 )
+custom_fonts/font = SubResource( 30 )
+custom_styles/hover = SubResource( 22 )
+custom_styles/pressed = SubResource( 22 )
+custom_styles/focus = SubResource( 22 )
+custom_styles/disabled = SubResource( 22 )
+custom_styles/normal = SubResource( 22 )
+text = "Back"
+
+[connection signal="toggled" from="Panel/V/SettingsList/VSync/HBoxContainer/VSyncButton" to="." method="_on_VSync_toggled"]
+[connection signal="toggled" from="Panel/V/SettingsList/DisableScreenShake/HBoxContainer/DisableScreenShakeButton" to="." method="_on_DisableScreenShake_toggled"]
+[connection signal="value_changed" from="Panel/V/SettingsList/GameVolume/HBoxContainer/GameVolumeSlider" to="." method="_on_GameVolume_value_changed"]
+[connection signal="value_changed" from="Panel/V/SettingsList/MusicVolume/HBoxContainer/MusicVolumeSlider" to="." method="_on_MusicVolume_value_changed"]
+[connection signal="button_up" from="Panel/V/Buttons/HBoxContainer/Apply" to="." method="_on_Apply_button_up"]
+[connection signal="button_up" from="Panel/V/Buttons/HBoxContainer/Back" to="." method="_on_Back_button_up"]

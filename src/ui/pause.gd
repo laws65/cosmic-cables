@@ -27,11 +27,11 @@ func settings_open() -> bool:
 
 
 func open_settings() -> void:
-	$Settings.show()
+	$Settings.open()
 
 
 func close_settings() -> void:
-	$Settings.hide()
+	$Settings.close()
 
 
 func _unhandled_key_input(event: InputEventKey) -> void:

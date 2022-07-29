@@ -1,8 +1,9 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://assets/fonts/small_pixel.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://src/ui/build/tooltip.gd" type="Script" id=2]
 [ext_resource path="res://src/buildings/cabling/cabling.tres" type="Resource" id=3]
+[ext_resource path="res://src/buildings/repair_station/repair_station.tres" type="Resource" id=4]
 [ext_resource path="res://src/ui/build/toolbar_item.tscn" type="PackedScene" id=5]
 [ext_resource path="res://src/ui/build/build_toolbar.gd" type="Script" id=7]
 
@@ -93,6 +94,7 @@ building_info = ExtResource( 3 )
 [node name="Slot3" parent="H" instance=ExtResource( 5 )]
 margin_left = 231.0
 margin_right = 342.0
+building_info = ExtResource( 4 )
 
 [node name="Slot4" parent="H" instance=ExtResource( 5 )]
 margin_left = 346.0

@@ -22,8 +22,6 @@ var _mass: float
 
 
 func _ready() -> void:
-	move_and_slide(Vector2.ZERO)
-
 	if Engine.is_editor_hint():
 		return
 

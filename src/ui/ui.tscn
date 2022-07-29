@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=2]
+[gd_scene load_steps=40 format=2]
 
 [ext_resource path="res://src/ui/inventory/inventory.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/ui/ui.gd" type="Script" id=2]
@@ -14,7 +14,7 @@
 [ext_resource path="res://src/ui/health/health_empty.png" type="Texture" id=12]
 [ext_resource path="res://src/ui/health/health_display.gd" type="Script" id=13]
 [ext_resource path="res://src/ui/health/health_transition.png" type="Texture" id=14]
-[ext_resource path="res://src/ui/settings/check_box.png" type="Texture" id=15]
+[ext_resource path="res://src/ui/settings/settings.tscn" type="PackedScene" id=15]
 [ext_resource path="res://src/ui/build/build_mode_icon.png" type="Texture" id=16]
 [ext_resource path="res://src/ui/mode_indicator.gd" type="Script" id=17]
 [ext_resource path="res://src/ui/build/combat_mode_icon.png" type="Texture" id=18]
@@ -106,18 +106,6 @@ font_data = ExtResource( 24 )
 [sub_resource type="StyleBoxFlat" id=21]
 
 [sub_resource type="StyleBoxFlat" id=22]
-
-[sub_resource type="DynamicFont" id=26]
-size = 48
-font_data = ExtResource( 24 )
-
-[sub_resource type="AtlasTexture" id=27]
-atlas = ExtResource( 15 )
-region = Rect2( 0, 0, 16, 16 )
-
-[sub_resource type="AtlasTexture" id=28]
-atlas = ExtResource( 15 )
-region = Rect2( 16, 0, 16, 16 )
 
 [node name="UI" type="Control"]
 anchor_right = 1.0
@@ -341,55 +329,7 @@ custom_styles/disabled = SubResource( 21 )
 custom_styles/normal = SubResource( 22 )
 text = "Save and Quit"
 
-[node name="Settings" type="Control" parent="PauseScreen"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-
-[node name="Panel" type="Panel" parent="PauseScreen/Settings"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -230.0
-margin_top = -278.0
-margin_right = 230.0
-margin_bottom = 278.0
-
-[node name="Label" type="Label" parent="PauseScreen/Settings/Panel"]
-anchor_right = 1.0
-margin_top = 32.0
-margin_bottom = 14.0
-custom_fonts/font = SubResource( 26 )
-text = "Settings"
-align = 1
-
-[node name="VBoxContainer" type="VBoxContainer" parent="PauseScreen/Settings/Panel"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -192.5
-margin_top = -197.0
-margin_right = 192.5
-margin_bottom = 197.0
-
-[node name="HBoxContainer" type="HBoxContainer" parent="PauseScreen/Settings/Panel/VBoxContainer"]
-margin_right = 385.0
-margin_bottom = 16.0
-
-[node name="Label" type="Label" parent="PauseScreen/Settings/Panel/VBoxContainer/HBoxContainer"]
-margin_top = 1.0
-margin_right = 41.0
-margin_bottom = 15.0
-text = "V Sync"
-
-[node name="Button" type="TextureButton" parent="PauseScreen/Settings/Panel/VBoxContainer/HBoxContainer"]
-margin_left = 45.0
-margin_right = 61.0
-margin_bottom = 16.0
-toggle_mode = true
-texture_normal = SubResource( 27 )
-texture_pressed = SubResource( 28 )
+[node name="Settings" parent="PauseScreen" instance=ExtResource( 15 )]
 
 [connection signal="gui_input" from="." to="ToggleInventory" method="_on_UI_gui_input"]
 [connection signal="set_held_item" from="Inventory" to="HeldItem" method="_on_set_item"]

@@ -1,6 +1,8 @@
 extends Node
 
 
+signal setting_changed(setting_name, value)
+
 var _settings := {
 	"v-sync": true,
 	"disable_screen_shake": false,
@@ -15,7 +17,7 @@ func _ready() -> void:
 
 func parse_settings() -> void:
 	var config := ConfigFile.new()
-	var err := config.load("user://_settings.cfg")
+	var err := config.load("user://settings.cfg")
 
 	if err == ERR_FILE_NOT_FOUND:
 		save_settings()
@@ -26,14 +28,14 @@ func parse_settings() -> void:
 		return
 
 	for setting in _settings.keys():
-		_settings[setting] = config.get_value("_settings", setting)
+		set_setting(setting, config.get_value("settings", setting))
 
 
 func save_settings() -> void:
 	var config := ConfigFile.new()
 	for setting in _settings.keys():
-		config.set_value("_settings", setting, _settings[setting])
-		config.save("user://_settings.cfg")
+		config.set_value("settings", setting, _settings[setting])
+		config.save("user://settings.cfg")
 
 
 func get_setting(setting_name: String):
@@ -42,3 +44,8 @@ func get_setting(setting_name: String):
 
 func set_setting(setting_name: String, value) -> void:
 	_settings[setting_name] = value
+
+	if setting_name == "v-sync":
+		OS.set_use_vsync(value)
+
+	emit_signal("setting_changed", setting_name, value)

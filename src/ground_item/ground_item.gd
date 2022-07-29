@@ -13,6 +13,7 @@ var velocity: Vector2
 
 
 func _ready() -> void:
+	move_and_slide(Vector2.ZERO)
 	call_deferred("move_and_slide", Vector2.ZERO)
 	var item_texture = item_representing.icon
 	var display := get_node("Display") as Sprite

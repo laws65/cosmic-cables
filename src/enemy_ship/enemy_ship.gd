@@ -52,7 +52,7 @@ func _physics_process(delta: float) -> void:
 
 		steer_towards(direction_to_target)
 		if transform.x.dot(direction_to_target) > 0.99:
-			gun.shoot(target_position)
+			get_gun().shoot(target_position)
 
 		velocity = transform.x * 200
 

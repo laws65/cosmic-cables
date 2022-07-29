@@ -30,6 +30,7 @@ material = SubResource( 2 )
 
 [node name="ShipNavigation" type="Node2D" parent="." index="6"]
 script = ExtResource( 3 )
+debug = false
 look_ahead = 200
 
 [node name="VisibilityEnabler2D" type="VisibilityEnabler2D" parent="." index="7"]
