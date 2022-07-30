@@ -335,7 +335,6 @@ text = "Save and Quit"
 visible = false
 
 [node name="DeathScreen" parent="." instance=ExtResource( 26 )]
-modulate = Color( 1, 1, 1, 0 )
 
 [connection signal="gui_input" from="." to="ToggleInventory" method="_on_UI_gui_input"]
 [connection signal="set_held_item" from="Inventory" to="HeldItem" method="_on_set_item"]
