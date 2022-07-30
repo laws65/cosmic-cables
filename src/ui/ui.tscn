@@ -111,7 +111,7 @@ font_data = ExtResource( 24 )
 [node name="UI" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-mouse_filter = 1
+mouse_filter = 2
 script = ExtResource( 2 )
 
 [node name="Inventory" parent="." instance=ExtResource( 1 )]
@@ -120,8 +120,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_top = -550.0
-margin_bottom = -10.0
+margin_left = -350.0
+margin_top = -910.0
+margin_right = 350.0
+margin_bottom = -370.0
 mouse_filter = 1
 
 [node name="HeldItem" parent="." instance=ExtResource( 7 )]
@@ -245,6 +247,7 @@ mouse_filter = 1
 anchor_bottom = 1.0
 margin_right = 357.0
 margin_bottom = -134.0
+mouse_filter = 2
 alignment = 2
 script = ExtResource( 22 )
 item_popup = ExtResource( 23 )
@@ -258,6 +261,7 @@ margin_left = -362.0
 margin_top = -599.0
 margin_right = 362.0
 margin_bottom = -124.0
+mouse_filter = 2
 alignment = 2
 
 [node name="PauseScreen" type="ColorRect" parent="."]
