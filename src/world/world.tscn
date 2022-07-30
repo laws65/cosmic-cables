@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://src/player/player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/buildings/place_probe.tscn" type="PackedScene" id=2]
@@ -11,7 +11,6 @@
 [ext_resource path="res://src/ui/build/build_grid.tscn" type="PackedScene" id=9]
 [ext_resource path="res://src/ui/ui.tscn" type="PackedScene" id=10]
 [ext_resource path="res://src/buildings/cabling/cabling_tilemap.tres" type="TileSet" id=11]
-[ext_resource path="res://src/enemy_ship/enemy_ship.tscn" type="PackedScene" id=12]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 3750, 50000 )
@@ -121,6 +120,3 @@ color = Color( 0, 0, 0, 1 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/TopBorder/StaticBody2D"]
 position = Vector2( 28976, 5000 )
 shape = SubResource( 4 )
-
-[node name="EnemyShip" parent="." instance=ExtResource( 12 )]
-position = Vector2( -93, 25 )
