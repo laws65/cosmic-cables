@@ -29,6 +29,9 @@ func shoot(target_position: Vector2) -> Node2D:
 	if not can_shoot():
 		return null
 
+	if ship.is_player:
+		Game.shots_fired += 1
+
 	var bullet_instance = bullet_scene.instance() as Node2D
 
 	bullet_instance.set_as_toplevel(true)

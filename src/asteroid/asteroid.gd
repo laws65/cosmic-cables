@@ -77,6 +77,7 @@ func mine(miner: Node2D, clip_poly: Polygon2D) -> void:
 	var result = Geometry.clip_polygons_2d(asteroid_points, clip_points)
 
 	if result.size() == 0:
+		Game.asteroids_mined += 1
 		queue_free()
 	else:
 		var new_points = result.pop_front()

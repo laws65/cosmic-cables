@@ -149,8 +149,6 @@ func quick_add_to_inventory(item: Item) -> bool:
 
 func hit(_hitter: Node2D, damage: float) -> void:
 	take_damage(damage)
-	if health <= 0.0:
-		die()
 
 
 func die() -> void:
@@ -162,6 +160,8 @@ func take_damage(damage: float) -> void:
 	var old_health := health
 	health -= damage
 	emit_signal("health_changed", health, old_health)
+	if health <= 0.0:
+		die()
 
 
 func can_fit_item(item: Item) -> bool:

@@ -50,6 +50,7 @@ func _unhandled_key_input(event: InputEventKey) -> void:
 func _on_Quit_button_up() -> void:
 	# TODO add saving maybe ???
 	unpause(true)
+	Game.clear_stats()
 	get_tree().change_scene("res://src/ui/main_menu/main_menu.tscn")
 
 

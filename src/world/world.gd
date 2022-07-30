@@ -35,7 +35,7 @@ func _physics_process(_delta: float) -> void:
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("test_reload"):
-		Game.unobtainium_amount = 0
+		Game.clear_stats()
 		get_tree().reload_current_scene()
 
 
@@ -57,6 +57,7 @@ func throw_ground_item(ground_item: GroundItem) -> void:
 
 func build_building(building_info: BuildingInfo, pos: Vector2) -> void:
 	Game.add_unobtainium(-building_info.price)
+	Game.buildings_placed += 1
 
 	if building_info.building_name != "Cabling":
 		var scene_path := "res://src/buildings/{name}/{name}.tscn".format({"name": building_info.building_name.replace(" ", "_").to_lower()})

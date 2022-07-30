@@ -125,3 +125,7 @@ func _on_EnemyDetector_body_exited(body: Node) -> void:
 		if not target:
 			mode = INVESTIGATE
 			investigate_position = body.global_position
+
+
+func _on_EnemyShip_death() -> void:
+	Game.enemies_killed += 1
