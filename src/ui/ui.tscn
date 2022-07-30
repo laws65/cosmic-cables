@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=2]
+[gd_scene load_steps=43 format=2]
 
 [ext_resource path="res://src/ui/inventory/inventory.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/ui/ui.gd" type="Script" id=2]
@@ -25,6 +25,7 @@
 [ext_resource path="res://src/ui/item_added_popup/item_added_popup.tscn" type="PackedScene" id=23]
 [ext_resource path="res://assets/fonts/EquipmentPro.ttf" type="DynamicFontData" id=24]
 [ext_resource path="res://src/ui/health/health_cell.tscn" type="PackedScene" id=25]
+[ext_resource path="res://src/ui/death_screen.gd" type="Script" id=26]
 
 [sub_resource type="StyleBoxFlat" id=14]
 content_margin_left = 12.0
@@ -107,6 +108,37 @@ font_data = ExtResource( 24 )
 
 [sub_resource type="StyleBoxFlat" id=22]
 
+[sub_resource type="Animation" id=27]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=26]
+resource_name = "fade_in"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
 [node name="UI" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -119,8 +151,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_top = -550.0
-margin_bottom = -10.0
+margin_left = -350.0
+margin_top = -910.0
+margin_right = 350.0
+margin_bottom = -370.0
 mouse_filter = 1
 
 [node name="HeldItem" parent="." instance=ExtResource( 7 )]
@@ -261,6 +295,7 @@ alignment = 2
 
 [node name="PauseScreen" type="ColorRect" parent="."]
 pause_mode = 2
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 1
@@ -330,6 +365,24 @@ custom_styles/normal = SubResource( 22 )
 text = "Save and Quit"
 
 [node name="Settings" parent="PauseScreen" instance=ExtResource( 15 )]
+visible = false
+
+[node name="DeathScreen" type="ColorRect" parent="."]
+pause_mode = 2
+modulate = Color( 1, 1, 1, 0 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
+script = ExtResource( 26 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="DeathScreen"]
+anims/RESET = SubResource( 27 )
+anims/fade_in = SubResource( 26 )
+
+[node name="Label" type="Label" parent="DeathScreen"]
+margin_right = 40.0
+margin_bottom = 14.0
+text = "You died!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
 
 [connection signal="gui_input" from="." to="ToggleInventory" method="_on_UI_gui_input"]
 [connection signal="set_held_item" from="Inventory" to="HeldItem" method="_on_set_item"]

@@ -17,6 +17,9 @@ func _physics_process(delta: float) -> void:
 	if not is_instance_valid(player):
 		return
 
+	if not player.is_physics_processing():
+		return
+
 	var input_direction := Input.get_axis("decelerate", "accelerate")
 
 	add_acceleration(input_direction)

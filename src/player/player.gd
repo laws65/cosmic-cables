@@ -16,8 +16,9 @@ func _ready() -> void:
 	connect("health_changed", SignalBus, "_on_Player_health_changed")
 	connect("mode_changed", SignalBus, "_on_Player_mode_changed")
 
-	quick_add_to_inventory(load("res://src/guns/machine_gun/machine_gun.tres").duplicate())
-	quick_add_to_inventory(load("res://src/guns/energy_gun/energy_gun.tres").duplicate())
+	quick_add_to_inventory(load("res://src/guns/rocket_gun/rocket_gun.tres").duplicate())
+	#quick_add_to_inventory(load("res://src/guns/energy_gun/energy_gun.tres").duplicate())
+	connect("death", SignalBus, "_on_Player_death")
 
 
 func _input(event: InputEvent) -> void:
@@ -46,3 +47,15 @@ func set_mode(new_mode: int) -> void:
 
 	emit_signal("mode_changed", new_mode)
 	mode = new_mode
+
+
+func hit(hitter: Node2D, damage: float) -> void:
+	damage *= 0.5
+
+	.hit(hitter, damage)
+
+
+func die() -> void:
+	.die()
+	yield(get_tree().create_timer(2.0), "timeout")
+	get_tree().paused = true

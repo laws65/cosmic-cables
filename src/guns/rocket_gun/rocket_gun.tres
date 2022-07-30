@@ -1,0 +1,17 @@
+[gd_resource type="Resource" load_steps=4 format=2]
+
+[ext_resource path="res://src/item/item.gd" type="Script" id=1]
+[ext_resource path="res://src/guns/rocket_gun/rocket_gun.png" type="Texture" id=2]
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 2 )
+region = Rect2( 0, 0, 52.713, 50.5084 )
+
+[resource]
+script = ExtResource( 1 )
+type = 2
+name = "Rocket Gun"
+description = "Fires a barrage of homing rockets"
+level = 3
+icon = SubResource( 1 )
+scene_path = "res://src/guns/rocket_gun/rocket_gun.tscn"

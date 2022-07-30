@@ -12,11 +12,23 @@ func _ready() -> void:
 
 	$CanvasLayer/UI/Inventory.set_ship($YSort/Player)
 
-	for _i in 20:
+	for _i in 25:
 		var asteroid_instance = asteroid.instance()
 		asteroid_instance.position = Vector2(
-			rand_range(100, 3000),
-			rand_range(100, 2000)
+			rand_range(-1000, 1000),
+			rand_range(-1000, 1000)
+		)
+		add_child(asteroid_instance)
+
+var max_asteroid_amount := 25
+
+
+func _physics_process(_delta: float) -> void:
+	if get_tree().get_nodes_in_group("asteroid").size() < max_asteroid_amount:
+		var asteroid_instance = asteroid.instance()
+		asteroid_instance.position = Vector2(
+			rand_range(-1000, 1000),
+			rand_range(-1000, 1000)
 		)
 		add_child(asteroid_instance)
 

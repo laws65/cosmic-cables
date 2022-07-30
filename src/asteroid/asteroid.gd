@@ -66,6 +66,12 @@ func hit(hitter: Node2D, _damage:=0.0) -> void:
 
 
 func mine(miner: Node2D, clip_poly: Polygon2D) -> void:
+	if not is_instance_valid(miner):
+		return
+
+	if not is_instance_valid(miner.shooter):
+		return
+
 	var asteroid_points = get_points()
 	var clip_points = _get_relative_clip_points(miner, clip_poly)
 	var result = Geometry.clip_polygons_2d(asteroid_points, clip_points)

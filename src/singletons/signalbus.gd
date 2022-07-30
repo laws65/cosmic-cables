@@ -15,3 +15,7 @@ signal player_item_pickup(item)
 
 # warning-ignore:unused_signal
 signal toolbar_item_building_setup(toolbar_item)
+
+signal player_death
+func _on_Player_death() -> void:
+	emit_signal("player_death")

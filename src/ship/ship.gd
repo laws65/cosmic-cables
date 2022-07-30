@@ -9,7 +9,7 @@ signal inventory_updated(array, slot, item)
 signal module_added(module)
 signal module_removed(module)
 signal health_changed(new_health, old_health)
-
+signal death()
 
 var velocity: Vector2
 var acceleration: Vector2
@@ -149,6 +149,13 @@ func quick_add_to_inventory(item: Item) -> bool:
 
 func hit(_hitter: Node2D, damage: float) -> void:
 	take_damage(damage)
+	if health <= 0.0:
+		die()
+
+
+func die() -> void:
+	emit_signal("death")
+	$AnimationPlayer.play("die")
 
 
 func take_damage(damage: float) -> void:

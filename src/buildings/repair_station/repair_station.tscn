@@ -70,6 +70,7 @@ text = "Heal"
 collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" index="0"]
+visible = false
 position = Vector2( -1, -10 )
 shape = SubResource( 2 )
 

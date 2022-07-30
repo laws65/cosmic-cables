@@ -12,9 +12,16 @@ var held_item: Item
 
 var ship: Ship setget set_ship
 
+var player_dead := false
+
 
 func _ready() -> void:
 	get_tree().call_group("inventory_slot", "setup_inventory_signals", self)
+	SignalBus.connect("player_death", self, "_on_Player_die")
+
+
+func _on_Player_die() -> void:
+	player_dead = true
 
 
 func set_ship(new_ship: Ship) -> void:
@@ -43,7 +50,8 @@ func _on_Ship_inventory_updated(array: Array, index: int, item: Item) -> void:
 
 
 func _on_show() -> void:
-	_update_inventory_display()
+	if not player_dead:
+		_update_inventory_display()
 
 
 func _on_hide() -> void:

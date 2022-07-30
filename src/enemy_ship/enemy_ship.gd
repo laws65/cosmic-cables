@@ -118,6 +118,8 @@ func find_new_target() -> Node2D:
 
 
 func _on_EnemyDetector_body_exited(body: Node) -> void:
+	return
+	# warning-ignore:unreachable_code
 	if body == target:
 		target = find_new_target()
 		if not target:

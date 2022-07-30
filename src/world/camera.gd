@@ -112,7 +112,7 @@ func _shake():
 
 func _on_Player_health_changed(new_health: float, old_health: float) -> void:
 	if new_health < old_health:
-		add_trauma(old_health - new_health)
+		add_trauma((old_health - new_health) * 2)
 
 
 func _on_Player_mode_changed(new_mode: int) -> void:
