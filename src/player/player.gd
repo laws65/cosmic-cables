@@ -22,6 +22,9 @@ func _ready() -> void:
 
 
 func _input(event: InputEvent) -> void:
+	if event.is_action_released("fire"):
+		holding_shooting = false
+
 	if (event.is_action_pressed("toggle_build_mode")
 	and not get_node("/root/World/CanvasLayer/UI/Inventory").visible):
 		if mode == Mode.NORMAL:
@@ -29,16 +32,23 @@ func _input(event: InputEvent) -> void:
 		else:
 			set_mode(Mode.NORMAL)
 
+var holding_shooting := false
+
 
 func _physics_process(_delta: float) -> void:
 	if has_gun() and mode == Mode.NORMAL:
-		if not Game.menus_visible() and Input.is_action_pressed("fire"):
+		if not Game.menus_visible() and holding_shooting:
 			var gun := get_gun()
 			if gun.automatic or Input.is_action_just_pressed("fire"):
 				gun.shoot(get_global_mouse_position())
 
 	if Input.is_action_just_pressed("damage_self"):
 		take_damage(0.5)
+
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("fire"):
+		holding_shooting = true
 
 
 func set_mode(new_mode: int) -> void:
