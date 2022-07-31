@@ -223,7 +223,12 @@ func _drop_all_items() -> void:
 		if not is_instance_valid(item):
 			continue
 
-		var ground_item := owner.create_ground_item(item.item_resource) as GroundItem
+		var item_resource: Item
+		if item is Resource:
+			item_resource = item
+		else:
+			item_resource = item.item_resource
+		var ground_item := owner.create_ground_item(item_resource) as GroundItem
 		ground_item.position = position
 
 	gun_slot.fill(null)
