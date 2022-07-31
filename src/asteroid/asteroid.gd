@@ -49,6 +49,8 @@ func _physics_process(delta: float) -> void:
 		var m1 := get_mass()
 		var m2 := 5.0
 		var collider := collision.get_collider()
+		if collider is Building:
+			return
 		if _quacks_like_a_duck(collider):
 			m2 = collider.get_mass()
 		# https://www.omnicalculator.com/physics/conservation-of-momentum
