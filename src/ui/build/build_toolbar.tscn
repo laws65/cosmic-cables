@@ -1,11 +1,15 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://assets/fonts/small_pixel.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://src/ui/build/tooltip.gd" type="Script" id=2]
 [ext_resource path="res://src/buildings/cabling/cabling.tres" type="Resource" id=3]
 [ext_resource path="res://src/buildings/repair_station/repair_station.tres" type="Resource" id=4]
 [ext_resource path="res://src/ui/build/toolbar_item.tscn" type="PackedScene" id=5]
+[ext_resource path="res://src/buildings/module_synthesiser/module_synthesiser.tres" type="Resource" id=6]
 [ext_resource path="res://src/ui/build/build_toolbar.gd" type="Script" id=7]
+[ext_resource path="res://src/buildings/weapon_synthesiser/weapon_synthesiser.tres" type="Resource" id=8]
+[ext_resource path="res://src/buildings/bot_factory/bot_factory.tres" type="Resource" id=9]
+[ext_resource path="res://src/buildings/bot_control_centre/bot_control_centre.tres" type="Resource" id=10]
 
 [sub_resource type="StyleBoxFlat" id=11]
 bg_color = Color( 0.376471, 0.376471, 0.439216, 1 )
@@ -82,37 +86,41 @@ margin_top = 10.0
 margin_bottom = -10.0
 alignment = 1
 
-[node name="Slot1" parent="H" instance=ExtResource( 5 )]
+[node name="Core" parent="H" instance=ExtResource( 5 )]
 margin_right = 111.0
 mouse_filter = 0
 
-[node name="Slot2" parent="H" instance=ExtResource( 5 )]
+[node name="Cabling" parent="H" instance=ExtResource( 5 )]
 margin_left = 115.0
 margin_right = 227.0
 building_info = ExtResource( 3 )
 
-[node name="Slot3" parent="H" instance=ExtResource( 5 )]
+[node name="RepairStation" parent="H" instance=ExtResource( 5 )]
 margin_left = 231.0
 margin_right = 342.0
 building_info = ExtResource( 4 )
 
-[node name="Slot4" parent="H" instance=ExtResource( 5 )]
+[node name="ModuleSynthesiser" parent="H" instance=ExtResource( 5 )]
 margin_left = 346.0
 margin_right = 458.0
+building_info = ExtResource( 6 )
 
-[node name="Slot5" parent="H" instance=ExtResource( 5 )]
+[node name="WeaponSynthesiser" parent="H" instance=ExtResource( 5 )]
 margin_left = 462.0
 margin_right = 573.0
+building_info = ExtResource( 8 )
 
-[node name="Slot6" parent="H" instance=ExtResource( 5 )]
+[node name="BotFactory" parent="H" instance=ExtResource( 5 )]
 margin_left = 577.0
 margin_right = 689.0
+building_info = ExtResource( 9 )
 
-[node name="Slot7" parent="H" instance=ExtResource( 5 )]
+[node name="BotControlCentre" parent="H" instance=ExtResource( 5 )]
 margin_left = 693.0
 margin_right = 804.0
+building_info = ExtResource( 10 )
 
-[node name="Slot8" parent="H" instance=ExtResource( 5 )]
+[node name="Delete" parent="H" instance=ExtResource( 5 )]
 margin_left = 808.0
 margin_right = 920.0
 

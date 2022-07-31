@@ -1,0 +1,20 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://src/buildings/building.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/buildings/bot_factory/bot_factory.png" type="Texture" id=2]
+[ext_resource path="res://src/buildings/bot_factory/bot_factory.gd" type="Script" id=3]
+[ext_resource path="res://src/buildings/bot_factory/bot_factory.tres" type="Resource" id=4]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 22, 22 )
+
+[node name="BotFactory" instance=ExtResource( 1 )]
+collision_layer = 32
+script = ExtResource( 3 )
+info = ExtResource( 4 )
+
+[node name="CollisionShape2D" parent="." index="0"]
+shape = SubResource( 1 )
+
+[node name="Sprite" parent="." index="1"]
+texture = ExtResource( 2 )

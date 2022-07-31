@@ -1,0 +1,13 @@
+[gd_resource type="Resource" load_steps=4 format=2]
+
+[ext_resource path="res://src/buildings/bot_factory/bot_factory.png" type="Texture" id=1]
+[ext_resource path="res://src/buildings/bot_factory/bot_factory_icon.png" type="Texture" id=2]
+[ext_resource path="res://src/buildings/building_info.gd" type="Script" id=3]
+
+[resource]
+script = ExtResource( 3 )
+building_name = "Bot Factory"
+description = "Make new bots here"
+price = 100000
+icon = ExtResource( 2 )
+display = ExtResource( 1 )

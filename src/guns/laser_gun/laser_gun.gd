@@ -55,7 +55,6 @@ func _on_TurnOffTimer_timeout() -> void:
 
 func _turn_off_laser() -> void:
 	laser_on = false
-	#$AnimationPlayer.play("close_laser")
 	tween.remove_all()
 	tween.interpolate_property($Laser, "width", $Laser.width, 0, activate_time)
 	tween.interpolate_property($Laser/RayCast2D, "enabled", true, false,
@@ -76,7 +75,6 @@ func _turn_on_laser() -> void:
 	if $Laser/RayCast2D.is_colliding():
 		$Laser.points[1] = $Laser.to_local($Laser/RayCast2D.get_collision_point())
 	tween.start()
-	#$AnimationPlayer.play("open_laser")
 
 
 func get_clip_poly() -> Polygon2D:

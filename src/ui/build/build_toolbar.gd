@@ -34,7 +34,10 @@ func _on_Toolbar_item_unhovered(_toolbar_item: ToolbarItem) -> void:
 func _on_Toolbar_item_clicked(toolbar_item: ToolbarItem) -> void:
 	if toolbar_item.unlocked:
 		$Tooltip.hide()
-		SignalBus.emit_signal("toolbar_item_building_setup", toolbar_item.building_info)
+		if toolbar_item.building_info.price <= Game.unobtainium_amount:
+			SignalBus.emit_signal("toolbar_item_building_setup", toolbar_item.building_info)
+		else:
+			Game.add_message_popup("You can't afford to build this!")
 
 
 func _on_Player_mode_changed(new_mode: int) -> void:
