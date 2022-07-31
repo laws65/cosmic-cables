@@ -102,7 +102,7 @@ autostart = true
 
 [node name="Despawn" type="Node" parent="."]
 script = ExtResource( 4 )
-resource_despawn_time_secs = 15
+resource_despawn_time_secs = 60
 
 [node name="Timer" type="Timer" parent="Despawn"]
 one_shot = true

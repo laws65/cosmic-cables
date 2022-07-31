@@ -1,0 +1,13 @@
+[gd_resource type="Resource" load_steps=3 format=2]
+
+[ext_resource path="res://src/guns/laser_gun/laser_gun_icon.png" type="Texture" id=1]
+[ext_resource path="res://src/item/item.gd" type="Script" id=2]
+
+[resource]
+script = ExtResource( 2 )
+type = 2
+name = "Laser Gun"
+description = "Melt your enemies"
+level = 5
+icon = ExtResource( 1 )
+scene_path = "res://src/guns/laser_gun/laser_gun.tscn"

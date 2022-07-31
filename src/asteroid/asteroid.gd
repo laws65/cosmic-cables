@@ -118,7 +118,7 @@ func mine(miner: Node2D, clip_poly: Polygon2D) -> void:
 func _get_relative_clip_points(miner: Node2D, clip_poly: Polygon2D) -> PoolVector2Array:
 	var clip_points := PoolVector2Array()
 	for point in clip_poly.polygon:
-		var global_point := miner.to_global(point * clip_poly.scale)
+		var global_point := miner.to_global(point * clip_poly.scale + clip_poly.position)
 		var asteroid_local_point := to_local(global_point)
 		clip_points.push_back(asteroid_local_point)
 	return clip_points

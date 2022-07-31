@@ -16,8 +16,8 @@ func _ready() -> void:
 	connect("health_changed", SignalBus, "_on_Player_health_changed")
 	connect("mode_changed", SignalBus, "_on_Player_mode_changed")
 
-	quick_add_to_inventory(load("res://src/guns/rocket_gun/rocket_gun.tres").duplicate())
-	#quick_add_to_inventory(load("res://src/guns/energy_gun/energy_gun.tres").duplicate())
+	quick_add_to_inventory(load("res://src/guns/laser_gun/laser_gun.tres").duplicate())
+	quick_add_to_inventory(load("res://src/guns/energy_gun/energy_gun.tres").duplicate())
 	connect("death", SignalBus, "_on_Player_death")
 
 

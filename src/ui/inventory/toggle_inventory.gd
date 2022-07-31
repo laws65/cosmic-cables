@@ -28,11 +28,14 @@ func _unhandled_input(event: InputEvent) -> void:
 		if inventory.visible:
 			if not held_item_display.has_item():
 				animation_player.play("fade_out")
+				owner.mouse_filter = owner.MOUSE_FILTER_IGNORE
 		else:
 			animation_player.play("fade_in")
+			owner.mouse_filter = owner.MOUSE_FILTER_PASS
 	elif (event.is_action_pressed("ui_cancel")
 	and inventory.visible
 	and not held_item_display.has_item()):
+			owner.mouse_filter = owner.MOUSE_FILTER_IGNORE
 			animation_player.play("fade_out")
 
 

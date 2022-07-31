@@ -1,0 +1,138 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://src/guns/gun.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/guns/laser_gun/laser_gun.gd" type="Script" id=2]
+[ext_resource path="res://src/guns/laser_gun/laser_gun.tres" type="Resource" id=3]
+[ext_resource path="res://src/guns/laser_gun/laser_gun.png" type="Texture" id=4]
+
+[sub_resource type="Curve" id=4]
+max_value = 6.0
+_data = [ Vector2( 0, 1.55068 ), 0.0, 0.0, 0, 0, Vector2( 1, 1.06419 ), -13.9423, 0.0, 0, 0 ]
+
+[sub_resource type="Gradient" id=5]
+colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 0 )
+
+[sub_resource type="Curve" id=7]
+_data = [ Vector2( 0.0075188, 0.986805 ), 0.0, 0.0, 0, 0, Vector2( 0.962406, 0.504824 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="Gradient" id=6]
+colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 0 )
+
+[sub_resource type="Animation" id=2]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Laser:width")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "close_laser"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Laser:width")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.7 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+
+[sub_resource type="Animation" id=1]
+resource_name = "open_laser"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath("Laser:width")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.4 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 6.0 ]
+}
+
+[node name="LaserGun" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+item_resource = ExtResource( 3 )
+automatic = true
+
+[node name="Sprite" parent="." index="2"]
+position = Vector2( 11, 0 )
+texture = ExtResource( 4 )
+
+[node name="TurnOffTimer" type="Timer" parent="." index="3"]
+wait_time = 0.1
+one_shot = true
+
+[node name="Laser" type="Line2D" parent="." index="4"]
+position = Vector2( 15, 0 )
+points = PoolVector2Array( 0, 0, 200, 0 )
+width = 0.0
+default_color = Color( 1, 0.894118, 0.470588, 1 )
+begin_cap_mode = 2
+end_cap_mode = 2
+
+[node name="RayCast2D" type="RayCast2D" parent="Laser" index="0"]
+cast_to = Vector2( 200, 0 )
+collision_mask = 20
+
+[node name="BeamParticles" type="CPUParticles2D" parent="Laser" index="1"]
+position = Vector2( 104, 0 )
+emitting = false
+amount = 30
+lifetime = 0.4
+local_coords = false
+emission_shape = 2
+emission_rect_extents = Vector2( 100, 1 )
+flag_align_y = true
+spread = 180.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 80.0
+damping = 10.0
+scale_amount_curve = SubResource( 4 )
+color = Color( 1, 0.94902, 0.8, 1 )
+color_ramp = SubResource( 5 )
+
+[node name="CollisionParticles" type="CPUParticles2D" parent="Laser" index="2"]
+position = Vector2( 201, 0 )
+rotation = 3.14159
+emitting = false
+amount = 20
+lifetime = 0.3
+lifetime_randomness = 0.5
+flag_align_y = true
+spread = 73.51
+gravity = Vector2( 0, 0 )
+initial_velocity = 300.0
+scale_amount = 5.5
+scale_amount_random = 0.2
+scale_amount_curve = SubResource( 7 )
+color = Color( 1, 0.992157, 0.878431, 1 )
+color_ramp = SubResource( 6 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="5"]
+anims/RESET = SubResource( 2 )
+anims/close_laser = SubResource( 3 )
+anims/open_laser = SubResource( 1 )
+
+[node name="Tween" type="Tween" parent="." index="6"]
+
+[node name="AsteroidClipArea" type="Polygon2D" parent="." index="7"]
+visible = false
+position = Vector2( 2, 1 )
+polygon = PoolVector2Array( 0, -23, 30, -2, 13, 29, -17, 22, -26, -8 )
+
+[connection signal="timeout" from="TurnOffTimer" to="." method="_on_TurnOffTimer_timeout"]
