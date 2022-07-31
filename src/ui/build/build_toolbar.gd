@@ -12,13 +12,23 @@ onready var animation_player := get_node("AnimationPlayer") as AnimationPlayer
 
 
 var tooltip_offset := Vector2(-24, -50)
-
+var selected_building: BuildingInfo
 
 func _ready() -> void:
 	SignalBus.connect("player_mode_changed", self, "_on_Player_mode_changed")
+	SignalBus.connect("toolbar_item_building_setup", self, "_on_set_selected_building")
 	get_tree().call_group("toolbar_item", "connect", "hovered", self, "_on_Toolbar_item_hovered")
 	get_tree().call_group("toolbar_item", "connect", "unhovered", self, "_on_Toolbar_item_unhovered")
 	get_tree().call_group("toolbar_item", "connect", "clicked", self, "_on_Toolbar_item_clicked")
+
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("pause"):
+		if is_instance_valid(selected_building):
+			SignalBus.emit_signal("toolbar_item_building_setup", null)
+		else:
+			var player := get_tree().get_nodes_in_group("player").front() as Player
+			player.set_mode(player.Mode.NORMAL)
 
 
 func _on_Toolbar_item_hovered(toolbar_item: ToolbarItem) -> void:
@@ -48,3 +58,7 @@ func _on_Player_mode_changed(new_mode: int) -> void:
 		SignalBus.emit_signal("toolbar_item_building_setup", null)
 
 	mode = new_mode
+
+
+func _on_set_selected_building(building: BuildingInfo) -> void:
+	selected_building = building
