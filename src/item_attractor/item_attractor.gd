@@ -30,3 +30,7 @@ func _physics_process(delta: float) -> void:
 
 		var direction = ground_item.global_position.direction_to(global_position)
 		ground_item.velocity = direction * speed
+
+
+func _on_Ship_death() -> void:
+	set_physics_process(false)

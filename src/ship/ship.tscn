@@ -216,3 +216,6 @@ initial_velocity = 250.0
 damping = 10.0
 scale_amount_curve = SubResource( 4 )
 color_ramp = SubResource( 5 )
+
+[connection signal="death" from="." to="ItemAttractor" method="_on_Ship_death"]
+[connection signal="death" from="." to="PickerUpper" method="_on_Ship_death"]

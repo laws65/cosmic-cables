@@ -17,3 +17,7 @@ func _physics_process(_delta: float) -> void:
 			ground_item.pickup()
 			if ship is Player:
 				SignalBus.emit_signal("player_item_pickup", ground_item.get_item_representing())
+
+
+func _on_Ship_death() -> void:
+	set_physics_process(false)

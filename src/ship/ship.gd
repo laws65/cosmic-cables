@@ -152,6 +152,10 @@ func hit(_hitter: Node2D, damage: float) -> void:
 
 
 func die() -> void:
+	if has_gun():
+		get_gun().hide()
+	_drop_all_items()
+
 	emit_signal("death")
 	$AnimationPlayer.play("die")
 
@@ -212,3 +216,16 @@ func _on_module_removed(module: Module) -> void:
 func full_heal() -> void:
 	var health_needed = maximum_health - health
 	take_damage(-health_needed)
+
+
+func _drop_all_items() -> void:
+	for item in gun_slot + storage + modules:
+		if not is_instance_valid(item):
+			continue
+
+		var ground_item := owner.create_ground_item(item.item_resource) as GroundItem
+		ground_item.position = position
+
+	gun_slot.fill(null)
+	storage.fill(null)
+	modules.fill(null)
