@@ -78,6 +78,7 @@ shader_param/inside = true
 shader_param/add_margins = true
 
 [node name="PlaceProbe" type="Area2D"]
+z_index = 1
 collision_layer = 0
 collision_mask = 127
 script = ExtResource( 2 )

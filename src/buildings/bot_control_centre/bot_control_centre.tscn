@@ -10,6 +10,7 @@ extents = Vector2( 24, 24 )
 
 [node name="BotControlCentre" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
+building_info = ExtResource( 3 )
 info = ExtResource( 3 )
 
 [node name="CollisionShape2D" parent="." index="0"]

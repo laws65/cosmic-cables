@@ -69,8 +69,11 @@ func build_building(building_info: BuildingInfo, pos: Vector2) -> void:
 		$TileMap.set_cellv(tile_pos, 0)
 		$TileMap.update_bitmask_area(tile_pos)
 
+	add_cha_ching(pos + Vector2.UP * 50, -building_info.price)
+
+
+func add_cha_ching(pos: Vector2, value: int) -> void:
 	var cha_ching = load("res://src/ui/build/cha_ching.tscn").instance()
-	cha_ching.set_value(-building_info.price)
-	cha_ching.rect_position.y -= 1000
-	cha_ching.rect_position = pos - Vector2(0, 50)
+	cha_ching.set_value(value)
+	cha_ching.rect_position = pos
 	add_child(cha_ching)

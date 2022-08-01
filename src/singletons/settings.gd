@@ -6,8 +6,8 @@ signal setting_changed(setting_name, value)
 var _settings := {
 	"v-sync": true,
 	"disable_screen_shake": false,
-	"music_volume": 100,
-	"game_volume": 100,
+	"music_volume": 50,
+	"game_volume": 50,
 }
 
 

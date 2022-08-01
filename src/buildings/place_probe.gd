@@ -6,6 +6,9 @@ var can_build_colour := Color("3ca370")
 var cant_build_colour := Color("eb564b")
 
 
+onready var cabling_price := load("res://src/buildings/cabling/cabling.tres").price as int
+
+
 func _ready() -> void:
 	set_physics_process(false)
 	set_process_input(false)
@@ -13,6 +16,27 @@ func _ready() -> void:
 
 
 func _input(event: InputEvent) -> void:
+	if not is_instance_valid(building_info):
+		return
+	if (building_info.building_name == "Remove Tool"
+	and event.is_action_pressed("place")):
+		for overlap in get_overlapping():
+			if overlap is Building:
+				overlap.queue_free()
+				overlap.emit_signal("death")
+				# warning-ignore:narrowing_conversion
+				var refund_amount := floor(overlap.info.price * 0.5)
+				Game.add_unobtainium(refund_amount)
+				owner.add_cha_ching(overlap.position + Vector2.UP * 50, refund_amount)
+		var tilemap := owner.get_node("TileMap") as TileMap
+		var tile := tilemap.get_cellv(tilemap.world_to_map(position))
+		if tile == 0:
+			var refund_amount := floor(cabling_price * 0.5)
+			# warning-ignore:narrowing_conversion
+			Game.add_unobtainium(refund_amount)
+			owner.add_cha_ching(position + Vector2.UP * 50, refund_amount)
+		return
+
 	if event.is_action_pressed("place"):
 		if can_build():
 			owner.build_building(building_info, global_position)
@@ -47,19 +71,22 @@ func build_display_for(building: BuildingInfo) -> void:
 		$CollisionShape2D.shape.extents = texture_size / 2
 
 func _physics_process(_delta: float) -> void:
-	if can_build():
+	if building_info.building_name != "Remove Tool" and can_build():
 		$Sprite.material.set_shader_param("color", can_build_colour)
 	else:
 		$Sprite.material.set_shader_param("color", cant_build_colour)
 
 
 func can_build() -> bool:
+	if not is_instance_valid(building_info):
+		return false
+
 	return not overlapping() and Game.unobtainium_amount >= building_info.price
 
 
 func overlapping() -> bool:
 	$Line2D.hide()
-	var overlapping := get_overlapping_areas() + get_overlapping_bodies() as Array
+	var overlapping := get_overlapping()
 	for i in overlapping:
 		if i is TileMap:
 			continue
@@ -68,3 +95,7 @@ func overlapping() -> bool:
 		break
 
 	return not overlapping.empty()
+
+
+func get_overlapping() -> Array:
+	return get_overlapping_areas() + get_overlapping_bodies()

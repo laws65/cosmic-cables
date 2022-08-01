@@ -9,10 +9,11 @@ func build_tooltip_for(toolbar_item: ToolbarItem) -> void:
 		bbcode_text = \
 """[b][center] {name} [/center][/b]
 {description}
-Price: ${price}""".format({
+{price_text}""".format({
 	"name": info.building_name,
 	"description": info.description,
-	"price": Helpers.add_commas(info.price),
+	"price_text": "Price: $%s" % Helpers.add_commas(info.price)
+		if info.building_name != "Remove Tool" else "",
 })
 
 

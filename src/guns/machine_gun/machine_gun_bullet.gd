@@ -16,10 +16,12 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	position += transform.x * speed * delta
 
+
 	for body in get_overlapping_bodies():
 		if (body is Asteroid
 		or  body is Ship and team != body.team):
-			body.hit(self, damage * shooter.damage_multiplier)
+			if is_instance_valid(shooter):
+				body.hit(self, damage * shooter.damage_multiplier)
 			$AnimationPlayer.play("impact")
 
 

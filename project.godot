@@ -300,6 +300,7 @@ Game="*res://src/singletons/game.gd"
 SignalBus="*res://src/singletons/signalbus.gd"
 Helpers="*res://src/helpers.gd"
 Settings="*res://src/singletons/settings.gd"
+Mixer="*res://src/singletons/mixer.gd"
 
 [debug]
 
@@ -338,6 +339,10 @@ texture={
 "size_limit": 0,
 "stream": false,
 "svg/scale": 1.0
+}
+ogg_vorbis={
+"loop": false,
+"loop_offset": 0
 }
 
 [input]

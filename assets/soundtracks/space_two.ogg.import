@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/space_two.ogg-3dbea109696365a6c45f78bd763520ac.oggstr"
+
+[deps]
+
+source_file="res://assets/soundtracks/space_two.ogg"
+dest_files=[ "res://.import/space_two.ogg-3dbea109696365a6c45f78bd763520ac.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0
