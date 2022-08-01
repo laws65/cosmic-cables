@@ -4,7 +4,7 @@ class_name LaserGun
 
 var laser_on: bool
 var deactivate_time := 0.1
-var damage := 0.0
+var damage := 0.1
 var fire_rate := 0.2
 var laser_width := 6.0
 var activate_time := 0.2

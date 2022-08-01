@@ -4,7 +4,7 @@ var team: int
 
 
 var speed = 150
-var damage = 0.1
+var damage = 0.5
 
 var shooter: Ship
 

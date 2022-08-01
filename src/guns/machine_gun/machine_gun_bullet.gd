@@ -4,7 +4,7 @@ extends Area2D
 var team: int
 
 var speed = 300
-var damage = 0.1
+var damage = 0.3
 
 var shooter: Ship
 
