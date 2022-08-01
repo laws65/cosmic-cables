@@ -40,9 +40,11 @@ func build_display_for(building: BuildingInfo) -> void:
 		set_process_input(false)
 		return
 	$Sprite.texture = building.display
-	var texture_size := Vector2(building.icon.get_width(), building.icon.get_height())
-	$CollisionShape2D.shape.extents = texture_size / 2
-
+	if building.building_name == "Cabling":
+		$CollisionShape2D.shape.extents = Vector2(6,6)
+	else:
+		var texture_size := Vector2(building.icon.get_width(), building.icon.get_height())
+		$CollisionShape2D.shape.extents = texture_size / 2
 
 func _physics_process(_delta: float) -> void:
 	if can_build():

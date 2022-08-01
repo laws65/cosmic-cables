@@ -6,10 +6,9 @@
 [ext_resource path="res://src/buildings/weapon_synthesiser/weapon_synthesiser.tres" type="Resource" id=4]
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 22, 22 )
+extents = Vector2( 24, 24 )
 
 [node name="WeaponSynthesiser" instance=ExtResource( 1 )]
-collision_layer = 32
 script = ExtResource( 2 )
 info = ExtResource( 4 )
 

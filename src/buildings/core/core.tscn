@@ -5,7 +5,7 @@
 [ext_resource path="res://src/buildings/core/core.tres" type="Resource" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 22, 22 )
+extents = Vector2( 24, 24 )
 
 [node name="Core" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
@@ -17,8 +17,3 @@ shape = SubResource( 1 )
 [node name="Control" type="Control" parent="." index="2"]
 margin_right = 40.0
 margin_bottom = 40.0
-
-[node name="Label" type="Label" parent="Control" index="0"]
-margin_right = 40.0
-margin_bottom = 14.0
-text = "asdfasdf"

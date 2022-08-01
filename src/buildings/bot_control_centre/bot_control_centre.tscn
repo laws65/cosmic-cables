@@ -6,7 +6,7 @@
 [ext_resource path="res://src/buildings/bot_control_centre/bot_control_centre.png" type="Texture" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 22, 22 )
+extents = Vector2( 24, 24 )
 
 [node name="BotControlCentre" instance=ExtResource( 1 )]
 script = ExtResource( 2 )

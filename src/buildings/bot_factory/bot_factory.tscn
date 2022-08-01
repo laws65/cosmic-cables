@@ -6,10 +6,9 @@
 [ext_resource path="res://src/buildings/bot_factory/bot_factory.tres" type="Resource" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 22, 22 )
+extents = Vector2( 24, 24 )
 
 [node name="BotFactory" instance=ExtResource( 1 )]
-collision_layer = 32
 script = ExtResource( 3 )
 info = ExtResource( 4 )
 
