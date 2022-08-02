@@ -19,6 +19,8 @@ enum {
 	INVESTIGATE,
 }
 
+var custom_name: String
+
 var mode = IDLE
 
 var target: Node2D

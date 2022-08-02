@@ -22,7 +22,7 @@ radius = 120.0
 
 [node name="EnemyShip" instance=ExtResource( 1 )]
 collision_layer = 18
-collision_mask = 5
+collision_mask = 197
 script = ExtResource( 2 )
 team = 1
 
@@ -40,6 +40,7 @@ rect = Rect2( -15, -15, 30, 30 )
 
 [node name="EnemyDetector" type="Area2D" parent="." index="8"]
 collision_layer = 0
+collision_mask = 133
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyDetector" index="0"]

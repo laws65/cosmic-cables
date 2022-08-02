@@ -155,7 +155,7 @@ colors = PoolColorArray( 0.690196, 0.188235, 0.360784, 1, 1, 0.709804, 0.439216,
 
 [node name="Player" type="KinematicBody2D" groups=["player"]]
 collision_layer = 17
-collision_mask = 6
+collision_mask = 70
 script = ExtResource( 1 )
 is_player = true
 

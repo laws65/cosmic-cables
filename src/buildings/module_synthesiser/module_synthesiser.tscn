@@ -11,6 +11,10 @@
 [ext_resource path="res://src/modules/energy/energy_module.png" type="Texture" id=9]
 [ext_resource path="res://src/modules/fortune/fortune_module.png" type="Texture" id=10]
 [ext_resource path="res://assets/fonts/MatchupPro.ttf" type="DynamicFontData" id=11]
+[ext_resource path="res://assets/resources/buy_disabled.tres" type="StyleBox" id=12]
+[ext_resource path="res://assets/resources/buy_normal.tres" type="StyleBox" id=13]
+[ext_resource path="res://assets/resources/buy_pressed.tres" type="StyleBox" id=14]
+[ext_resource path="res://assets/resources/buy_hover.tres" type="StyleBox" id=15]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 24, 24 )
@@ -39,19 +43,7 @@ font_data = ExtResource( 11 )
 size = 32
 font_data = ExtResource( 5 )
 
-[sub_resource type="StyleBoxFlat" id=12]
-bg_color = Color( 0.560784, 0.870588, 0.364706, 1 )
-
-[sub_resource type="StyleBoxFlat" id=13]
-bg_color = Color( 0.811765, 1, 0.439216, 1 )
-
 [sub_resource type="StyleBoxEmpty" id=14]
-
-[sub_resource type="StyleBoxFlat" id=15]
-bg_color = Color( 0.921569, 0.337255, 0.294118, 1 )
-
-[sub_resource type="StyleBoxFlat" id=11]
-bg_color = Color( 0.235294, 0.639216, 0.439216, 1 )
 
 [sub_resource type="CircleShape2D" id=2]
 radius = 79.0063
@@ -319,11 +311,11 @@ margin_right = 279.0
 margin_bottom = 203.0
 rect_min_size = Vector2( 0, 48 )
 custom_fonts/font = SubResource( 10 )
-custom_styles/hover = SubResource( 12 )
-custom_styles/pressed = SubResource( 13 )
+custom_styles/hover = ExtResource( 15 )
+custom_styles/pressed = ExtResource( 14 )
 custom_styles/focus = SubResource( 14 )
-custom_styles/disabled = SubResource( 15 )
-custom_styles/normal = SubResource( 11 )
+custom_styles/disabled = ExtResource( 12 )
+custom_styles/normal = ExtResource( 13 )
 text = "Buy"
 
 [node name="Area2D" type="Area2D" parent="." index="3"]
