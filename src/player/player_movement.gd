@@ -20,6 +20,9 @@ func _physics_process(delta: float) -> void:
 	if not player.is_physics_processing():
 		return
 
+	if Game.building_menu_up:
+		return
+
 	var input_direction := Input.get_axis("decelerate", "accelerate")
 
 	add_acceleration(input_direction)

@@ -3,7 +3,7 @@ extends Node
 
 signal unobtainium_changed(unobtainium_amount)
 
-var unobtainium_amount := 0
+var unobtainium_amount := 50000
 var asteroids_mined := 0
 var enemies_killed := 0
 var shots_fired := 0
@@ -14,11 +14,18 @@ var inventory_path := NodePath("../World/CanvasLayer/UI/Inventory")
 var health_display: Control
 
 
+var building_menu_up := false
+
+
 func _ready() -> void:
 	for i in 20:
 		Mixer.add_song("res://assets/soundtracks/space_one.ogg")
 		Mixer.add_song("res://assets/soundtracks/space_two.ogg")
+
+
 func menus_visible() -> bool:
+	if building_menu_up:
+		return false
 	var inventory = get_node_or_null(inventory_path)
 	if is_instance_valid(inventory) and inventory.visible:
 		return true

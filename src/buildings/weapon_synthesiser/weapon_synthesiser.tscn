@@ -1,12 +1,115 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://src/buildings/building.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/buildings/weapon_synthesiser/weapon_synthesiser.gd" type="Script" id=2]
 [ext_resource path="res://src/buildings/weapon_synthesiser/weapon_synthesiser.png" type="Texture" id=3]
 [ext_resource path="res://src/buildings/weapon_synthesiser/weapon_synthesiser.tres" type="Resource" id=4]
+[ext_resource path="res://assets/fonts/MatchupPro.ttf" type="DynamicFontData" id=5]
+[ext_resource path="res://assets/fonts/EquipmentPro.ttf" type="DynamicFontData" id=6]
+[ext_resource path="res://assets/resources/button.tres" type="StyleBox" id=7]
+[ext_resource path="res://src/guns/machine_gun/machine_gun_icon.png" type="Texture" id=8]
+[ext_resource path="res://src/guns/energy_gun/energy_gun.png" type="Texture" id=9]
+[ext_resource path="res://src/guns/rocket_gun/rocket_gun_icon.png" type="Texture" id=10]
+[ext_resource path="res://src/guns/laser_gun/laser_gun_icon.png" type="Texture" id=11]
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 24, 24 )
+
+[sub_resource type="StyleBoxEmpty" id=3]
+
+[sub_resource type="DynamicFont" id=4]
+size = 48
+font_data = ExtResource( 6 )
+
+[sub_resource type="Theme" id=5]
+
+[sub_resource type="DynamicFont" id=6]
+size = 32
+font_data = ExtResource( 6 )
+
+[sub_resource type="DynamicFont" id=7]
+size = 32
+font_data = ExtResource( 6 )
+
+[sub_resource type="DynamicFont" id=8]
+size = 32
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=9]
+size = 32
+font_data = ExtResource( 6 )
+
+[sub_resource type="StyleBoxFlat" id=10]
+bg_color = Color( 0.560784, 0.870588, 0.364706, 1 )
+
+[sub_resource type="StyleBoxFlat" id=11]
+bg_color = Color( 0.811765, 1, 0.439216, 1 )
+
+[sub_resource type="StyleBoxEmpty" id=12]
+
+[sub_resource type="StyleBoxFlat" id=13]
+bg_color = Color( 0.921569, 0.337255, 0.294118, 1 )
+
+[sub_resource type="StyleBoxFlat" id=14]
+bg_color = Color( 0.235294, 0.639216, 0.439216, 1 )
+
+[sub_resource type="CircleShape2D" id=15]
+radius = 79.0063
+
+[sub_resource type="Animation" id=16]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Control:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Control:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=17]
+resource_name = "fade_in_ui"
+length = 0.52
+tracks/0/type = "value"
+tracks/0/path = NodePath("Control:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.02, 0.52 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Control:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.01 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
 
 [node name="WeaponSynthesiser" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
@@ -17,3 +120,230 @@ shape = SubResource( 2 )
 
 [node name="Sprite" parent="." index="1"]
 texture = ExtResource( 3 )
+
+[node name="Control" type="Control" parent="." index="2"]
+visible = false
+modulate = Color( 1, 1, 1, 0 )
+margin_left = -19.0
+margin_top = -71.0
+margin_right = 21.0
+margin_bottom = -31.0
+mouse_filter = 1
+
+[node name="OpenButton" type="Button" parent="Control" index="0"]
+margin_left = -4.0
+margin_top = 18.0
+margin_right = 43.0
+margin_bottom = 38.0
+custom_styles/focus = SubResource( 3 )
+text = "Open"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Control" index="1"]
+visible = false
+
+[node name="Control" type="Control" parent="Control/CanvasLayer" index="0"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Panel" type="Panel" parent="Control/CanvasLayer/Control" index="0"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -351.0
+margin_top = -187.0
+margin_right = 351.0
+margin_bottom = 187.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/CanvasLayer/Control/Panel" index="0"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 32.0
+margin_top = 32.0
+margin_right = -32.0
+margin_bottom = -32.0
+custom_constants/separation = 16
+
+[node name="Label" type="Label" parent="Control/CanvasLayer/Control/Panel/VBoxContainer" index="0"]
+margin_right = 638.0
+margin_bottom = 48.0
+custom_fonts/font = SubResource( 4 )
+text = "Weapons"
+align = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/CanvasLayer/Control/Panel/VBoxContainer" index="1"]
+margin_top = 64.0
+margin_right = 638.0
+margin_bottom = 310.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/CanvasLayer/Control/Panel/VBoxContainer/HBoxContainer" index="0"]
+margin_right = 311.0
+margin_bottom = 246.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 16
+
+[node name="EnergyGun" type="Button" parent="Control/CanvasLayer/Control/Panel/VBoxContainer/HBoxContainer/VBoxContainer" index="0"]
+margin_right = 311.0
+margin_bottom = 48.0
+rect_min_size = Vector2( 0, 48 )
+theme = SubResource( 5 )
+custom_fonts/font = SubResource( 6 )
+custom_styles/hover = ExtResource( 7 )
+custom_styles/pressed = ExtResource( 7 )
+custom_styles/focus = ExtResource( 7 )
+custom_styles/disabled = ExtResource( 7 )
+custom_styles/normal = ExtResource( 7 )
+text = "Energy Gun"
+icon = ExtResource( 9 )
+icon_align = 2
+expand_icon = true
+
+[node name="MachineGun" type="Button" parent="Control/CanvasLayer/Control/Panel/VBoxContainer/HBoxContainer/VBoxContainer" index="1"]
+margin_top = 64.0
+margin_right = 311.0
+margin_bottom = 112.0
+rect_min_size = Vector2( 0, 48 )
+theme = SubResource( 5 )
+custom_fonts/font = SubResource( 6 )
+custom_styles/hover = ExtResource( 7 )
+custom_styles/pressed = ExtResource( 7 )
+custom_styles/focus = ExtResource( 7 )
+custom_styles/disabled = ExtResource( 7 )
+custom_styles/normal = ExtResource( 7 )
+text = "Machine Gun"
+icon = ExtResource( 8 )
+icon_align = 2
+expand_icon = true
+
+[node name="RocketGun" type="Button" parent="Control/CanvasLayer/Control/Panel/VBoxContainer/HBoxContainer/VBoxContainer" index="2"]
+margin_top = 128.0
+margin_right = 311.0
+margin_bottom = 176.0
+rect_min_size = Vector2( 0, 48 )
+theme = SubResource( 5 )
+custom_fonts/font = SubResource( 6 )
+custom_styles/hover = ExtResource( 7 )
+custom_styles/pressed = ExtResource( 7 )
+custom_styles/focus = ExtResource( 7 )
+custom_styles/disabled = ExtResource( 7 )
+custom_styles/normal = ExtResource( 7 )
+text = "Rocket Gun"
+icon = ExtResource( 10 )
+icon_align = 2
+expand_icon = true
+
+[node name="LaserGun" type="Button" parent="Control/CanvasLayer/Control/Panel/VBoxContainer/HBoxContainer/VBoxContainer" index="3"]
+margin_top = 192.0
+margin_right = 311.0
+margin_bottom = 240.0
+rect_min_size = Vector2( 0, 48 )
+theme = SubResource( 5 )
+custom_fonts/font = SubResource( 6 )
+custom_styles/hover = ExtResource( 7 )
+custom_styles/pressed = ExtResource( 7 )
+custom_styles/focus = ExtResource( 7 )
+custom_styles/disabled = ExtResource( 7 )
+custom_styles/normal = ExtResource( 7 )
+text = "Laser Gun"
+icon = ExtResource( 11 )
+icon_align = 2
+expand_icon = true
+
+[node name="Control" type="Control" parent="Control/CanvasLayer/Control/Panel/VBoxContainer/HBoxContainer" index="1"]
+margin_left = 327.0
+margin_right = 638.0
+margin_bottom = 246.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/CanvasLayer/Control/Panel/VBoxContainer/HBoxContainer/Control" index="0"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 16.0
+margin_right = -16.0
+margin_bottom = -8.0
+custom_constants/separation = 8
+
+[node name="ModuleName" type="Label" parent="Control/CanvasLayer/Control/Panel/VBoxContainer/HBoxContainer/Control/VBoxContainer" index="0"]
+unique_name_in_owner = true
+margin_right = 279.0
+margin_bottom = 32.0
+custom_fonts/font = SubResource( 7 )
+text = "Speed Module"
+align = 1
+
+[node name="Control" type="Control" parent="Control/CanvasLayer/Control/Panel/VBoxContainer/HBoxContainer/Control/VBoxContainer" index="1"]
+margin_top = 40.0
+margin_right = 279.0
+margin_bottom = 238.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/CanvasLayer/Control/Panel/VBoxContainer/HBoxContainer/Control/VBoxContainer/Control" index="0"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/separation = 16
+
+[node name="Level" type="Label" parent="Control/CanvasLayer/Control/Panel/VBoxContainer/HBoxContainer/Control/VBoxContainer/Control/VBoxContainer" index="0"]
+unique_name_in_owner = true
+margin_right = 279.0
+margin_bottom = 26.0
+custom_fonts/font = SubResource( 8 )
+text = "Level 1 Module"
+
+[node name="Description" type="Label" parent="Control/CanvasLayer/Control/Panel/VBoxContainer/HBoxContainer/Control/VBoxContainer/Control/VBoxContainer" index="1"]
+unique_name_in_owner = true
+margin_top = 42.0
+margin_right = 279.0
+margin_bottom = 68.0
+custom_fonts/font = SubResource( 8 )
+text = "Increases speed by 50"
+autowrap = true
+
+[node name="Price" type="Label" parent="Control/CanvasLayer/Control/Panel/VBoxContainer/HBoxContainer/Control/VBoxContainer/Control/VBoxContainer" index="2"]
+unique_name_in_owner = true
+margin_top = 84.0
+margin_right = 279.0
+margin_bottom = 110.0
+custom_fonts/font = SubResource( 8 )
+text = "Price: $10,000"
+
+[node name="BuyButton" type="Button" parent="Control/CanvasLayer/Control/Panel/VBoxContainer/HBoxContainer/Control/VBoxContainer/Control" index="1"]
+unique_name_in_owner = true
+margin_top = 155.0
+margin_right = 279.0
+margin_bottom = 203.0
+rect_min_size = Vector2( 0, 48 )
+custom_fonts/font = SubResource( 9 )
+custom_styles/hover = SubResource( 10 )
+custom_styles/pressed = SubResource( 11 )
+custom_styles/focus = SubResource( 12 )
+custom_styles/disabled = SubResource( 13 )
+custom_styles/normal = SubResource( 14 )
+text = "Buy"
+
+[node name="Area2D" type="Area2D" parent="." index="3"]
+visible = false
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" index="0"]
+visible = false
+position = Vector2( -1, -10 )
+shape = SubResource( 15 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="4"]
+anims/RESET = SubResource( 16 )
+anims/fade_in_ui = SubResource( 17 )
+
+[connection signal="button_up" from="Control/OpenButton" to="." method="_on_OpenButton_button_up"]
+[connection signal="button_up" from="Control/CanvasLayer/Control/Panel/VBoxContainer/HBoxContainer/VBoxContainer/EnergyGun" to="." method="_on_EnergyGun_button_up"]
+[connection signal="button_up" from="Control/CanvasLayer/Control/Panel/VBoxContainer/HBoxContainer/VBoxContainer/MachineGun" to="." method="_on_MachineGun_button_up"]
+[connection signal="button_up" from="Control/CanvasLayer/Control/Panel/VBoxContainer/HBoxContainer/VBoxContainer/RocketGun" to="." method="_on_RocketGun_button_up"]
+[connection signal="button_up" from="Control/CanvasLayer/Control/Panel/VBoxContainer/HBoxContainer/VBoxContainer/LaserGun" to="." method="_on_LaserGun_button_up"]
+[connection signal="button_up" from="Control/CanvasLayer/Control/Panel/VBoxContainer/HBoxContainer/Control/VBoxContainer/Control/BuyButton" to="." method="_on_BuyButton_button_up"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_Area2D_body_exited"]

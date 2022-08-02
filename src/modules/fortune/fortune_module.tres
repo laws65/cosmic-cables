@@ -9,5 +9,6 @@ type = 1
 name = "Fortune"
 description = "Increases mining yields by 50%"
 level = 3
+price = 1000
 icon = ExtResource( 2 )
 scene_path = "res://src/modules/fortune/fortune_module.tscn"

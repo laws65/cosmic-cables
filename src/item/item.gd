@@ -5,6 +5,7 @@ export(int, FLAGS, "module", "gun", "resource") var type
 export var name: String = "DefaultModuleName"
 export var description: String = "Default Module Description"
 export var level: int = 0
+export var price: int = 0
 export var icon: Texture
 export(String, FILE, "*.tscn") var scene_path
 var scene: Node

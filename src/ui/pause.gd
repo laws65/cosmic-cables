@@ -40,6 +40,8 @@ func _unhandled_key_input(event: InputEventKey) -> void:
 			return
 		if get_node("/root/World/CanvasLayer/UI/BuildToolbar").visible:
 			return
+		if Game.building_menu_up:
+			return
 
 		if is_paused():
 			if settings_open():

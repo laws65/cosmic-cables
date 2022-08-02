@@ -9,5 +9,6 @@ type = 2
 name = "Rocket Gun"
 description = "Fires a barrage of homing rockets"
 level = 3
+price = 1000
 icon = ExtResource( 2 )
 scene_path = "res://src/guns/rocket_gun/rocket_gun.tscn"
