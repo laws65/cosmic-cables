@@ -26,7 +26,8 @@ func _input(event: InputEvent) -> void:
 		holding_shooting = false
 
 	if (event.is_action_pressed("toggle_build_mode")
-	and not get_node("/root/World/CanvasLayer/UI/Inventory").visible):
+	and not get_node("/root/World/CanvasLayer/UI/Inventory").visible
+	and not Game.building_menu_up):
 		if mode == Mode.NORMAL:
 			set_mode(Mode.BUILD)
 		else:
