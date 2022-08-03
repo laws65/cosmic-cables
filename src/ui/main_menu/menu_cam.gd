@@ -1,8 +1,8 @@
 extends Camera2D
 
 
-func _ready() -> void:
-	get_node("../ParallaxBackground").show()
+#func _ready() -> void:
+	#get_node("../ParallaxBackground").show()
 
 
 func _process(_delta: float) -> void:

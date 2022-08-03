@@ -56,58 +56,58 @@ margin_bottom = 380.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="PageOne" type="Control" parent="Control/VBoxContainer/Pages"]
+[node name="About" type="Control" parent="Control/VBoxContainer/Pages"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Control/VBoxContainer/Pages/PageOne"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/VBoxContainer/Pages/About"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 custom_constants/separation = 16
 
-[node name="Title" type="Label" parent="Control/VBoxContainer/Pages/PageOne/VBoxContainer"]
+[node name="Title" type="Label" parent="Control/VBoxContainer/Pages/About/VBoxContainer"]
 margin_right = 599.0
 margin_bottom = 48.0
 custom_fonts/font = SubResource( 5 )
-text = "Game"
+text = "Game Name Here"
 align = 1
 
-[node name="Control" type="Control" parent="Control/VBoxContainer/Pages/PageOne/VBoxContainer"]
+[node name="Control" type="Control" parent="Control/VBoxContainer/Pages/About/VBoxContainer"]
 margin_top = 64.0
 margin_right = 599.0
 margin_bottom = 380.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Control/VBoxContainer/Pages/PageOne/VBoxContainer/Control"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/VBoxContainer/Pages/About/VBoxContainer/Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/separation = 16
 
-[node name="Control" type="Control" parent="Control/VBoxContainer/Pages/PageOne/VBoxContainer/Control/HBoxContainer"]
+[node name="Control" type="Control" parent="Control/VBoxContainer/Pages/About/VBoxContainer/Control/HBoxContainer"]
 margin_right = 291.0
 margin_bottom = 316.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Label" type="Label" parent="Control/VBoxContainer/Pages/PageOne/VBoxContainer/Control/HBoxContainer/Control"]
+[node name="Label" type="Label" parent="Control/VBoxContainer/Pages/About/VBoxContainer/Control/HBoxContainer/Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 custom_fonts/font = SubResource( 6 )
-text = "This is the help menu blah blah blah template page with 2 sides split apart"
+text = "Cast into the infinite void of space, besieged by seemingly endless waves of enemies. Build an interconnected network to amass riches, or focus on staving off the hostile ships, lest you succumb to the hostility of space."
 autowrap = true
 clip_text = true
 
-[node name="Control2" type="Control" parent="Control/VBoxContainer/Pages/PageOne/VBoxContainer/Control/HBoxContainer"]
+[node name="Control2" type="Control" parent="Control/VBoxContainer/Pages/About/VBoxContainer/Control/HBoxContainer"]
 margin_left = 307.0
 margin_right = 599.0
 margin_bottom = 316.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Label" type="Label" parent="Control/VBoxContainer/Pages/PageOne/VBoxContainer/Control/HBoxContainer/Control2"]
+[node name="Label" type="Label" parent="Control/VBoxContainer/Pages/About/VBoxContainer/Control/HBoxContainer/Control2"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 custom_fonts/font = SubResource( 6 )
@@ -115,31 +115,271 @@ text = " (add texturerects or whatever here with what the particular page explai
 autowrap = true
 clip_text = true
 
-[node name="PageTwo" type="Control" parent="Control/VBoxContainer/Pages"]
+[node name="Movement" type="Control" parent="Control/VBoxContainer/Pages"]
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Control/VBoxContainer/Pages/PageTwo"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/VBoxContainer/Pages/Movement"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 custom_constants/separation = 16
 
-[node name="Title" type="Label" parent="Control/VBoxContainer/Pages/PageTwo/VBoxContainer"]
+[node name="Title" type="Label" parent="Control/VBoxContainer/Pages/Movement/VBoxContainer"]
 margin_right = 599.0
 margin_bottom = 48.0
 custom_fonts/font = SubResource( 5 )
-text = "Game"
+text = "Movement"
 align = 1
 
-[node name="Control" type="Control" parent="Control/VBoxContainer/Pages/PageTwo/VBoxContainer"]
+[node name="Control" type="Control" parent="Control/VBoxContainer/Pages/Movement/VBoxContainer"]
 margin_top = 64.0
 margin_right = 599.0
 margin_bottom = 380.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Label" type="Label" parent="Control/VBoxContainer/Pages/PageTwo/VBoxContainer/Control"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/VBoxContainer/Pages/Movement/VBoxContainer/Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 16
+
+[node name="Control" type="Control" parent="Control/VBoxContainer/Pages/Movement/VBoxContainer/Control/HBoxContainer"]
+margin_right = 291.0
+margin_bottom = 316.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="Control/VBoxContainer/Pages/Movement/VBoxContainer/Control/HBoxContainer/Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = SubResource( 6 )
+text = "Move forward by pressing the 'W' key, turn by using the 'A' and 'D' keys, and brake with the 'S' key. Press the 'S' key while stopped to reverse."
+autowrap = true
+clip_text = true
+
+[node name="Control2" type="Control" parent="Control/VBoxContainer/Pages/Movement/VBoxContainer/Control/HBoxContainer"]
+margin_left = 307.0
+margin_right = 599.0
+margin_bottom = 316.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="Control/VBoxContainer/Pages/Movement/VBoxContainer/Control/HBoxContainer/Control2"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = SubResource( 6 )
+text = " (add texturerects or whatever here with what the particular page explains)"
+autowrap = true
+clip_text = true
+
+[node name="Combat" type="Control" parent="Control/VBoxContainer/Pages"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/VBoxContainer/Pages/Combat"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/separation = 16
+
+[node name="Title" type="Label" parent="Control/VBoxContainer/Pages/Combat/VBoxContainer"]
+margin_right = 599.0
+margin_bottom = 48.0
+custom_fonts/font = SubResource( 5 )
+text = "Combat"
+align = 1
+
+[node name="Control" type="Control" parent="Control/VBoxContainer/Pages/Combat/VBoxContainer"]
+margin_top = 64.0
+margin_right = 599.0
+margin_bottom = 380.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/VBoxContainer/Pages/Combat/VBoxContainer/Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 16
+
+[node name="Control" type="Control" parent="Control/VBoxContainer/Pages/Combat/VBoxContainer/Control/HBoxContainer"]
+margin_right = 291.0
+margin_bottom = 316.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="Control/VBoxContainer/Pages/Combat/VBoxContainer/Control/HBoxContainer/Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = SubResource( 6 )
+text = "Move the mouse to aim your shots and left-click to fire. Find or craft more advanced weapons to gain the edge in combat. Ships can't fire backwards, so try to stay behind your enemy when in combat!"
+autowrap = true
+clip_text = true
+
+[node name="Control2" type="Control" parent="Control/VBoxContainer/Pages/Combat/VBoxContainer/Control/HBoxContainer"]
+margin_left = 307.0
+margin_right = 599.0
+margin_bottom = 316.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="Control/VBoxContainer/Pages/Combat/VBoxContainer/Control/HBoxContainer/Control2"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = SubResource( 6 )
+text = " (add texturerects or whatever here with what the particular page explains)"
+autowrap = true
+clip_text = true
+
+[node name="Building" type="Control" parent="Control/VBoxContainer/Pages"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/VBoxContainer/Pages/Building"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/separation = 16
+
+[node name="Title" type="Label" parent="Control/VBoxContainer/Pages/Building/VBoxContainer"]
+margin_right = 599.0
+margin_bottom = 48.0
+custom_fonts/font = SubResource( 5 )
+text = "Building"
+align = 1
+
+[node name="Control" type="Control" parent="Control/VBoxContainer/Pages/Building/VBoxContainer"]
+margin_top = 64.0
+margin_right = 599.0
+margin_bottom = 380.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/VBoxContainer/Pages/Building/VBoxContainer/Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 16
+
+[node name="Control" type="Control" parent="Control/VBoxContainer/Pages/Building/VBoxContainer/Control/HBoxContainer"]
+margin_right = 291.0
+margin_bottom = 316.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="Control/VBoxContainer/Pages/Building/VBoxContainer/Control/HBoxContainer/Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = SubResource( 6 )
+text = "Press 'B' to toggle building mode on and off. When building, you won't be able to attack, so make sure you're safe before starting construction. Choose buildings from the build menu and place them anywhere that is unobstructed. "
+autowrap = true
+clip_text = true
+
+[node name="Control2" type="Control" parent="Control/VBoxContainer/Pages/Building/VBoxContainer/Control/HBoxContainer"]
+margin_left = 307.0
+margin_right = 599.0
+margin_bottom = 316.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="Control/VBoxContainer/Pages/Building/VBoxContainer/Control/HBoxContainer/Control2"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = SubResource( 6 )
+text = " (add texturerects or whatever here with what the particular page explains)"
+autowrap = true
+clip_text = true
+
+[node name="Making Money" type="Control" parent="Control/VBoxContainer/Pages"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/VBoxContainer/Pages/Making Money"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/separation = 16
+
+[node name="Title" type="Label" parent="Control/VBoxContainer/Pages/Making Money/VBoxContainer"]
+margin_right = 599.0
+margin_bottom = 48.0
+custom_fonts/font = SubResource( 5 )
+text = "Making Money"
+align = 1
+
+[node name="Control" type="Control" parent="Control/VBoxContainer/Pages/Making Money/VBoxContainer"]
+margin_top = 64.0
+margin_right = 599.0
+margin_bottom = 380.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/VBoxContainer/Pages/Making Money/VBoxContainer/Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 16
+
+[node name="Control" type="Control" parent="Control/VBoxContainer/Pages/Making Money/VBoxContainer/Control/HBoxContainer"]
+margin_right = 291.0
+margin_bottom = 316.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="Control/VBoxContainer/Pages/Making Money/VBoxContainer/Control/HBoxContainer/Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = SubResource( 6 )
+text = "Gain orbs by mining asteroids or killing enemy ships. Then, use the orbs to construct an elaborate building network for more efficient mining, or craft better weapons to enhance your combat abilities."
+autowrap = true
+clip_text = true
+
+[node name="Control2" type="Control" parent="Control/VBoxContainer/Pages/Making Money/VBoxContainer/Control/HBoxContainer"]
+margin_left = 307.0
+margin_right = 599.0
+margin_bottom = 316.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="Control/VBoxContainer/Pages/Making Money/VBoxContainer/Control/HBoxContainer/Control2"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = SubResource( 6 )
+text = " (add texturerects or whatever here with what the particular page explains)"
+autowrap = true
+clip_text = true
+
+[node name="Full-page template" type="Control" parent="Control/VBoxContainer/Pages"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/VBoxContainer/Pages/Full-page template"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/separation = 16
+
+[node name="Title" type="Label" parent="Control/VBoxContainer/Pages/Full-page template/VBoxContainer"]
+margin_right = 599.0
+margin_bottom = 48.0
+custom_fonts/font = SubResource( 5 )
+text = "Game"
+align = 1
+
+[node name="Control" type="Control" parent="Control/VBoxContainer/Pages/Full-page template/VBoxContainer"]
+margin_top = 64.0
+margin_right = 599.0
+margin_bottom = 380.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="Control/VBoxContainer/Pages/Full-page template/VBoxContainer/Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 custom_fonts/font = SubResource( 6 )
