@@ -3,6 +3,7 @@
 [ext_resource path="res://src/item/item.gd" type="Script" id=1]
 
 [sub_resource type="StreamTexture" id=1]
+load_path = "res://.import/speed_icon.png-e9b0d8af4b2e711503fd77f5c2433ec5.stex"
 
 [resource]
 script = ExtResource( 1 )

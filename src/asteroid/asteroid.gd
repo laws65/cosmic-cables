@@ -114,7 +114,11 @@ func mine(miner: Node2D, clip_poly: Polygon2D) -> void:
 			rs.set_pickup_delay(0.5)
 			rs.rotation = randi()
 			rs.velocity = rs.transform.x * rand_range(1, 50)
-			rs.item_representing.level = (area / number_of_asteroid_chunks) * miner.shooter.fortune_multiplier
+			var fortune_multiplier := 1.0
+			if (is_instance_valid(miner)
+			and is_instance_valid(miner.shooter)):
+				fortune_multiplier = miner.shooter.fortune_multiplier
+			rs.item_representing.level = (area / number_of_asteroid_chunks) * fortune_multiplier
 
 
 func _get_relative_clip_points(miner: Node2D, clip_poly: Polygon2D) -> PoolVector2Array:
