@@ -107,6 +107,7 @@ func mine(miner: Node2D, clip_poly: Polygon2D) -> void:
 
 
 		var debris := load("res://src/asteroid/asteroid_debris_particles.tscn").instance() as CPUParticles2D
+# warning-ignore:narrowing_conversion
 		debris.amount = max(1, number_of_asteroid_chunks/2)
 		debris.position = miner.position
 		get_node("/root/World").add_child(debris)
