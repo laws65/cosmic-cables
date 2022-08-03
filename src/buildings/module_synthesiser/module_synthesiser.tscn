@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://src/buildings/building.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/buildings/module_synthesiser/module_synthesiser.png" type="Texture" id=2]
@@ -6,7 +6,6 @@
 [ext_resource path="res://src/buildings/module_synthesiser/module_synthesiser.tres" type="Resource" id=4]
 [ext_resource path="res://assets/fonts/EquipmentPro.ttf" type="DynamicFontData" id=5]
 [ext_resource path="res://src/modules/speed/speed_module.png" type="Texture" id=6]
-[ext_resource path="res://assets/resources/button.tres" type="StyleBox" id=7]
 [ext_resource path="res://src/modules/power/power_module.png" type="Texture" id=8]
 [ext_resource path="res://src/modules/energy/energy_module.png" type="Texture" id=9]
 [ext_resource path="res://src/modules/fortune/fortune_module.png" type="Texture" id=10]
@@ -30,6 +29,21 @@ font_data = ExtResource( 5 )
 [sub_resource type="DynamicFont" id=6]
 size = 32
 font_data = ExtResource( 5 )
+
+[sub_resource type="StyleBoxFlat" id=17]
+bg_color = Color( 0.494118, 0.494118, 0.560784, 1 )
+
+[sub_resource type="StyleBoxFlat" id=18]
+bg_color = Color( 0.494118, 0.494118, 0.560784, 1 )
+
+[sub_resource type="StyleBoxFlat" id=19]
+bg_color = Color( 0.760784, 0.760784, 0.819608, 1 )
+
+[sub_resource type="StyleBoxFlat" id=20]
+bg_color = Color( 0.494118, 0.494118, 0.560784, 1 )
+
+[sub_resource type="StyleBoxFlat" id=21]
+bg_color = Color( 0.494118, 0.494118, 0.560784, 1 )
 
 [sub_resource type="DynamicFont" id=8]
 size = 32
@@ -171,75 +185,76 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/separation = 16
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Control/CanvasLayer/Control/Panel/VBoxContainer/HBoxContainer" index="0"]
+[node name="ShopButtons" type="VBoxContainer" parent="Control/CanvasLayer/Control/Panel/VBoxContainer/HBoxContainer" index="0"]
+unique_name_in_owner = true
 margin_right = 311.0
 margin_bottom = 246.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/separation = 16
 
-[node name="Speed" type="Button" parent="Control/CanvasLayer/Control/Panel/VBoxContainer/HBoxContainer/VBoxContainer" index="0"]
+[node name="Speed" type="Button" parent="Control/CanvasLayer/Control/Panel/VBoxContainer/HBoxContainer/ShopButtons" index="0"]
 margin_right = 311.0
 margin_bottom = 48.0
 rect_min_size = Vector2( 0, 48 )
 theme = SubResource( 7 )
 custom_fonts/font = SubResource( 6 )
-custom_styles/hover = ExtResource( 7 )
-custom_styles/pressed = ExtResource( 7 )
-custom_styles/focus = ExtResource( 7 )
-custom_styles/disabled = ExtResource( 7 )
-custom_styles/normal = ExtResource( 7 )
+custom_styles/hover = SubResource( 17 )
+custom_styles/pressed = SubResource( 18 )
+custom_styles/focus = SubResource( 19 )
+custom_styles/disabled = SubResource( 20 )
+custom_styles/normal = SubResource( 21 )
 text = "Speed"
 icon = ExtResource( 6 )
 icon_align = 2
 expand_icon = true
 
-[node name="Power" type="Button" parent="Control/CanvasLayer/Control/Panel/VBoxContainer/HBoxContainer/VBoxContainer" index="1"]
+[node name="Power" type="Button" parent="Control/CanvasLayer/Control/Panel/VBoxContainer/HBoxContainer/ShopButtons" index="1"]
 margin_top = 64.0
 margin_right = 311.0
 margin_bottom = 112.0
 rect_min_size = Vector2( 0, 48 )
 theme = SubResource( 7 )
 custom_fonts/font = SubResource( 6 )
-custom_styles/hover = ExtResource( 7 )
-custom_styles/pressed = ExtResource( 7 )
-custom_styles/focus = ExtResource( 7 )
-custom_styles/disabled = ExtResource( 7 )
-custom_styles/normal = ExtResource( 7 )
+custom_styles/hover = SubResource( 17 )
+custom_styles/pressed = SubResource( 18 )
+custom_styles/focus = SubResource( 19 )
+custom_styles/disabled = SubResource( 20 )
+custom_styles/normal = SubResource( 21 )
 text = "Power"
 icon = ExtResource( 8 )
 icon_align = 2
 expand_icon = true
 
-[node name="Energy" type="Button" parent="Control/CanvasLayer/Control/Panel/VBoxContainer/HBoxContainer/VBoxContainer" index="2"]
+[node name="Energy" type="Button" parent="Control/CanvasLayer/Control/Panel/VBoxContainer/HBoxContainer/ShopButtons" index="2"]
 margin_top = 128.0
 margin_right = 311.0
 margin_bottom = 176.0
 rect_min_size = Vector2( 0, 48 )
 theme = SubResource( 7 )
 custom_fonts/font = SubResource( 6 )
-custom_styles/hover = ExtResource( 7 )
-custom_styles/pressed = ExtResource( 7 )
-custom_styles/focus = ExtResource( 7 )
-custom_styles/disabled = ExtResource( 7 )
-custom_styles/normal = ExtResource( 7 )
+custom_styles/hover = SubResource( 17 )
+custom_styles/pressed = SubResource( 18 )
+custom_styles/focus = SubResource( 19 )
+custom_styles/disabled = SubResource( 20 )
+custom_styles/normal = SubResource( 21 )
 text = "Energy"
 icon = ExtResource( 9 )
 icon_align = 2
 expand_icon = true
 
-[node name="Fortune" type="Button" parent="Control/CanvasLayer/Control/Panel/VBoxContainer/HBoxContainer/VBoxContainer" index="3"]
+[node name="Fortune" type="Button" parent="Control/CanvasLayer/Control/Panel/VBoxContainer/HBoxContainer/ShopButtons" index="3"]
 margin_top = 192.0
 margin_right = 311.0
 margin_bottom = 240.0
 rect_min_size = Vector2( 0, 48 )
 theme = SubResource( 7 )
 custom_fonts/font = SubResource( 6 )
-custom_styles/hover = ExtResource( 7 )
-custom_styles/pressed = ExtResource( 7 )
-custom_styles/focus = ExtResource( 7 )
-custom_styles/disabled = ExtResource( 7 )
-custom_styles/normal = ExtResource( 7 )
+custom_styles/hover = SubResource( 17 )
+custom_styles/pressed = SubResource( 18 )
+custom_styles/focus = SubResource( 19 )
+custom_styles/disabled = SubResource( 20 )
+custom_styles/normal = SubResource( 21 )
 text = "Fortune"
 icon = ExtResource( 10 )
 icon_align = 2
@@ -310,12 +325,14 @@ margin_top = 155.0
 margin_right = 279.0
 margin_bottom = 203.0
 rect_min_size = Vector2( 0, 48 )
+focus_mode = 0
 custom_fonts/font = SubResource( 10 )
 custom_styles/hover = ExtResource( 15 )
 custom_styles/pressed = ExtResource( 14 )
 custom_styles/focus = SubResource( 14 )
 custom_styles/disabled = ExtResource( 12 )
 custom_styles/normal = ExtResource( 13 )
+enabled_focus_mode = 0
 text = "Buy"
 
 [node name="Area2D" type="Area2D" parent="." index="3"]
@@ -331,10 +348,10 @@ anims/RESET = SubResource( 3 )
 anims/fade_in_ui = SubResource( 4 )
 
 [connection signal="button_up" from="Control/OpenButton" to="." method="_on_OpenButton_button_up"]
-[connection signal="button_up" from="Control/CanvasLayer/Control/Panel/VBoxContainer/HBoxContainer/VBoxContainer/Speed" to="." method="_on_Speed_button_up"]
-[connection signal="button_up" from="Control/CanvasLayer/Control/Panel/VBoxContainer/HBoxContainer/VBoxContainer/Power" to="." method="_on_Power_button_up"]
-[connection signal="button_up" from="Control/CanvasLayer/Control/Panel/VBoxContainer/HBoxContainer/VBoxContainer/Energy" to="." method="_on_Energy_button_up"]
-[connection signal="button_up" from="Control/CanvasLayer/Control/Panel/VBoxContainer/HBoxContainer/VBoxContainer/Fortune" to="." method="_on_Fortune_button_up"]
+[connection signal="button_up" from="Control/CanvasLayer/Control/Panel/VBoxContainer/HBoxContainer/ShopButtons/Speed" to="." method="_on_Speed_button_up"]
+[connection signal="button_up" from="Control/CanvasLayer/Control/Panel/VBoxContainer/HBoxContainer/ShopButtons/Power" to="." method="_on_Power_button_up"]
+[connection signal="button_up" from="Control/CanvasLayer/Control/Panel/VBoxContainer/HBoxContainer/ShopButtons/Energy" to="." method="_on_Energy_button_up"]
+[connection signal="button_up" from="Control/CanvasLayer/Control/Panel/VBoxContainer/HBoxContainer/ShopButtons/Fortune" to="." method="_on_Fortune_button_up"]
 [connection signal="button_up" from="Control/CanvasLayer/Control/Panel/VBoxContainer/HBoxContainer/Control/VBoxContainer/Control/BuyButton" to="." method="_on_BuyButton_button_up"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_Area2D_body_exited"]

@@ -21,7 +21,7 @@ func _on_Area2D_body_exited(_body: Node) -> void:
 
 func _on_OpenButton_button_up() -> void:
 	if not is_instance_valid(selected_gun):
-		_build_display_for("res://src/modules/speed/speed_module.tres")
+		_build_display_for("res://src/guns/energy_gun/energy_gun.tres")
 	else:
 		_build_display_for(selected_gun.resource_path)
 	$Control/CanvasLayer.show()
@@ -31,6 +31,11 @@ func _on_OpenButton_button_up() -> void:
 func _build_display_for(module_resource_path: String) -> void:
 	var gun := load(module_resource_path) as Item
 	selected_gun = gun
+
+	for i in get_node("%ShopButtons").get_children():
+		if i.name == gun.name:
+			i.grab_focus()
+
 	get_node("%ModuleName").text = gun.name
 	get_node("%Level").text = "Level %s Gun" % gun.level
 	get_node("%Description").text = gun.description

@@ -48,6 +48,11 @@ func _on_Fortune_button_up() -> void:
 func _build_display_for(module_resource_path: String) -> void:
 	var module := load(module_resource_path) as Item
 	selected_module = module
+
+	for i in get_node("%ShopButtons").get_children():
+		if i.name == module.name:
+			i.grab_focus()
+
 	get_node("%ModuleName").text = module.name + " Module"
 	get_node("%Level").text = "Level %s Module" % module.level
 	get_node("%Description").text = module.description
@@ -62,7 +67,6 @@ func _build_display_for(module_resource_path: String) -> void:
 		get_node("%BuyButton").text = "You can't afford this!"
 
 
-
 func _on_BuyButton_button_up() -> void:
 	var player := get_tree().get_nodes_in_group("player").front() as Player
 	var added := player.quick_add_to_inventory(selected_module)
@@ -73,3 +77,7 @@ func _on_BuyButton_button_up() -> void:
 		var world := get_node("/root/World")
 		var ground_item := world.create_ground_item(selected_module) as GroundItem
 		ground_item.position = player.position
+
+	for i in get_node("%ShopButtons").get_children():
+		if i.name == selected_module.name:
+			i.grab_focus()

@@ -40,6 +40,10 @@ func _input(event: InputEvent) -> void:
 
 
 func create_ground_item(item: Item) -> KinematicBody2D:
+	if not is_instance_valid(item):
+		print("Item %s invalid" % item)
+		print("Stack " + str(get_stack()))
+		return null
 	var ground_item_instance = load("res://src/ground_item/ground_item.tscn").instance()
 	ground_item_instance.item_representing = item
 	add_child(ground_item_instance)
