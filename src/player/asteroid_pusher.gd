@@ -12,6 +12,9 @@ func _physics_process(_delta: float) -> void:
 		return
 
 	var asteroid = col.collider
+	if not is_instance_valid(asteroid):
+		return
+
 	if not asteroid.is_in_group("asteroid"):
 		return
 
