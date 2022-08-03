@@ -51,8 +51,7 @@ margin_bottom = -16.0
 
 [node name="Pages" type="Control" parent="Control/VBoxContainer"]
 unique_name_in_owner = true
-margin_left = 16.0
-margin_right = 583.0
+margin_right = 599.0
 margin_bottom = 380.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -67,7 +66,7 @@ anchor_bottom = 1.0
 custom_constants/separation = 16
 
 [node name="Title" type="Label" parent="Control/VBoxContainer/Pages/PageOne/VBoxContainer"]
-margin_right = 567.0
+margin_right = 599.0
 margin_bottom = 48.0
 custom_fonts/font = SubResource( 5 )
 text = "Game"
@@ -75,7 +74,7 @@ align = 1
 
 [node name="Control" type="Control" parent="Control/VBoxContainer/Pages/PageOne/VBoxContainer"]
 margin_top = 64.0
-margin_right = 567.0
+margin_right = 599.0
 margin_bottom = 380.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -88,7 +87,7 @@ size_flags_vertical = 3
 custom_constants/separation = 16
 
 [node name="Control" type="Control" parent="Control/VBoxContainer/Pages/PageOne/VBoxContainer/Control/HBoxContainer"]
-margin_right = 275.0
+margin_right = 291.0
 margin_bottom = 316.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -102,8 +101,8 @@ autowrap = true
 clip_text = true
 
 [node name="Control2" type="Control" parent="Control/VBoxContainer/Pages/PageOne/VBoxContainer/Control/HBoxContainer"]
-margin_left = 291.0
-margin_right = 567.0
+margin_left = 307.0
+margin_right = 599.0
 margin_bottom = 316.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -127,7 +126,7 @@ anchor_bottom = 1.0
 custom_constants/separation = 16
 
 [node name="Title" type="Label" parent="Control/VBoxContainer/Pages/PageTwo/VBoxContainer"]
-margin_right = 567.0
+margin_right = 599.0
 margin_bottom = 48.0
 custom_fonts/font = SubResource( 5 )
 text = "Game"
@@ -135,7 +134,7 @@ align = 1
 
 [node name="Control" type="Control" parent="Control/VBoxContainer/Pages/PageTwo/VBoxContainer"]
 margin_top = 64.0
-margin_right = 567.0
+margin_right = 599.0
 margin_bottom = 380.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
