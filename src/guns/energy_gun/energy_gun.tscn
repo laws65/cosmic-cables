@@ -16,7 +16,7 @@ inaccuracy = 5.0
 position = Vector2( 17, 0 )
 
 [node name="Sprite" parent="." index="2"]
-position = Vector2( 13, 0 )
+position = Vector2( 12, 0 )
 
 [node name="SquishOnShoot" type="Node" parent="." index="3"]
 script = ExtResource( 4 )
