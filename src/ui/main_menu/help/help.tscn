@@ -1,0 +1,190 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://src/ui/main_menu/help/go_left.png" type="Texture" id=1]
+[ext_resource path="res://src/ui/main_menu/help/go_right.png" type="Texture" id=2]
+[ext_resource path="res://src/ui/main_menu/help/help.gd" type="Script" id=3]
+[ext_resource path="res://assets/fonts/EquipmentPro.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://assets/fonts/MatchupPro.ttf" type="DynamicFontData" id=5]
+
+[sub_resource type="DynamicFont" id=5]
+size = 48
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=6]
+size = 32
+font_data = ExtResource( 5 )
+
+[sub_resource type="StyleBoxTexture" id=1]
+texture = ExtResource( 1 )
+region_rect = Rect2( 0, 0, 14, 14 )
+
+[sub_resource type="StyleBoxEmpty" id=4]
+
+[sub_resource type="StyleBoxTexture" id=2]
+texture = ExtResource( 2 )
+region_rect = Rect2( 0, 0, 14, 14 )
+
+[sub_resource type="StyleBoxEmpty" id=3]
+
+[node name="Help" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 3 )
+
+[node name="Control" type="Panel" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -341.0
+margin_top = -263.0
+margin_right = 290.0
+margin_bottom = 181.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 16.0
+margin_top = 16.0
+margin_right = -16.0
+margin_bottom = -16.0
+
+[node name="Pages" type="Control" parent="Control/VBoxContainer"]
+unique_name_in_owner = true
+margin_left = 16.0
+margin_right = 583.0
+margin_bottom = 380.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="PageOne" type="Control" parent="Control/VBoxContainer/Pages"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/VBoxContainer/Pages/PageOne"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/separation = 16
+
+[node name="Title" type="Label" parent="Control/VBoxContainer/Pages/PageOne/VBoxContainer"]
+margin_right = 567.0
+margin_bottom = 48.0
+custom_fonts/font = SubResource( 5 )
+text = "Game"
+align = 1
+
+[node name="Control" type="Control" parent="Control/VBoxContainer/Pages/PageOne/VBoxContainer"]
+margin_top = 64.0
+margin_right = 567.0
+margin_bottom = 380.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/VBoxContainer/Pages/PageOne/VBoxContainer/Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 16
+
+[node name="Control" type="Control" parent="Control/VBoxContainer/Pages/PageOne/VBoxContainer/Control/HBoxContainer"]
+margin_right = 275.0
+margin_bottom = 316.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="Control/VBoxContainer/Pages/PageOne/VBoxContainer/Control/HBoxContainer/Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = SubResource( 6 )
+text = "This is the help menu blah blah blah template page with 2 sides split apart"
+autowrap = true
+clip_text = true
+
+[node name="Control2" type="Control" parent="Control/VBoxContainer/Pages/PageOne/VBoxContainer/Control/HBoxContainer"]
+margin_left = 291.0
+margin_right = 567.0
+margin_bottom = 316.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="Control/VBoxContainer/Pages/PageOne/VBoxContainer/Control/HBoxContainer/Control2"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = SubResource( 6 )
+text = " (add texturerects or whatever here with what the particular page explains)"
+autowrap = true
+clip_text = true
+
+[node name="PageTwo" type="Control" parent="Control/VBoxContainer/Pages"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/VBoxContainer/Pages/PageTwo"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/separation = 16
+
+[node name="Title" type="Label" parent="Control/VBoxContainer/Pages/PageTwo/VBoxContainer"]
+margin_right = 567.0
+margin_bottom = 48.0
+custom_fonts/font = SubResource( 5 )
+text = "Game"
+align = 1
+
+[node name="Control" type="Control" parent="Control/VBoxContainer/Pages/PageTwo/VBoxContainer"]
+margin_top = 64.0
+margin_right = 567.0
+margin_bottom = 380.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="Control/VBoxContainer/Pages/PageTwo/VBoxContainer/Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = SubResource( 6 )
+text = "This is a template page with all text"
+autowrap = true
+clip_text = true
+
+[node name="Label" type="HBoxContainer" parent="Control/VBoxContainer"]
+margin_top = 384.0
+margin_right = 599.0
+margin_bottom = 412.0
+rect_min_size = Vector2( 0, 28 )
+custom_constants/separation = 4
+alignment = 2
+
+[node name="GoLeft" type="Button" parent="Control/VBoxContainer/Label"]
+unique_name_in_owner = true
+margin_left = 539.0
+margin_right = 567.0
+margin_bottom = 28.0
+rect_min_size = Vector2( 28, 28 )
+focus_mode = 0
+size_flags_vertical = 3
+custom_styles/hover = SubResource( 1 )
+custom_styles/pressed = SubResource( 1 )
+custom_styles/focus = SubResource( 1 )
+custom_styles/disabled = SubResource( 4 )
+custom_styles/normal = SubResource( 1 )
+enabled_focus_mode = 0
+
+[node name="GoRight" type="Button" parent="Control/VBoxContainer/Label"]
+unique_name_in_owner = true
+margin_left = 571.0
+margin_right = 599.0
+margin_bottom = 28.0
+rect_min_size = Vector2( 28, 28 )
+focus_mode = 0
+size_flags_vertical = 3
+custom_styles/hover = SubResource( 2 )
+custom_styles/pressed = SubResource( 2 )
+custom_styles/focus = SubResource( 2 )
+custom_styles/disabled = SubResource( 3 )
+custom_styles/normal = SubResource( 2 )
+enabled_focus_mode = 0
+
+[connection signal="button_up" from="Control/VBoxContainer/Label/GoLeft" to="." method="_on_GoLeft_button_up"]
+[connection signal="button_up" from="Control/VBoxContainer/Label/GoRight" to="." method="_on_GoRight_button_up"]

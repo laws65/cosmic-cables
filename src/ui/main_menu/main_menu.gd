@@ -4,6 +4,7 @@ extends CanvasLayer
 func _unhandled_key_input(event: InputEventKey) -> void:
 	if event.is_action_pressed("pause"):
 		$Control/Settings.close()
+		$Control/Help.hide()
 
 
 func _on_Quit_button_up() -> void:
@@ -16,3 +17,7 @@ func _on_Play_button_up() -> void:
 
 func _on_Settings_button_up() -> void:
 	$Control/Settings.open()
+
+
+func _on_Help_button_up() -> void:
+	$Control/Help.show()
