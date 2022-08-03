@@ -30,6 +30,10 @@ func _input(event: InputEvent) -> void:
 			var player := get_tree().get_nodes_in_group("player").front() as Player
 			player.set_mode(player.Mode.NORMAL)
 
+	if (event.is_action_pressed("right-click")
+	and is_instance_valid(selected_building)):
+		SignalBus.emit_signal("toolbar_item_building_setup", null)
+
 
 func _on_Toolbar_item_hovered(toolbar_item: ToolbarItem) -> void:
 	$Tooltip.build_tooltip_for(toolbar_item)
