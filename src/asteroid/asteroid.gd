@@ -104,6 +104,13 @@ func mine(miner: Node2D, clip_poly: Polygon2D) -> void:
 		possible_points.shuffle()
 
 		var number_of_asteroid_chunks = area * 0.0005
+
+
+		var debris := load("res://src/asteroid/asteroid_debris_particles.tscn").instance() as CPUParticles2D
+		debris.amount = max(1, number_of_asteroid_chunks/2)
+		debris.position = miner.position
+		get_node("/root/World").add_child(debris)
+
 		for _i in number_of_asteroid_chunks:
 			if not is_queued_for_deletion():
 				yield(get_tree(), "idle_frame")
@@ -119,6 +126,7 @@ func mine(miner: Node2D, clip_poly: Polygon2D) -> void:
 			and is_instance_valid(miner.shooter)):
 				fortune_multiplier = miner.shooter.fortune_multiplier
 			rs.item_representing.level = (area / number_of_asteroid_chunks) * fortune_multiplier
+
 
 
 func _get_relative_clip_points(miner: Node2D, clip_poly: Polygon2D) -> PoolVector2Array:
