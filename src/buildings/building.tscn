@@ -32,6 +32,8 @@ mouse_filter = 1
 texture_normal = ExtResource( 3 )
 texture_pressed = ExtResource( 5 )
 texture_hover = ExtResource( 5 )
+expand = true
+stretch_mode = 3
 
 [node name="Down" type="TextureButton" parent="PlugButtons"]
 margin_left = 42.0
@@ -42,6 +44,8 @@ mouse_filter = 1
 texture_normal = ExtResource( 3 )
 texture_pressed = ExtResource( 5 )
 texture_hover = ExtResource( 5 )
+expand = true
+stretch_mode = 3
 
 [node name="Left" type="TextureButton" parent="PlugButtons"]
 margin_left = 3.0
@@ -52,6 +56,8 @@ mouse_filter = 1
 texture_normal = ExtResource( 3 )
 texture_pressed = ExtResource( 5 )
 texture_hover = ExtResource( 5 )
+expand = true
+stretch_mode = 3
 
 [node name="Up" type="TextureButton" parent="PlugButtons"]
 margin_left = 42.0
@@ -61,6 +67,8 @@ mouse_filter = 1
 texture_normal = ExtResource( 3 )
 texture_pressed = ExtResource( 5 )
 texture_hover = ExtResource( 5 )
+expand = true
+stretch_mode = 3
 
 [node name="Plugs" type="Node2D" parent="."]
 
