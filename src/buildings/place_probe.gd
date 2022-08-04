@@ -32,8 +32,12 @@ func _input(event: InputEvent) -> void:
 			if overlap.get_parent() is Cabling:
 				var cabling := overlap.get_parent() as Cabling
 				cabling.queue_free()
-				cabling.connection.building_one.remove_connection(cabling.connection)
-				cabling.connection.building_two.remove_connection(cabling.connection)
+				var b1 = cabling.connection.building_one
+				if is_instance_valid(b1):
+					b1.remove_connection(cabling.connection)
+				var b2 = cabling.connection.building_two
+				if is_instance_valid(b2):
+					b2.remove_connection(cabling.connection)
 		return
 
 	if event.is_action_pressed("place"):
