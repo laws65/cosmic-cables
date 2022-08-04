@@ -3,8 +3,6 @@ extends KinematicBody2D
 class_name Asteroid
 
 
-onready var shape := get_node("Shape") as SS2D_Shape_Closed
-
 export var should_gen: bool
 
 export(float, 40, 200) var size = 40.0
@@ -152,20 +150,15 @@ func get_rotation_damp() -> float:
 
 
 func set_points(points: PoolVector2Array) -> void:
-	shape.clear_points()
-	shape.add_points(points)
+	$Polygon2D.polygon = points
+	$CollisionPolygon2D.polygon = points
 	_recalculate_mass()
+	$CollisionPolygon2D.polygon = points
 	update()
 
 
 func get_points() -> PoolVector2Array:
-	var points := PoolVector2Array()
-	for key in shape.get_all_point_keys():
-		points.push_back(shape.get_point_position(key))
-	var points_array = Array(points)
-	# epic off by one error
-	points_array.pop_back()
-	return PoolVector2Array(points_array)
+	return $Polygon2D.polygon
 
 
 func _recalculate_mass() -> void:
