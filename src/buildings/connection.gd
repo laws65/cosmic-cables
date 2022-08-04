@@ -13,4 +13,4 @@ var building_one
 var building_two
 var building_one_connection: int
 var building_two_connection: int
-var line: Line2D
+var cabling: Node2D

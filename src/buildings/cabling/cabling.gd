@@ -1,5 +1,8 @@
 extends Node2D
+class_name Cabling
 
+
+var connection: Connection
 
 func set_target(start_building: Building, start_slot_idx: int, end_building: Building, end_slot_idx: int) -> void:
 	var start_slot = start_building.get_plug(start_slot_idx)
@@ -16,3 +19,7 @@ func set_target(start_building: Building, start_slot_idx: int, end_building: Bui
 	$Line2D.points[1] = $End.position + (Vector2.RIGHT * 8).rotated($End.rotation)
 
 	$End.rotation -= PI
+
+	$Area2D.rotation = $Start.position.direction_to($End.position).angle()
+	$Area2D/CollisionShape2D.shape.extents.x = $Start.position.distance_to($End.position) / 2.0
+	$Area2D/CollisionShape2D.position.x = $Area2D/CollisionShape2D.shape.extents.x

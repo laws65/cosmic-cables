@@ -29,6 +29,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/buildings/building_info.gd"
 }, {
+"base": "Node2D",
+"class": "Cabling",
+"language": "GDScript",
+"path": "res://src/buildings/cabling/cabling.gd"
+}, {
 "base": "Node",
 "class": "Connection",
 "language": "GDScript",
@@ -249,6 +254,7 @@ _global_script_class_icons={
 "AsteroidPusher": "",
 "Building": "",
 "BuildingInfo": "",
+"Cabling": "",
 "Connection": "",
 "CullBulletAfterTime": "",
 "EnergyModule": "",
@@ -431,6 +437,7 @@ right-click={
 2d_physics/layer_6="building"
 2d_physics/layer_7="block_building_placement"
 2d_physics/layer_8="friendly"
+2d_physics/layer_9="cabling"
 
 [physics]
 

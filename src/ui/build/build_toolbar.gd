@@ -29,11 +29,21 @@ func _ready() -> void:
 func _on_Plug_clicked(building: Building, plug: int) -> void:
 	if is_instance_valid(selected_plug_building):
 		if selected_plug_building != building:
-			building.connect_buildings(plug, selected_plug_building, selected_plug)
 			var cabling = load("res://src/buildings/cabling/cabling.tscn").instance()
 			cabling.position = building.get_plug(plug).global_position
 			get_node("/root/World").add_child(cabling)
 			cabling.set_target(building, plug, selected_plug_building, selected_plug)
+
+			var connection := Connection.new()
+			cabling.connection = connection
+			connection.building_one = building
+			connection.building_one_connection = plug
+			connection.building_two = selected_plug_building
+			connection.building_two_connection = selected_plug
+			connection.cabling = cabling
+
+			building.add_connection(connection)
+			selected_plug_building.add_connection(connection)
 
 			selected_plug_building = null
 			selected_plug = -1

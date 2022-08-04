@@ -28,13 +28,12 @@ func _input(event: InputEvent) -> void:
 				var refund_amount := floor(overlap.info.price * 0.5)
 				Game.add_unobtainium(refund_amount)
 				owner.add_cha_ching(overlap.position + Vector2.UP * 50, refund_amount)
-		var tilemap := owner.get_node("TileMap") as TileMap
-		var tile := tilemap.get_cellv(tilemap.world_to_map(position))
-		if tile == 0:
-			var refund_amount := floor(cabling_price * 0.5)
-			# warning-ignore:narrowing_conversion
-			Game.add_unobtainium(refund_amount)
-			owner.add_cha_ching(position + Vector2.UP * 50, refund_amount)
+
+			if overlap.get_parent() is Cabling:
+				var cabling := overlap.get_parent() as Cabling
+				cabling.queue_free()
+				cabling.connection.building_one.remove_connection(cabling.connection)
+				cabling.connection.building_two.remove_connection(cabling.connection)
 		return
 
 	if event.is_action_pressed("place"):
