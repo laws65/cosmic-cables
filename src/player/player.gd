@@ -70,3 +70,7 @@ func die() -> void:
 	.die()
 	yield(get_tree().create_timer(2.0), "timeout")
 	get_tree().paused = true
+
+
+func get_elasticity() -> float:
+	return 0.1

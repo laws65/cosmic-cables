@@ -138,7 +138,7 @@ func _get_relative_clip_points(miner: Node2D, clip_poly: Polygon2D) -> PoolVecto
 
 
 func get_elasticity() -> float:
-	return 0.8
+	return 0.4
 
 
 func get_mass() -> float:
