@@ -20,6 +20,9 @@ func _physics_process(delta: float) -> void:
 		if not ship.can_fit_item(ground_item.get_item_representing()):
 			continue
 
+		if ship.team != 0 and ground_item.get_item_representing().type % 4 == 0:
+			continue
+
 		var distance: float = (global_position - ground_item.global_position).length()
 		var distance_percent = distance / shape_radius
 

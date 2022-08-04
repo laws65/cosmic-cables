@@ -11,6 +11,9 @@ func _physics_process(_delta: float) -> void:
 		if ground_item.picked_up or not ground_item.allow_pickup:
 			continue
 
+		if ship.team != 0 and ground_item.get_item_representing().type % 4 == 0:
+			continue
+
 		var item := ground_item.get_item_representing() as Item
 		var successfully_added := ship.quick_add_to_inventory(item)
 		if successfully_added:
