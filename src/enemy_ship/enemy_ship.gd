@@ -1,6 +1,7 @@
 extends Ship
 
 
+
 var min_distance = 100
 
 
@@ -74,7 +75,10 @@ func _physics_process(delta: float) -> void:
 		if global_position.distance_squared_to(investigate_position) < pow(min_investiage_distance, 2):
 			mode = IDLE
 
-	velocity = move_and_slide(velocity)
+	if slowed:
+		velocity = move_and_slide(velocity * Vector2(0.5, 0.5))
+	else:
+		velocity = move_and_slide(velocity)
 
 
 func steer_towards(target_position) -> void:

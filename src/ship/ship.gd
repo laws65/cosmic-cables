@@ -14,6 +14,8 @@ signal death()
 var velocity: Vector2
 var acceleration: Vector2
 
+var slowed := false
+
 var gun_slot := [null]
 var modules: Array
 var storage: Array

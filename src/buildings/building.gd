@@ -15,3 +15,7 @@ export var info: Resource
 
 func _on_die() -> void:
 	pass
+
+
+func is_connected_to_core() -> bool:
+	return true

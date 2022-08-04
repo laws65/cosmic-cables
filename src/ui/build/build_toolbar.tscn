@@ -2,7 +2,7 @@
 
 [ext_resource path="res://assets/fonts/small_pixel.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://src/ui/build/tooltip.gd" type="Script" id=2]
-[ext_resource path="res://src/buildings/cabling/cabling.tres" type="Resource" id=3]
+[ext_resource path="res://src/buildings/force_field/force_field.tres" type="Resource" id=3]
 [ext_resource path="res://src/buildings/repair_station/repair_station.tres" type="Resource" id=4]
 [ext_resource path="res://src/ui/build/toolbar_item.tscn" type="PackedScene" id=5]
 [ext_resource path="res://src/buildings/module_synthesiser/module_synthesiser.tres" type="Resource" id=6]
@@ -116,7 +116,7 @@ alignment = 1
 margin_right = 111.0
 mouse_filter = 0
 
-[node name="Cabling" parent="H" instance=ExtResource( 5 )]
+[node name="ForceField" parent="H" instance=ExtResource( 5 )]
 margin_left = 115.0
 margin_right = 227.0
 building_info = ExtResource( 3 )

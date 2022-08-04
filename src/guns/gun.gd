@@ -41,7 +41,10 @@ func shoot(target_position: Vector2) -> Node2D:
 
 	get_parent().get_parent().add_child(bullet_instance)
 
-	fire_timer.start(firerate)
+	if ship.slowed:
+		fire_timer.start(firerate * 2)
+	else:
+		fire_timer.start(firerate)
 
 	if is_instance_valid(ship):
 		var ship_speed = ship.velocity.length()
