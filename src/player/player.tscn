@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://src/player/player.gd" type="Script" id=1]
 [ext_resource path="res://src/player/player.png" type="Texture" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://src/ship/fire_trail/fire_trail.tscn" type="PackedScene" id=5]
 [ext_resource path="res://src/picker_upper/picker_upper.tscn" type="PackedScene" id=6]
 [ext_resource path="res://src/player/asteroid_pusher.gd" type="Script" id=7]
+[ext_resource path="res://src/sound_manager_2d.gd" type="Script" id=8]
 
 [sub_resource type="Animation" id=1]
 length = 0.001
@@ -169,6 +170,9 @@ texture = ExtResource( 2 )
 [node name="PlayerMovement" type="Node" parent="."]
 script = ExtResource( 4 )
 player_path = NodePath("..")
+
+[node name="SoundManager2D" type="Node2D" parent="PlayerMovement"]
+script = ExtResource( 8 )
 
 [node name="FireTrail" parent="." instance=ExtResource( 5 )]
 position = Vector2( -7, 0 )
