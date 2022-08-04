@@ -105,7 +105,7 @@ custom_styles/pressed = SubResource( 9 )
 custom_styles/focus = SubResource( 10 )
 custom_styles/disabled = SubResource( 11 )
 custom_styles/normal = ExtResource( 7 )
-text = "Wiki"
+text = "Instructions"
 
 [node name="Settings" type="Button" parent="Control/Buttons"]
 margin_top = 228.0
