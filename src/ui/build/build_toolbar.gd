@@ -45,24 +45,29 @@ func _on_Plug_clicked(building: Building, plug: int) -> void:
 			building.add_connection(connection)
 			selected_plug_building.add_connection(connection)
 
-			selected_plug_building = null
-			selected_plug = -1
+			deselect_cable()
 	else:
 		selected_plug_building = building
 		selected_plug = plug
+
+		get_node("/root/World/Line2D").show()
+		get_node("/root/World/Line2D").points[0] = selected_plug_building.get_plug(selected_plug).global_position
 
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("pause"):
 		if is_instance_valid(selected_building):
 			SignalBus.emit_signal("toolbar_item_building_setup", null)
+			deselect_cable()
 		else:
 			var player := get_tree().get_nodes_in_group("player").front() as Player
 			player.set_mode(player.Mode.NORMAL)
+			deselect_cable()
 
 	if (event.is_action_pressed("right-click")
 	and is_instance_valid(selected_building)):
 		SignalBus.emit_signal("toolbar_item_building_setup", null)
+		deselect_cable()
 
 
 func _on_Toolbar_item_hovered(toolbar_item: ToolbarItem) -> void:
@@ -76,6 +81,7 @@ func _on_Toolbar_item_unhovered(_toolbar_item: ToolbarItem) -> void:
 
 
 func _on_Toolbar_item_clicked(toolbar_item: ToolbarItem) -> void:
+	deselect_cable()
 	if toolbar_item.unlocked:
 		$Tooltip.hide()
 		if toolbar_item.building_info.price <= Game.unobtainium_amount:
@@ -85,6 +91,7 @@ func _on_Toolbar_item_clicked(toolbar_item: ToolbarItem) -> void:
 
 
 func _on_Player_mode_changed(new_mode: int) -> void:
+	deselect_cable()
 	if new_mode == Mode.BUILD:
 		animation_player.play("slide")
 	elif new_mode == Mode.NORMAL:
@@ -96,3 +103,10 @@ func _on_Player_mode_changed(new_mode: int) -> void:
 
 func _on_set_selected_building(building: BuildingInfo) -> void:
 	selected_building = building
+
+
+
+func deselect_cable() -> void:
+	selected_plug_building = null
+	get_node("/root/World/Line2D").hide()
+	selected_plug = -1
