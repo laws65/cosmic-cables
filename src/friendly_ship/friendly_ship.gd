@@ -1,8 +1,6 @@
 extends Ship
 
 
-var min_distance = 100
-
 var acceleration_speed := 300
 var deceleration_speed := 180
 var friction := 0.01
@@ -12,21 +10,9 @@ var velocity_rotate_weight := 0.01
 
 const rotation_cutoff := 0.1
 
-enum {
-	ATTACK,
-	IDLE,
-	INVESTIGATE,
-}
-
-var custom_name: String
-
-var mode = IDLE
 
 var target: Node2D
-
-var investigate_position: Vector2
-var max_distance_from_target := 20000
-var min_investiage_distance := 20
+var tick := 0
 
 
 func _ready() -> void:
@@ -34,46 +20,28 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
-	#rotation += 100 * delta
-	#var input_direction := 0
+	tick += 1
+	if not is_instance_valid(target) or tick % 5 == 0:
+		var new_target = find_new_target()
+		if not new_target:
+			return
+		else:
+			target = new_target
 
-	#add_acceleration(input_direction)
-	#apply_friction(input_direction)
+	var target_position = target.global_position - target.velocity * delta * 3
 
-	if mode == ATTACK:
-		if not is_instance_valid(target):
-			var new_target = find_new_target()
-			if not new_target:
-				mode = IDLE
-				return
-			else:
-				target = new_target
+	var direction_to_target := to_global($ShipNavigation.recalculate(target_position))
 
-		var target_position = target.global_position - target.velocity * delta * 3
+	steer_towards(direction_to_target)
 
-		var direction_to_target = to_global($ShipNavigation.recalculate(target_position))
+	var rot_dir := Vector2(cos(rotation), sin(rotation))
 
-		steer_towards(direction_to_target)
-		if transform.x.dot(direction_to_target) > 0.99:
-			var gun := get_gun()
-			if is_instance_valid(gun):
-				gun.shoot(target_position)
+	if rot_dir.dot((target.global_position - global_position).normalized()) > 0.9:
+		var gun := get_gun()
+		if is_instance_valid(gun):
+			gun.shoot(target_position)
 
-		velocity = transform.x * 200
-
-		if target_position.distance_squared_to(global_position) > pow(max_distance_from_target, 2):
-			mode = INVESTIGATE
-			investigate_position = target_position
-	elif mode == IDLE:
-
-		velocity = Vector2.ZERO
-	elif mode == INVESTIGATE:
-		var direction_to_target = to_global($ShipNavigation.recalculate(investigate_position))
-		steer_towards(direction_to_target)
-		velocity = transform.x * 200
-
-		if global_position.distance_squared_to(investigate_position) < pow(min_investiage_distance, 2):
-			mode = IDLE
+	velocity = transform.x * 200
 
 	velocity = move_and_slide(velocity)
 
@@ -107,7 +75,6 @@ func _on_EnemyDetector_body_entered(body: PhysicsBody2D) -> void:
 	or body.global_position.distance_squared_to(global_position)
 	< target.global_position.distance_squared_to(global_position)):
 		target = body
-		mode = ATTACK
 
 
 func find_new_target() -> Node2D:
@@ -116,21 +83,12 @@ func find_new_target() -> Node2D:
 	if overlapping_bodies:
 		new_target = overlapping_bodies.pop_front()
 		for i in overlapping_bodies:
+			if i is Ship and new_target is Asteroid:
+				new_target = i
+				continue
 			if (i.global_position.distance_squared_to(global_position)
 				< new_target.global_position.distance_squared_to(global_position)):
-				new_target = i
+				if not(i is Asteroid and new_target is Ship):
+					new_target = i
 	return new_target
 
-
-func _on_EnemyDetector_body_exited(body: Node) -> void:
-	return
-	# warning-ignore:unreachable_code
-	if body == target:
-		target = find_new_target()
-		if not target:
-			mode = INVESTIGATE
-			investigate_position = body.global_position
-
-
-func _on_EnemyShip_death() -> void:
-	Game.enemies_killed += 1

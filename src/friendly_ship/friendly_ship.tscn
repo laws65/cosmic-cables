@@ -5,11 +5,11 @@
 [ext_resource path="res://src/friendly_ship/friendly_ship.gd" type="Script" id=9]
 
 [sub_resource type="CircleShape2D" id=1]
-radius = 120.0
+radius = 423.001
 
 [node name="FriendlyShip" groups=["friendly"] instance=ExtResource( 1 )]
 collision_layer = 144
-collision_mask = 70
+collision_mask = 198
 script = ExtResource( 9 )
 
 [node name="ShipNavigation" type="Node2D" parent="." index="9"]
@@ -31,4 +31,3 @@ position = Vector2( 60, 0 )
 shape = SubResource( 1 )
 
 [connection signal="body_entered" from="EnemyDetector" to="." method="_on_EnemyDetector_body_entered"]
-[connection signal="body_exited" from="EnemyDetector" to="." method="_on_EnemyDetector_body_exited"]
