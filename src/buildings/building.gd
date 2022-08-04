@@ -6,7 +6,7 @@ export var is_core := false
 var connections := Array()
 # warning-ignore:unused_signal
 signal death
-
+var connected_to_core := false
 
 func _ready() -> void:
 	connect("death", self, "_on_die")
@@ -44,18 +44,6 @@ func get_connections() -> Array:
 	return connections
 
 
-func connect_buildings(plug: int, building_two: Building, plug_two: int) -> void:
-	var connection := Connection.new()
-	connection.building_one = self
-	connection.building_one_connection = plug
-	connection.building_two = building_two
-	get_display_plug(plug).hide()
-	building_two.get_plug(plug_two).hide()
-	connection.building_two_connection = plug_two
-	connections.push_back(connection)
-	building_two.connections.push_back(connection)
-
-
 func add_connection(connection: Connection) -> void:
 	connections.push_back(connection)
 
@@ -66,6 +54,7 @@ func add_connection(connection: Connection) -> void:
 		my_plug = connection.building_two_connection
 
 	get_display_plug(my_plug).hide()
+	update_is_connected_to_core()
 
 
 func remove_connection(connection: Connection) -> void:
@@ -78,6 +67,7 @@ func remove_connection(connection: Connection) -> void:
 		my_plug = connection.building_two_connection
 
 	get_display_plug(my_plug).show()
+	update_is_connected_to_core()
 
 
 func _on_Plug_clicked(plug: int) -> void:
@@ -90,3 +80,7 @@ func get_display_plug(idx: int) -> Control:
 
 func get_plug(idx: int) -> Position2D:
 	return $Plugs.get_child(idx) as Position2D
+
+
+func update_is_connected_to_core() -> void:
+	connected_to_core = is_connected_to_core()
