@@ -1,10 +1,14 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://src/ui/main_menu/help/go_left.png" type="Texture" id=1]
 [ext_resource path="res://src/ui/main_menu/help/go_right.png" type="Texture" id=2]
 [ext_resource path="res://src/ui/main_menu/help/help.gd" type="Script" id=3]
 [ext_resource path="res://assets/fonts/EquipmentPro.ttf" type="DynamicFontData" id=4]
 [ext_resource path="res://assets/fonts/MatchupPro.ttf" type="DynamicFontData" id=5]
+[ext_resource path="res://src/asteroid/asteroid_chunk.png" type="Texture" id=6]
+[ext_resource path="res://src/buildings/bot_factory/bot_factory.png" type="Texture" id=7]
+[ext_resource path="res://src/player/player.png" type="Texture" id=8]
+[ext_resource path="res://src/buildings/core/core.png" type="Texture" id=9]
 
 [sub_resource type="DynamicFont" id=5]
 size = 48
@@ -14,7 +18,20 @@ font_data = ExtResource( 4 )
 size = 32
 font_data = ExtResource( 5 )
 
-[sub_resource type="StyleBoxTexture" id=1]
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+
+
+void fragment() {
+	vec4 col = texture(TEXTURE, UV);
+	
+	COLOR = vec4(col.b, col.r, col.r, col.a);
+}"
+
+[sub_resource type="ShaderMaterial" id=7]
+shader = SubResource( 1 )
+
+[sub_resource type="StyleBoxTexture" id=8]
 texture = ExtResource( 1 )
 region_rect = Rect2( 0, 0, 14, 14 )
 
@@ -87,7 +104,7 @@ size_flags_vertical = 3
 custom_constants/separation = 16
 
 [node name="Control" type="Control" parent="Control/VBoxContainer/Pages/About/VBoxContainer/Control/HBoxContainer"]
-margin_right = 291.0
+margin_right = 599.0
 margin_bottom = 316.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -97,21 +114,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 custom_fonts/font = SubResource( 6 )
 text = "Cast into the infinite void of space, besieged by seemingly endless waves of enemies. Build an interconnected network to amass riches, or focus on staving off the hostile ships, lest you succumb to the hostility of space."
-autowrap = true
-clip_text = true
-
-[node name="Control2" type="Control" parent="Control/VBoxContainer/Pages/About/VBoxContainer/Control/HBoxContainer"]
-margin_left = 307.0
-margin_right = 599.0
-margin_bottom = 316.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="Label" type="Label" parent="Control/VBoxContainer/Pages/About/VBoxContainer/Control/HBoxContainer/Control2"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-custom_fonts/font = SubResource( 6 )
-text = " (add texturerects or whatever here with what the particular page explains)"
 autowrap = true
 clip_text = true
 
@@ -167,13 +169,10 @@ margin_bottom = 316.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Label" type="Label" parent="Control/VBoxContainer/Pages/Movement/VBoxContainer/Control/HBoxContainer/Control2"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-custom_fonts/font = SubResource( 6 )
-text = " (add texturerects or whatever here with what the particular page explains)"
-autowrap = true
-clip_text = true
+[node name="Sprite" type="Sprite" parent="Control/VBoxContainer/Pages/Movement/VBoxContainer/Control/HBoxContainer/Control2"]
+position = Vector2( 150, 150 )
+scale = Vector2( 4.9775, 4.9775 )
+texture = ExtResource( 8 )
 
 [node name="Combat" type="Control" parent="Control/VBoxContainer/Pages"]
 visible = false
@@ -227,13 +226,11 @@ margin_bottom = 316.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Label" type="Label" parent="Control/VBoxContainer/Pages/Combat/VBoxContainer/Control/HBoxContainer/Control2"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-custom_fonts/font = SubResource( 6 )
-text = " (add texturerects or whatever here with what the particular page explains)"
-autowrap = true
-clip_text = true
+[node name="Sprite" type="Sprite" parent="Control/VBoxContainer/Pages/Combat/VBoxContainer/Control/HBoxContainer/Control2"]
+material = SubResource( 7 )
+position = Vector2( 150, 150 )
+scale = Vector2( 4.977, 4.977 )
+texture = ExtResource( 8 )
 
 [node name="Building" type="Control" parent="Control/VBoxContainer/Pages"]
 visible = false
@@ -273,10 +270,12 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Label" type="Label" parent="Control/VBoxContainer/Pages/Building/VBoxContainer/Control/HBoxContainer/Control"]
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_right = 1.265
+anchor_bottom = 1.117
+margin_right = -0.115021
+margin_bottom = 0.0279541
 custom_fonts/font = SubResource( 6 )
-text = "Press 'B' to toggle building mode on and off. When building, you won't be able to attack, so make sure you're safe before starting construction. Choose buildings from the build menu and place them anywhere that is unobstructed. "
+text = "Press 'B' to toggle building mode on and off. When building, you won't be able to attack, so make sure you're safe before starting construction. Choose buildings from the build menu and place them anywhere that is unobstructed. Enter build mode and click the black squares on two buildings to join them."
 autowrap = true
 clip_text = true
 
@@ -287,13 +286,10 @@ margin_bottom = 316.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Label" type="Label" parent="Control/VBoxContainer/Pages/Building/VBoxContainer/Control/HBoxContainer/Control2"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-custom_fonts/font = SubResource( 6 )
-text = " (add texturerects or whatever here with what the particular page explains)"
-autowrap = true
-clip_text = true
+[node name="Sprite" type="Sprite" parent="Control/VBoxContainer/Pages/Building/VBoxContainer/Control/HBoxContainer/Control2"]
+position = Vector2( 179, 150 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 9 )
 
 [node name="Making Money" type="Control" parent="Control/VBoxContainer/Pages"]
 visible = false
@@ -347,45 +343,26 @@ margin_bottom = 316.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Label" type="Label" parent="Control/VBoxContainer/Pages/Making Money/VBoxContainer/Control/HBoxContainer/Control2"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-custom_fonts/font = SubResource( 6 )
-text = " (add texturerects or whatever here with what the particular page explains)"
-autowrap = true
-clip_text = true
+[node name="Sprite" type="Sprite" parent="Control/VBoxContainer/Pages/Making Money/VBoxContainer/Control/HBoxContainer/Control2"]
+position = Vector2( 151, 149 )
+scale = Vector2( 3.84267, 3.84267 )
+texture = ExtResource( 7 )
 
-[node name="Full-page template" type="Control" parent="Control/VBoxContainer/Pages"]
-visible = false
-anchor_right = 1.0
-anchor_bottom = 1.0
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Control/VBoxContainer/Pages/Full-page template"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-custom_constants/separation = 16
-
-[node name="Title" type="Label" parent="Control/VBoxContainer/Pages/Full-page template/VBoxContainer"]
-margin_right = 599.0
-margin_bottom = 48.0
-custom_fonts/font = SubResource( 5 )
-text = "Game"
-align = 1
-
-[node name="Control" type="Control" parent="Control/VBoxContainer/Pages/Full-page template/VBoxContainer"]
-margin_top = 64.0
-margin_right = 599.0
-margin_bottom = 380.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="Label" type="Label" parent="Control/VBoxContainer/Pages/Full-page template/VBoxContainer/Control"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-custom_fonts/font = SubResource( 6 )
-text = "This is a template page with all text"
-autowrap = true
-clip_text = true
+[node name="TextureRect" type="TextureRect" parent="Control/VBoxContainer/Pages/Making Money/VBoxContainer/Control/HBoxContainer/Control2"]
+anchor_left = 0.747
+anchor_top = 0.729
+anchor_right = 0.747
+anchor_bottom = 0.729
+margin_left = -21.124
+margin_top = -25.364
+margin_right = 20.876
+margin_bottom = 25.636
+rect_min_size = Vector2( 42, 50 )
+rect_pivot_offset = Vector2( 28, 43 )
+size_flags_stretch_ratio = 3.76
+texture = ExtResource( 6 )
+expand = true
+stretch_mode = 6
 
 [node name="Label" type="HBoxContainer" parent="Control/VBoxContainer"]
 margin_top = 384.0
@@ -403,11 +380,11 @@ margin_bottom = 28.0
 rect_min_size = Vector2( 28, 28 )
 focus_mode = 0
 size_flags_vertical = 3
-custom_styles/hover = SubResource( 1 )
-custom_styles/pressed = SubResource( 1 )
-custom_styles/focus = SubResource( 1 )
+custom_styles/hover = SubResource( 8 )
+custom_styles/pressed = SubResource( 8 )
+custom_styles/focus = SubResource( 8 )
 custom_styles/disabled = SubResource( 4 )
-custom_styles/normal = SubResource( 1 )
+custom_styles/normal = SubResource( 8 )
 enabled_focus_mode = 0
 
 [node name="GoRight" type="Button" parent="Control/VBoxContainer/Label"]
