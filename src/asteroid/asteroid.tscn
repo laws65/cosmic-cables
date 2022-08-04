@@ -40,6 +40,11 @@ texture = ExtResource( 4 )
 [node name="SoundManager2D" type="Node2D" parent="."]
 script = ExtResource( 1 )
 
+[node name="QueryDespawn" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
 [connection signal="timeout" from="Despawner/Timer" to="Despawner" method="_on_Timer_timeout"]
 [connection signal="body_entered" from="Despawner/ShipDetector" to="Despawner" method="_on_ShipDetector_body_entered"]
 [connection signal="body_exited" from="Despawner/ShipDetector" to="Despawner" method="_on_ShipDetector_body_exited"]
+[connection signal="timeout" from="QueryDespawn" to="." method="_on_QueryDespawn_timeout"]

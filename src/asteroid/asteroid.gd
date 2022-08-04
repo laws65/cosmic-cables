@@ -221,3 +221,10 @@ func _generate_shape(asteroid_seed: int):
 			(Vector2(point_size, 0) * squash).rotated(point_angle))
 
 	set_points(new_points)
+
+
+func _on_QueryDespawn_timeout() -> void:
+	var player := get_tree().get_nodes_in_group("player").front() as Player
+	if position.distance_squared_to(player.position) > pow(2000, 2):
+		print("deleting")
+		queue_free()
