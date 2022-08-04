@@ -19,7 +19,8 @@ func _on_OpenButton_button_up() -> void:
 
 
 func _on_Area2D_body_entered(_body: Node) -> void:
-	$AnimationPlayer.play("fade_in_ui")
+	if connected_to_core:
+		$AnimationPlayer.play("fade_in_ui")
 
 
 func _on_Area2D_body_exited(_body: Node) -> void:
@@ -45,3 +46,15 @@ func _on_BuyButton_button_up() -> void:
 	if not input_text.strip_edges().empty():
 		bot_name = input_text
 	ship_instance.custom_name = bot_name
+
+
+func remove_connection(c: Connection) -> void:
+	.remove_connection(c)
+	if not connected_to_core:
+		$AnimationPlayer.play_backwards("fade_in_ui")
+
+
+func add_connection(c: Connection) -> void:
+	.add_connection(c)
+	if connected_to_core and not $Area2D.get_overlapping_bodies().empty():
+		$AnimationPlayer.play("fade_in_ui")
