@@ -3,7 +3,6 @@ extends Ship
 
 var min_distance = 100
 
-var slowed := false
 var acceleration_speed := 300
 var deceleration_speed := 180
 var friction := 0.01

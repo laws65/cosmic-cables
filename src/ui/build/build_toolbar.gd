@@ -10,16 +10,36 @@ var mode: int = Mode.NORMAL
 
 onready var animation_player := get_node("AnimationPlayer") as AnimationPlayer
 
+var selected_plug_building: Building
+var selected_plug: int
+
 
 var tooltip_offset := Vector2(-24, -50)
 var selected_building: BuildingInfo
 
 func _ready() -> void:
+	SignalBus.connect("plug_clicked", self, "_on_Plug_clicked")
 	SignalBus.connect("player_mode_changed", self, "_on_Player_mode_changed")
 	SignalBus.connect("toolbar_item_building_setup", self, "_on_set_selected_building")
 	get_tree().call_group("toolbar_item", "connect", "hovered", self, "_on_Toolbar_item_hovered")
 	get_tree().call_group("toolbar_item", "connect", "unhovered", self, "_on_Toolbar_item_unhovered")
 	get_tree().call_group("toolbar_item", "connect", "clicked", self, "_on_Toolbar_item_clicked")
+
+
+func _on_Plug_clicked(building: Building, plug: int) -> void:
+	if is_instance_valid(selected_plug_building):
+		if selected_plug_building != building:
+			building.connect_buildings(plug, selected_plug_building, selected_plug)
+			var cabling = load("res://src/buildings/cabling/cabling.tscn").instance()
+			cabling.position = building.get_plug(plug).global_position
+			get_node("/root/World").add_child(cabling)
+			cabling.set_target(building, plug, selected_plug_building, selected_plug)
+
+			selected_plug_building = null
+			selected_plug = -1
+	else:
+		selected_plug_building = building
+		selected_plug = plug
 
 
 func _input(event: InputEvent) -> void:

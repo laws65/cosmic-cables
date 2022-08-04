@@ -1,27 +1,18 @@
 extends Node2D
 
 
-func _ready() -> void:
-	set_target(Vector2(50, 50))
+func set_target(start_building: Building, start_slot_idx: int, end_building: Building, end_slot_idx: int) -> void:
+	var start_slot = start_building.get_plug(start_slot_idx)
+	var end_slot = end_building.get_plug(end_slot_idx)
+	$Start.global_position = start_slot.global_position
+	$End.global_position = end_slot.global_position
+	$Start.rotation_degrees = start_slot_idx * 90
+	$End.rotation_degrees = end_slot_idx * 90
 
+	$Start.position += (Vector2.RIGHT * 8).rotated($Start.rotation)
+	$End.position += (Vector2.RIGHT * 8).rotated($End.rotation)
 
-func _physics_process(delta: float) -> void:
-	set_target(get_global_mouse_position())
+	$Line2D.points[0] = $Start.position + (Vector2.RIGHT * 8).rotated($Start.rotation)
+	$Line2D.points[1] = $End.position + (Vector2.RIGHT * 8).rotated($End.rotation)
 
-
-func set_target(pos: Vector2) -> void:
-	pos = to_local(pos)
-
-	if pos.length_squared() < pow(32, 2):
-		pos = pos.normalized() * 32
-	$Start.look_at(pos)
-	$Start.position = (Vector2.RIGHT * 8).rotated($Start.transform.x.angle())
-
-	$End.position = pos
-	$End.look_at(Vector2.ZERO)
 	$End.rotation -= PI
-	$End.position += (Vector2.LEFT * 8).rotated($End.transform.x.angle())
-
-	var angle_to_point := Vector2.ZERO.angle_to_point(pos)
-	$Line2D.points[0] = (Vector2.RIGHT * 8).rotated($Start.transform.x.angle())
-	$Line2D.points[1] = pos + (Vector2.LEFT * 8).rotated($End.transform.x.angle())

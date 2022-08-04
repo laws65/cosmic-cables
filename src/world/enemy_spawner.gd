@@ -10,7 +10,6 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
-	print(time)
 	time -= delta
 	if time <= 0.0:
 		_spawn_new_enemy()

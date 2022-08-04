@@ -9,11 +9,8 @@ extents = Vector2( 24, 24 )
 
 [node name="Core" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
+is_core = true
 info = ExtResource( 3 )
 
 [node name="CollisionShape2D" parent="." index="0"]
 shape = SubResource( 1 )
-
-[node name="Control" type="Control" parent="." index="2"]
-margin_right = 40.0
-margin_bottom = 40.0
