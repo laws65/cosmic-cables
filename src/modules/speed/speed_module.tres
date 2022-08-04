@@ -1,9 +1,7 @@
 [gd_resource type="Resource" load_steps=3 format=2]
 
 [ext_resource path="res://src/item/item.gd" type="Script" id=1]
-
-[sub_resource type="StreamTexture" id=1]
-load_path = "res://.import/speed_icon.png-e9b0d8af4b2e711503fd77f5c2433ec5.stex"
+[ext_resource path="res://src/modules/speed/speed_module.png" type="Texture" id=2]
 
 [resource]
 script = ExtResource( 1 )
@@ -12,5 +10,5 @@ name = "Speed"
 description = "Increases speed by 50"
 level = 1
 price = 1000
-icon = SubResource( 1 )
+icon = ExtResource( 2 )
 scene_path = "res://src/modules/speed/speed_module.tscn"
