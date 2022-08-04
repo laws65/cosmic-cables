@@ -234,6 +234,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/ship/ship_navigation.gd"
 }, {
+"base": "Node2D",
+"class": "SoundManager2D",
+"language": "GDScript",
+"path": "res://src/sound_manager_2d.gd"
+}, {
 "base": "Module",
 "class": "SpeedModule",
 "language": "GDScript",
@@ -295,6 +300,7 @@ _global_script_class_icons={
 "SS2D_VertexProperties": "",
 "Ship": "",
 "ShipNavigation": "",
+"SoundManager2D": "",
 "SpeedModule": "",
 "SquishOnShoot": "",
 "ToolbarItem": ""

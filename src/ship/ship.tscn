@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://src/ship/ship.gd" type="Script" id=1]
 [ext_resource path="res://src/player/asteroid_pusher.gd" type="Script" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://src/picker_upper/picker_upper.tscn" type="PackedScene" id=4]
 [ext_resource path="res://src/item_attractor/item_attractor.tscn" type="PackedScene" id=5]
 [ext_resource path="res://src/ship/fire_trail/fire_trail.tscn" type="PackedScene" id=6]
+[ext_resource path="res://src/sound_manager_2d.gd" type="Script" id=7]
 
 [sub_resource type="Animation" id=2]
 length = 0.001
@@ -216,6 +217,9 @@ initial_velocity = 250.0
 damping = 10.0
 scale_amount_curve = SubResource( 4 )
 color_ramp = SubResource( 5 )
+
+[node name="SoundManager2D" type="Node2D" parent="."]
+script = ExtResource( 7 )
 
 [connection signal="death" from="." to="ItemAttractor" method="_on_Ship_death"]
 [connection signal="death" from="." to="PickerUpper" method="_on_Ship_death"]

@@ -47,5 +47,11 @@ func set_setting(setting_name: String, value) -> void:
 
 	if setting_name == "v-sync":
 		OS.set_use_vsync(value)
+	if setting_name == "game_volume":
+		var actual_volume = -(110-value)*0.7
+		actual_volume = min(value, 0)
+		if value == 0:
+			actual_volume = -100
+		AudioServer.set_bus_volume_db(AudioServer.get_bus_index("master"), actual_volume)
 
 	emit_signal("setting_changed", setting_name, value)
