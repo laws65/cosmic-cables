@@ -78,6 +78,8 @@ func _physics_process(_delta: float) -> void:
 		$Sprite.material.set_shader_param("color", can_build_colour)
 	else:
 		$Sprite.material.set_shader_param("color", cant_build_colour)
+	if building_info.building_name == "Remove Tool":
+		$Line2D.hide()
 
 
 func can_build() -> bool:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://assets/fonts/small_pixel.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://src/ui/build/tooltip.gd" type="Script" id=2]
@@ -9,7 +9,6 @@
 [ext_resource path="res://src/ui/build/build_toolbar.gd" type="Script" id=7]
 [ext_resource path="res://src/buildings/weapon_synthesiser/weapon_synthesiser.tres" type="Resource" id=8]
 [ext_resource path="res://src/buildings/bot_factory/bot_factory.tres" type="Resource" id=9]
-[ext_resource path="res://src/buildings/bot_control_centre/bot_control_centre.tres" type="Resource" id=10]
 [ext_resource path="res://src/buildings/remove_tool/remove_tool.tres" type="Resource" id=11]
 
 [sub_resource type="StyleBoxFlat" id=11]
@@ -140,11 +139,6 @@ building_info = ExtResource( 8 )
 margin_left = 577.0
 margin_right = 689.0
 building_info = ExtResource( 9 )
-
-[node name="BotControlCentre" parent="H" instance=ExtResource( 5 )]
-margin_left = 693.0
-margin_right = 804.0
-building_info = ExtResource( 10 )
 
 [node name="Delete" parent="H" instance=ExtResource( 5 )]
 margin_left = 808.0

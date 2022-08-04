@@ -138,7 +138,7 @@ func _get_relative_clip_points(miner: Node2D, clip_poly: Polygon2D) -> PoolVecto
 
 
 func get_elasticity() -> float:
-	return 0.8
+	return 0.4
 
 
 func get_mass() -> float:
@@ -226,5 +226,4 @@ func _generate_shape(asteroid_seed: int):
 func _on_QueryDespawn_timeout() -> void:
 	var player := get_tree().get_nodes_in_group("player").front() as Player
 	if position.distance_squared_to(player.position) > pow(2000, 2):
-		print("deleting")
 		queue_free()

@@ -50,10 +50,17 @@ func calculate_danger() -> Array:
 	var _danger = []
 	# Cast rays to find danger directions
 	var space_state = get_viewport().get_world_2d().direct_space_state
+	var avoid_layers = 4
+	if owner.team == 0 and owner.target is Asteroid:
+		avoid_layers -= 4
+	if owner.team == 1:
+		avoid_layers += 2
+	else:
+		avoid_layers += 128
 	for i in num_rays:
 		var result = space_state.intersect_ray(owner.position,
 				owner.position + ray_directions[i].rotated(owner.rotation) * look_ahead,
-				[owner], 2|4)
+				[owner], avoid_layers)
 		_danger.push_back(1.0 if result else 0.0)
 	return _danger
 
