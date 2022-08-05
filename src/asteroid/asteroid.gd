@@ -171,6 +171,11 @@ func set_points(points: PoolVector2Array) -> void:
 		elif point.y < min_y:
 			min_y = point.y
 
+	if abs(max_x - min_x) < 30:
+		queue_free()
+	if abs(max_y - min_y) < 30:
+		queue_free()
+
 
 
 

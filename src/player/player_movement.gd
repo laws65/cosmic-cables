@@ -24,9 +24,9 @@ func _physics_process(delta: float) -> void:
 		return
 
 	var input_direction := Input.get_axis("decelerate", "accelerate")
-	if input_direction > 0:
-		if not "assets/sounds/thruster.ogg" in $SoundManager2D.queue:
-			$SoundManager2D.play("assets/sounds/thruster.ogg")
+	#if input_direction > 0:
+		#if not "assets/sounds/thruster.ogg" in $SoundManager2D.queue:
+		#	$SoundManager2D.play("assets/sounds/thruster.ogg")
 	add_acceleration(input_direction)
 	apply_friction(input_direction)
 

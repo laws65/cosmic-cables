@@ -3,7 +3,7 @@ extends Node
 
 signal unobtainium_changed(unobtainium_amount)
 
-var unobtainium_amount := 50000
+var unobtainium_amount := 0
 var asteroids_mined := 0
 var enemies_killed := 0
 var shots_fired := 0

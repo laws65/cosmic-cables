@@ -15,6 +15,7 @@ class Sound:
 
 
 func _ready():
+	pause_mode = PAUSE_MODE_PROCESS
 	Settings.connect("setting_changed", self, "_on_Setting_changed")
 	# Create the pool of AudioStreamPlayer nodes.
 	for i in num_players:

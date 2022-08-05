@@ -1,6 +1,8 @@
 extends Node2D
 class_name Gun
 
+export(String, FILE, "*.ogg") var shoot_sound
+export(float, 0.0, 1.1) var pitch_modulation = 0.0
 
 signal shot()
 
@@ -29,6 +31,7 @@ func shoot(target_position: Vector2) -> Node2D:
 	if not can_shoot():
 		return null
 
+	$SoundManager2D.play(shoot_sound, pitch_modulation)
 	if ship.is_player:
 		Game.shots_fired += 1
 

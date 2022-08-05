@@ -43,6 +43,7 @@ func _process(_delta):
 		var sound: Sound = queue.pop_front()
 
 		available[0].stream = load(sound.sound_path)
-		available[0].pitch_scale = 1 + rand_range(0, sound.pitch_dif) - sound.pitch_dif
+		randomize()
+		available[0].pitch_scale = 1 + rand_range(-sound.pitch_dif/2.0, sound.pitch_dif/2.0)
 		available[0].play()
 		available.pop_front()

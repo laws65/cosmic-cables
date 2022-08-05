@@ -34,10 +34,12 @@ func _on_GameVolume_value_changed(value: float) -> void:
 
 
 func _on_DisableScreenShake_toggled(button_pressed: bool) -> void:
+	GlobalSoundManager.play("res://assets/sounds/kenney_interfacesounds/Audio/tick_004.ogg")
 	_pending_changes["disable_screen_shake"] = button_pressed
 
 
 func _on_VSync_toggled(button_pressed: bool) -> void:
+	GlobalSoundManager.play("res://assets/sounds/kenney_interfacesounds/Audio/tick_004.ogg")
 	_pending_changes["v-sync"] = button_pressed
 
 

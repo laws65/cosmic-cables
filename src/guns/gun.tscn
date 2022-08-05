@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://src/guns/gun.gd" type="Script" id=1]
 [ext_resource path="res://src/guns/energy_gun/energy_gun.png" type="Texture" id=2]
 [ext_resource path="res://src/item/item.gd" type="Script" id=3]
+[ext_resource path="res://src/sound_manager_2d.gd" type="Script" id=4]
 
 [sub_resource type="Resource" id=1]
 resource_local_to_scene = true
@@ -11,10 +12,13 @@ type = 2
 name = "DefaultModuleName"
 description = "Default Module Description"
 level = 0
+price = 0
 scene_path = ""
 
 [node name="Gun" type="Node2D"]
 script = ExtResource( 1 )
+shoot_sound = "res://assets/sounds/sci-fi-sounds/Audio/laserLarge_002.ogg"
+pitch_modulation = 0.7
 item_resource = SubResource( 1 )
 
 [node name="FireTimer" type="Timer" parent="."]
@@ -26,3 +30,7 @@ position = Vector2( 8, 0 )
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 4, 0 )
 texture = ExtResource( 2 )
+
+[node name="SoundManager2D" type="Node2D" parent="."]
+script = ExtResource( 4 )
+num_players = 5
