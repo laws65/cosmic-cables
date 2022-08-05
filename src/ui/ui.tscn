@@ -116,12 +116,8 @@ script = ExtResource( 2 )
 
 [node name="Inventory" parent="." instance=ExtResource( 1 )]
 visible = false
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_top = -550.0
-margin_bottom = -10.0
+margin_top = -910.0
+margin_bottom = -370.0
 mouse_filter = 1
 
 [node name="HeldItem" parent="." instance=ExtResource( 7 )]
@@ -331,7 +327,7 @@ custom_styles/pressed = SubResource( 19 )
 custom_styles/focus = SubResource( 20 )
 custom_styles/disabled = SubResource( 21 )
 custom_styles/normal = SubResource( 22 )
-text = "Save and Quit"
+text = "Quit"
 
 [node name="Settings" parent="PauseScreen" instance=ExtResource( 15 )]
 visible = false
