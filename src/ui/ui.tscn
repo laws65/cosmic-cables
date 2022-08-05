@@ -116,8 +116,10 @@ script = ExtResource( 2 )
 
 [node name="Inventory" parent="." instance=ExtResource( 1 )]
 visible = false
-margin_top = -910.0
-margin_bottom = -370.0
+margin_left = 290.0
+margin_top = -550.0
+margin_right = 990.0
+margin_bottom = -10.0
 mouse_filter = 1
 
 [node name="HeldItem" parent="." instance=ExtResource( 7 )]

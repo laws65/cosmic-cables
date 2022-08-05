@@ -228,6 +228,5 @@ script = ExtResource( 4 )
 
 [node name="AsteroidClipArea" type="Polygon2D" parent="."]
 visible = false
-position = Vector2( 26.5929, -1.92593 )
-scale = Vector2( 1.09286, 0.851852 )
-polygon = PoolVector2Array( -11.6667, -24.7391, 9.66667, -24.7391, 22.3333, 2.26087, 11, 28.087, -11.6667, 28.087, -24.3333, 2.26087 )
+position = Vector2( 2, 1 )
+polygon = PoolVector2Array( 0, -23, 30, -2, 13, 29, -17, 22, -26, -8 )

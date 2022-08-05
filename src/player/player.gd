@@ -43,10 +43,6 @@ func _physics_process(_delta: float) -> void:
 			if gun.automatic or Input.is_action_just_pressed("fire"):
 				gun.shoot(get_global_mouse_position())
 
-	if Input.is_action_just_pressed("damage_self"):
-		return
-		take_damage(0.5)
-
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("fire"):

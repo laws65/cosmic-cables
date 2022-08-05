@@ -12,15 +12,8 @@ func _ready() -> void:
 
 	$CanvasLayer/UI/Inventory.set_ship($YSort/Player)
 
-	for _i in 25:
-		var asteroid_instance = asteroid.instance()
-		asteroid_instance.position = Vector2(
-			rand_range(-500, 500),
-			rand_range(-500, 500)
-		)
-		add_child(asteroid_instance)
 
-var max_asteroid_amount := 25
+var max_asteroid_amount := 50
 
 
 func _physics_process(_delta: float) -> void:
@@ -29,13 +22,6 @@ func _physics_process(_delta: float) -> void:
 		var player := $YSort/Player as Player
 		asteroid_instance.position = player.position + Vector2.RIGHT.rotated(randi()) * rand_range(500, 1500)
 		add_child(asteroid_instance)
-
-
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("test_reload"):
-		return
-		Game.clear_stats()
-		get_tree().reload_current_scene()
 
 
 func create_ground_item(item: Item) -> KinematicBody2D:

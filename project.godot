@@ -310,7 +310,9 @@ _global_script_class_icons={
 
 config/name="Cosmic Cables"
 run/main_scene="res://src/ui/main_menu/main_menu.tscn"
-config/icon="res://icon.png"
+boot_splash/use_filter=false
+config/icon="res://src/icon.png"
+config/windows_native_icon="res://icon.ico"
 
 [autoload]
 
@@ -330,7 +332,7 @@ gdscript/warnings/return_value_discarded=false
 window/size/width=1280
 window/size/height=720
 window/size/fullscreen=true
-window/stretch/mode="2d"
+window/stretch/mode="viewport"
 window/stretch/aspect="expand"
 
 [editor_plugins]
