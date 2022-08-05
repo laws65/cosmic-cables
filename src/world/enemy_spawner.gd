@@ -6,6 +6,7 @@ var time := 5.0 * 60.0
 var waves_done := 0
 var wave_size := 1
 
+
 func _ready() -> void:
 	Game.connect("unobtainium_changed", self, "_on_Unobtainium_changed")
 
@@ -14,7 +15,7 @@ func _physics_process(delta: float) -> void:
 	time -= delta
 	if time <= 0.0:
 		_spawn_new_enemy()
-		time = 4.0 * 60.0
+		time = 2.0 * 60.0
 
 
 func _spawn_new_enemy() -> void:

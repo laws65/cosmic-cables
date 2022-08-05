@@ -15,8 +15,8 @@ func _ready() -> void:
 	for _i in 25:
 		var asteroid_instance = asteroid.instance()
 		asteroid_instance.position = Vector2(
-			rand_range(-1000, 1000),
-			rand_range(-1000, 1000)
+			rand_range(-500, 500),
+			rand_range(-500, 500)
 		)
 		add_child(asteroid_instance)
 
@@ -33,6 +33,7 @@ func _physics_process(_delta: float) -> void:
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("test_reload"):
+		return
 		Game.clear_stats()
 		get_tree().reload_current_scene()
 

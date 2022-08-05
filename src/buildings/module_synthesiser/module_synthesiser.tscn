@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=2]
+[gd_scene load_steps=33 format=2]
 
 [ext_resource path="res://src/buildings/building.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/buildings/module_synthesiser/module_synthesiser.png" type="Texture" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://src/buildings/module_synthesiser/module_synthesiser.tres" type="Resource" id=4]
 [ext_resource path="res://assets/fonts/EquipmentPro.ttf" type="DynamicFontData" id=5]
 [ext_resource path="res://src/modules/speed/speed_module.png" type="Texture" id=6]
+[ext_resource path="res://assets/fonts/equipment_16.tres" type="DynamicFont" id=7]
 [ext_resource path="res://src/modules/power/power_module.png" type="Texture" id=8]
 [ext_resource path="res://src/modules/energy/energy_module.png" type="Texture" id=9]
 [ext_resource path="res://src/modules/fortune/fortune_module.png" type="Texture" id=10]
@@ -141,6 +142,7 @@ margin_left = -4.0
 margin_top = 18.0
 margin_right = 43.0
 margin_bottom = 38.0
+custom_fonts/font = ExtResource( 7 )
 custom_styles/focus = SubResource( 16 )
 text = "Open"
 

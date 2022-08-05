@@ -158,4 +158,3 @@ position = Vector2( 32, 0 )
 shape = SubResource( 4 )
 
 [node name="VisibilityEnabler2D" type="VisibilityEnabler2D" parent="."]
-physics_process_parent = true

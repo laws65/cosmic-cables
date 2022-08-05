@@ -30,12 +30,16 @@ func _on_die() -> void:
 func is_connected_to_core() -> bool:
 	for i in get_connections():
 		var connection := i as Connection
-		if connection.building_one == self:
-			if connection.building_two.is_core:
-				return true
-		if connection.building_two == self:
-			if connection.building_one.is_core:
-				return true
+		if is_instance_valid(connection.building_one):
+			if connection.building_one == self:
+				if is_instance_valid(connection.building_two):
+					if connection.building_two.is_core:
+						return true
+		if is_instance_valid(connection.building_two):
+			if connection.building_two == self:
+				if is_instance_valid(connection.building_one):
+					if connection.building_one.is_core:
+						return true
 
 	return false
 

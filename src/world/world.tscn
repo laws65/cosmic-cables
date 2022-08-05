@@ -1,12 +1,10 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://src/player/player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/buildings/place_probe.tscn" type="PackedScene" id=2]
-[ext_resource path="res://src/ground_item/ground_item.tscn" type="PackedScene" id=3]
 [ext_resource path="res://src/world/camera.gd" type="Script" id=4]
 [ext_resource path="res://src/world/world.gd" type="Script" id=5]
 [ext_resource path="res://src/ui/build/cha_ching.tscn" type="PackedScene" id=6]
-[ext_resource path="res://src/guns/rocket_gun/rocket_gun.tres" type="Resource" id=7]
 [ext_resource path="res://src/effects/background.tscn" type="PackedScene" id=8]
 [ext_resource path="res://src/ui/build/build_grid.tscn" type="PackedScene" id=9]
 [ext_resource path="res://src/ui/ui.tscn" type="PackedScene" id=10]
@@ -48,10 +46,6 @@ build_zoom = Vector2( 0.4, 0.4 )
 [node name="UI" parent="CanvasLayer" instance=ExtResource( 10 )]
 
 [node name="GroundItems" type="Node2D" parent="."]
-
-[node name="GroundItem" parent="GroundItems" instance=ExtResource( 3 )]
-position = Vector2( -140, -128 )
-item_representing = ExtResource( 7 )
 
 [node name="ParallaxBackground" parent="." instance=ExtResource( 8 )]
 

@@ -44,6 +44,7 @@ func _physics_process(_delta: float) -> void:
 				gun.shoot(get_global_mouse_position())
 
 	if Input.is_action_just_pressed("damage_self"):
+		return
 		take_damage(0.5)
 
 
