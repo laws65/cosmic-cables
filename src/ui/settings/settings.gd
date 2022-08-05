@@ -62,3 +62,11 @@ func apply_settings() -> void:
 func open() -> void:
 	load_settings()
 	show()
+
+
+func _on_Button_down() -> void:
+	GlobalSoundManager.play("res://assets/sounds/kenney_interfacesounds/Audio/click_004.ogg")
+
+
+func _on_Button_hovered() -> void:
+	GlobalSoundManager.play("res://assets/sounds/kenney_interfacesounds/Audio/tick_002.ogg")

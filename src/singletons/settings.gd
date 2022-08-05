@@ -48,7 +48,7 @@ func set_setting(setting_name: String, value) -> void:
 	if setting_name == "v-sync":
 		OS.set_use_vsync(value)
 	if setting_name == "game_volume":
-		var actual_volume = -(110-value)*0.7
+		var actual_volume = -100 + value
 		actual_volume = min(value, 0)
 		if value == 0:
 			actual_volume = -100

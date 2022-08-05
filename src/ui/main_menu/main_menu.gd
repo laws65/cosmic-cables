@@ -29,3 +29,11 @@ func _on_Control_gui_input(event: InputEvent) -> void:
 	and event.get_button_index() == BUTTON_LEFT):
 		$Control/Settings.close()
 		$Control/Help.hide()
+
+
+func _on_Button_mouse_entered() -> void:
+	GlobalSoundManager.play("res://assets/sounds/kenney_interfacesounds/Audio/tick_002.ogg")
+
+
+func _on_Button_down() -> void:
+	GlobalSoundManager.play("res://assets/sounds/kenney_interfacesounds/Audio/click_004.ogg")

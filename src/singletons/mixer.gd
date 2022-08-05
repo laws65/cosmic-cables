@@ -12,6 +12,7 @@ func _ready():
 	# Create the pool of AudioStreamPlayer nodes.
 	for i in num_players:
 		var p = AudioStreamPlayer.new()
+		p.pause_mode = PAUSE_MODE_INHERIT
 		add_child(p)
 		available.append(p)
 		p.connect("finished", self, "_on_stream_finished", [p])

@@ -31,3 +31,8 @@ func _select_page(page_idx: int) -> void:
 	get_node("%GoLeft").disabled = page_idx == 0
 	get_node("%GoRight").disabled = page_idx+1 == pages_amount
 
+
+
+func _on_Button_down() -> void:
+	GlobalSoundManager.play("res://assets/sounds/kenney_interfacesounds/Audio/click_004.ogg")
+

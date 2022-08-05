@@ -7,6 +7,12 @@ var bus = "master"
 
 var available = []  # The available players.
 var queue = []  # The queue of sounds to play.
+var pitches = []
+
+
+class Sound:
+	var sound_path: String
+	var pitch_dif: int
 
 
 func _ready():
@@ -24,13 +30,19 @@ func _on_stream_finished(stream):
 	available.append(stream)
 
 
-func play(sound_path):
-	queue.append(sound_path)
+func play(sound_path, pitch_dif = 0):
+	var sound = Sound.new()
+	sound.sound_path = sound_path
+	sound.pitch_dif = pitch_dif
+	queue.append(sound)
 
 
 func _process(_delta):
 	# Play a queued sound if any players are available.
 	if not queue.empty() and not available.empty():
-		available[0].stream = load(queue.pop_front())
+		var sound: Sound = queue.pop_front()
+
+		available[0].stream = load(sound.sound_path)
+		available[0].pitch_scale = 1 + rand_range(0, sound.pitch_dif) - sound.pitch_dif
 		available[0].play()
 		available.pop_front()

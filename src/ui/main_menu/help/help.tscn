@@ -402,5 +402,7 @@ custom_styles/disabled = SubResource( 3 )
 custom_styles/normal = SubResource( 2 )
 enabled_focus_mode = 0
 
+[connection signal="button_down" from="Control/VBoxContainer/Label/GoLeft" to="." method="_on_Button_down"]
 [connection signal="button_up" from="Control/VBoxContainer/Label/GoLeft" to="." method="_on_GoLeft_button_up"]
+[connection signal="button_down" from="Control/VBoxContainer/Label/GoRight" to="." method="_on_Button_down"]
 [connection signal="button_up" from="Control/VBoxContainer/Label/GoRight" to="." method="_on_GoRight_button_up"]

@@ -141,7 +141,15 @@ visible = false
 mouse_filter = 1
 
 [connection signal="gui_input" from="Control" to="." method="_on_Control_gui_input"]
+[connection signal="button_down" from="Control/Buttons/Play" to="." method="_on_Button_down"]
 [connection signal="button_up" from="Control/Buttons/Play" to="." method="_on_Play_button_up"]
+[connection signal="mouse_entered" from="Control/Buttons/Play" to="." method="_on_Button_mouse_entered"]
+[connection signal="button_down" from="Control/Buttons/Help" to="." method="_on_Button_down"]
 [connection signal="button_up" from="Control/Buttons/Help" to="." method="_on_Help_button_up"]
+[connection signal="mouse_entered" from="Control/Buttons/Help" to="." method="_on_Button_mouse_entered"]
+[connection signal="button_down" from="Control/Buttons/Settings" to="." method="_on_Button_down"]
 [connection signal="button_up" from="Control/Buttons/Settings" to="." method="_on_Settings_button_up"]
+[connection signal="mouse_entered" from="Control/Buttons/Settings" to="." method="_on_Button_mouse_entered"]
+[connection signal="button_down" from="Control/Buttons/Quit" to="." method="_on_Button_down"]
 [connection signal="button_up" from="Control/Buttons/Quit" to="." method="_on_Quit_button_up"]
+[connection signal="mouse_entered" from="Control/Buttons/Quit" to="." method="_on_Button_mouse_entered"]
