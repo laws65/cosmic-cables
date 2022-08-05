@@ -6,6 +6,7 @@
 [ext_resource path="res://src/ship/squish_on_shoot.gd" type="Script" id=4]
 
 [node name="EnergyGun" instance=ExtResource( 1 )]
+shoot_sound = "res://assets/sounds/launches/slimeball.wav"
 item_resource = ExtResource( 3 )
 bullet_scene = ExtResource( 2 )
 automatic = true
