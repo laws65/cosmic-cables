@@ -88,3 +88,25 @@ func get_plug(idx: int) -> Position2D:
 
 func update_is_connected_to_core() -> void:
 	connected_to_core = is_connected_to_core()
+
+
+func disonnect_all_connections() -> void:
+	for i in get_connections():
+		var connection := i as Connection
+		if not is_instance_valid(connection.building_one):
+			return
+		if not is_instance_valid(connection.building_two):
+			return
+
+		var one := connection.building_one as Building
+		var two := connection.building_two as Building
+
+		if one == self:
+			two.remove_connection(connection)
+
+		if two == self:
+			one.remove_connection(connection)
+
+		connection.cabling.queue_free()
+
+	connections.clear()

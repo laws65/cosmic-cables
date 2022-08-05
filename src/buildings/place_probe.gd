@@ -22,6 +22,7 @@ func _input(event: InputEvent) -> void:
 	and event.is_action_pressed("place")):
 		for overlap in get_overlapping():
 			if overlap is Building:
+				overlap.disonnect_all_connections()
 				overlap.queue_free()
 				overlap.emit_signal("death")
 				# warning-ignore:narrowing_conversion
