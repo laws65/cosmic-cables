@@ -16,6 +16,8 @@ class Sound:
 
 
 func _ready():
+	pause_mode = PAUSE_MODE_PROCESS
+	Settings.connect("setting_changed", self, "_on_Setting_changed")
 	# Create the pool of AudioStreamPlayer nodes.
 	for i in num_players:
 		var p = AudioStreamPlayer2D.new()
@@ -47,3 +49,12 @@ func _process(_delta):
 		available[0].stream = load(sound.sound_path)
 		available[0].play()
 		available.pop_front()
+
+
+func _on_Setting_changed(setting_name: String, value) -> void:
+	if setting_name == "game_volume":
+		var actual_volume = -50 + int(value) * 0.5
+		if int(value) == 0:
+			actual_volume = -100
+		for player in get_children():
+			player.volume_db = actual_volume

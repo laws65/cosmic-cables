@@ -225,6 +225,7 @@ anims/impact = SubResource( 11 )
 
 [node name="CullBulletAfterTime" type="Node" parent="."]
 script = ExtResource( 4 )
+cull_time = 2.0
 
 [node name="AsteroidClipArea" type="Polygon2D" parent="."]
 visible = false

@@ -84,6 +84,15 @@ func mine(miner: Node2D, clip_poly: Polygon2D) -> void:
 		set_points(new_points)
 
 		for new_asteroid_points in result:
+			if new_asteroid_points.size() < 4:
+				continue
+
+			var bb := _get_bounding_box(new_asteroid_points)
+			if bb.size.x < 30:
+				continue
+			if bb.size.y < 30:
+				continue
+
 			var new_asteroid := duplicate() as Asteroid
 			get_parent().add_child(new_asteroid)
 			new_asteroid.set_points(new_asteroid_points)
@@ -156,22 +165,6 @@ func set_points(points: PoolVector2Array) -> void:
 	$CollisionPolygon2D.polygon = points
 	update()
 
-	var bb := _get_bounding_box(points)
-
-	if bb.size.x < 30:
-		queue_free()
-	if bb.size.y < 30:
-		queue_free()
-
-
-	#$Label.text = str(points.size())
-
-	if points.size() < 5:
-		queue_free()
-
-
-
-
 
 func get_points() -> PoolVector2Array:
 	return $Polygon2D.polygon
@@ -179,9 +172,19 @@ func get_points() -> PoolVector2Array:
 
 func _recalculate_mass() -> void:
 	var points := get_points()
-	var bb := _get_bounding_box(points)
-	var area := _get_bounding_box_area(bb)
-	_mass = area * density
+	var area: float
+	var points_amount := points.size()
+	for i in points_amount:
+		var p1 := points[i]
+		var p2 := points[(i+1) % points_amount]
+		var width := p2.x - p1.y
+		var height := (p1.y + p2.y) / 2.0
+		if p1.x < p2.x:
+			area += height * width
+		else:
+			area -= height * abs(width)
+
+	_mass = abs(area) * density
 
 
 func _get_bounding_box_area(bb: Rect2) -> float:
