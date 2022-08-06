@@ -46,6 +46,8 @@ func _unhandled_key_input(event: InputEventKey) -> void:
 		if is_paused():
 			if settings_open():
 				close_settings()
+			elif help_open():
+				close_help()
 			else:
 				unpause()
 		else:
@@ -73,3 +75,27 @@ func _on_Button_down() -> void:
 
 func _on_Button_hovered() -> void:
 	GlobalSoundManager.play("res://assets/sounds/kenney_interfacesounds/Audio/tick_002.ogg")
+
+
+func _on_Help_button_up() -> void:
+	open_help()
+
+
+func open_help() -> void:
+	$Help.show()
+
+
+func help_open() -> bool:
+	return $Help.visible
+
+
+func close_help() -> void:
+	$Help.hide()
+
+
+func _on_PauseScreen_gui_input(event: InputEvent) -> void:
+	if (event is InputEventMouseButton
+	and event.is_pressed()
+	and event.get_button_index() == BUTTON_LEFT):
+		close_help()
+		close_settings()
