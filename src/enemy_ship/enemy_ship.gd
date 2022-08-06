@@ -43,19 +43,19 @@ func _physics_process(delta: float) -> void:
 	var dot := abs(Vector2.RIGHT.dot(to_local(direction_to_target)))
 
 	if dot > 0.5:
-		acceleration += transform.x * acceleration_speed
+		if slowed:
+			acceleration += transform.x * acceleration_speed
+		else:
+			acceleration += transform.x * acceleration_speed * 0.5
 	else:
 		acceleration -= lerp(velocity, Vector2.ZERO, friction)
 
-	_cap_speed(300)
+	_cap_speed(300 if not slowed else 150)
 
 	velocity += acceleration * delta
 	acceleration = Vector2.ZERO
 
-	if slowed:
-		velocity = move_and_slide(velocity * Vector2(0.5, 0.5))
-	else:
-		velocity = move_and_slide(velocity)
+	velocity = move_and_slide(velocity)
 
 
 func steer_towards(target_position) -> void:

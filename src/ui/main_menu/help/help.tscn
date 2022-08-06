@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://src/ui/main_menu/help/go_left.png" type="Texture" id=1]
 [ext_resource path="res://src/ui/main_menu/help/go_right.png" type="Texture" id=2]
@@ -9,6 +9,12 @@
 [ext_resource path="res://src/buildings/bot_factory/bot_factory.png" type="Texture" id=7]
 [ext_resource path="res://src/player/player.png" type="Texture" id=8]
 [ext_resource path="res://src/buildings/core/core.png" type="Texture" id=9]
+[ext_resource path="res://src/buildings/module_synthesiser/module_synthesiser.png" type="Texture" id=10]
+[ext_resource path="res://src/buildings/weapon_synthesiser/weapon_synthesiser.png" type="Texture" id=11]
+[ext_resource path="res://src/guns/energy_gun/energy_gun.png" type="Texture" id=12]
+[ext_resource path="res://src/modules/speed/speed_module.png" type="Texture" id=13]
+[ext_resource path="res://src/buildings/force_field/force_field.png" type="Texture" id=14]
+[ext_resource path="res://src/buildings/cabling/cabling.png" type="Texture" id=15]
 
 [sub_resource type="DynamicFont" id=5]
 size = 48
@@ -74,6 +80,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="About" type="Control" parent="Control/VBoxContainer/Pages"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 
@@ -215,7 +222,7 @@ size_flags_vertical = 3
 anchor_right = 1.0
 anchor_bottom = 1.0
 custom_fonts/font = SubResource( 6 )
-text = "Move the mouse to aim your shots and left-click to fire. Find or craft more advanced weapons to gain the edge in combat. Ships can't fire backwards, so try to stay behind your enemy when in combat!"
+text = "Left-click to fire. Find or craft more advanced weapons to gain the edge in combat. Ships can't fire backwards, so try to stay behind your enemy when in combat!"
 autowrap = true
 clip_text = true
 
@@ -275,7 +282,8 @@ anchor_bottom = 1.117
 margin_right = -0.115021
 margin_bottom = 0.0279541
 custom_fonts/font = SubResource( 6 )
-text = "Press 'B' to toggle building mode on and off. When building, you won't be able to attack, so make sure you're safe before starting construction. Choose buildings from the build menu and place them anywhere that is unobstructed. Enter build mode and click the black squares on two buildings to join them."
+text = "Press 'B' to toggle building mode on and off. When building, you won't be able to attack, so make sure you're safe before starting construction. Choose buildings from the build menu and place them anywhere that is unobstructed. 
+"
 autowrap = true
 clip_text = true
 
@@ -290,6 +298,85 @@ size_flags_vertical = 3
 position = Vector2( 179, 150 )
 scale = Vector2( 3, 3 )
 texture = ExtResource( 9 )
+
+[node name="Cabling" type="Control" parent="Control/VBoxContainer/Pages"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/VBoxContainer/Pages/Cabling"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/separation = 16
+
+[node name="Title" type="Label" parent="Control/VBoxContainer/Pages/Cabling/VBoxContainer"]
+margin_right = 599.0
+margin_bottom = 48.0
+custom_fonts/font = SubResource( 5 )
+text = "Cabling"
+align = 1
+
+[node name="Control" type="Control" parent="Control/VBoxContainer/Pages/Cabling/VBoxContainer"]
+margin_top = 64.0
+margin_right = 599.0
+margin_bottom = 380.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/VBoxContainer/Pages/Cabling/VBoxContainer/Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/VBoxContainer/Pages/Cabling/VBoxContainer/Control/VBoxContainer"]
+margin_right = 599.0
+margin_bottom = 156.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 16
+
+[node name="Label" type="Label" parent="Control/VBoxContainer/Pages/Cabling/VBoxContainer/Control/VBoxContainer/HBoxContainer"]
+margin_right = 599.0
+margin_bottom = 156.0
+size_flags_horizontal = 3
+size_flags_vertical = 1
+custom_fonts/font = SubResource( 6 )
+text = "Buildings don't work unless they are connected to the core! When in build mode, click on the grey dots of buildings to link them."
+autowrap = true
+clip_text = true
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Control/VBoxContainer/Pages/Cabling/VBoxContainer/Control/VBoxContainer"]
+margin_top = 160.0
+margin_right = 599.0
+margin_bottom = 316.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+
+[node name="Core" type="TextureRect" parent="Control/VBoxContainer/Pages/Cabling/VBoxContainer/Control/VBoxContainer/HBoxContainer2"]
+margin_left = 151.0
+margin_right = 247.0
+margin_bottom = 156.0
+rect_min_size = Vector2( 96, 96 )
+texture = ExtResource( 9 )
+stretch_mode = 6
+
+[node name="Cabling" type="TextureRect" parent="Control/VBoxContainer/Pages/Cabling/VBoxContainer/Control/VBoxContainer/HBoxContainer2"]
+margin_left = 251.0
+margin_right = 347.0
+margin_bottom = 156.0
+rect_min_size = Vector2( 96, 32 )
+texture = ExtResource( 15 )
+stretch_mode = 6
+
+[node name="ForceField" type="TextureRect" parent="Control/VBoxContainer/Pages/Cabling/VBoxContainer/Control/VBoxContainer/HBoxContainer2"]
+margin_left = 351.0
+margin_right = 447.0
+margin_bottom = 156.0
+rect_min_size = Vector2( 96, 96 )
+texture = ExtResource( 14 )
+stretch_mode = 6
 
 [node name="Making Money" type="Control" parent="Control/VBoxContainer/Pages"]
 visible = false
@@ -332,7 +419,7 @@ size_flags_vertical = 3
 anchor_right = 1.0
 anchor_bottom = 1.0
 custom_fonts/font = SubResource( 6 )
-text = "Gain orbs by mining asteroids or killing enemy ships. Then, use the orbs to construct an elaborate building network for more efficient mining, or craft better weapons to enhance your combat abilities."
+text = "Mining ore from asteroids. Then, use the ores to construct a building network for more efficient mining, or craft better weapons to enhance your combat abilities."
 autowrap = true
 clip_text = true
 
@@ -361,6 +448,118 @@ rect_min_size = Vector2( 42, 50 )
 rect_pivot_offset = Vector2( 28, 43 )
 size_flags_stretch_ratio = 3.76
 texture = ExtResource( 6 )
+expand = true
+stretch_mode = 6
+
+[node name="Upgrades" type="Control" parent="Control/VBoxContainer/Pages"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/VBoxContainer/Pages/Upgrades"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/separation = 16
+
+[node name="Title" type="Label" parent="Control/VBoxContainer/Pages/Upgrades/VBoxContainer"]
+margin_right = 599.0
+margin_bottom = 48.0
+custom_fonts/font = SubResource( 5 )
+text = "Upgrades"
+align = 1
+
+[node name="Control" type="Control" parent="Control/VBoxContainer/Pages/Upgrades/VBoxContainer"]
+margin_top = 64.0
+margin_right = 599.0
+margin_bottom = 380.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/VBoxContainer/Pages/Upgrades/VBoxContainer/Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 16
+
+[node name="Control" type="Control" parent="Control/VBoxContainer/Pages/Upgrades/VBoxContainer/Control/HBoxContainer"]
+margin_right = 291.0
+margin_bottom = 316.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="Control/VBoxContainer/Pages/Upgrades/VBoxContainer/Control/HBoxContainer/Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = SubResource( 6 )
+text = "There are two ways to get more powerful: modules and guns. Both can be bought from their respective shops. Modules boost your stats, for example making you deal more damage or increasing your health."
+autowrap = true
+clip_text = true
+
+[node name="Control2" type="Control" parent="Control/VBoxContainer/Pages/Upgrades/VBoxContainer/Control/HBoxContainer"]
+margin_left = 307.0
+margin_right = 599.0
+margin_bottom = 316.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/VBoxContainer/Pages/Upgrades/VBoxContainer/Control/HBoxContainer/Control2"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/separation = 32
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/VBoxContainer/Pages/Upgrades/VBoxContainer/Control/HBoxContainer/Control2/VBoxContainer"]
+margin_top = 14.0
+margin_right = 292.0
+margin_bottom = 142.0
+alignment = 1
+
+[node name="Sprite" type="TextureRect" parent="Control/VBoxContainer/Pages/Upgrades/VBoxContainer/Control/HBoxContainer/Control2/VBoxContainer/HBoxContainer"]
+margin_left = 82.0
+margin_right = 210.0
+margin_bottom = 128.0
+rect_min_size = Vector2( 128, 128 )
+texture = ExtResource( 10 )
+expand = true
+stretch_mode = 5
+
+[node name="TextureRect" type="TextureRect" parent="Control/VBoxContainer/Pages/Upgrades/VBoxContainer/Control/HBoxContainer/Control2/VBoxContainer/HBoxContainer/Sprite"]
+margin_left = 29.0
+margin_top = 86.0
+margin_right = 157.0
+margin_bottom = 136.0
+rect_min_size = Vector2( 42, 50 )
+rect_pivot_offset = Vector2( 28, 43 )
+size_flags_stretch_ratio = 3.76
+texture = ExtResource( 13 )
+expand = true
+stretch_mode = 6
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Control/VBoxContainer/Pages/Upgrades/VBoxContainer/Control/HBoxContainer/Control2/VBoxContainer"]
+margin_top = 174.0
+margin_right = 292.0
+margin_bottom = 302.0
+alignment = 1
+
+[node name="Sprite" type="TextureRect" parent="Control/VBoxContainer/Pages/Upgrades/VBoxContainer/Control/HBoxContainer/Control2/VBoxContainer/HBoxContainer2"]
+margin_left = 82.0
+margin_right = 210.0
+margin_bottom = 128.0
+rect_min_size = Vector2( 128, 128 )
+texture = ExtResource( 11 )
+expand = true
+stretch_mode = 5
+
+[node name="TextureRect" type="TextureRect" parent="Control/VBoxContainer/Pages/Upgrades/VBoxContainer/Control/HBoxContainer/Control2/VBoxContainer/HBoxContainer2/Sprite"]
+margin_left = 29.0
+margin_top = 86.0
+margin_right = 157.0
+margin_bottom = 136.0
+rect_min_size = Vector2( 42, 50 )
+rect_pivot_offset = Vector2( 28, 43 )
+size_flags_stretch_ratio = 3.76
+texture = ExtResource( 12 )
 expand = true
 stretch_mode = 6
 

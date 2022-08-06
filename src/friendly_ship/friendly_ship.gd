@@ -60,10 +60,7 @@ func _physics_process(delta: float) -> void:
 	velocity += acceleration * delta
 	acceleration = Vector2.ZERO
 
-	if slowed:
-		velocity = move_and_slide(velocity * Vector2(0.5, 0.5))
-	else:
-		velocity = move_and_slide(velocity)
+	velocity = move_and_slide(velocity)
 
 
 
