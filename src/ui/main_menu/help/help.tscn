@@ -563,6 +563,52 @@ texture = ExtResource( 12 )
 expand = true
 stretch_mode = 6
 
+[node name="Menus" type="Control" parent="Control/VBoxContainer/Pages"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/VBoxContainer/Pages/Menus"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/separation = 16
+
+[node name="Title" type="Label" parent="Control/VBoxContainer/Pages/Menus/VBoxContainer"]
+margin_right = 599.0
+margin_bottom = 48.0
+custom_fonts/font = SubResource( 5 )
+text = "Menus"
+align = 1
+
+[node name="Control" type="Control" parent="Control/VBoxContainer/Pages/Menus/VBoxContainer"]
+margin_top = 64.0
+margin_right = 599.0
+margin_bottom = 380.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/VBoxContainer/Pages/Menus/VBoxContainer/Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 16
+
+[node name="Control" type="Control" parent="Control/VBoxContainer/Pages/Menus/VBoxContainer/Control/HBoxContainer"]
+margin_right = 599.0
+margin_bottom = 316.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="Control/VBoxContainer/Pages/Menus/VBoxContainer/Control/HBoxContainer/Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = SubResource( 6 )
+text = "Press \"e\" to open the inventory. There, you can swap out your guns and modules.
+
+When ingame, press \"esc\" to open the pause menu. There, you can settings, quit to menu, or view this help screen."
+autowrap = true
+clip_text = true
+
 [node name="Label" type="HBoxContainer" parent="Control/VBoxContainer"]
 margin_top = 384.0
 margin_right = 599.0

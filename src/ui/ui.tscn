@@ -117,8 +117,10 @@ script = ExtResource( 2 )
 
 [node name="Inventory" parent="." instance=ExtResource( 1 )]
 visible = false
-margin_top = -910.0
-margin_bottom = -370.0
+margin_left = 290.0
+margin_top = -550.0
+margin_right = 990.0
+margin_bottom = -10.0
 mouse_filter = 1
 
 [node name="HeldItem" parent="." instance=ExtResource( 7 )]
@@ -303,19 +305,6 @@ custom_styles/disabled = SubResource( 21 )
 custom_styles/normal = SubResource( 22 )
 text = "Back"
 
-[node name="Settings" type="Button" parent="PauseScreen/Buttons"]
-margin_top = 135.0
-margin_right = 373.0
-margin_bottom = 199.0
-rect_min_size = Vector2( 0, 64 )
-custom_fonts/font = SubResource( 17 )
-custom_styles/hover = SubResource( 18 )
-custom_styles/pressed = SubResource( 19 )
-custom_styles/focus = SubResource( 20 )
-custom_styles/disabled = SubResource( 21 )
-custom_styles/normal = SubResource( 22 )
-text = "Settings"
-
 [node name="Help" type="Button" parent="PauseScreen/Buttons"]
 margin_top = 135.0
 margin_right = 373.0
@@ -328,6 +317,19 @@ custom_styles/focus = SubResource( 20 )
 custom_styles/disabled = SubResource( 21 )
 custom_styles/normal = SubResource( 22 )
 text = "Instructions"
+
+[node name="Settings" type="Button" parent="PauseScreen/Buttons"]
+margin_top = 135.0
+margin_right = 373.0
+margin_bottom = 199.0
+rect_min_size = Vector2( 0, 64 )
+custom_fonts/font = SubResource( 17 )
+custom_styles/hover = SubResource( 18 )
+custom_styles/pressed = SubResource( 19 )
+custom_styles/focus = SubResource( 20 )
+custom_styles/disabled = SubResource( 21 )
+custom_styles/normal = SubResource( 22 )
+text = "Settings"
 
 [node name="Quit" type="Button" parent="PauseScreen/Buttons"]
 margin_top = 215.0
@@ -359,12 +361,12 @@ mouse_filter = 1
 [connection signal="button_down" from="PauseScreen/Buttons/Back" to="PauseScreen" method="_on_Button_down"]
 [connection signal="button_up" from="PauseScreen/Buttons/Back" to="PauseScreen" method="_on_Back_button_up"]
 [connection signal="mouse_entered" from="PauseScreen/Buttons/Back" to="PauseScreen" method="_on_Button_hovered"]
-[connection signal="button_down" from="PauseScreen/Buttons/Settings" to="PauseScreen" method="_on_Button_down"]
-[connection signal="button_up" from="PauseScreen/Buttons/Settings" to="PauseScreen" method="_on_Settings_button_up"]
-[connection signal="mouse_entered" from="PauseScreen/Buttons/Settings" to="PauseScreen" method="_on_Button_hovered"]
 [connection signal="button_down" from="PauseScreen/Buttons/Help" to="PauseScreen" method="_on_Button_down"]
 [connection signal="button_up" from="PauseScreen/Buttons/Help" to="PauseScreen" method="_on_Help_button_up"]
 [connection signal="mouse_entered" from="PauseScreen/Buttons/Help" to="PauseScreen" method="_on_Button_hovered"]
+[connection signal="button_down" from="PauseScreen/Buttons/Settings" to="PauseScreen" method="_on_Button_down"]
+[connection signal="button_up" from="PauseScreen/Buttons/Settings" to="PauseScreen" method="_on_Settings_button_up"]
+[connection signal="mouse_entered" from="PauseScreen/Buttons/Settings" to="PauseScreen" method="_on_Button_hovered"]
 [connection signal="button_down" from="PauseScreen/Buttons/Quit" to="PauseScreen" method="_on_Button_down"]
 [connection signal="button_up" from="PauseScreen/Buttons/Quit" to="PauseScreen" method="_on_Quit_button_up"]
 [connection signal="mouse_entered" from="PauseScreen/Buttons/Quit" to="PauseScreen" method="_on_Button_hovered"]
