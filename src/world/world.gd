@@ -13,7 +13,7 @@ func _ready() -> void:
 	$CanvasLayer/UI/Inventory.set_ship($YSort/Player)
 
 
-var max_asteroid_amount := 50
+var max_asteroid_amount := 25
 
 
 func _physics_process(_delta: float) -> void:

@@ -112,7 +112,8 @@ func mine(miner: Node2D, clip_poly: Polygon2D) -> void:
 
 		var number_of_asteroid_chunks = area * 0.0005
 
-
+		if not is_instance_valid(miner):
+			return
 		var debris := load("res://src/asteroid/asteroid_debris_particles.tscn").instance() as CPUParticles2D
 # warning-ignore:narrowing_conversion
 		debris.amount = max(1, number_of_asteroid_chunks/2)

@@ -31,6 +31,7 @@ material = SubResource( 2 )
 
 [node name="ShipNavigation" type="Node2D" parent="." index="6"]
 script = ExtResource( 3 )
+debug = false
 look_ahead = 200
 
 [node name="VisibilityEnabler2D" type="VisibilityEnabler2D" parent="." index="7"]
@@ -45,9 +46,6 @@ monitorable = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyDetector" index="0"]
 position = Vector2( 60, 0 )
 shape = SubResource( 3 )
-
-[node name="Line2D" type="Line2D" parent="." index="13"]
-points = PoolVector2Array( 0, 0, 0, 0 )
 
 [connection signal="death" from="." to="." method="_on_EnemyShip_death"]
 [connection signal="body_entered" from="EnemyDetector" to="." method="_on_EnemyDetector_body_entered"]

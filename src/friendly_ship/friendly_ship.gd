@@ -28,9 +28,16 @@ func _physics_process(delta: float) -> void:
 		else:
 			target = new_target
 
+	if not is_instance_valid(target):
+		var new_target = find_new_target()
+		if not new_target:
+			return
+		else:
+			target = new_target
+
 	var target_position = target.global_position - target.velocity * delta * 3
 
-	var direction_to_target := to_global($ShipNavigation.recalculate(target_position))
+	var direction_to_target = to_global($ShipNavigation.recalculate(target_position))
 
 	steer_towards(direction_to_target)
 
@@ -41,9 +48,23 @@ func _physics_process(delta: float) -> void:
 		if is_instance_valid(gun):
 			gun.shoot(target_position)
 
-	velocity = transform.x * 200
+	var dot := abs(Vector2.RIGHT.dot(to_local(direction_to_target)))
 
-	velocity = move_and_slide(velocity)
+	if dot > 0.5:
+		acceleration += transform.x * acceleration_speed
+	else:
+		acceleration -= lerp(velocity, Vector2.ZERO, friction)
+
+	_cap_speed(300)
+
+	velocity += acceleration * delta
+	acceleration = Vector2.ZERO
+
+	if slowed:
+		velocity = move_and_slide(velocity * Vector2(0.5, 0.5))
+	else:
+		velocity = move_and_slide(velocity)
+
 
 
 func steer_towards(target_position) -> void:
@@ -56,18 +77,6 @@ func steer_towards(target_position) -> void:
 
 	var rotated_velocity := velocity.rotated(steer)
 	velocity = lerp(velocity, rotated_velocity, velocity_rotate_weight)
-
-
-func add_acceleration(input_direction: float) -> void:
-	if input_direction > 0.0:
-		acceleration += transform.x * acceleration_speed
-	elif input_direction < 0.0:
-		acceleration -= transform.x * deceleration_speed
-
-
-func apply_friction(input_direction: float) -> void:
-	if input_direction == 0:
-		acceleration -= lerp(velocity, Vector2.ZERO, friction)
 
 
 func _on_EnemyDetector_body_entered(body: PhysicsBody2D) -> void:
@@ -92,3 +101,7 @@ func find_new_target() -> Node2D:
 					new_target = i
 	return new_target
 
+
+func _cap_speed(max_speed: int) -> void:
+	if velocity.length() > max_speed:
+		velocity = velocity.normalized() * max_speed

@@ -12,14 +12,15 @@ const rotation_cutoff := 0.1
 
 
 var target: Node2D
-
+var tick := 0
 
 func _ready() -> void:
 	set_gun_item(load("res://src/guns/machine_gun/machine_gun.tres").duplicate())
 
 
 func _physics_process(delta: float) -> void:
-	if not is_instance_valid(target):
+	tick += 1
+	if not is_instance_valid(target) or tick % 5 == 0:
 		var new_target = find_new_target()
 		if not new_target:
 			return
@@ -38,9 +39,9 @@ func _physics_process(delta: float) -> void:
 		var gun := get_gun()
 		if is_instance_valid(gun):
 			gun.shoot(target_position)
-	$Line2D.points[1] = to_local(direction_to_target) * 50
-	var dot := abs(transform.x.dot(to_local(direction_to_target)))
-	#print(dot)
+
+	var dot := abs(Vector2.RIGHT.dot(to_local(direction_to_target)))
+
 	if dot > 0.5:
 		acceleration += transform.x * acceleration_speed
 	else:
@@ -67,18 +68,6 @@ func steer_towards(target_position) -> void:
 
 	var rotated_velocity := velocity.rotated(steer)
 	velocity = lerp(velocity, rotated_velocity, velocity_rotate_weight)
-
-
-func add_acceleration(input_direction: float) -> void:
-	if input_direction > 0.0:
-		acceleration += transform.x * acceleration_speed
-	elif input_direction < 0.0:
-		acceleration -= transform.x * deceleration_speed
-
-
-func apply_friction(input_direction: float) -> void:
-	if input_direction == 0:
-		acceleration -= lerp(velocity, Vector2.ZERO, friction)
 
 
 func _on_EnemyDetector_body_entered(body: PhysicsBody2D) -> void:
