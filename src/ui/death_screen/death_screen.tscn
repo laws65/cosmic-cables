@@ -300,7 +300,7 @@ margin_top = 34.0
 margin_right = 367.0
 margin_bottom = 60.0
 custom_fonts/font = SubResource( 29 )
-text = "Enemies Destroyed %s"
+text = "Enemies Destroyed: %s"
 align = 1
 
 [node name="ShotsFired" type="Label" parent="Panel/VBoxContainer/VBoxContainer"]

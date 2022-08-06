@@ -222,7 +222,7 @@ size_flags_vertical = 3
 anchor_right = 1.0
 anchor_bottom = 1.0
 custom_fonts/font = SubResource( 6 )
-text = "Left-click to fire. Find or craft more advanced weapons to gain the edge in combat. Ships can't fire backwards, so try to stay behind your enemy when in combat!"
+text = "Left-click or space to fire. Find or craft more advanced weapons to gain the edge in combat. Ships can't fire backwards, so try to stay behind your enemy when in combat!"
 autowrap = true
 clip_text = true
 
@@ -419,7 +419,7 @@ size_flags_vertical = 3
 anchor_right = 1.0
 anchor_bottom = 1.0
 custom_fonts/font = SubResource( 6 )
-text = "Mining ore from asteroids. Then, use the ores to construct a building network for more efficient mining, or craft better weapons to enhance your combat abilities."
+text = "Mine ore by shooting asteroids. Then, use the ores to construct a building network for more efficient mining, or craft better weapons or modules to enhance your combat abilities."
 autowrap = true
 clip_text = true
 

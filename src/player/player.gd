@@ -58,6 +58,7 @@ func set_mode(new_mode: int) -> void:
 
 
 func hit(hitter: Node2D, damage: float) -> void:
+	set_mode(Mode.NORMAL)
 	damage *= 0.2
 
 	.hit(hitter, damage)
