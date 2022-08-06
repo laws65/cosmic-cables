@@ -2,7 +2,7 @@ extends KinematicBody2D
 class_name Ship
 
 
-var custom_name: String
+var custom_name: String = "Gerbert"
 export var is_player := false
 export var team: int = 0
 

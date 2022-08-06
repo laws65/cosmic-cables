@@ -1,5 +1,6 @@
 extends Building
 
+
 var selected_gun: Item
 
 
@@ -34,7 +35,7 @@ func _build_display_for(module_resource_path: String) -> void:
 	selected_gun = gun
 
 	for i in get_node("%ShopButtons").get_children():
-		if i.name == gun.name:
+		if i.name == gun.name.replace(" ", ""):
 			i.grab_focus()
 
 	get_node("%ModuleName").text = gun.name
@@ -64,19 +65,19 @@ func _on_BuyButton_button_up() -> void:
 		ground_item.position = player.position
 
 
-func _on_EnergyGun_button_up() -> void:
+func _on_EnergyGun_button_down() -> void:
 	_build_display_for("res://src/guns/energy_gun/energy_gun.tres")
 
 
-func _on_MachineGun_button_up() -> void:
+func _on_MachineGun_button_down() -> void:
 	_build_display_for("res://src/guns/machine_gun/machine_gun.tres")
 
 
-func _on_RocketGun_button_up() -> void:
+func _on_RocketGun_button_down() -> void:
 	_build_display_for("res://src/guns/rocket_gun/rocket_gun.tres")
 
 
-func _on_LaserGun_button_up() -> void:
+func _on_LaserGun_button_down() -> void:
 	_build_display_for("res://src/guns/laser_gun/laser_gun.tres")
 
 

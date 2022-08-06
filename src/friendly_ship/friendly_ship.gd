@@ -102,3 +102,7 @@ func find_new_target() -> Node2D:
 func _cap_speed(max_speed: int) -> void:
 	if velocity.length() > max_speed:
 		velocity = velocity.normalized() * max_speed
+
+
+func _on_FriendlyShip_death() -> void:
+	Game.add_message_popup("Your bot named %s has died!" % custom_name)

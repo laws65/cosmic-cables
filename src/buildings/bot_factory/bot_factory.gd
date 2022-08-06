@@ -40,12 +40,13 @@ func _on_BuyButton_button_up() -> void:
 	Game.add_unobtainium(-500000)
 	var ship_instance := load("res://src/friendly_ship/friendly_ship.tscn").instance() as Ship
 	ship_instance.position = position
-	get_node("/root/World").add_child(ship_instance)
-	var bot_name = get_node("%LineEdit").placeholder_text
+	var bot_name = "Gerbert"
 	var input_text = get_node("%LineEdit").text
-	if not input_text.strip_edges().empty():
+	if input_text:
 		bot_name = input_text
+	print(bot_name)
 	ship_instance.custom_name = bot_name
+	get_node("/root/World").add_child(ship_instance)
 
 
 func remove_connection(c: Connection) -> void:

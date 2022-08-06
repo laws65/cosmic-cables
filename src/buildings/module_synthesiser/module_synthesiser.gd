@@ -30,19 +30,19 @@ func _on_OpenButton_button_up() -> void:
 	Game.building_menu_up = true
 
 
-func _on_Speed_button_up() -> void:
+func _on_Speed_button_down() -> void:
 	_build_display_for("res://src/modules/speed/speed_module.tres")
 
 
-func _on_Power_button_up() -> void:
+func _on_Power_button_down() -> void:
 	_build_display_for("res://src/modules/power/power_module.tres")
 
 
-func _on_Energy_button_up() -> void:
+func _on_Energy_button_down() -> void:
 	_build_display_for("res://src/modules/energy/energy_module.tres")
 
 
-func _on_Fortune_button_up() -> void:
+func _on_Fortune_button_down() -> void:
 	_build_display_for("res://src/modules/fortune/fortune_module.tres")
 
 

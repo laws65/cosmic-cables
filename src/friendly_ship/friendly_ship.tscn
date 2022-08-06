@@ -30,4 +30,5 @@ monitorable = false
 position = Vector2( 60, 0 )
 shape = SubResource( 1 )
 
+[connection signal="death" from="." to="." method="_on_FriendlyShip_death"]
 [connection signal="body_entered" from="EnemyDetector" to="." method="_on_EnemyDetector_body_entered"]

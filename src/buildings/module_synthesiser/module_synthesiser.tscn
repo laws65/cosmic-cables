@@ -350,10 +350,10 @@ anims/RESET = SubResource( 3 )
 anims/fade_in_ui = SubResource( 4 )
 
 [connection signal="button_up" from="Control/OpenButton" to="." method="_on_OpenButton_button_up"]
-[connection signal="button_up" from="Control/CanvasLayer/Control/Panel/VBoxContainer/HBoxContainer/ShopButtons/Speed" to="." method="_on_Speed_button_up"]
-[connection signal="button_up" from="Control/CanvasLayer/Control/Panel/VBoxContainer/HBoxContainer/ShopButtons/Power" to="." method="_on_Power_button_up"]
-[connection signal="button_up" from="Control/CanvasLayer/Control/Panel/VBoxContainer/HBoxContainer/ShopButtons/Energy" to="." method="_on_Energy_button_up"]
-[connection signal="button_up" from="Control/CanvasLayer/Control/Panel/VBoxContainer/HBoxContainer/ShopButtons/Fortune" to="." method="_on_Fortune_button_up"]
+[connection signal="button_down" from="Control/CanvasLayer/Control/Panel/VBoxContainer/HBoxContainer/ShopButtons/Speed" to="." method="_on_Speed_button_down"]
+[connection signal="button_down" from="Control/CanvasLayer/Control/Panel/VBoxContainer/HBoxContainer/ShopButtons/Power" to="." method="_on_Power_button_down"]
+[connection signal="button_down" from="Control/CanvasLayer/Control/Panel/VBoxContainer/HBoxContainer/ShopButtons/Energy" to="." method="_on_Energy_button_down"]
+[connection signal="button_down" from="Control/CanvasLayer/Control/Panel/VBoxContainer/HBoxContainer/ShopButtons/Fortune" to="." method="_on_Fortune_button_down"]
 [connection signal="button_up" from="Control/CanvasLayer/Control/Panel/VBoxContainer/HBoxContainer/Control/VBoxContainer/Control/BuyButton" to="." method="_on_BuyButton_button_up"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_Area2D_body_exited"]
