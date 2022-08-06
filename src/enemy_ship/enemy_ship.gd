@@ -3,7 +3,7 @@ extends Ship
 
 var acceleration_speed := 300
 var deceleration_speed := 180
-var friction := 0.01
+var friction := 0.05
 var steer_strength := 2.5
 var velocity_cutoff := 5
 var velocity_rotate_weight := 0.01
@@ -38,8 +38,18 @@ func _physics_process(delta: float) -> void:
 		var gun := get_gun()
 		if is_instance_valid(gun):
 			gun.shoot(target_position)
+	$Line2D.points[1] = to_local(direction_to_target) * 50
+	var dot := abs(transform.x.dot(to_local(direction_to_target)))
+	#print(dot)
+	if dot > 0.5:
+		acceleration += transform.x * acceleration_speed
+	else:
+		acceleration -= lerp(velocity, Vector2.ZERO, friction)
 
-	velocity = transform.x * 200
+	_cap_speed(300)
+
+	velocity += acceleration * delta
+	acceleration = Vector2.ZERO
 
 	if slowed:
 		velocity = move_and_slide(velocity * Vector2(0.5, 0.5))
@@ -92,3 +102,8 @@ func find_new_target() -> Node2D:
 
 func _on_EnemyShip_death() -> void:
 	Game.enemies_killed += 1
+
+
+func _cap_speed(max_speed: int) -> void:
+	if velocity.length() > max_speed:
+		velocity = velocity.normalized() * max_speed

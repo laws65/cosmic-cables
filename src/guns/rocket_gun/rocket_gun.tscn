@@ -22,4 +22,7 @@ script = ExtResource( 5 )
 squish_up_speed = 0.4
 squish_max = Vector2( -0.3, 0.3 )
 
+[node name="SoundManager2D" parent="." index="4"]
+num_players = 10
+
 [connection signal="shot" from="." to="SquishOnShoot" method="_on_Gun_shot"]

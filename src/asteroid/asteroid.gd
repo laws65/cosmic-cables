@@ -172,7 +172,7 @@ func get_points() -> PoolVector2Array:
 
 func _recalculate_mass() -> void:
 	var points := get_points()
-	var area: float
+	var area: float = 0
 	var points_amount := points.size()
 	for i in points_amount:
 		var p1 := points[i]

@@ -1,10 +1,11 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://src/guns/energy_gun/energy_ball.gd" type="Script" id=1]
 [ext_resource path="res://src/resources/light.tres" type="Material" id=2]
 [ext_resource path="res://src/guns/energy_gun/energy_ball.png" type="Texture" id=3]
 [ext_resource path="res://light.png" type="Texture" id=4]
 [ext_resource path="res://src/guns/cull_bullet.gd" type="Script" id=5]
+[ext_resource path="res://src/guns/asteroid_detector.gd" type="Script" id=6]
 
 [sub_resource type="CircleShape2D" id=1]
 
@@ -246,3 +247,9 @@ visible = false
 position = Vector2( 25.7571, 0.0600805 )
 scale = Vector2( 1.75714, 1.45761 )
 polygon = PoolVector2Array( -11.6667, -24.7391, 9.66667, -24.7391, 22.3333, 2.26087, 11, 28.087, -11.6667, 28.087, -24.3333, 2.26087 )
+
+[node name="AsteroidDetector" type="RayCast2D" parent="."]
+enabled = true
+cast_to = Vector2( 50, 0 )
+collision_mask = 4
+script = ExtResource( 6 )
