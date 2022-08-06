@@ -3,7 +3,7 @@ extends Ship
 
 var acceleration_speed := 300
 var deceleration_speed := 180
-var friction := 0.01
+var friction := 0.05
 var steer_strength := 2.5
 var velocity_cutoff := 5
 var velocity_rotate_weight := 0.01
@@ -12,14 +12,15 @@ const rotation_cutoff := 0.1
 
 
 var target: Node2D
-
+var tick := 0
 
 func _ready() -> void:
 	set_gun_item(load("res://src/guns/machine_gun/machine_gun.tres").duplicate())
 
 
 func _physics_process(delta: float) -> void:
-	if not is_instance_valid(target):
+	tick += 1
+	if not is_instance_valid(target) or tick % 5 == 0:
 		var new_target = find_new_target()
 		if not new_target:
 			return
@@ -39,7 +40,17 @@ func _physics_process(delta: float) -> void:
 		if is_instance_valid(gun):
 			gun.shoot(target_position)
 
-	velocity = transform.x * 200
+	var dot := abs(Vector2.RIGHT.dot(to_local(direction_to_target)))
+
+	if dot > 0.5:
+		acceleration += transform.x * acceleration_speed
+	else:
+		acceleration -= lerp(velocity, Vector2.ZERO, friction)
+
+	_cap_speed(300)
+
+	velocity += acceleration * delta
+	acceleration = Vector2.ZERO
 
 	if slowed:
 		velocity = move_and_slide(velocity * Vector2(0.5, 0.5))
@@ -57,18 +68,6 @@ func steer_towards(target_position) -> void:
 
 	var rotated_velocity := velocity.rotated(steer)
 	velocity = lerp(velocity, rotated_velocity, velocity_rotate_weight)
-
-
-func add_acceleration(input_direction: float) -> void:
-	if input_direction > 0.0:
-		acceleration += transform.x * acceleration_speed
-	elif input_direction < 0.0:
-		acceleration -= transform.x * deceleration_speed
-
-
-func apply_friction(input_direction: float) -> void:
-	if input_direction == 0:
-		acceleration -= lerp(velocity, Vector2.ZERO, friction)
 
 
 func _on_EnemyDetector_body_entered(body: PhysicsBody2D) -> void:
@@ -92,3 +91,8 @@ func find_new_target() -> Node2D:
 
 func _on_EnemyShip_death() -> void:
 	Game.enemies_killed += 1
+
+
+func _cap_speed(max_speed: int) -> void:
+	if velocity.length() > max_speed:
+		velocity = velocity.normalized() * max_speed

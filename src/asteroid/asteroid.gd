@@ -112,7 +112,8 @@ func mine(miner: Node2D, clip_poly: Polygon2D) -> void:
 
 		var number_of_asteroid_chunks = area * 0.0005
 
-
+		if not is_instance_valid(miner):
+			return
 		var debris := load("res://src/asteroid/asteroid_debris_particles.tscn").instance() as CPUParticles2D
 # warning-ignore:narrowing_conversion
 		debris.amount = max(1, number_of_asteroid_chunks/2)
@@ -172,7 +173,7 @@ func get_points() -> PoolVector2Array:
 
 func _recalculate_mass() -> void:
 	var points := get_points()
-	var area: float
+	var area: float = 0
 	var points_amount := points.size()
 	for i in points_amount:
 		var p1 := points[i]
