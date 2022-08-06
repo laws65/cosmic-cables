@@ -156,25 +156,19 @@ func set_points(points: PoolVector2Array) -> void:
 	$CollisionPolygon2D.polygon = points
 	update()
 
-	var min_x: float
-	var max_x: float
-	var min_y: float
-	var max_y: float
+	var bb := _get_bounding_box(points)
 
-	for point in points:
-		if point.x < min_x:
-			min_x = point.x
-		elif point.x > max_x:
-			max_x = point.x
-		elif point.y > max_y:
-			max_y = point.y
-		elif point.y < min_y:
-			min_y = point.y
+	if bb.size.x < 30:
+		queue_free()
+	if bb.size.y < 30:
+		queue_free()
 
-	if abs(max_x - min_x) < 30:
+
+	#$Label.text = str(points.size())
+
+	if points.size() < 5:
 		queue_free()
-	if abs(max_y - min_y) < 30:
-		queue_free()
+
 
 
 
