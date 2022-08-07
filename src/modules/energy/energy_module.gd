@@ -13,9 +13,10 @@ func apply(ship) -> void:
 
 
 func remove(ship) -> void:
-	ship.maximum_health -= 1.0
 	var old_health = ship.health
-	ship.health = min(ship.health, ship.maximum_health)
+	var health_perc := float(ship.health) / float(ship.maximum_health)
+	ship.maximum_health -= 1.0
+	ship.health = floor(health_perc * ship.maximum_health * 2) / 2.0
 
 	if ship.is_player:
 		_update_health_display(ship, old_health)
