@@ -9,6 +9,6 @@ type = 1
 name = "Speed"
 description = "Increases speed by 50"
 level = 1
-price = 1000
+price = 75000
 icon = ExtResource( 2 )
 scene_path = "res://src/modules/speed/speed_module.tscn"

@@ -10,6 +10,6 @@ type = 2
 name = "Machine Gun"
 description = "\"...And this is my heavy weapon\""
 level = 2
-price = 1000
+price = 100000
 icon = ExtResource( 2 )
 scene_path = "res://src/guns/machine_gun/machine_gun.tscn"

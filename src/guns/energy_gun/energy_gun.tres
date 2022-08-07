@@ -10,6 +10,6 @@ type = 2
 name = "Energy Gun"
 description = "*Combines* the power of electricity and guns"
 level = 1
-price = 1000
+price = 50000
 icon = ExtResource( 2 )
 scene_path = "res://src/guns/energy_gun/energy_gun.tscn"

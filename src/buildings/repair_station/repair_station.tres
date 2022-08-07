@@ -7,6 +7,6 @@
 script = ExtResource( 1 )
 building_name = "Repair Station"
 description = "Heal here"
-price = 25000
+price = 350000
 icon = ExtResource( 2 )
 display = ExtResource( 2 )

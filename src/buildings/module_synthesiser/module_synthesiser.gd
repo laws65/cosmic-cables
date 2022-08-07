@@ -71,7 +71,7 @@ func _build_display_for(module_resource_path: String) -> void:
 func _on_BuyButton_button_up() -> void:
 	var player := get_tree().get_nodes_in_group("player").front() as Player
 	var added := player.quick_add_to_inventory(selected_module)
-
+	Game.add_unobtainium(-selected_module.price)
 	if added:
 		SignalBus.emit_signal("player_item_pickup", selected_module)
 	else:

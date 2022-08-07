@@ -9,6 +9,6 @@ type = 1
 name = "Power"
 description = "Increases damage of your weapons"
 level = 2
-price = 1000
+price = 75000
 icon = ExtResource( 2 )
 scene_path = "res://src/modules/power/power_module.tscn"

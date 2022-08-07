@@ -8,6 +8,6 @@
 script = ExtResource( 3 )
 building_name = "Bot Factory"
 description = "Make new bots here"
-price = 1
+price = 750000
 icon = ExtResource( 2 )
 display = ExtResource( 1 )

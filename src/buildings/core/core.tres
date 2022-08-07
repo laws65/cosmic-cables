@@ -8,6 +8,6 @@
 script = ExtResource( 1 )
 building_name = "Core"
 description = "The foundation of your base"
-price = 10000
+price = 50000
 icon = ExtResource( 2 )
 display = ExtResource( 3 )

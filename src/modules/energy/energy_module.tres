@@ -9,6 +9,6 @@ type = 1
 name = "Energy"
 description = "Increases your max health by one bar"
 level = 4
-price = 1000
+price = 200000
 icon = ExtResource( 2 )
 scene_path = "res://src/modules/energy/energy_module.tscn"

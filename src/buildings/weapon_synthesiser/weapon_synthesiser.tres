@@ -8,6 +8,6 @@
 script = ExtResource( 3 )
 building_name = "Weapon Synthesiser"
 description = "Make weapons here"
-price = 50000
+price = 400000
 icon = ExtResource( 1 )
 display = ExtResource( 2 )

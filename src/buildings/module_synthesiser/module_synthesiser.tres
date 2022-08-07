@@ -8,6 +8,6 @@
 script = ExtResource( 3 )
 building_name = "Module Synthesiser"
 description = "Make modules here"
-price = 50000
+price = 400000
 icon = ExtResource( 2 )
 display = ExtResource( 1 )
