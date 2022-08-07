@@ -83,6 +83,7 @@ func _on_BuyButton_button_up() -> void:
 		if i.name == selected_module.name:
 			i.grab_focus()
 
+	_build_display_for(selected_module.resource_path)
 
 func remove_connection(c: Connection) -> void:
 	.remove_connection(c)

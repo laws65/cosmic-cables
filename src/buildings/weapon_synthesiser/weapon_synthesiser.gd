@@ -64,6 +64,8 @@ func _on_BuyButton_button_up() -> void:
 		var ground_item := world.create_ground_item(selected_gun) as GroundItem
 		ground_item.position = player.position
 
+	_build_display_for(selected_gun.resource_path)
+
 
 func _on_EnergyGun_button_down() -> void:
 	_build_display_for("res://src/guns/energy_gun/energy_gun.tres")
