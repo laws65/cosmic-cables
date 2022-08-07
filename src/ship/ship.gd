@@ -16,7 +16,7 @@ var velocity: Vector2
 var acceleration: Vector2
 
 var slowed := false
-
+var dead := false
 var gun_slot := [null]
 var modules: Array
 var storage: Array
@@ -155,6 +155,7 @@ func hit(_hitter: Node2D, damage: float) -> void:
 
 
 func die() -> void:
+	dead = true
 	if has_gun():
 		get_gun().hide()
 	_drop_all_items()
@@ -167,7 +168,7 @@ func take_damage(damage: float) -> void:
 	var old_health := health
 	health -= damage
 	emit_signal("health_changed", health, old_health)
-	if health <= 0.0:
+	if health <= 0.0 and not dead:
 		die()
 
 

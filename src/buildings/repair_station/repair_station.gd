@@ -7,7 +7,7 @@ func _on_Area2D_body_entered(_body: Node) -> void:
 
 
 func _on_Area2D_body_exited(_body: Node) -> void:
-	if $Area2D.get_overlapping_bodies().empty() or not connected_to_core:
+	if connected_to_core:
 		$AnimationPlayer.play_backwards("fade_in_ui")
 
 

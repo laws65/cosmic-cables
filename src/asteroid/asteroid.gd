@@ -12,7 +12,7 @@ export(float, 0, 10) var angle_rand = 0.0
 export(float, 0, 50) var wave_magnitude = 1.0
 
 var density = 0.03
-
+var new := false
 onready var angular_velocity: float = rand_range(-0.2, 0.2)
 var velocity: Vector2
 
@@ -77,7 +77,8 @@ func mine(miner: Node2D, clip_poly: Polygon2D) -> void:
 	var result = Geometry.clip_polygons_2d(asteroid_points, clip_points)
 
 	if result.size() == 0:
-		Game.asteroids_mined += 1
+		if new:
+			Game.asteroids_mined += 1
 		queue_free()
 	else:
 		var new_points = result.pop_front()

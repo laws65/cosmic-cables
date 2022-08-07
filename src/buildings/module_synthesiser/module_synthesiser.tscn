@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=2]
+[gd_scene load_steps=36 format=2]
 
 [ext_resource path="res://src/buildings/building.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/buildings/module_synthesiser/module_synthesiser.png" type="Texture" id=2]
@@ -15,6 +15,9 @@
 [ext_resource path="res://assets/resources/buy_normal.tres" type="StyleBox" id=13]
 [ext_resource path="res://assets/resources/buy_pressed.tres" type="StyleBox" id=14]
 [ext_resource path="res://assets/resources/buy_hover.tres" type="StyleBox" id=15]
+[ext_resource path="res://assets/resources/ingame_btn_pressed.tres" type="StyleBox" id=16]
+[ext_resource path="res://assets/resources/ingame_btn_hover.tres" type="StyleBox" id=17]
+[ext_resource path="res://assets/resources/ingame_btn_normal.tres" type="StyleBox" id=18]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 24, 24 )
@@ -143,7 +146,10 @@ margin_top = 18.0
 margin_right = 43.0
 margin_bottom = 38.0
 custom_fonts/font = ExtResource( 7 )
+custom_styles/hover = ExtResource( 17 )
+custom_styles/pressed = ExtResource( 16 )
 custom_styles/focus = SubResource( 16 )
+custom_styles/normal = ExtResource( 18 )
 text = "Open"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="Control" index="1"]

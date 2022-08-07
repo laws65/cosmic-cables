@@ -19,6 +19,7 @@ var max_asteroid_amount := 25
 func _physics_process(_delta: float) -> void:
 	if get_tree().get_nodes_in_group("asteroid").size() < max_asteroid_amount:
 		var asteroid_instance = asteroid.instance()
+		asteroid_instance.new = true
 		var player := $YSort/Player as Player
 		asteroid_instance.position = player.position + Vector2.RIGHT.rotated(randi()) * rand_range(500, 1500)
 		add_child(asteroid_instance)

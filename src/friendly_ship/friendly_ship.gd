@@ -31,6 +31,7 @@ func _physics_process(delta: float) -> void:
 	if not is_instance_valid(target):
 		var new_target = find_new_target()
 		if not new_target:
+			velocity = Vector2.ZERO
 			return
 		else:
 			target = new_target
@@ -105,4 +106,4 @@ func _cap_speed(max_speed: int) -> void:
 
 
 func _on_FriendlyShip_death() -> void:
-	Game.add_message_popup("Your bot named %s has died!" % custom_name)
+	Game.add_message_popup("Your bot named " + custom_name + " has died!")

@@ -44,7 +44,6 @@ func _on_BuyButton_button_up() -> void:
 	var input_text = get_node("%LineEdit").text
 	if input_text:
 		bot_name = input_text
-	print(bot_name)
 	ship_instance.custom_name = bot_name
 	get_node("/root/World").add_child(ship_instance)
 

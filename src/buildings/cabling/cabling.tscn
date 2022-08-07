@@ -18,6 +18,7 @@ region = Rect2( 32, 0, 16, 16 )
 extents = Vector2( 75.5, 10 )
 
 [node name="Cabling" type="Node2D"]
+z_index = -1
 script = ExtResource( 3 )
 
 [node name="Line2D" type="Line2D" parent="."]
