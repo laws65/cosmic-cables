@@ -9,6 +9,6 @@ A game I made a while back in ~5 months. It was the first big project I complete
 - Items + inventory
 - Enemy AI
 - Asteroid mining
-- Particles + screen shake
+- Animations, particles, and screen shake
 - Audio
 - UI
